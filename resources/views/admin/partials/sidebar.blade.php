@@ -14,6 +14,13 @@
 
       
       <li class="nav-item">
+        <a class="nav-link collapsed" href="/">
+          <i class="bi bi-person"></i>
+          <span>Page Home</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/kader">
           <i class="bi bi-person"></i>
           <span>Kader</span>
@@ -25,6 +32,14 @@
         <a class="nav-link collapsed" href="/admin/galeri">
           <i class="bi bi-images"></i>
           <span>Galeri</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/perpus">
+          <i class="bi bi-book-half"></i>
+          <span>Perpustakaan</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
