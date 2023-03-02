@@ -20,6 +20,17 @@ class PerpusController extends Controller
         ]);
     }
 
+    public function baca(Request $request)
+    {
+
+        $perpus = Perpus::all();
+        // $perpus = Perpus::findOrFail($id);
+        return view('/user/baca', [
+            // "title"=>"Perpustakaan"
+            // "perpus" => Perpus::latest()->get()
+        ]);
+    }
+
 
     public function admin_index(Request $request)
     {

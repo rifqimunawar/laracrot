@@ -57,6 +57,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('index');
 // ===============================================================================
 // ======================================  Route Perpustakaan  ====================
 Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
+Route::get('/perpus/baca', [PerpusController::class, 'baca'])->name('baca');
 Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
 Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
 Route::delete('/admin/perpus/{id}', [PerpusController::class, 'admin_destroy'])->name('admin_destroy');
