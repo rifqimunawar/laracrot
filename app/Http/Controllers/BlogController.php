@@ -14,7 +14,15 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        return view('user.blog');
+        // $blog = Blog::all();
+        $blog = Blog::latest()->get();
+        return view('user.blog.index', compact('blog'));
+    }
+    public function view($id, Request $request)
+    {
+        $goblog = Blog::find($id);
+        // $blog = Blog::latest()->get();
+        return view('user.blog.view', compact('goblog'));
     }
 
 
