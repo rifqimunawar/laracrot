@@ -1,10 +1,10 @@
-@extends('admin.layout')
+@extends('user.layout')
 @section('content')
     
+<div class="container my-4" style="padding-top: 4rem">
+  <main id="main" class="main">
 
-<main id="main" class="main">
-
-    <div class="pagetitle">
+    <div class="pagetitle mt-4">
       <h1>Profile</h1>
       <nav>
         <ol class="breadcrumb">
@@ -295,4 +295,6 @@
     </section>
 
   </main><!-- End #main -->
+</div>
+
   @endsection
