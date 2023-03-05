@@ -1,7 +1,8 @@
 @extends('/user/layout')
 @section('content')
+<div class="text-center my-5 pt-3">
+  <h4 class="pt-5">Perpustakaan Kader</h4>
         <div class="container card info-card sales-card mt-5">
-            <h4 class="text-center">Perpustakaan Komisariat</h4>
             <div class="row" style="margin-left:0">
               @foreach ($perpus as $perp)
                   <div class="col-md-2 my-3 mx-2 shadow p-3 mb-5 bg-body-tertiary rounded" style="width:180px; margin-right:0">
@@ -14,4 +15,5 @@
 
             </div>
         </div>
+    </div>
 @endsection

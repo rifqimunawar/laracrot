@@ -16,11 +16,19 @@
     <link href="assets_user/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
     <link href="assets_user/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets_user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome icon news -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
     {{-- link untuk hover galeri  --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {{-- css murni  --}}
     {{-- <link rel="stylesheet" href="css/style.css"> --}}
     <link rel="stylesheet" href="assets_user/css/style.css">
+    <link rel="stylesheet" href="css/stylenews.css">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   </head>
 
   <body>
@@ -44,6 +52,15 @@
     <script src="assets_user/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets_user/vendor/php-email-form/validate.js"></script>
   
+        <!-- JavaScript Libraries -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Main JS File News Papper -->
+    <script src="js/main.js"></script>
+
     <!-- Template Main JS File -->
     <script src="assets_user/js/main.js"></script>
   </body>

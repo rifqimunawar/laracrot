@@ -44,7 +44,7 @@ Route::get('/admin/kader/{id}/view', [KaderController::class, 'view'])->name('vi
 // ===============================================================================
 // ======================================  Route fitur blog ====================== 
 Route::get('/blog', [BlogController::class, 'index'])->name('index');
-Route::get('/blog/show', [BlogController::class, 'show'])->name('show');
+Route::get('/crot', [BlogController::class, 'crot'])->name('crot');
 // ===============================================================================
 // ======================================  Route Galeri  =========================
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');

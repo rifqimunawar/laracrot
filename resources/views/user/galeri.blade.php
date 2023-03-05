@@ -1,7 +1,7 @@
 @extends('user.layout')
 @section('content')
-<div class="text-center my-5">
-  <h4>Galeri Kader</h4>
+<div class="text-center my-5 pt-3">
+  <h4 class="pt-5">Galeri Kader</h4>
 </div>
 <!-- Gallery -->
 <div class="container my-4">

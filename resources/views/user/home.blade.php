@@ -71,7 +71,7 @@
       <div class="container" data-aos="zoom-in">
 
         <header class="section-header">
-          <h3>Rayon-Rayon Dalam PMII UNINUS</h3>
+          <h3>Keluarga PMII UNINUS</h3>
         </header>
 
         <div class="clients-slider swiper">
@@ -133,7 +133,7 @@
     </section><!-- End Facts Section -->
 
 
-
+{{-- 
 
     
     <!--  Chart start -->
@@ -202,4 +202,7 @@
       </div>
     </div>
     <!--  Chart End -->
+ --}}
+
+
 @endsection

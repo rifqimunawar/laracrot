@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
  *
@@ -7,19 +9,23 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace PHPUnit\TextUI\Output;
 
+use SebastianBergmann\Timer\Duration;
+use PHPUnit\TextUI\Output\NullPrinter;
+use PHPUnit\Util\InvalidSocketException;
+use PHPUnit\TextUI\Output\DefaultPrinter;
+use PHPUnit\TextUI\Output\SummaryPrinter;
 use PHPUnit\Logging\TeamCity\TeamCityLogger;
-use PHPUnit\Logging\TestDox\TestResultCollection;
 use PHPUnit\TestRunner\TestResult\TestResult;
 use PHPUnit\TextUI\Configuration\Configuration;
-use PHPUnit\TextUI\Output\Default\ProgressPrinter\ProgressPrinter as DefaultProgressPrinter;
+use PHPUnit\Util\DirectoryDoesNotExistException;
+use PHPUnit\Logging\TestDox\TestResultCollection;
+use SebastianBergmann\Timer\ResourceUsageFormatter;
 use PHPUnit\TextUI\Output\Default\ResultPrinter as DefaultResultPrinter;
 use PHPUnit\TextUI\Output\TestDox\ResultPrinter as TestDoxResultPrinter;
-use PHPUnit\Util\DirectoryDoesNotExistException;
-use PHPUnit\Util\InvalidSocketException;
-use SebastianBergmann\Timer\Duration;
-use SebastianBergmann\Timer\ResourceUsageFormatter;
+use PHPUnit\TextUI\Output\Default\ProgressPrinter\ProgressPrinter as DefaultProgressPrinter;
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
@@ -121,9 +127,11 @@ final class Facade
 
     private static function createPrinter(Configuration $configuration): Printer
     {
-        if (self::useDefaultProgressPrinter($configuration) ||
+        if (
+            self::useDefaultProgressPrinter($configuration) ||
             self::useDefaultResultPrinter($configuration) ||
-            $configuration->outputIsTestDox()) {
+            $configuration->outputIsTestDox()
+        ) {
             if ($configuration->outputToStandardErrorStream()) {
                 return DefaultPrinter::standardError();
             }
