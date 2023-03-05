@@ -8,12 +8,14 @@ use Closure;
 use NunoMaduro\Collision\Adapters\Phpunit\Printers\DefaultPrinter;
 use NunoMaduro\Collision\Exceptions\ShouldNotHappen;
 use NunoMaduro\Collision\Exceptions\TestException;
+use NunoMaduro\Collision\Exceptions\TestOutcome;
 use NunoMaduro\Collision\Writer;
 use Pest\Expectation;
 use PHPUnit\Event\Code\Throwable;
 use PHPUnit\Event\Telemetry\Info;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\IncompleteTestError;
+use PHPUnit\Framework\SkippedWithMessageException;
 use PHPUnit\TestRunner\TestResult\TestResult as PHPUnitTestResult;
 use PHPUnit\TextUI\Configuration\Registry;
 use ReflectionClass;
@@ -43,7 +45,7 @@ final class Style
     /**
      * @var string[]
      */
-    private const TYPES = [TestResult::DEPRECATED, TestResult::FAIL, TestResult::WARN, TestResult::RISKY, TestResult::INCOMPLETE, TestResult::TODO, TestResult::SKIPPED, TestResult::PASS];
+    private const TYPES = [TestResult::DEPRECATED, TestResult::FAIL, TestResult::WARN, TestResult::RISKY, TestResult::INCOMPLETE, TestResult::NOTICE, TestResult::TODO, TestResult::SKIPPED, TestResult::PASS];
 
     /**
      * Style constructor.
@@ -128,35 +130,44 @@ final class Style
      *    ✓ basic test
      * ```
      */
-    public function writeErrorsSummary(State $state, bool $onFailure): void
+    public function writeErrorsSummary(State $state): void
     {
         $configuration = Registry::get();
         $failTypes = [
             TestResult::FAIL,
         ];
 
-        if ($configuration->failOnWarning()) {
+        if ($configuration->displayDetailsOnTestsThatTriggerNotices()) {
+            $failTypes[] = TestResult::NOTICE;
+        }
+
+        if ($configuration->displayDetailsOnTestsThatTriggerDeprecations()) {
+            $failTypes[] = TestResult::DEPRECATED;
+        }
+
+        if ($configuration->failOnWarning() || $configuration->displayDetailsOnTestsThatTriggerWarnings()) {
             $failTypes[] = TestResult::WARN;
+        }
+
+        if ($configuration->failOnRisky()) {
             $failTypes[] = TestResult::RISKY;
         }
 
-        if ($configuration->failOnIncomplete()) {
+        if ($configuration->failOnIncomplete() || $configuration->displayDetailsOnIncompleteTests()) {
             $failTypes[] = TestResult::INCOMPLETE;
         }
 
-        if ($configuration->failOnSkipped()) {
+        if ($configuration->failOnSkipped() || $configuration->displayDetailsOnSkippedTests()) {
             $failTypes[] = TestResult::SKIPPED;
         }
 
-        $errors = array_filter($state->suiteTests, fn (TestResult $testResult) => in_array(
+        $failTypes = array_unique($failTypes);
+
+        $errors = array_values(array_filter($state->suiteTests, fn (TestResult $testResult) => in_array(
             $testResult->type,
             $failTypes,
             true
-        ));
-
-        if (! $onFailure) {
-            $this->output->writeln(['']);
-        }
+        )));
 
         array_map(function (TestResult $testResult): void {
             if (! $testResult->throwable instanceof Throwable) {
@@ -180,6 +191,8 @@ final class Style
             $throwableClassName = ! in_array($throwableClassName, [
                 ExpectationFailedException::class,
                 IncompleteTestError::class,
+                SkippedWithMessageException::class,
+                TestOutcome::class,
             ], true) ? sprintf('<span class="px-1 bg-red font-bold">%s</span>', (new ReflectionClass($throwableClassName))->getShortName())
                 : '';
 
@@ -189,13 +202,13 @@ final class Style
             render(sprintf(<<<'HTML'
                 <div class="flex justify-between mx-2">
                     <span class="%s">
-                        <span class="px-1 bg-%s font-bold uppercase">%s</span> <span class="font-bold">%s</span><span class="text-gray mx-1">></span><span>%s</span>
+                        <span class="px-1 bg-%s %s font-bold uppercase">%s</span> <span class="font-bold">%s</span><span class="text-gray mx-1">></span><span>%s</span>
                     </span>
                     <span class="ml-1">
                         %s
                     </span>
                 </div>
-            HTML, $truncateClasses, $testResult->color, $testResult->type, $testCaseName, $description, $throwableClassName));
+            HTML, $truncateClasses, $testResult->color === 'yellow' ? 'yellow-400' : $testResult->color, $testResult->color === 'yellow' ? 'text-black' : '', $testResult->type, $testCaseName, $description, $throwableClassName));
 
             $this->writeError($testResult->throwable);
         }, $errors);
@@ -210,6 +223,14 @@ final class Style
         foreach (self::TYPES as $type) {
             if (($countTests = $state->countTestsInTestSuiteBy($type)) !== 0) {
                 $color = TestResult::makeColor($type);
+
+                if ($type === TestResult::WARN && $countTests < 2) {
+                    $type = 'warning';
+                }
+
+                if ($type === TestResult::NOTICE && $countTests > 1) {
+                    $type = 'notices';
+                }
 
                 if ($type === TestResult::TODO && $countTests > 1) {
                     $type = 'todos';
@@ -314,6 +335,7 @@ final class Style
         $writer->showTitle(false);
 
         $writer->ignoreFilesIn([
+            '/vendor\/nunomaduro\/collision/',
             '/vendor\/bin\/pest/',
             '/bin\/pest/',
             '/vendor\/pestphp\/pest/',
@@ -340,6 +362,8 @@ final class Style
 
             $this->ignorePestPipes(...),
             $this->ignorePestExtends(...),
+            $this->ignorePestInterceptors(...),
+
         ]);
 
         /** @var \Throwable $throwable */
@@ -475,6 +499,29 @@ final class Style
             foreach ($extends as $extendClosure) {
                 if ($this->isFrameInClosure($frame, $extendClosure)) {
                     return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @param  Frame  $frame
+     */
+    private function ignorePestInterceptors($frame): bool
+    {
+        if (class_exists(Expectation::class)) {
+            $reflection = new ReflectionClass(Expectation::class);
+
+            /** @var array<string, array<Closure(Closure, mixed ...$arguments): void>> $expectationInterceptors */
+            $expectationInterceptors = $reflection->getStaticPropertyValue('interceptors', []);
+
+            foreach ($expectationInterceptors as $pipes) {
+                foreach ($pipes as $pipeClosure) {
+                    if ($this->isFrameInClosure($frame, $pipeClosure)) {
+                        return true;
+                    }
                 }
             }
         }

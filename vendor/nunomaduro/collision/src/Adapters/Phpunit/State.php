@@ -97,8 +97,20 @@ final class State
         }
 
         foreach ($this->testCaseTests as $test) {
-            if ($test->type !== TestResult::PASS && $test->type !== TestResult::TODO) {
+            if ($test->type !== TestResult::PASS && $test->type !== TestResult::TODO && $test->type !== TestResult::DEPRECATED && $test->type !== TestResult::NOTICE) {
                 return 'WARN';
+            }
+        }
+
+        foreach ($this->testCaseTests as $test) {
+            if ($test->type === TestResult::NOTICE) {
+                return 'NOTI';
+            }
+        }
+
+        foreach ($this->testCaseTests as $test) {
+            if ($test->type === TestResult::DEPRECATED) {
+                return 'DEPR';
             }
         }
 
@@ -143,7 +155,13 @@ final class State
         }
 
         foreach ($this->testCaseTests as $test) {
-            if ($test->type !== TestResult::PASS && $test->type !== TestResult::TODO) {
+            if ($test->type !== TestResult::PASS && $test->type !== TestResult::TODO && $test->type !== TestResult::DEPRECATED) {
+                return 'yellow';
+            }
+        }
+
+        foreach ($this->testCaseTests as $test) {
+            if ($test->type === TestResult::DEPRECATED) {
                 return 'yellow';
             }
         }

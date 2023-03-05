@@ -12,18 +12,18 @@ class BlogController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
-        // $blog = Blog::all();
-        $blog = Blog::latest()->get();
-        return view('user.blog.index', compact('blog'));
-    }
-    public function view($id, Request $request)
-    {
-        $goblog = Blog::find($id);
-        // $blog = Blog::latest()->get();
-        return view('user.blog.view', compact('goblog'));
-    }
+
+    // public function index(Request $request)
+    // {
+    // $blog = Blog::all();
+    //     $blog = Blog::latest()->get();
+    //     return view('user.blog.index', compact('blog'));
+    // }
+    // public function show(Request $request)
+    // {
+    //     $goblog = Blog::all();
+    //     return view('user.show', compact('goblog'));
+    // }
 
 
 

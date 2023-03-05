@@ -12,9 +12,12 @@ use Illuminate\Support\Env;
 use Illuminate\Support\Str;
 use NunoMaduro\Collision\Adapters\Laravel\Exceptions\RequirementsException;
 use NunoMaduro\Collision\Coverage;
+use ParaTest\Options;
 use PHPUnit\Runner\Version;
 use RuntimeException;
 use SebastianBergmann\Environment\Console;
+use Symfony\Component\Console\Input\ArgvInput;
+use Symfony\Component\Console\Input\InputDefinition;
 use Symfony\Component\Process\Exception\ProcessSignaledException;
 use Symfony\Component\Process\Process;
 
@@ -265,10 +268,30 @@ class TestCommand extends Command
             $file = base_path('phpunit.xml.dist');
         }
 
-        return array_merge($this->commonArguments(), [
+        $options = array_merge($this->commonArguments(), [
             "--configuration=$file",
             "--runner=\Illuminate\Testing\ParallelRunner",
         ], $options);
+
+        $inputDefinition = new InputDefinition();
+        Options::setInputDefinition($inputDefinition);
+        $input = new ArgvInput($options, $inputDefinition);
+
+        /** @var non-empty-string $basePath */
+        $basePath = base_path();
+
+        $paraTestOptions = Options::fromConsoleInput(
+            $input,
+            $basePath,
+        );
+
+        if (! $paraTestOptions->configuration->hasCoverageCacheDirectory()) {
+            $cacheDirectory = sys_get_temp_dir().DIRECTORY_SEPARATOR.'__laravel_test_cache_directory';
+            $options[] = '--cache-directory';
+            $options[] = $cacheDirectory;
+        }
+
+        return $options;
     }
 
     /**
