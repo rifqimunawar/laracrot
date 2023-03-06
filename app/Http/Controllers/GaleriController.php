@@ -20,6 +20,7 @@ class GaleriController extends Controller
     public function index(Request $request)
     {
         $galeri = Galeri ::latest()->get();
+        
         // $galeri DB::table('galeri')
         //->sortBy(callback: 'create_at');
         // ->get();

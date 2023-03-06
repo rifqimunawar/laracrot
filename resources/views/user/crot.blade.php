@@ -1,3 +1,4 @@
+@section('title') {{ 'Singgle Post' }}@endsection
 @extends('.user.layout')
 @section('content')
     

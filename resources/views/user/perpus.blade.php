@@ -1,3 +1,4 @@
+@section('title') {{ 'Perpus' }}@endsection
 @extends('/user/layout')
 @section('content')
 <div class="text-center my-5 pt-3">

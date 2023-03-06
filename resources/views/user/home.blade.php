@@ -1,3 +1,4 @@
+@section('title') {{ 'Home' }}@endsection
 @extends('user.layout')
 @section('content')
 
