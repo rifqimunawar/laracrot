@@ -27,5 +27,26 @@ class BlogSeeder extends Seeder
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
+        DB::table('blog')->insert([
+            'judul' => 'ini post ketiga',
+            'slug' => 'ini post ketiga',
+            'body' => 'lorem dan yang kedua bla bla',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('blog')->insert([
+            'judul' => 'ini post keempat',
+            'slug' => 'ini post keempat',
+            'body' => 'lorem dan yang kedua bla bla',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('blog')->insert([
+            'judul' => 'ini post kelima',
+            'slug' => 'ini post kelima',
+            'body' => 'lorem dan yang kedua bla bla',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
     }
 }
