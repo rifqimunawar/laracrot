@@ -19,9 +19,9 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('user.home');
-// });
+Route::get('/singgle', function () {
+    return view('user.blog.singgle');
+});
 // =====================================================
 // Route Home  =========================================
 // ----------------------------------------------------
