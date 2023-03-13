@@ -49,6 +49,11 @@ class GaleriController extends Controller
      */
     public function admin_store(Request $request)
     {
+
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
         $galeri = new Galeri();
         $galeri->judul = $request->judul;
         $galeri->save();
