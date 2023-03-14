@@ -133,7 +133,6 @@
                         <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
                       </div>
                     </div>
-
                     <div class="row mb-3">
                       <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
                       <div class="col-md-8 col-lg-9">
