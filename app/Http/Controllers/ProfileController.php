@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Profile;
-use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
 
 class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index( Request $request)
     {
-        // $profile = Profile::all();
-        return view('user.profile');
+        $user = User ::all();
+        $user=Auth::user();
+        // ddd($user);
+        return view('user.profile', compact('user'));
     }
 
     // /**

@@ -22,13 +22,25 @@
 
     {{-- link untuk hover galeri  --}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    {{-- css murni  --}}
+
     {{-- <link rel="stylesheet" href="css/style.css"> --}}
     <link rel="stylesheet" href="assets_user/css/style.css">
+
+    {{-- link css for news  --}}
     <link rel="stylesheet" href="css/stylenews.css">
     
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  
+    
+    {{-- link for summernote  --}}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+    
   </head>
 
   <body>
@@ -60,6 +72,12 @@
 
     <!-- Template Main JS File News Papper -->
     <script src="js/main.js"></script>
+
+    {{-- script for summernote --}}
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
 
     <!-- Template Main JS File -->
     <script src="assets_user/js/main.js"></script>

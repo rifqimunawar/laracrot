@@ -6,6 +6,7 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 class BlogController extends Controller
@@ -16,9 +17,9 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
-        // $blog = Blog::all();
+        $user=Auth::user();
         $blog = Blog::latest()->get();
-        return view('user.blog.index', compact('blog'));
+        return view('user.blog.index', compact('blog','user'));
     }
 
 public function crot ()
