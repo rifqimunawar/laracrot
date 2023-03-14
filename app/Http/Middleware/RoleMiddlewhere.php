@@ -21,7 +21,9 @@ class RoleMiddlewhere
         }
         return response()->json(["anda tidak bisa masuk"]);
     }
+    
     // ini error 
+    
     // {
     // if (in_array($request->user()->role, $role)) {
     //     return $next($request);

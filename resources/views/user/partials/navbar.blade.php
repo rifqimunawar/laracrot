@@ -20,7 +20,6 @@
               <li><a class="nav-link scrollto {{ '/' ==request()->path()? 'active' :''}}" href="/">Home</a></li>
 
               <li><a class="nav-link scrollto " href="#about">About</a></li>
-              <li><a class="nav-link scrollto" href="#services">Services</a></li>
               <li><a class="nav-link scrollto {{ 'galeri' ==request()->path()? 'active' :''}}" href="/galeri">Galeri</a></li>
 
               @auth
