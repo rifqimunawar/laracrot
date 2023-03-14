@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Perpus;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 class PerpusController extends Controller
@@ -14,10 +15,9 @@ class PerpusController extends Controller
      */
     public function index(Request $request)
     {
-        return view('/user/perpus', [
-            // "title"=>"Perpustakaan"
-            "perpus" => Perpus::latest()->get()
-        ]);
+        $user=Auth::user();
+        return view('/user/perpus', [ "perpus" => Perpus::latest()->get(),
+    ], compact('user'));
     }
 
     public function baca(Request $request)

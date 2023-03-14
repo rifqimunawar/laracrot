@@ -37,9 +37,17 @@ Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::middleware(['auth', 'second'])->group(function () {
-Route::get('/admin', [KaderController::class, 'statistik'])->name('statistik');
-    
+// =====================================================
+// Route Auth Superadmin ===============================
+// ----------------------------------------------------
+Route::middleware(['auth', 'role: superadmin'])->group(function () {
+    Route::get('/admin', [KaderController::class, 'statistik'])->name('statistik');
+});
+// =====================================================
+// Route Auth Admin ====================================
+// -----------------------------------------------------
+Route::middleware(['auth', 'role: admin'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])->name('index');
 });
 // =====================================================
 // Route Home  =========================================
@@ -69,7 +77,6 @@ Route::post('/admin/galeri/store', [GaleriController::class, 'admin_store'])->na
 Route::delete('/admin/galeri/{id}', [GaleriController::class, 'admin_destroy'])->name('admin_destroy');
 // ===============================================================================
 // ======================================  Route Profile  =========================
-// Route::get('/profile', [ProfileController::class, 'index'])->name('index');
 // ===============================================================================
 // ======================================  Route Perpustakaan  ====================
 Route::get('/perpus/baca', [PerpusController::class, 'baca'])->name('baca');

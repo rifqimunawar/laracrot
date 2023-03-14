@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
-            'name' => 'adminsuper',
+            'username' => 'adminsuper',
             'role' => 'superadmin',
             'email' => 'superadmin@gmail.com',
             'password' => bcrypt('superadmin'),
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'admin',
+            'username' => 'admin',
             'role' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'user',
+            'username' => 'user',
             'role' => 'user',
             'email' => 'user@gmail.com',
             'password' => bcrypt('user'),

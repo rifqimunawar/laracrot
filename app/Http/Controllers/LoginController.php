@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
-            return redirect()->intended('/admin');
+            return redirect()->intended('/profile');
         }
         return "gagal login";
     }

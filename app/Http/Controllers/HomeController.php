@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\carausal;
 use App\Models\Home;
-use Illuminate\Support\Facades\Validator;
+use App\Models\carausal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
+        $user=Auth::user();
         $home = Home::all();
-        return view('/user/home', compact(['home']));
+        return view('/user/home', compact(['home', 'user']));
     }
 
 

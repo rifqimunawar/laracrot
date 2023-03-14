@@ -6,10 +6,11 @@ use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
 
+use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\callback;
 
 class GaleriController extends Controller
@@ -20,12 +21,9 @@ class GaleriController extends Controller
     public function index(Request $request)
     {
         $galeri = Galeri ::latest()->get();
-        
-        // $galeri DB::table('galeri')
-        //->sortBy(callback: 'create_at');
-        // ->get();
+        $user=Auth::user();
 
-        return view('user.galeri', compact(['galeri']));
+        return view('user.galeri', compact(['galeri', 'user']));
     }
 
     public function admin_index(Request $request)
