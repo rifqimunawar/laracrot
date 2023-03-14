@@ -16,7 +16,7 @@
                 <span class="post">{{ $galer->judul }}</span>
                 <h3 class="title">User uploads</h3>
                   <ul class="icon mt-4">
-                      <li><a href="#"><i class="fa fa-search"></i></a></li>
+                      <li><a href="{{ asset('storage/uploads/' . $galer->galeri ) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $galer['judul'] }}"><i class="bi bi-plus"></i></a></li>
                       {{-- <li><a href="#"><i class="fa fa-link"></i></a></li> --}}
                   </ul>
               </div>
