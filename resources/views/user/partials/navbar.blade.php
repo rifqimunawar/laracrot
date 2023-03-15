@@ -46,7 +46,7 @@
                           </li>
                       @endif
                   @else
-                  <li class="nav-item dropdown pe-3">
+                  <li class="nav-item dropdown pe-3 pl-3">
 
                   <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                     
@@ -64,7 +64,7 @@
                     </li>
         
                     <li>
-                      <a class="dropdown-item d-flex align-items-center" href="/profile">
+                      <a class="dropdown-item d-flex align-items-start" href="/profile">
                         <i class="bi bi-person"></i>
                         <span>My Profile</span>
                       </a>
