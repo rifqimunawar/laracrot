@@ -80,4 +80,8 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
 
     Route::get('/admin/blog/category', [CategoryController::class, 'index'])->name('index');
     Route::get('/admin/blog/category/create', [CategoryController::class, 'create'])->name('create');
+    Route::post('/admin/blog/category/store', [CategoryController::class, 'store'])->name('store');
+    Route::get('/admin/blog/category/{id}/edit', [CategoryController::class, 'edit'])->name('edit');
+    Route::put('/admin/blog/category/{id}', [CategoryController::class, 'update'])->name('update');
+    Route::delete('/admin/blog/category/{id}', [CategoryController::class, 'destroy'])->name('destroy');
 });

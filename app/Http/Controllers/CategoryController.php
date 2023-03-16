@@ -16,4 +16,27 @@ class CategoryController extends Controller
     {
         return view('admin.category.create');
     }
+    public function store(Request $request)
+    {
+        Category::create ($request->except(['_token']));
+        return redirect('/admin/blog/category');
+    }
+    public function edit($id, Request $request)
+    {
+        $edit=Category::findOrFail($id);
+        return view('admin.category.edit', compact('edit'));
+    }
+    public function update($id, Request $request)
+    {
+        $update = Category::find($id);
+        $update->name = $request->name;
+        $update->update();
+        return redirect('/admin/blog/category');
+    }
+    public function destroy($id)
+    {
+        $Category = Category::findOrFail($id);
+        $Category->delete();
+        return redirect('/admin/blog/category');
+    }
 }
