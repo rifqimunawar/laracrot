@@ -16,39 +16,29 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('users')->insert([
-        //     'username' => 'adminsuper',
-        //     'role' => 'superadmin',
-        //     'email' => 'superadmin@gmail.com',
-        //     'password' => bcrypt('superadmin'),
-        //     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        //     'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        // ]);
-        // DB::table('users')->insert([
-        //     'username' => 'admin',
-        //     'role' => 'admin',
-        //     'email' => 'admin@gmail.com',
-        //     'password' => bcrypt('admin'),
-        //     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        //     'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        // ]);
-        // DB::table('users')->insert([
-        //     'username' => 'user',
-        //     'role' => 'user',
-        //     'email' => 'user@gmail.com',
-        //     'password' => bcrypt('user'),
-        //     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        //     'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
-        // ]);
-
-
-        $superadmin = User::create([
+        DB::table('users')->insert([
+            'username' => 'adminsuper',
+            'role_id' => '1',
+            'email' => 'superadmin@gmail.com',
+            'password' => bcrypt('superadmin'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'username' => 'admin',
+            'role_id' => '2',
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
             'username' => 'user',
+            'role_id' => '3',
             'email' => 'user@gmail.com',
             'password' => bcrypt('user'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
-        $superadmin->AssignRole('superadmin');
     }
 }

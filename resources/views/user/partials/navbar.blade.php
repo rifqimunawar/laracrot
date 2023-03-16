@@ -12,7 +12,7 @@
           <nav id="navbar" class="navbar">
             <ul>
               @auth 
-                @if (auth()->user()-> role == "superadmin"){
+                @if (auth()->user()-> role_id == "1"){
                     <li><a class="nav-link scrollto " href="/admin">Admin</a></li>
                   }
                   @endif

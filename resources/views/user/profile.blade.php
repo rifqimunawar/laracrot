@@ -10,7 +10,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item">{{ $user->role }}</li>
+          <li class="breadcrumb-item">{{ $user->role->role }}</li>
           <li class="breadcrumb-item active">foto</li>
         </ol>
       </nav>

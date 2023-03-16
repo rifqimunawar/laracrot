@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,7 +55,7 @@ Route::middleware(['auth', 'role:admin, superadmin'])->group(function () {
 // =====================================================
 // Route Auth Superadmin ===============================
 // ----------------------------------------------------
-Route::middleware(['auth', 'role:superadmin'])->group(function () {
+Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin', [KaderController::class, 'statistik'])->name('statistik');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
@@ -77,4 +78,5 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
     Route::get('/admin/page/{id}/edit', [HomeController::class, 'edit'])->name('edit');
     Route::put('/admin/page/{id}', [HomeController::class, 'update'])->name('update');
 
+    Route::get('/admin/blog/category', [CategoryController::class, 'index'])->name('index');
 });

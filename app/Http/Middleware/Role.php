@@ -20,7 +20,7 @@ class Role
 
     public function handle(Request $request, Closure $next, $role)
     {
-        if ($request->user()->role == $role) {
+        if ($request->user()->role_id == $role) {
             return $next($request);
         }
         abort(403, 'Anda tidak memiliki hak mengakses laman tersebut!');

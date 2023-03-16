@@ -20,7 +20,7 @@
   
 
     <!-- Main News Slider Start -->
-    <div class="container-fluid mt-5">
+    {{-- <div class="container-fluid mt-5">
       <div class="row pt-4">
           <div class="col-lg-7 px-0">
               <div class="owl-carousel main-carousel position-relative">
@@ -117,12 +117,12 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> --}}
   <!-- Main News Slider End -->
 
 
   <!-- Breaking News Start -->
-  <div class="container-fluid bg-dark py-3 mb-3">
+  {{-- <div class="container-fluid bg-dark py-3 mb-3">
       <div class="container">
           <div class="row align-items-center bg-dark">
               <div class="col-12">
@@ -137,11 +137,11 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> --}}
   <!-- Breaking News End -->
 
   <!-- Featured News Slider Start -->
-  <div class="container-fluid pt-5 mb-3">
+  {{-- <div class="container-fluid pt-5 mb-3">
       <div class="container">
           <div class="section-title">
               <h4 class="m-0 text-uppercase font-weight-bold">Featured News</h4>
@@ -205,7 +205,7 @@
               </div>
           </div>
       </div>
-  </div>
+  </div> --}}
   <!-- Featured News Slider End -->
 
 
@@ -245,7 +245,7 @@
               <div class="col-lg-4">
                 
                   <!-- Popular News Start -->
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                       <div class="section-title mb-0">
                           <h4 class="m-0 text-uppercase font-weight-bold">Tranding News</h4>
                       </div>
@@ -301,11 +301,11 @@
                               </div>
                           </div>
                       </div>
-                  </div>
+                  </div> --}}
                   <!-- Popular News End -->
 
                   <!-- Tags Start -->
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                       <div class="section-title mb-0">
                           <h4 class="m-0 text-uppercase font-weight-bold">Tags</h4>
                       </div>
@@ -323,12 +323,12 @@
                               <a href="" class="btn btn-sm btn-outline-secondary m-1">Travel</a>
                           </div>
                       </div>
-                  </div>
+                  </div> --}}
                   <!-- Tags End -->
 
                   
                   <!-- Social Follow Start -->
-                  <div class="mb-3">
+                  {{-- <div class="mb-3">
                     <div class="section-title mb-0">
                         <h4 class="m-0 text-uppercase font-weight-bold">Follow Us</h4>
                     </div>
@@ -358,7 +358,7 @@
                             <span class="font-weight-medium">12,345 Followers</span>
                         </a>
                     </div>
-                </div>
+                </div> --}}
                 <!-- Social Follow End -->
 
 
