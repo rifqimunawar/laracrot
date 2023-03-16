@@ -11,7 +11,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
           <li class="breadcrumb-item">{{ $user->role }}</li>
-          <li class="breadcrumb-item active">Profile</li>
+          <li class="breadcrumb-item active">foto profile</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
