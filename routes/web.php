@@ -79,4 +79,5 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::put('/admin/page/{id}', [HomeController::class, 'update'])->name('update');
 
     Route::get('/admin/blog/category', [CategoryController::class, 'index'])->name('index');
+    Route::get('/admin/blog/category/create', [CategoryController::class, 'create'])->name('create');
 });

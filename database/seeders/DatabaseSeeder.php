@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             HomeSeeder::class,
             PerpusSeeder::class,
             KaderSeeder::class,
+            CategorySeeder::class,
         ]);
     }
 }
