@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         Category::create ($request->except(['_token']));
-        return redirect('/admin/blog/category');
+        return redirect('/admin/blog/category')->with(['success' => 'Pesan Berhasil']);
     }
     public function edit($id, Request $request)
     {

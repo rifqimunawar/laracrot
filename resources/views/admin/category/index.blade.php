@@ -12,6 +12,13 @@
                 <td >Category</td>
                 <td class="text-center" > Aksi</td>
             </tr>
+            @if ($message = Session::get('success'))
+            <div class="success" id="success">ajing</div>
+            {{-- <div class="alert alert-success alert-block">
+                <button type="button" class="btn-close" aria-label="Close">fa <i class="fa fa-close" aria-hidden="true"></i></button>
+                <strong>{{ $message }}</strong>
+            </div> --}}
+            @endif
             @foreach ($category as $cate)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
@@ -24,8 +31,9 @@
                     method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
-                    ('Apakah Anda yakin ingin menghapus category ini?')">Hapus</button>
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="
+                    (tampilkanAlert())">Hapus</button>
+                    {{-- <button onclick="return confirm "tampilkanAlert()">Alert</button> --}}
                     </form>
                 </div>
                 </td>
@@ -34,4 +42,35 @@
         </table>
     </div>
 </div>
+<script>
+    function tampilkanAlert() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                'Deleted!',
+                'Your file has been deleted.',
+                'success'
+                )
+            }
+            });
+    }
+
+    // document.GetElementById('success'){
+    //     function success(){
+    //     Swal.fire({
+    //         icon: 'success',
+    //         title: 'Mantap Sahabat ',
+    //         text: 'Data Berhasil Ditambahkan',
+    //         })
+    //     }    
+    // }
+    </script>
 @endsection
