@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('galeri', function (Blueprint $table) {
             $table->id();
-            $table->string('galeri')->nullable();
+            $table->string('img')->nullable();
+            $table->foreignId('user_id');
             $table->string('judul', 35)->nullable();
             $table->timestamps();
         });
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('galeris');
+        Schema::dropIfExists('galeri');
     }
 };

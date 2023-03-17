@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\RedirectResponse;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use function PHPUnit\Framework\callback;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class GaleriController extends Controller
 {
@@ -20,19 +23,19 @@ class GaleriController extends Controller
      */
     public function index(Request $request)
     {
-        $galeri = Galeri ::latest()->get();
         $user=Auth::user();
-
+        $galeri = Galeri :: with ('user')->latest()->get();
+        // dd($galeri);
         return view('user.galeri', compact(['galeri', 'user']));
     }
 
     public function admin_index(Request $request)
     {
-        $galeri = Galeri::all()->sortBy(callback: 'created_at');
-        return view('admin.galeri.index', compact(['galeri']));
+        $galeri = Galeri::latest()->get();
+        // $galeri=User::all();
+        $user=Auth::user();
+        return view('admin.galeri.index', compact(['galeri', 'user']));
     }
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -42,34 +45,29 @@ class GaleriController extends Controller
         return view('admin.galeri.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function admin_store(Request $request)
-    {
 
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'judul' => 'required',
+            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048 '
         ]);
 
-        $galeri = new Galeri();
+        $galeri = new Galeri ();
         $galeri->judul = $request->judul;
+
+
         $galeri->save();
-        if ($request->galeri) {
-            $extension = $request->galeri->getClientOriginalExtension();
-            $newFileName = 'galeri' . '_' . now()->timestamp . '.' . $extension;
-            $request->file('galeri')->storeAs('/uploads', $newFileName);
-            $galeri['galeri'] = $newFileName;
+        if ($request->img) {
+            $extension = $request->img->getClientOriginalExtension();
+            $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('img')->storeAs('/img', $newFileName);
+            $galeri['img'] = $newFileName;
             $galeri->save();
         }
-
-        // ddd($request);
+        Alert::success('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
         return redirect('/admin/galeri/');
     }
-
-
-
-
 
 
 
@@ -115,6 +113,7 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::findOrFail($id);
         $galeri->delete();
+        Alert::success('Mantap Sahabat', 'Gambar Berhasil Dihapus');
         return redirect('/admin/galeri/');
     }
 }

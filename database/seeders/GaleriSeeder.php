@@ -14,42 +14,47 @@ class GaleriSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('galeri')->insert([
-        //     'galeri' => 'profile_rifqi anjay-1677083268.jpg',
-        //     'judul' => 'ikeh iekh kimochiii',
-        //     'created_at' => date('Y-m-d H:i:s'),
-        //     'updated_at' => date('Y-m-d H:i:s')
-        // ]);
-        // DB::table('galeri')->insert([
-        //     'galeri' => 'profile_rifqi anjay-1677327290.jpg',
-        //     'judul' => 'aw aw aw aw',
-        //     'created_at' => date('Y-m-d H:i:s'),
-        //     'updated_at' => date('Y-m-d H:i:s')
-        // ]);
-        // DB::table('galeri')->insert([
-        //     'galeri' => 'profile_sginaa-1677012333.jpg',
-        //     'judul' => 'Anjay mabar',
-        //     'created_at' => date('Y-m-d H:i:s'),
-        //     'updated_at' => date('Y-m-d H:i:s')
-        // ]);
-        // DB::table('galeri')->insert([
-        //     'galeri' => 'profile_anjay mabar-1677341007.jpg',
-        //     'judul' => '0123456789012345679',
-        //     'created_at' => date('Y-m-d H:i:s'),
-        //     'updated_at' => date('Y-m-d H:i:s')
-        // ]);
-        // DB::table('galeri')->insert([
-        //     'galeri' => 'profile_astagfirullah-1677342490.jpg',
-        //     'judul' => 'So asik lo bangsat',
-        //     'created_at' => date('Y-m-d H:i:s'),
-        //     'updated_at' => date('Y-m-d H:i:s')
-        // ]);
+        DB::table('galeri')->insert([
+            'img' => '1 (23).jpg',
+            'user_id'=>'1',
+            'judul' => 'ikeh iekh kimochiii',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('galeri')->insert([
+            'img' => '1 (15).jpg',
+            'judul' => 'aw aw aw aw',
+            'user_id'=>'1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('galeri')->insert([
+            'img' => '1 (8).jpg',
+            'judul' => 'Anjay mabar',
+            'user_id'=>'1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('galeri')->insert([
+            'img' => '1 (4).jpg',
+            'judul' => '123465',
+            'user_id'=>'1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('galeri')->insert([
+            'img' => '1 (10).jpg',
+            'judul' => 'So asik lo bangsat',
+            'user_id'=>'1',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
 
 
 
 
 
         // create data menggunakan factory faker ===================
-        Galeri::factory()->count(10)->create();
+        // Galeri::factory()->count(10)->create();
     }
 }

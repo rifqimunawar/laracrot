@@ -49,14 +49,23 @@
                   <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
                 </li>
 
+                
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Tulisan</button>
+                </li>
+                
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-gambar">Galeri</button>
+                </li>
+                
+                <li class="nav-item">
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-perpus">Perpustakaan</button>
+                </li>
+                
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
                 </li>
-
-                <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Uploads</button>
-                </li>
-
+                
                 <li class="nav-item">
                   <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
                 </li>
@@ -204,19 +213,46 @@
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-settings">
-
                   <!-- Settings Form -->
                   <form>
-
                     <div class="row mb-3">
                       <textarea id="summernote"></textarea>
                     </div>
-
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
                   </form><!-- End settings Form -->
+                </div>
 
+
+
+                <div class="tab-pane fade pt-3" id="profile-gambar">
+                  <form action="/profile/galeri/store" method="post"
+                  enctype="multipart/form-data">
+                  @csrf
+                    <label for="galeri">Tambah foto galeri kegiatan PMII UNINUS</label>
+                      <input type="file" class="form-control my-4" name="img" id="img" required>
+                    <div class="my-3"></div>
+                    <label for="judul">Judul Gambar</label>
+                    <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">
+                    
+                    <div class="my-3">
+                        <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Gambar</button>
+                    </div>
+                  </form>
+                </div>
+
+                <div class="tab-pane fade pt-3" id="profile-perpus">
+                  <!-- Settings Form -->
+                  <form>
+                    <div class="row mb-3">
+                      <label for="perpus">Buku, Makalah, Karya, dan lain lain, dalam bentuk pdf</label>
+                      <input type="file" name="perpus" id="perpus">
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary">Upload Buku</button>
+                    </div>
+                  </form><!-- End settings Form -->
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">

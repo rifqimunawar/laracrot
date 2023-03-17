@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Role;
 use App\Models\Kader;
+use App\Models\Galeri;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,7 +44,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
+    // protected $guarded=['id'];
 
     public function role()
     {
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function kader ()
     {
         return $this->hasOne(Kader::class);
+    }
+
+    public function galeri()
+    {
+        return $this-> hasMany (Galeri::class);
     }
 }

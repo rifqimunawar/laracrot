@@ -1,3 +1,4 @@
+{{-- @dd($user->username); --}}
 @section('title') {{ 'Galeri' }}@endsection
 @extends('user.layout')
 @section('content')
@@ -11,13 +12,12 @@
 <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css /> -->
       <div class="col-md-4 col-sm-6 mb-4 mb-lg-0">
           <div class="box mb-3">
-              <img src="{{ asset('storage/uploads/' . $galer->galeri ) }}"class="position-absolute top-50 start-50 translate-middle" >
+              <img src="{{ asset('storage/img/' . $galer->img ) }}"class="position-absolute top-50 start-50 translate-middle" >
               <div class="box-content mr-2">
                 <span class="post">{{ $galer->judul }}</span>
-                <h3 class="title">User uploads</h3>
+                  <span class="title">{{ $galer->user->username }}</span>
                   <ul class="icon mt-4">
-                      <li><a href="{{ asset('storage/uploads/' . $galer->galeri ) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $galer['judul'] }}"><i class="bi bi-plus"></i></a></li>
-                      {{-- <li><a href="#"><i class="fa fa-link"></i></a></li> --}}
+                      <li><a href="{{ asset('storage/img/' . $galer->img ) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $galer['judul'] }}"><i class="bi bi-plus"></i></a></li>
                   </ul>
               </div>
           </div>

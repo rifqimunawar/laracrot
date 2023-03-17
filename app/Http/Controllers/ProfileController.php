@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -21,51 +24,29 @@ class ProfileController extends Controller
         return view('user.profile', compact('user'));
     }
 
-    // /**
-    //  * Show the form for creating a new resource.
-    //  */
-    // public function create(): Response
-    // {
-    //     //
-    // }
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'judul' => 'required',
+            'username' => 'required',
+            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048 '
+        ]);
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  */
-    // public function store(Request $request): RedirectResponse
-    // {
-    //     //
-    // }
+        $galeri = new Galeri (with ('user'));
+        $galeri -> username = $request->username;
+        $galeri->judul = $request->judul;
 
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show(Profile $profile): Response
-    // {
-    //     //
-    // }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(Profile $profile): Response
-    // {
-    //     //
-    // }
+        $galeri->save();
+        if ($request->img) {
+            $extension = $request->img->getClientOriginalExtension();
+            $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('img')->storeAs('/img', $newFileName);
+            $galeri['img'] = $newFileName;
+            $galeri->save();
+        }
+        Alert::success('Mantap Sahabat', 'Gambar Ditambahkan');
+        return redirect('/profile');
+    }
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, Profile $profile): RedirectResponse
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy(Profile $profile): RedirectResponse
-    // {
-    //     //
-    // }
 }

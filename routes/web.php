@@ -45,6 +45,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // -----------------------------------------------------
     Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
     Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
+    Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
     // Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'role:user, admin, superadmin']);
 
 // =====================================================
@@ -65,7 +66,7 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
 
     Route::get('/admin/galeri', [GaleriController::class, 'admin_index'])->name('admin_index');
     Route::get('/admin/galeri/create', [GaleriController::class, 'admin_create'])->name('admin_create');
-    Route::post('/admin/galeri/store', [GaleriController::class, 'admin_store'])->name('admin_store');
+    Route::post('/admin/galeri/store', [GaleriController::class, 'store'])->name('store');
     Route::delete('/admin/galeri/{id}', [GaleriController::class, 'admin_destroy'])->name('admin_destroy');
 
     Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');

@@ -24,7 +24,7 @@
                 <td>{{ $galer['judul'] }}</td>
                 <td>User Upload</td>
                 <td class="text-center">
-                    <img src="{{ asset('storage/uploads/'.$galer['galeri']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
+                    <img src="{{ asset('storage/img/'.$galer['img']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                 </td>
                 <td class="text-center">
                     @if($galer->active === 1)

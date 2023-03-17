@@ -8,7 +8,7 @@
             enctype="multipart/form-data">
             @csrf
             <label for="galeri">Gambar yang di upload lanccape</label>
-            <input type="file" class="form-control my-4" name="galeri" id="galeri">
+            <input type="file" class="form-control my-4" name="img" id="img">
             <div class="my-3"></div>
             <label for="judul">Judul Gambar</label>
             <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">

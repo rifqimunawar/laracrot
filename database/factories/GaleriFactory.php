@@ -20,7 +20,7 @@ class GaleriFactory extends Factory
     {
         $faker = faker::create();
         return [
-            'galeri' => Arr::random([
+            'img' => Arr::random([
                 '1 (3).jpg',
                 '1 (4).jpg',
                 '1 (5).jpg',
