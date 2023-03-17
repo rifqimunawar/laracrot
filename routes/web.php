@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaderController;
@@ -48,7 +49,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // =====================================================
 // Route Admin =========================================
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:admin, superadmin'])->group(function () {
+Route::middleware(['auth', 'role:1, 2'])->group(function () {
 
 });
 
@@ -84,4 +85,11 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin/blog/category/{id}/edit', [CategoryController::class, 'edit'])->name('edit');
     Route::put('/admin/blog/category/{id}', [CategoryController::class, 'update'])->name('update');
     Route::delete('/admin/blog/category/{id}', [CategoryController::class, 'destroy'])->name('destroy');
+
+    Route::get('/admin/blog/tag', [TagController::class, 'index'])->name('index');
+    Route::get('/admin/blog/tag/create', [TagController::class, 'create'])->name('create');
+    Route::post('/admin/blog/tag/store', [TagController::class, 'store'])->name('store');
+    Route::get('/admin/blog/tag/{id}/edit', [TagController::class, 'edit'])->name('edit');
+    Route::put('/admin/blog/tag/{id}', [TagController::class, 'update'])->name('update');
+    Route::delete('/admin/blog/tag/{id}', [TagController::class, 'destroy'])->name('destroy');
 });

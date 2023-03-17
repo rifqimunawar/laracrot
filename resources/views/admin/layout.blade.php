@@ -62,15 +62,15 @@
                 @yield('content')
             </div>
         </div><!-- End Left side columns -->
-
-@include('admin.partials.rightside')
+        
+        @include('admin.partials.rightside')
       </div>
     </section>
-
+    
   </main><!-- End #main -->
-
-
-
+  
+  
+  
   
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -97,18 +97,19 @@
   <script src="/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="/assets/vendor/php-email-form/validate.js"></script>
-
+  
   <!-- Template Main JS File -->
   <script src="/assets/js/main.js"></script>
 
   {{-- script sweet alert  --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @include('sweetalert::alert')
 
 
   {{-- script bootstrap  --}}
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+  
 </body>
 
 </html>

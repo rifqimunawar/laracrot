@@ -68,7 +68,7 @@
             </a>
           </li>
           <li>
-            <a href="tables-data.html">
+            <a href="/admin/blog/tag">
               <i class="bi bi-circle"></i><span>Tag</span>
             </a>
           </li>

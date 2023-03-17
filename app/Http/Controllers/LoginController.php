@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Tests\Foundation\FoundationFormRequestTest;
 
 /**
@@ -22,9 +23,10 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
+            Alert::success('Mantap Sahabat', 'Anda Berhasil Masuk');
             return redirect()->intended('/profile');
         }
-        return "gagal login";
+        return view('auth.login'); 
     }
     /**
      * Summary of logout

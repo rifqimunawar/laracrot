@@ -10,7 +10,8 @@
         "itsgoingd/clockwork": "^5.1",
         "laravel/framework": "^10.0",
         "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.8"
+        "laravel/tinker": "^2.8",
+        "realrashid/sweet-alert": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.21",

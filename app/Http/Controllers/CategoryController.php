@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class CategoryController extends Controller
 {
@@ -18,8 +20,9 @@ class CategoryController extends Controller
     }
     public function store(Request $request)
     {
+        Alert::success('Mantap Sahabat', 'Category Berhasil Ditambahkan');
         Category::create ($request->except(['_token']));
-        return redirect('/admin/blog/category')->with(['success' => 'Pesan Berhasil']);
+        return redirect('/admin/blog/category');
     }
     public function edit($id, Request $request)
     {
@@ -28,6 +31,7 @@ class CategoryController extends Controller
     }
     public function update($id, Request $request)
     {
+        Alert::success('Mantap Sahabat', 'Category Berhasil Diupdate');
         $update = Category::find($id);
         $update->name = $request->name;
         $update->update();
