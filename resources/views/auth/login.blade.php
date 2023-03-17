@@ -32,9 +32,13 @@
               <div class="form-group form-check">
                 <input type="checkbox" class="form-check-input" id="remember" name="remember">
                 <label class="form-check-label" for="remember">Remember me</label>
+                <a href="/register" class="d-flex flex-row-reverse">Register</a>
+              </div>
+
+              <div class="form-group form-check">
               </div>
   
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-primary text-center">Login</button>
             </form>
           </div>
         </div>
