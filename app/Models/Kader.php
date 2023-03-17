@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Laravel\Sanctum\Guard;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kader extends Model
 {
@@ -14,6 +15,10 @@ class Kader extends Model
     protected $guarded = [];
 
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     // protected $fillabel = [
     //     'nama', 'photo', '_token'

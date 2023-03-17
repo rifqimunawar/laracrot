@@ -54,7 +54,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Uploads</button>
                 </li>
 
                 <li class="nav-item">
@@ -213,7 +213,7 @@
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-primary">Upload</button>
                     </div>
                   </form><!-- End settings Form -->
 
@@ -268,20 +268,20 @@ $('textarea#summernote').summernote({
   tabsize: 2,
   height: 100,
 toolbar: [
-  ['style', ['style']],
-  ['font', ['bold', 'italic', 'underline', 'clear']],
-  // ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-  //['fontname', ['fontname']],
- // ['fontsize', ['fontsize']],
-  ['color', ['color']],
-  ['para', ['ul', 'ol', 'paragraph']],
-  ['height', ['height']],
-  ['table', ['table']],
-  ['insert', ['link', 'picture', 'hr']],
-  //['view', ['fullscreen', 'codeview']],
-  ['help', ['help']]
-],
-});
+        // ['style', ['style']],
+        // ['font', ['bold', 'italic', 'underline', 'clear']],
+        ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
+        //['fontname', ['fontname']],
+      // ['fontsize', ['fontsize']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        // ['height', ['height']],
+        // ['table', ['table']],
+        ['insert', ['link', 'picture', 'hr']],
+        ['view', ['fullscreen', 'codeview']],
+        // ['help', ['help']]
+      ],
+    });
 </script>
 
   @endsection

@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\Rule;
-
+use App\Models\User;
 use App\Models\Kader;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class KaderController extends Controller
 {
@@ -174,6 +175,7 @@ class KaderController extends Controller
     public function view($id)
     {
         $kader = Kader::find($id);
-        return view('admin.kader.view', compact(['kader']));
+        $user = User::find($id);
+        return view('admin.kader.view', compact(['kader', 'user']));
     }
 }

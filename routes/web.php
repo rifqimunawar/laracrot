@@ -36,6 +36,7 @@ Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
 // Route Auth  =========================================
 // ----------------------------------------------------
 Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -92,4 +93,6 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin/blog/tag/{id}/edit', [TagController::class, 'edit'])->name('edit');
     Route::put('/admin/blog/tag/{id}', [TagController::class, 'update'])->name('update');
     Route::delete('/admin/blog/tag/{id}', [TagController::class, 'destroy'])->name('destroy');
+
+    
 });

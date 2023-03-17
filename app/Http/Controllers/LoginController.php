@@ -28,6 +28,12 @@ class LoginController extends Controller
         }
         return view('auth.login'); 
     }
+
+    public function register()
+    {
+        return view('auth.register');
+    }
+
     /**
      * Summary of logout
      * @param Request $request
