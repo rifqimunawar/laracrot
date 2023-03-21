@@ -224,8 +224,6 @@
                   </form><!-- End settings Form -->
                 </div>
 
-
-
                 <div class="tab-pane fade pt-3" id="profile-gambar">
                   <form action="/profile/galeri/store" method="post"
                   enctype="multipart/form-data">
@@ -235,6 +233,7 @@
                     <div class="my-3"></div>
                     <label for="judul">Judul Gambar</label>
                     <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">
+                    <input type="text" class="form-control" name="username" id="username" placeholder="username">
                     
                     <div class="my-3">
                         <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Gambar</button>
@@ -303,21 +302,13 @@ $('textarea#summernote').summernote({
   placeholder: 'Sahabat bisa membuat tulisan disini',
   tabsize: 2,
   height: 100,
-toolbar: [
-        // ['style', ['style']],
-        // ['font', ['bold', 'italic', 'underline', 'clear']],
+  toolbar: [
         ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-        //['fontname', ['fontname']],
-      // ['fontsize', ['fontsize']],
         ['color', ['color']],
         ['para', ['ul', 'ol', 'paragraph']],
-        // ['height', ['height']],
-        // ['table', ['table']],
         ['insert', ['link', 'picture', 'hr']],
         ['view', ['fullscreen', 'codeview']],
-        // ['help', ['help']]
       ],
     });
 </script>
-
   @endsection

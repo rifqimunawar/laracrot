@@ -32,7 +32,7 @@ class ProfileController extends Controller
             'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048 '
         ]);
 
-        $galeri = new Galeri (with ('user'));
+        $galeri = new Galeri;
         $galeri -> username = $request->username;
         $galeri->judul = $request->judul;
 
