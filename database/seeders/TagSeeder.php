@@ -14,27 +14,32 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         DB::table('tags')->insert([
-            'name' => 'pmii',
+            'title' => 'pmii',
+            'slug' => 'pmii',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tags')->insert([
-            'name' => 'pmiiuninus',
+            'title' => 'pmiiuninus',
+            'slug' => 'pmiiuninus',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tags')->insert([
-            'name' => 'pmiiteknik',
+            'title' => 'pmiiteknik',
+            'slug' => 'pmiiteknik',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tags')->insert([
-            'name' => 'pmiibandung',
+            'title' => 'pmiibandung',
+            'slug' => 'pmiibandung',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('tags')->insert([
-            'name' => 'pmiimajumendunia',
+            'title' => 'pmiimajumendunia',
+            'slug' => 'pmiimajumendunia',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);

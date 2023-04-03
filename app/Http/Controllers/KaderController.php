@@ -16,15 +16,14 @@ class KaderController extends Controller
 {
     public function kader(Request $request)
     {
-        $search = $request->search;
-        // $kader = Kader::count();
-        // if ($request('search')) {
-        // $search->where('nama', 'LIKE', '%' . $search . '&')
-        //     ->orwhere('nim', 'LIKE', '%' . $search . '&')->orwhere('fakultas', 'LIKE', '%' . $search . '&');
-        // }
-
-
-        $kader = Kader::all();
+        if ($request->has('search')) {
+            $kader = Kader::Where('nama','LIKE','%'.$request->search.'%')
+                        ->orwhere('jenis_kelamin', 'LIKE', '%' . $request->search . '%')
+                        ->orwhere('fakultas', 'LIKE', '%' . $request->search . '%')
+                        ->get();
+        } else {
+            $kader = Kader::latest()->get();
+        }
         return view('admin.kader.index', compact(['kader']));
     }
     public function statistik(Request $request)

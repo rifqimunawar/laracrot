@@ -58,17 +58,17 @@
         </a>
         <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="tables-general.html">
+            <a href="/admin/post">
               <i class="bi bi-circle"></i><span>List Blog</span>
             </a>
           </li>
           <li>
-            <a href="/admin/blog/category">
+            <a href="/admin/post/category">
               <i class="bi bi-circle"></i><span>Category Blog</span>
             </a>
           </li>
           <li>
-            <a href="/admin/blog/tag">
+            <a href="/admin/post/tag">
               <i class="bi bi-circle"></i><span>Tag</span>
             </a>
           </li>

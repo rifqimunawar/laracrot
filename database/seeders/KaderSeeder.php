@@ -125,6 +125,6 @@ class KaderSeeder extends Seeder
 
 
         // ======================pengisian mengguanakn faker factory 
-        Kader::factory()->count(10)->create();
+        Kader::factory()->count(100)->create();
     }
 }

@@ -1,15 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TagController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Blog\TagController;
+use App\Http\Controllers\Blog\PostController;
+use App\Http\Controllers\Blog\SearchController;
+use App\Http\Controllers\Blog\CategoryController;
+use App\Http\Controllers\Admin\Blog\TagController as admintagcontroller;
+use App\Http\Controllers\Admin\Blog\PostController as adminpostcontroller;
+use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,15 +27,18 @@ use App\Http\Controllers\CategoryController;
 */
 
 // Route::get('/singgle', function () {
-//     return view('user.blog.singgle');
+//     return view('user.Post.singgle');
 // });
 // =====================================================
 // Route Frondend  =====================================
 // ----------------------------------------------------
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/blog', [BlogController::class, 'index'])->name('index');
-Route::get('/crot', [BlogController::class, 'crot'])->name('crot');
+Route::get('/post', [PostController::class, 'index'])->name('index');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
+Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
+Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
+Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
+Route::get('/search', [SearchController::class,'index'])->name('search');
 // =====================================================
 // Route Auth  =========================================
 // ----------------------------------------------------
@@ -81,19 +88,25 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin/page/{id}/edit', [HomeController::class, 'edit'])->name('edit');
     Route::put('/admin/page/{id}', [HomeController::class, 'update'])->name('update');
 
-    Route::get('/admin/blog/category', [CategoryController::class, 'index'])->name('index');
-    Route::get('/admin/blog/category/create', [CategoryController::class, 'create'])->name('create');
-    Route::post('/admin/blog/category/store', [CategoryController::class, 'store'])->name('store');
-    Route::get('/admin/blog/category/{id}/edit', [CategoryController::class, 'edit'])->name('edit');
-    Route::put('/admin/blog/category/{id}', [CategoryController::class, 'update'])->name('update');
-    Route::delete('/admin/blog/category/{id}', [CategoryController::class, 'destroy'])->name('destroy');
+    Route::get('/admin/post/category', [admincategorycontroller::class, 'index'])->name('categories.index');
+    Route::get('/admin/post/category/create', [admincategorycontroller::class, 'create'])->name('categories.create');
+    Route::post('/admin/post/category/store', [admincategorycontroller::class, 'store'])->name('categories.store');
+    Route::get('/admin/post/category/{id}/edit', [admincategorycontroller::class, 'edit'])->name('categories.edit');
+    Route::put('/admin/post/category/{id}', [admincategorycontroller::class, 'update'])->name('categories.update');
+    Route::delete('/admin/post/category/{id}', [admincategorycontroller::class, 'destroy'])->name('categories.destroy');
 
-    Route::get('/admin/blog/tag', [TagController::class, 'index'])->name('index');
-    Route::get('/admin/blog/tag/create', [TagController::class, 'create'])->name('create');
-    Route::post('/admin/blog/tag/store', [TagController::class, 'store'])->name('store');
-    Route::get('/admin/blog/tag/{id}/edit', [TagController::class, 'edit'])->name('edit');
-    Route::put('/admin/blog/tag/{id}', [TagController::class, 'update'])->name('update');
-    Route::delete('/admin/blog/tag/{id}', [TagController::class, 'destroy'])->name('destroy');
+    Route::get('/admin/post/tag', [admintagcontroller::class, 'index'])->name('tags.index');
+    Route::get('/admin/post/tag/create', [admintagcontroller::class, 'create'])->name('create');
+    Route::post('/admin/post/tag/store', [admintagcontroller::class, 'store'])->name('store');
+    Route::get('/admin/post/tag/{id}/edit', [admintagcontroller::class, 'edit'])->name('tags.edit');
+    Route::put('/admin/post/tag/{id}', [admintagcontroller::class, 'update'])->name('tags.update');
+    Route::delete('/admin/post/tag/{id}', [admintagcontroller::class, 'destroy'])->name('tags.destroy');
 
-    
+    Route::get('/admin/post', [adminpostcontroller::class, 'index'])->name('posts.index');
+    Route::get('/admin/post/create', [adminpostcontroller::class, 'create'])->name('posts.create');
+    Route::post('/admin/post/store', [adminpostcontroller::class, 'store'])->name('posts.store');
+    Route::get('/admin/post/{id}/edit', [adminpostcontroller::class, 'edit'])->name('posts.edit');
+    Route::put('/admin/post/{id}', [adminpostcontroller::class, 'update'])->name('posts.update');
+    Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
+
 });

@@ -3,9 +3,11 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Post;
 use App\Models\Role;
 use App\Models\Kader;
 use App\Models\Galeri;
+use App\Models\Category;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -58,6 +60,10 @@ class User extends Authenticatable
 
     public function galeri()
     {
-        return $this-> hasMany (Galeri::class);
+        return $this-> hasMany ('App\Models\Galeri');
+    }
+    public function posts() : HasMany
+    {
+        return $this->hasMany(Post::class);
     }
 }

@@ -5,16 +5,16 @@
 
       <div class="row justify-content-center align-items-center">
         <div class="col-xl-11 d-flex align-items-center justify-content-between">
-          <h1 class="logo"><a href="#">PMII UNINUS</a></h1>
+          <h1 class="logo"><a href="/" style="text-decoration: none">PMII UNINUS</a></h1>
           <!-- Uncomment below if you prefer to use an image logo -->
           <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
           <nav id="navbar" class="navbar">
             <ul>
               @auth 
-                @if (auth()->user()-> role_id == "1"){
+                @if (auth()->user()-> role_id == "1")
                     <li><a class="nav-link scrollto " href="/admin">Admin</a></li>
-                  }
+                  
                   @endif
                 @endauth
               <li><a class="nav-link scrollto {{ '/' ==request()->path()? 'active' :''}}" href="/">Home</a></li>
@@ -26,7 +26,7 @@
                 <li><a class="nav-link scrollto {{ 'perpus' ==request()->path()? 'active' :''}}" href="/perpus">Perpustakaan</a></li>
               @endauth
               <li><a class="nav-link scrollto" href="#team">Team</a></li>
-              <li><a class="nav-link scrollto {{ 'blog' == request()->path()? 'active' : '' }}" href="/blog">Blog</a></li>
+              <li><a class="nav-link scrollto {{ 'blog' == request()->path()? 'active' : '' }}" href="/post">Blog</a></li>
               <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
 
               <li class="pl-3">

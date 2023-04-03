@@ -1,0 +1,35 @@
+{
+    "name": "graham-campbell/guzzle-factory",
+    "description": "Provides A Simple Guzzle Factory With Good Defaults",
+    "keywords": ["guzzle", "http", "guzzle factory", "guzzle-factory", "Guzzle", "Guzzle Factory", "Guzzle-Factory", "Graham Campbell", "GrahamCampbell"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Graham Campbell",
+            "email": "hello@gjcampbell.co.uk",
+            "homepage": "https://github.com/GrahamCampbell"
+        }
+    ],
+    "require": {
+        "php": "^7.4.15 || ^8.0.2",
+        "guzzlehttp/guzzle": "^7.5.0",
+        "guzzlehttp/psr7": "^2.4.3"
+    },
+    "require-dev": {
+        "graham-campbell/analyzer": "^3.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "GrahamCampbell\\GuzzleFactory\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "GrahamCampbell\\Tests\\GuzzleFactory\\": "tests/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}

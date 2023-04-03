@@ -14,12 +14,32 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         DB::table('categories')->insert([
-            'name' => 'berita',
+            'title' => 'berita',
+            'slug' => 'berita',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('categories')->insert([
-            'name' => 'mahasiswa',
+            'title' => 'mahasiswa',
+            'slug' => 'mahasiswa',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+        DB::table('categories')->insert([
+            'title' => 'pmii',
+            'slug' => 'pmii',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+        DB::table('categories')->insert([
+            'title' => 'kader',
+            'slug' => 'kader',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+        DB::table('categories')->insert([
+            'title' => 'kampus',
+            'slug' => 'kampus',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
