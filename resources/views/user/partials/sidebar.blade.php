@@ -8,17 +8,17 @@
                     </div>
                     <div class="bg-white border border-top-0 p-3">
 
-                        @foreach ($recent_posts->take(3) as $post)
+                        @foreach ($post->take(3) as $pos)
                         <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                            @if ($post->image)
-                            <img class="img-fluid" src="{{ asset('storage/img/' . $post->image) }}" alt=""style="height:100px; width:200px; overflow:hidden; object-fit: cover;">
+                            @if ($pos->image)
+                            <img class="img-fluid" src="{{ asset('storage/img/' . $pos->image) }}" alt=""style="height:100px; width:200px; overflow:hidden; object-fit: cover;">
                             @endif
                             <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                 <div class="mb-2">
-                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
-                                    <a class="text-body" href=""><small>{{ $post->created_at }}</small></a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $pos->category->slug) }}">{{ $pos->category->title }}</a>
+                                    <a class="text-body" href=""><small>{{ $pos->created_at }}</small></a>
                                 </div>
-                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                                <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $pos->slug]) }}">{{ $pos->title }}</a>
                             </div>
                         </div>
                         @endforeach

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Blog;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Tag;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\Foundation\Application;
 
 class TagController extends Controller
 {
@@ -19,6 +20,7 @@ class TagController extends Controller
      */
     public function show($slug)
     {
+        $user=Auth::user();
         $tag = Tag::with('posts')
             ->where('slug', $slug)
             ->orderBy('title')
@@ -40,6 +42,6 @@ class TagController extends Controller
             ->latest()
             ->get();
 
-        return view('blog.tag', compact('tag', 'tags', 'posts', 'post_categories'));
+        return view('user.blog.tag', compact('tag', 'tags', 'posts', 'post_categories', 'user'));
     }
 }

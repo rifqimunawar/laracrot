@@ -56,8 +56,9 @@ class PostController extends Controller
      */
     public function show($slug)
     {
+        $user=Auth::user();
         $post = Post::where('slug', $slug)
-            ->with('user')
+            ->with('category', 'user')
             ->where('active', 1)
             ->orderBy('created_at', 'desc')
             ->firstOrFail();
@@ -79,6 +80,6 @@ class PostController extends Controller
         ++$post->views;
         $post->update();
 
-        return view("user.blog.post", compact('post', 'post_categories', 'tags'));
+        return view("user.blog.post", compact('post', 'post_categories', 'tags', 'user'));
     }
 }

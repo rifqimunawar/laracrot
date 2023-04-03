@@ -10,12 +10,12 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
     
     <!-- Vendor CSS Files -->
-    <link href="assets_user/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets_user/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets_user/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets_user/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets_user/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets_user/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="{{ asset('assets_user/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets_user/vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets_user/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets_user/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets_user/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets_user/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
     
     <!-- Font Awesome icon news -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
@@ -24,10 +24,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     {{-- <link rel="stylesheet" href="css/style.css"> --}}
-    <link rel="stylesheet" href="assets_user/css/style.css">
+    <link rel="stylesheet" href="{{ asset ('assets_user/css/style.css') }}">
 
     {{-- link css for news  --}}
-    <link rel="stylesheet" href="css/stylenews.css">
+    <link rel="stylesheet" href="{{ asset('css/stylenews.css') }}">
     
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
