@@ -77,7 +77,7 @@ if (class_exists(Version::class) && (int) Version::series() >= 10) {
                 DefaultPrinter::profile(true);
             }
 
-            Facade::registerSubscribers(
+            $subscribers = [
                 // Configured
                 new class($printer) extends Subscriber implements ConfiguredSubscriber
                 {
@@ -246,7 +246,9 @@ if (class_exists(Version::class) && (int) Version::series() >= 10) {
                         $this->printer()->testWarningTriggered($event);
                     }
                 },
-            );
+            ];
+
+            Facade::instance()->registerSubscribers(...$subscribers);
         }
 
         /**
@@ -260,7 +262,7 @@ if (class_exists(Version::class) && (int) Version::series() >= 10) {
             if ($shouldRegister) {
                 self::$registered = true;
 
-                Facade::registerSubscriber(new self());
+                Facade::instance()->registerSubscriber(new self());
             }
         }
     }

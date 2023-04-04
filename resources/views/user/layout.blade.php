@@ -55,14 +55,14 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <!-- Vendor JS Files -->
-    {{-- <script src="assets_user/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets_user/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets_user/vendor/aos/aos.js"></script>
     <script src="assets_user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets_user/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets_user/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="assets_user/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="assets_user/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets_user/vendor/php-email-form/validate.js"></script> --}}
+    <script src="assets_user/vendor/php-email-form/validate.js"></script>
   
         <!-- JavaScript Libraries -->
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

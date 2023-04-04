@@ -15,23 +15,26 @@
     ],
     "require": {
         "php": "^8.1.0",
-        "filp/whoops": "^2.14.6",
+        "filp/whoops": "^2.15.1",
         "nunomaduro/termwind": "^1.15.1",
         "symfony/console": "^6.2.7"
     },
     "require-dev": {
-        "brianium/paratest": "^7.1.0",
-        "laravel/framework": "^10.2.0",
-        "laravel/pint": "^1.6.0",
-        "laravel/sail": "^1.21.1",
+        "brianium/paratest": "^7.1.2",
+        "laravel/framework": "^10.5.1",
+        "laravel/pint": "^1.7.0",
+        "laravel/sail": "^1.21.3",
         "laravel/sanctum": "^3.2.1",
         "laravel/tinker": "^2.8.1",
-        "nunomaduro/larastan": "^2.4.1",
-        "orchestra/testbench-core": "^8.0.3",
-        "pestphp/pest": "^2.0.0",
-        "phpunit/phpunit": "^10.0.14",
+        "nunomaduro/larastan": "^2.5.1",
+        "orchestra/testbench-core": "^8.2.0",
+        "pestphp/pest": "^2.3.0",
+        "phpunit/phpunit": "^10.0.19",
         "sebastian/environment": "^6.0.0",
         "spatie/laravel-ignition": "^2.0.0"
+    },
+    "conflict": {
+        "phpunit/phpunit": "<10.0.17"
     },
     "autoload-dev": {
         "psr-4": {

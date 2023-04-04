@@ -894,11 +894,11 @@ class Builder implements BuilderContract
      *
      * @throws \InvalidArgumentException
      */
-    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null, $total = null)
+    public function paginate($perPage = null, $columns = ['*'], $pageName = 'page', $page = null)
     {
         $page = $page ?: Paginator::resolveCurrentPage($pageName);
 
-        $total = value($total) ?? $this->toBase()->getCountForPagination();
+        $total = func_num_args() === 5 ? value(func_get_arg(4)) : $this->toBase()->getCountForPagination();
 
         $perPage = ($perPage instanceof Closure
             ? $perPage($total)
@@ -1872,7 +1872,7 @@ class Builder implements BuilderContract
      * @param  array  $parameters
      * @return mixed
      */
-    public function __call($method, array $parameters)
+    public function __call($method, $parameters)
     {
         if ($method === 'macro') {
             $this->localMacros[$parameters[0]] = $parameters[1];

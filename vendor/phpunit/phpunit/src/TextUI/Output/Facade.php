@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 /*
  * This file is part of PHPUnit.
  *
@@ -9,74 +7,55 @@ declare(strict_types=1);
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace PHPUnit\TextUI\Output;
 
-use SebastianBergmann\Timer\Duration;
-use PHPUnit\TextUI\Output\NullPrinter;
-use PHPUnit\Util\InvalidSocketException;
-use PHPUnit\TextUI\Output\DefaultPrinter;
-use PHPUnit\TextUI\Output\SummaryPrinter;
+use function assert;
+use PHPUnit\Event\EventFacadeIsSealedException;
+use PHPUnit\Event\Facade as EventFacade;
+use PHPUnit\Event\UnknownSubscriberTypeException;
 use PHPUnit\Logging\TeamCity\TeamCityLogger;
+use PHPUnit\Logging\TestDox\TestResultCollection;
 use PHPUnit\TestRunner\TestResult\TestResult;
 use PHPUnit\TextUI\Configuration\Configuration;
-use PHPUnit\Util\DirectoryDoesNotExistException;
-use PHPUnit\Logging\TestDox\TestResultCollection;
-use SebastianBergmann\Timer\ResourceUsageFormatter;
+use PHPUnit\TextUI\Output\Default\ProgressPrinter\ProgressPrinter as DefaultProgressPrinter;
 use PHPUnit\TextUI\Output\Default\ResultPrinter as DefaultResultPrinter;
 use PHPUnit\TextUI\Output\TestDox\ResultPrinter as TestDoxResultPrinter;
-use PHPUnit\TextUI\Output\Default\ProgressPrinter\ProgressPrinter as DefaultProgressPrinter;
+use PHPUnit\Util\DirectoryDoesNotExistException;
+use PHPUnit\Util\InvalidSocketException;
+use SebastianBergmann\Timer\Duration;
+use SebastianBergmann\Timer\ResourceUsageFormatter;
 
 /**
  * @internal This class is not covered by the backward compatibility promise for PHPUnit
  */
 final class Facade
 {
-    private static ?Printer $printer                    = null;
-    private static ?DefaultResultPrinter $resultPrinter = null;
-    private static ?SummaryPrinter $summaryPrinter      = null;
-    private static bool $colors                         = false;
-    private static bool $defaultProgressPrinter         = false;
+    private static ?Printer $printer                           = null;
+    private static ?DefaultResultPrinter $defaultResultPrinter = null;
+    private static ?TestDoxResultPrinter $testDoxResultPrinter = null;
+    private static ?SummaryPrinter $summaryPrinter             = null;
+    private static bool $defaultProgressPrinter                = false;
 
+    /**
+     * @throws EventFacadeIsSealedException
+     * @throws UnknownSubscriberTypeException
+     */
     public static function init(Configuration $configuration): Printer
     {
-        self::$printer = self::createPrinter($configuration);
+        self::createPrinter($configuration);
 
-        if (self::useDefaultProgressPrinter($configuration)) {
-            new DefaultProgressPrinter(
-                self::$printer,
-                $configuration->colors(),
-                $configuration->columns()
-            );
+        assert(self::$printer !== null);
 
-            self::$defaultProgressPrinter = true;
-        }
-
-        if (self::useDefaultResultPrinter($configuration)) {
-            self::$resultPrinter = new DefaultResultPrinter(
-                self::$printer,
-                $configuration->displayDetailsOnIncompleteTests(),
-                $configuration->displayDetailsOnSkippedTests(),
-                $configuration->displayDetailsOnTestsThatTriggerDeprecations(),
-                $configuration->displayDetailsOnTestsThatTriggerErrors(),
-                $configuration->displayDetailsOnTestsThatTriggerNotices(),
-                $configuration->displayDetailsOnTestsThatTriggerWarnings(),
-                $configuration->reverseDefectList()
-            );
-        }
-
-        if (self::useDefaultResultPrinter($configuration) || $configuration->outputIsTestDox()) {
-            self::$summaryPrinter = new SummaryPrinter(
-                self::$printer,
-                $configuration->colors(),
-            );
-        }
+        self::createProgressPrinter($configuration);
+        self::createResultPrinter($configuration);
+        self::createSummaryPrinter($configuration);
 
         if ($configuration->outputIsTeamCity()) {
-            new TeamCityLogger(DefaultPrinter::standardOutput());
+            new TeamCityLogger(
+                DefaultPrinter::standardOutput(),
+                EventFacade::instance()
+            );
         }
-
-        self::$colors = $configuration->colors();
 
         return self::$printer;
     }
@@ -86,6 +65,8 @@ final class Facade
      */
     public static function printResult(TestResult $result, ?array $testDoxResult, Duration $duration): void
     {
+        assert(self::$printer !== null);
+
         if ($result->numberOfTestsRun() > 0) {
             if (self::$defaultProgressPrinter) {
                 self::$printer->print(PHP_EOL . PHP_EOL);
@@ -94,13 +75,12 @@ final class Facade
             self::$printer->print((new ResourceUsageFormatter)->resourceUsage($duration) . PHP_EOL . PHP_EOL);
         }
 
-        if (self::$resultPrinter !== null) {
-            self::$resultPrinter->print($result);
-        } elseif ($testDoxResult !== null) {
-            (new TestDoxResultPrinter(self::$printer, self::$colors))->print(
-                $testDoxResult,
-                $result
-            );
+        if (self::$testDoxResultPrinter !== null && $testDoxResult !== null) {
+            self::$testDoxResultPrinter->print($testDoxResult);
+        }
+
+        if (self::$defaultResultPrinter !== null) {
+            self::$defaultResultPrinter->print($result);
         }
 
         if (self::$summaryPrinter !== null) {
@@ -125,21 +105,57 @@ final class Facade
         return DefaultPrinter::from($target);
     }
 
-    private static function createPrinter(Configuration $configuration): Printer
+    private static function createPrinter(Configuration $configuration): void
     {
-        if (
-            self::useDefaultProgressPrinter($configuration) ||
-            self::useDefaultResultPrinter($configuration) ||
-            $configuration->outputIsTestDox()
-        ) {
-            if ($configuration->outputToStandardErrorStream()) {
-                return DefaultPrinter::standardError();
-            }
+        $printerNeeded = false;
 
-            return DefaultPrinter::standardOutput();
+        if ($configuration->outputIsTeamCity()) {
+            $printerNeeded = true;
         }
 
-        return new NullPrinter;
+        if ($configuration->outputIsTestDox()) {
+            $printerNeeded = true;
+        }
+
+        if (!$configuration->noOutput() && !$configuration->noProgress()) {
+            $printerNeeded = true;
+        }
+
+        if (!$configuration->noOutput() && !$configuration->noResults()) {
+            $printerNeeded = true;
+        }
+
+        if ($printerNeeded) {
+            if ($configuration->outputToStandardErrorStream()) {
+                self::$printer = DefaultPrinter::standardError();
+
+                return;
+            }
+
+            self::$printer = DefaultPrinter::standardOutput();
+
+            return;
+        }
+
+        self::$printer = new NullPrinter;
+    }
+
+    private static function createProgressPrinter(Configuration $configuration): void
+    {
+        assert(self::$printer !== null);
+
+        if (!self::useDefaultProgressPrinter($configuration)) {
+            return;
+        }
+
+        new DefaultProgressPrinter(
+            self::$printer,
+            $configuration->colors(),
+            $configuration->columns(),
+            EventFacade::instance()
+        );
+
+        self::$defaultProgressPrinter = true;
     }
 
     private static function useDefaultProgressPrinter(Configuration $configuration): bool
@@ -159,24 +175,74 @@ final class Facade
         return true;
     }
 
-    private static function useDefaultResultPrinter(Configuration $configuration): bool
+    private static function createResultPrinter(Configuration $configuration): void
     {
-        if ($configuration->noOutput()) {
-            return false;
-        }
+        assert(self::$printer !== null);
 
-        if ($configuration->noResults()) {
-            return false;
-        }
-
-        if ($configuration->outputIsTeamCity()) {
-            return false;
+        if ($configuration->outputIsTestDox()) {
+            self::$defaultResultPrinter = new DefaultResultPrinter(
+                self::$printer,
+                true,
+                true,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+            );
         }
 
         if ($configuration->outputIsTestDox()) {
-            return false;
+            self::$testDoxResultPrinter = new TestDoxResultPrinter(
+                self::$printer,
+                $configuration->colors()
+            );
         }
 
-        return true;
+        if ($configuration->noOutput() || $configuration->noResults()) {
+            return;
+        }
+
+        if (self::$defaultResultPrinter !== null) {
+            return;
+        }
+
+        self::$defaultResultPrinter = new DefaultResultPrinter(
+            self::$printer,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            $configuration->displayDetailsOnIncompleteTests(),
+            $configuration->displayDetailsOnSkippedTests(),
+            $configuration->displayDetailsOnTestsThatTriggerDeprecations(),
+            $configuration->displayDetailsOnTestsThatTriggerErrors(),
+            $configuration->displayDetailsOnTestsThatTriggerNotices(),
+            $configuration->displayDetailsOnTestsThatTriggerWarnings(),
+            $configuration->reverseDefectList()
+        );
+    }
+
+    private static function createSummaryPrinter(Configuration $configuration): void
+    {
+        assert(self::$printer !== null);
+
+        if (($configuration->noOutput() || $configuration->noResults()) &&
+            !($configuration->outputIsTeamCity() || $configuration->outputIsTestDox())) {
+            return;
+        }
+
+        self::$summaryPrinter = new SummaryPrinter(
+            self::$printer,
+            $configuration->colors(),
+        );
     }
 }

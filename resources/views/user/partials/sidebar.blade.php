@@ -9,7 +9,7 @@
         <div class="bg-white border border-top-0 p-3">
 
 
-            @foreach ($recent_posts->take(3) as $pos)
+            @foreach ($trending->take(3) as $pos)
             <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
                 @if ($pos->image)
                 <img class="img-fluid" src="{{ asset('storage/img/' . $pos->image) }}" alt=""style="height:100px; width:200px; overflow:hidden; object-fit: cover;">

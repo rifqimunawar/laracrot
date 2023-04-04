@@ -24,7 +24,7 @@
   @endif
 </div>
 
-<div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+<div class="{{ $errors->has('category_id') ? ' has-error' : '' }}">
   <label for="category_id">Category</label>
   <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
       @foreach($categories as $key => $value)
@@ -37,26 +37,30 @@
       <span class="help-block">
           <strong class="text-danger">{{ $errors->first('category') }}</strong>
       </span>
-  @endif
+  @endifform-group
 </div>
 
-<div class="form-group{{ $errors->has('tags[]') ? ' has-error' : '' }}">
-  <label for="tags">Tags</label>
-  <select name="tags[]" id="tags" class="select2" multiple="multiple"
-          data-placeholder="Choose tags" style="width: 100%;">
-      @foreach($tags as $key => $value)
-          <option value="{{ $key }}"
-                  @if(isset($post)) @if(in_array($key, $post->tags->pluck('id')->all(), true)) selected @endif @endif>
-              {{ $value }}
-          </option>
+{{-- CHECKBOX --}}
+    <div class="row mb-3">
+    <legend class="col-form-label col-sm-2 pt-0">Tags</legend>
+    <div class="col-sm-10">
+        @foreach($tags as $key => $value)
+      <div class="form-check">
+        
+        <input name="tags[]" class="form-check-input" type="checkbox" id="gridCheck1" value="{{ $key }}" 
+            @if(isset($post)) 
+                @if(in_array($key, $post->tags->pluck('id')->all(), true)) checked @endif 
+            @endif
+        >
+        <label class="form-check-label" for="gridCheck1">
+            {{ $value }}
+        </label>
+      </div>
       @endforeach
-  </select>
-  @if ($errors->has('tags[]'))
-      <span class="help-block">
-          <strong class="text-danger">{{ $errors->first('tags[]') }}</strong>
-      </span>
-  @endif
-</div>
+
+    </div>
+  </div>
+{{-- CHECKBOX END --}}
 
 <div class="form-group{{ $errors->has('image') ? ' has-error ':''}}">
   <label for="image">Image</label>
