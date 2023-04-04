@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -32,6 +33,19 @@ class LoginController extends Controller
     public function register()
     {
         return view('auth.register');
+    }
+
+    public function store(Request $request)
+    {
+        $user = User::create([
+            'username'=>$request->username,
+            'email'=>$request->email,
+            'password'=>bcrypt( $request->password),
+        ]);
+        
+        // ddd($user);
+        Alert::success('Mantap Sahabat', 'Anda Berhasil Register');
+        return redirect()->to('/login');
     }
 
     /**

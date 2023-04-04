@@ -28,23 +28,19 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
-            'username' => 'required',
             'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048 '
         ]);
 
-        $galeri = new Galeri;
-        $galeri -> username = $request->username;
-        $galeri->judul = $request->judul;
+        $galeri = $request->all();
+        $galeri['user_id'] = Auth::user()->id;
 
-
-        $galeri->save();
         if ($request->img) {
             $extension = $request->img->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
             $request->file('img')->storeAs('/img', $newFileName);
             $galeri['img'] = $newFileName;
-            $galeri->save();
         }
+        $galeri = Galeri::create($galeri);
         Alert::success('Mantap Sahabat', 'Gambar Ditambahkan');
         return redirect('/profile');
     }

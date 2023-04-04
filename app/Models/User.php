@@ -23,7 +23,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        // 'name',
+        'username',
         'email',
         'password',
     ];
@@ -37,7 +38,6 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
     /**
      * The attributes that should be cast.
      *
@@ -53,16 +53,16 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    public function kader ()
-    {
-        return $this->hasOne(Kader::class);
-    }
+    // public function kader ()
+    // {
+    //     return $this->hasOne(Kader::class);
+    // }
 
     public function galeri()
     {
         return $this-> hasMany ('App\Models\Galeri');
     }
-    public function posts() : HasMany
+    public function posts()
     {
         return $this->hasMany(Post::class);
     }
