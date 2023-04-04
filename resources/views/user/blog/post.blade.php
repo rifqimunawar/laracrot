@@ -19,14 +19,11 @@
                         <!-- Post title-->
                         <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
                         <!-- Post meta content-->
-                        <div class="text-muted fst-italic mb-2">
+                        <div class="text-muted my-2">
                             <i class="bi bi-clock"></i> {{ $post->created_at->diffForHumans() }} 
+                            <i class="bi bi-person-fill mx-2"> Upload by:</i>{{ $post->user->username }}
+                            <i class="bi bi-eye-fill mx-2"> Dilihat: </i>  {{ $post->views }} Kali
                         </div>
-                        
-                        <div class="text-muted mb-2">
-                            <i class="bi bi-person-fill"> {{ $post->user->username }}</i> 
-                        </div>
-                        
                     </header>
                     
                     <section class="mb-5">
@@ -87,7 +84,7 @@
                 </section> --}}
             </div>
 
-            @include('user.partials.sidebar')
+            {{-- @include('user.partials.sidebar') --}}
 
         </div>
     </div>

@@ -48,7 +48,7 @@
           <div class="col-lg-5 px-0">
               <div class="row mx-0">
 
-                @foreach ($post_categories->take(4) as $item)
+                @foreach ($post_categories->take(4) as $post)
                   <div class="col-md-6 px-0">
                       <div class="position-relative overflow-hidden" style="height: 250px;">
                         @if ($post->image)
@@ -56,9 +56,9 @@
                         @endif
                           <div class="overlay">
                               <div class="mb-2">
-                                  <a class="badge badge-warning text-uppercase font-weight-semi-bold p-2 mr-2"
+                                  {{-- <a class="badge badge-warning text-uppercase font-weight-semi-bold p-2 mr-2"
                                       href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
-                                      <h9 style="color: #fff">
+                                      <h9 style="color: #fff"> --}}
                                         {{ $post->created_at }}
                                       </h9>
                               </div>

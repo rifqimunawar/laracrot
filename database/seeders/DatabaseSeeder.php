@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
             PerpusSeeder::class,
             KaderSeeder::class,
             CategorySeeder::class,
-            // TagSeeder::class,
+            TagSeeder::class,
         ]);
     }
 }

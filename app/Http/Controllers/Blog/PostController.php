@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Blog;
 use App\Models\Tag;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,7 @@ class PostController extends Controller
             ->orderBy('title')
             ->get();
 
+
         return view('user.blog.index', compact('recent_posts', 'post_categories', 'old_posts', 'tags', 'user'));
     }
 
@@ -80,6 +82,18 @@ class PostController extends Controller
         ++$post->views;
         $post->update();
 
+
         return view("user.blog.post", compact('post', 'post_categories', 'tags', 'user'));
     }
+    // public function populerpost(Request $request)
+    // {
+    //     $populerpost=Post::all()
+    //     ->with('post','category', 'user')
+    //     ->where('active', 1)
+    //     ->orderBy('post', 'desc')
+    //     ->firstOrFail()
+    //     ->get();
+
+    //     return view('user.partials.sidebar', compact('populerpost'));
+    // }
 }
