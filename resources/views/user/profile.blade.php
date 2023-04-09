@@ -228,15 +228,15 @@
                   <form action="/profile/galeri/store" method="post"
                   enctype="multipart/form-data">
                   @csrf
-                    <label for="galeri">Tambah foto galeri kegiatan PMII UNINUS</label>
-                      <input type="file" class="form-control my-4" name="img" id="img" required>
-                    <div class="my-3"></div>
-                    <label for="judul">Judul Gambar</label>
-                    <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">
-                    <input type="text" class="form-control" name="username" id="username" placeholder="username">
-                    
+                  <label for="galeri">Gambar yang di upload lanccape</label>
+                  <input type="file" class="form-control my-4" name="img" id="img">
+                  <div class="my-3"></div>
+                  <label for="judul">Judul Gambar</label>
+                  <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">
+
                     <div class="my-3">
-                        <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Gambar</button>
+                      <a href="/admin/galeri" class="btn btn-warning btn-sm ">Kembali</a>
+                      <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Gambar</button>
                     </div>
                   </form>
                 </div>

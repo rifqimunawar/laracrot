@@ -14,31 +14,27 @@
         <div class="card">
           <div class="card-header">
             <h1>Form Registrasi</h1>
-            <form method="POST" action="">
+            <form method="POST" action="/register/store">
               @csrf
-              <div class="mb-3">
+              {{-- <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
                 <input type="text" class="form-control" id="nama" placeholder="Masukkan nama Anda">
-              </div>
+              </div> --}}
               <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Masukkan Username Anda">
+                <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan Username Anda">
               </div>
-              <div class="mb-3">
+              {{-- <div class="mb-3">
                 <label for="nim" class="form-label">Nim</label>
                 <input type="text" class="form-control" id="nim" placeholder="Masukkan Nim Anda">
-              </div>
+              </div> --}}
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" placeholder="Masukkan email Anda">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan email Anda">
               </div>
               <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Masukkan password Anda">
-              </div>
-              <div class="mb-3">
-                <label for="konfirmasi_password" class="form-label">Konfirmasi Password</label>
-                <input type="password" class="form-control" id="konfirmasi_password" placeholder="Masukkan kembali password Anda">
+                <input type="password" name="pasword" class="form-control" id="password" placeholder="Masukkan password Anda">
               </div>
               <button type="submit" class="btn btn-primary">Daftar</button>
             </form>

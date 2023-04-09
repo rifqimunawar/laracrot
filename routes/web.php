@@ -44,6 +44,7 @@ Route::get('/search', [SearchController::class,'index'])->name('search');
 // ----------------------------------------------------
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
+Route::post('/register/store', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
