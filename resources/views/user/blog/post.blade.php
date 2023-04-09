@@ -84,7 +84,7 @@
                 </section> --}}
             </div>
 
-            {{-- @include('user.partials.sidebar') --}}
+            @include('user.partials.sidebar')
 
         </div>
     </div>

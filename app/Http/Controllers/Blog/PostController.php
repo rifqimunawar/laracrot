@@ -28,6 +28,10 @@ class PostController extends Controller
             ->where('active', '1')
             ->orderBy('created_at', 'desc')
             ->paginate(15);
+        $trending = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('views', 'desc')
+            ->paginate(15);
         $old_posts = Post::with('category', 'user')
             ->where('active', '1')
             ->orderBy('created_at', 'desc')
@@ -46,7 +50,7 @@ class PostController extends Controller
             ->get();
 
 
-        return view('user.blog.index', compact('recent_posts', 'post_categories', 'old_posts', 'tags', 'user'));
+        return view('user.blog.index', compact('recent_posts', 'post_categories', 'old_posts', 'tags', 'user', 'trending'));
     }
 
 
@@ -71,6 +75,10 @@ class PostController extends Controller
             ->orderBy('title')
             ->latest()
             ->get();
+        $trending = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('views', 'desc')
+            ->paginate(15);
         $tags = Tag::with('posts')
             ->whereHas('posts', function ($query) {
                 $query->where('active', 1);
@@ -83,17 +91,6 @@ class PostController extends Controller
         $post->update();
 
 
-        return view("user.blog.post", compact('post', 'post_categories', 'tags', 'user'));
+        return view("user.blog.post", compact('post', 'post_categories', 'tags', 'user', 'trending'));
     }
-    // public function populerpost(Request $request)
-    // {
-    //     $populerpost=Post::all()
-    //     ->with('post','category', 'user')
-    //     ->where('active', 1)
-    //     ->orderBy('post', 'desc')
-    //     ->firstOrFail()
-    //     ->get();
-
-    //     return view('user.partials.sidebar', compact('populerpost'));
-    // }
 }

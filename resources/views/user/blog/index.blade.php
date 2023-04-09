@@ -36,7 +36,7 @@
                               <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                   href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                   <h8 style="color: #fff">
-                                    {{ $post->created_at }}
+                                    {{ $post->created_at->diffForHumans() }}
                                   </h8>
                           </div>
                           <a class="h3 m-0 text-white text-uppercase font-weight-bold text-decoration-none" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
@@ -48,7 +48,7 @@
           <div class="col-lg-5 px-0">
               <div class="row mx-0">
 
-                @foreach ($post_categories->take(4) as $post)
+                @foreach ($trending->take(4) as $post)
                   <div class="col-md-6 px-0">
                       <div class="position-relative overflow-hidden" style="height: 250px;">
                         @if ($post->image)
@@ -56,10 +56,10 @@
                         @endif
                           <div class="overlay">
                               <div class="mb-2">
-                                  {{-- <a class="badge badge-warning text-uppercase font-weight-semi-bold p-2 mr-2"
+                                  <a class="badge badge-warning text-uppercase font-weight-semi-bold p-2 mr-2"
                                       href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
-                                      <h9 style="color: #fff"> --}}
-                                        {{ $post->created_at }}
+                                      <h9 style="color: #fff">
+                                        {{ $post->created_at->diffForHumans() }}
                                       </h9>
                               </div>
                               <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
@@ -192,7 +192,7 @@
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                                 </div>
                                 <h8 class="text-secondary"><small>
-                                  {{ $post->created_at }}
+                                  {{ $post->created_at->diffForHumans() }}
                                 </small></h8>
                             </div>
                         </div>

@@ -29,6 +29,10 @@ class CategoryController extends Controller
             })
             ->orderBy('title')
             ->firstOrFail();
+        $trending = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('views', 'desc')
+            ->paginate(15);
         $post_categories = Category::with('posts')
             ->whereHas('posts', function ($query) {
                 $query->where('active', 1);
@@ -49,6 +53,6 @@ class CategoryController extends Controller
             ->orderBy('title')
             ->get();
 
-        return view('user.blog.category', compact('category', 'posts', 'tags', 'post_categories', 'user'));
+        return view('user.blog.category', compact('category', 'posts', 'tags', 'post_categories', 'user', 'trending'));
     }
 }

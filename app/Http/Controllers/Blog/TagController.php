@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Models\Tag;
+use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -41,7 +42,11 @@ class TagController extends Controller
             ->orderBy('title')
             ->latest()
             ->get();
+        $trending = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('views', 'desc')
+            ->paginate(15);
 
-        return view('user.blog.tag', compact('tag', 'tags', 'posts', 'post_categories', 'user'));
+        return view('user.blog.tag', compact('tag', 'tags', 'posts', 'post_categories', 'user', 'trending'));
     }
 }
