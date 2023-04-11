@@ -52,19 +52,17 @@ class GaleriController extends Controller
             'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
         ]);
 
-        $galeri = new Galeri ();
-        $galeri->judul = $request->judul;
+        $galeri = $request->all();
         $galeri['user_id'] = Auth::user()->id;
 
 
-        $galeri->save();
         if ($request->img) {
             $extension = $request->img->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
             $request->file('img')->storeAs('/img', $newFileName);
             $galeri['img'] = $newFileName;
-            $galeri->save();
         }
+        $galeri = Galeri::create($galeri);
         Alert::success('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
         return redirect('/admin/galeri/');
     }

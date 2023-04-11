@@ -28,7 +28,7 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
-            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048'
+            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
         ]);
 
         $galeri = $request->all();
@@ -41,8 +41,9 @@ class ProfileController extends Controller
             $request->file('img')->storeAs('/img', $newFileName);
             $galeri['img'] = $newFileName;
         }
-        Alert::success('Mantap Sahabat', 'Gambar Ditambahkan');
-        return redirect('/profile');
+        $galeri = Galeri::create($galeri);
+        Alert::success('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
+        return redirect('/profile')->with('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
     }
 
 }
