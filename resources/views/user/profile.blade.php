@@ -214,14 +214,29 @@
 
                 <div class="tab-pane fade pt-3" id="profile-settings">
                   <!-- Settings Form -->
-                  <form>
-                    <div class="row mb-3">
-                      <textarea id="summernote"></textarea>
+                  <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Create Post</h3>
                     </div>
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Upload</button>
-                    </div>
-                  </form><!-- End settings Form -->
+                    <!-- /.card-header -->
+
+                    <form role="form" method="post" 
+                    action="/profile/post/storepost" 
+                    enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-body">
+                            @include('admin.posts.form')
+                          </div>
+
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </form>
+
+                </div>
+                <!-- /.card -->
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-gambar">

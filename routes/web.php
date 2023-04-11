@@ -54,6 +54,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
     Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
     Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
+    Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
     // Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'role:user, admin, superadmin']);
 
 // =====================================================

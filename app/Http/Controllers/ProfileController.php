@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Galeri;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -18,10 +21,12 @@ class ProfileController extends Controller
      */
     public function index( Request $request)
     {
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
         $user = User ::all();
         $user=Auth::user();
         // ddd($user);
-        return view('user.profile', compact('user'));
+        return view('user.profile', compact('user', 'categories', 'tags'));
     }
 
     public function store(Request $request)
@@ -46,4 +51,24 @@ class ProfileController extends Controller
         return redirect('/profile')->with('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
     }
 
+
+    
+    public function storepost(Request $request): RedirectResponse
+    {
+        $data = $request->all();
+        $data['user_id'] = Auth::user()->id;
+
+        if ($request->image) {
+            $extension = $request->image->getClientOriginalExtension();
+            $newFileName = 'blog' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('image')->storeAs('/img', $newFileName);
+            $data['image'] = $newFileName;
+        }
+
+        $post = Post::create($data);
+        $post->tags()->sync($request->tags);
+
+        Alert::success('Mantap Sahabat', 'Berhasil Menambah Postingan');
+        return redirect('/profile');
+    }
 }
