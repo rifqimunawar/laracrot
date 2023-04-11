@@ -28,7 +28,7 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
-            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048 '
+            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:2048'
         ]);
 
         $galeri = $request->all();
