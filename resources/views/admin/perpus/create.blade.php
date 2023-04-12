@@ -22,9 +22,6 @@
                 <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Buku</button>
             </div>
         </form>
-    
-
-      
-  </div>
+    </div>
 </div>
 @endsection

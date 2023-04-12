@@ -6,7 +6,9 @@ use App\Models\Perpus;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\RedirectResponse;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PerpusController extends Controller
 {
@@ -19,18 +21,6 @@ class PerpusController extends Controller
         return view('/user/perpus', [ "perpus" => Perpus::latest()->get(),
     ], compact('user'));
     }
-
-    public function baca(Request $request)
-    {
-
-        $perpus = Perpus::all();
-        // $perpus = Perpus::findOrFail($id);
-        return view('/user/baca', [
-            // "title"=>"Perpustakaan"
-            // "perpus" => Perpus::latest()->get()
-        ]);
-    }
-
 
     public function admin_index(Request $request)
     {
@@ -46,13 +36,31 @@ class PerpusController extends Controller
         return view('admin.perpus.create');
     }
 
-    // /**
-    //  * Store a newly created resource in storage.
-    //  */
-    // public function store(Request $request): RedirectResponse
-    // {
-    //     //
-    // }
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $perpus = $request->all();
+
+        if ($request->image) {
+            $extension = $request->image->getClientOriginalExtension();
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('image')->storeAs('/img', $newFileName);
+            $perpus['image'] = $newFileName;
+        }
+
+        if ($request->pdf) {
+            $extension = $request->pdf->getClientOriginalExtension();
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('pdf')->storeAs('/pdf', $newFileName);
+            $perpus['pdf'] = $newFileName;
+        }
+        $perpus = Perpus::create($perpus);
+
+        Alert::success('Mantap Sahabat', 'File Berhasil Ditambahkan');
+        return redirect('/admin/perpus');
+    }
 
     // /**
     //  * Display the specified resource.
@@ -81,10 +89,26 @@ class PerpusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function admin_destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         $perpus = Perpus::findOrFail($id);
+
+        if ($perpus->image) {
+            $image_path = public_path() . $perpus->image;
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+        }
+
+        if ($perpus->pdf) {
+            $pdf_path = public_path() . $perpus->pdf;
+            if (File::exists($pdf_path)) {
+                File::delete($pdf_path);
+            }
+        }
+
         $perpus->delete();
-        return redirect('/admin/perpus');
+
+        return redirect('admin/perpus')->with('success', 'Buku deleted successfully!');
     }
 }

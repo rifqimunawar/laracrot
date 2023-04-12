@@ -54,6 +54,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
     Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
     Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
+    Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
+    Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
     // Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'role:user, admin, superadmin']);
 
 // =====================================================
@@ -70,7 +72,8 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin', [KaderController::class, 'statistik'])->name('statistik');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
-    Route::delete('/admin/perpus/{id}', [PerpusController::class, 'admin_destroy'])->name('admin_destroy');
+    Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');
+    Route::delete('/admin/perpus/{id}', [PerpusController::class, 'destroy'])->name('perpus.destroy');
 
     Route::get('/admin/galeri', [GaleriController::class, 'admin_index'])->name('admin_index');
     Route::get('/admin/galeri/create', [GaleriController::class, 'admin_create'])->name('admin_create');

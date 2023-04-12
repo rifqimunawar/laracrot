@@ -41,21 +41,20 @@
 </div>
 
 {{-- CHECKBOX --}}
-    <div class="row mb-3">
-    <legend class="col-form-label col-sm-2 pt-0">Tags</legend>
-    <div class="col-sm-10">
-        @foreach($tags as $key => $value)
-      <div class="form-check">
-        
-        <input name="tags[]" class="form-check-input" type="checkbox" id="gridCheck1" value="{{ $key }}" 
-            @if(isset($post)) 
-                @if(in_array($key, $post->tags->pluck('id')->all(), true)) checked @endif 
-            @endif
-        >
-        <label class="form-check-label" for="gridCheck1">
-            {{ $value }}
-        </label>
-      </div>
+
+<div class="row mb-3">
+  <legend class="col-form-label col-sm-2 pt-0">Tags</legend>
+  <div class="col-sm-10">
+      @foreach($tags as $key => $value)
+    <div class="form-check">
+      <input name="tags[]" class="form-check-input" type="checkbox" id="gridCheck1" value="{{ $key }}" 
+          @if(isset($post)) 
+              @if(in_array($key, $post->tags->pluck('id')->all(), true)) checked @endif 
+          @endif ><label class="form-check-label" for="gridCheck1">
+          {{ $value }}
+      </label>
+    </div>
+
       @endforeach
 
     </div>

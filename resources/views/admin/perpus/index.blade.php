@@ -21,10 +21,10 @@
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $perp['judul'] }}</td>
                     <td class="text-center">
-                        <img src="{{ asset('storage/uploads/'.$perp['image']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
+                        <img src="{{ asset('storage/img/'.$perp['image']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                     </td>
                     <td class="text-start">
-                        <form action="{{ route('admin_destroy', $perp->id) }}" method="POST">
+                        <form action="{{ route('perpus.destroy', $perp->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
