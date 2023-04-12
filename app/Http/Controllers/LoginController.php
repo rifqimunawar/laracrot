@@ -35,7 +35,6 @@ class LoginController extends Controller
         return view('auth.register');
     }
 
-
     public function store(Request $request)
     {
         $user = User::create([
@@ -43,6 +42,8 @@ class LoginController extends Controller
             'email'=>$request->email,
             'password'=>bcrypt( $request->password),
         ]);
+
+
 
         // ddd($user);
         Alert::success('Mantap Sahabat', 'Anda Berhasil Register');

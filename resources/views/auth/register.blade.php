@@ -18,6 +18,7 @@
               @csrf
               {{-- <div class="mb-3">
                 <label for="nama" class="form-label">Nama</label>
+
                 <input type="text" class="form-control" id="nama" placeholder="Masukkan nama Anda">
               </div> --}}
               <div class="mb-3">

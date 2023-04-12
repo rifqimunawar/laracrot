@@ -249,11 +249,13 @@
                   <label for="judul">Judul Gambar</label>
                   <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">
 
+
                     <div class="my-3">
                       <a href="/admin/galeri" class="btn btn-warning btn-sm ">Kembali</a>
                       <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Gambar</button>
                     </div>
                   </form>
+
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-perpus">

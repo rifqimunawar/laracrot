@@ -24,7 +24,7 @@
   @endif
 </div>
 
-<div class="form-group{{ $errors->has('category_id') ? ' has-error' : '' }}">
+<div class="{{ $errors->has('category_id') ? ' has-error' : '' }}">
   <label for="category_id">Category</label>
   <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
       @foreach($categories as $key => $value)
@@ -37,10 +37,11 @@
       <span class="help-block">
           <strong class="text-danger">{{ $errors->first('category') }}</strong>
       </span>
-  @endif
+  @endifform-group
 </div>
 
 {{-- CHECKBOX --}}
+
 <div class="row mb-3">
   <legend class="col-form-label col-sm-2 pt-0">Tags</legend>
   <div class="col-sm-10">
@@ -53,6 +54,7 @@
           {{ $value }}
       </label>
     </div>
+
       @endforeach
 
     </div>

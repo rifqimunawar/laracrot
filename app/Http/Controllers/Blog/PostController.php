@@ -23,7 +23,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $recent_posts = Post::with('category', 'user')
             ->where('active', '1')
             ->orderBy('created_at', 'desc')
@@ -38,7 +38,8 @@ class PostController extends Controller
             ->paginate(8);
         $post_categories = Category::with('posts')
             ->whereHas('posts', function ($query) {
-                $query->where('active', 1);})
+                $query->where('active', 1);
+            })
             ->orderBy('title')
             ->latest()
             ->get();
@@ -51,6 +52,7 @@ class PostController extends Controller
 
 
         return view('user.blog.index', compact('recent_posts', 'post_categories', 'old_posts', 'tags', 'user', 'trending'));
+
     }
 
 
@@ -62,7 +64,7 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $post = Post::where('slug', $slug)
             ->with('category', 'user')
             ->where('active', 1)

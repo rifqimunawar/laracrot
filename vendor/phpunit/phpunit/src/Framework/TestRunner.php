@@ -224,7 +224,11 @@ final class TestRunner
             );
         }
 
-        if ($this->configuration->disallowTestOutput() && $test->hasOutput()) {
+        if ($test->hasUnexpectedOutput()) {
+            Event\Facade::emitter()->testPrintedUnexpectedOutput($test->output());
+        }
+
+        if ($this->configuration->disallowTestOutput() && $test->hasUnexpectedOutput()) {
             Event\Facade::emitter()->testConsideredRisky(
                 $test->valueObjectForEvents(),
                 sprintf(
@@ -303,13 +307,11 @@ final class TestRunner
         $includePath     = var_export(get_include_path(), true);
         // must do these fixes because TestCaseMethod.tpl has unserialize('{data}') in it, and we can't break BC
         // the lines above used to use addcslashes() rather than var_export(), which breaks null byte escape sequences
-        $data            = "'." . $data . ".'";
-        $dataName        = "'.(" . $dataName . ").'";
-        $dependencyInput = "'." . $dependencyInput . ".'";
-        $includePath     = "'." . $includePath . ".'";
-
-        $offset = hrtime();
-
+        $data                    = "'." . $data . ".'";
+        $dataName                = "'.(" . $dataName . ").'";
+        $dependencyInput         = "'." . $dependencyInput . ".'";
+        $includePath             = "'." . $includePath . ".'";
+        $offset                  = hrtime();
         $serializedConfiguration = $this->saveConfigurationForChildProcess();
 
         $var = [
@@ -347,6 +349,7 @@ final class TestRunner
 
     /**
      * @psalm-param class-string $className
+     * @psalm-param non-empty-string $methodName
      */
     private function hasCoverageMetadata(string $className, string $methodName): bool
     {
@@ -443,7 +446,7 @@ final class TestRunner
      */
     private function saveConfigurationForChildProcess(): string
     {
-        $path = tempnam(sys_get_temp_dir(), 'PHPUnit');
+        $path = tempnam(sys_get_temp_dir(), 'phpunit_');
 
         if (!$path) {
             throw new ProcessIsolationException;

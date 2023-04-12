@@ -34,11 +34,15 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
+
             'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
+
         ]);
 
         $galeri = $request->all();
         $galeri['user_id'] = Auth::user()->id;
+
+
 
 
         if ($request->img) {
@@ -48,6 +52,7 @@ class ProfileController extends Controller
             $galeri['img'] = $newFileName;
         }
         $galeri = Galeri::create($galeri);
+
         Alert::success('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
         return redirect('/profile')->with('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
     }
@@ -70,6 +75,7 @@ class ProfileController extends Controller
         $post->tags()->sync($request->tags);
 
         Alert::success('Mantap Sahabat', 'Berhasil Menambah Postingan');
+
         return redirect('/profile');
     }
 
