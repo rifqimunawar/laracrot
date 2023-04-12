@@ -6,6 +6,7 @@ use App\Models\Tag;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Galeri;
+use App\Models\Perpus;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -69,6 +70,29 @@ class ProfileController extends Controller
         $post->tags()->sync($request->tags);
 
         Alert::success('Mantap Sahabat', 'Berhasil Menambah Postingan');
+        return redirect('/profile');
+    }
+
+    public function storeperpus(Request $request)
+    {
+        $perpus = $request->all();
+
+        if ($request->image) {
+            $extension = $request->image->getClientOriginalExtension();
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('image')->storeAs('/img', $newFileName);
+            $perpus['image'] = $newFileName;
+        }
+
+        if ($request->pdf) {
+            $extension = $request->pdf->getClientOriginalExtension();
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('pdf')->storeAs('/pdf', $newFileName);
+            $perpus['pdf'] = $newFileName;
+        }
+        $perpus = Perpus::create($perpus);
+
+        Alert::success('Mantap Sahabat', 'File Berhasil Ditambahkan');
         return redirect('/profile');
     }
 }
