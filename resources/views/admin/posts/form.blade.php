@@ -100,6 +100,6 @@
       <input id="no" name="active" type="radio" value="0" 
       @if(isset($post->active)) 
         @checked($post->active === 0) 
-      {{-- @endif> No --}}
+      @endif> No
   ></label>
 </div>
