@@ -28,8 +28,12 @@
   <label for="category_id">Category</label>
   <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
       @foreach($categories as $key => $value)
-          <option value="{{ $key }}" @if(isset($post)) @if($key === $post->category_id) selected @endif @endif>
-              {{ $value }}
+          <option value="{{ $key }}" 
+          @if(isset($post)) 
+            @if($key === $post->category_id) selected 
+            @endif 
+          @endif>
+          {{ $value }}
           </option>
       @endforeach
   </select>
@@ -87,9 +91,15 @@
 <div class="form-group">
   <label>Active:</label>
   <label class="radio-inline">
-      <input id="yes" name="active" type="radio" value="1" checked @if(isset($post->active)) @checked($post->active === 1) @endif> Yes
+      <input id="yes" name="active" type="radio" value="1" checked 
+      @if(isset($post->active)) 
+        @checked($post->active === 1) 
+      @endif> Yes
   </label>
   <label class="radio-inline">
-      <input id="no" name="active" type="radio" value="0" @if(isset($post->active)) @checked($post->active === 0) @endif> No
-  </label>
+      <input id="no" name="active" type="radio" value="0" 
+      @if(isset($post->active)) 
+        @checked($post->active === 0) 
+      {{-- @endif> No --}}
+  ></label>
 </div>
