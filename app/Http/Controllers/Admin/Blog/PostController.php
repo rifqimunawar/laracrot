@@ -56,11 +56,6 @@ class PostController extends Controller
             $data['image'] = $newFileName;
         }
 
-        // if ($data['image']) {
-        //     $image_path = uploadImage($data['image'], 'images/blog');
-        //     $data['image'] = $image_path;
-        // }
-
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
@@ -93,14 +88,6 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $data = $request->all();
-
-
-        // if($request->hasFile('image'))
-        // {
-        //     $image_path = uploadImage($data['image'],'img');
-        //     $data['image'] = $image_path;
-        // }
-
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();

@@ -1,19 +1,31 @@
-<div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+<div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="textarea" name="alamat" class="form-control" id="title"
+    class="mb-3" value="{{ $post->title }}" id="title"</div>
+</div>
+
+
+
+
+
+{{-- 
+
+<div class="form-group">
   <label for="title">Title</label>
   <input type="text" name="title"
-          class="form-control @error('title') is-invalid @enderror" id="title"
+          class="form-control" id="title"
           placeholder="Title"
           @if(isset($post->title))value="{{ $post->title }}@endif">
   @if ($errors->has('title'))
       <span class="help-block">
-              <strong class="text-danger">{{ $errors->first('title') }}</strong>
+          <strong class="text-danger">{{ $errors->first('title') }}</strong>
       </span>
   @endif
 </div>
 
 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
   <label for="content">Content</label>
-  <textarea name="content" class="form-control @error('content') is-invalid @enderror" id="content" rows="7"
+  <textarea name="content" class="form-control id="content" rows="7"
             placeholder="Content ...">@if(isset($post->content))
           {{ $post->content }}
       @endif</textarea>
@@ -26,7 +38,7 @@
 
 <div class="{{ $errors->has('category_id') ? ' has-error' : '' }}">
   <label for="category_id">Category</label>
-  <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+  <select class="form-control id="category_id" name="category_id">
       @foreach($categories as $key => $value)
           <option value="{{ $key }}" 
           @if(isset($post)) 
@@ -41,10 +53,9 @@
       <span class="help-block">
           <strong class="text-danger">{{ $errors->first('category') }}</strong>
       </span>
-  @endifform-group
+  @endif
 </div>
 
-{{-- CHECKBOX --}}
 
 <div class="row mb-3">
   <legend class="col-form-label col-sm-2 pt-0">Tags</legend>
@@ -59,11 +70,6 @@
       </label>
     </div>
 
-      @endforeach
-
-    </div>
-  </div>
-{{-- CHECKBOX END --}}
 
 <div class="form-group{{ $errors->has('image') ? ' has-error ':''}}">
   <label for="image">Image</label>
@@ -89,17 +95,13 @@
 </div>
 
 <div class="form-group">
-  <label>Active:</label>
-  <label class="radio-inline">
-      <input id="yes" name="active" type="radio" value="1" checked 
-      @if(isset($post->active)) 
-        @checked($post->active === 1) 
-      @endif> Yes
-  </label>
-  <label class="radio-inline">
-      <input id="no" name="active" type="radio" value="0" 
-      @if(isset($post->active)) 
-        @checked($post->active === 0) 
-      @endif> No
-  ></label>
-</div>
+    <label>Active: *</label>
+    <label class="radio-inline">
+        <input id="yes" name="active" type="radio" value="1" checked 
+        {{ $post->active ==='1' ? 'checked' : '' }}> Yes
+    </label>
+    <label class="radio-inline">
+        <input name="active" type="radio" value="0" 
+        {{ $post->active ==='0' ? 'checked' : '' }}> No
+    </label>
+</div> --}}
