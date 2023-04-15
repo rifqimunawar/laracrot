@@ -74,6 +74,7 @@ class PostController extends Controller
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
 
+        // dd($post);
         return view('admin.posts.edit', compact('categories', 'tags', 'post'));
     }
 

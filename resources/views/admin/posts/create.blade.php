@@ -20,11 +20,7 @@
                               @csrf
                               <div class="card-body">
 
-																<div class="mb-3">
-																	<label for="title" class="form-label">Title</label>
-																	<input type="textarea" name="alamat" class="form-control" id="title"
-																	class="mb-3" value="{{ $post->title }}" id="title"</div>
-																</div>
+																@include('admin.posts.form')
 
                               </div>
 
