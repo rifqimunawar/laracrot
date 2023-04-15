@@ -25,10 +25,10 @@
                 <label for="username" class="form-label">Username</label>
                 <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan Username Anda">
               </div>
-              {{-- <div class="mb-3">
+              <div class="mb-3">
                 <label for="nim" class="form-label">Nim</label>
                 <input type="text" class="form-control" id="nim" placeholder="Masukkan Nim Anda">
-              </div> --}}
+              </div>
               <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
                 <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan email Anda">

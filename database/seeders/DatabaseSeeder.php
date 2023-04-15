@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             KaderSeeder::class,
             CategorySeeder::class,
             TagSeeder::class,
+            RayonSeeder::class,
         ]);
     }
 }

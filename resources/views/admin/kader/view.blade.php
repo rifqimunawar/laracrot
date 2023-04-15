@@ -14,11 +14,11 @@
                         class="mb-3" readonly value="{{ $kader->nama }}" required id="nama"</div>
                     </div>
 
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" name="username" class="form-control" id="username"
                         class="mb-3" readonly value="{{ $user->username }}" required id="username"</div>
-                    </div>
+                    </div> --}}
                     
                     <div class="mb-3">
                         <label for="alamat" class="form-label">Alamat Lengkap</label>

@@ -20,6 +20,9 @@ class UserSeeder extends Seeder
             'username' => 'adminsuper',
             'role_id' => '1',
             'email' => 'superadmin@gmail.com',
+            'kelamin'=>'L',
+            'nim'=>'1',
+            'rayon_id'=>'1',
             'password' => bcrypt('superadmin'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -28,6 +31,9 @@ class UserSeeder extends Seeder
             'username' => 'admin',
             'role_id' => '2',
             'email' => 'admin@gmail.com',
+            'kelamin'=>'P',
+            'nim'=>'2',
+            'rayon_id'=>'2',
             'password' => bcrypt('admin'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -36,6 +42,9 @@ class UserSeeder extends Seeder
             'username' => 'user',
             'role_id' => '3',
             'email' => 'user@gmail.com',
+            'kelamin'=>'L',
+            'nim'=>'3',
+            'rayon_id'=>'3',
             'password' => bcrypt('user'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

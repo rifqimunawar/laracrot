@@ -44,9 +44,7 @@
                                                 <th style="width: 30px">#</th>
                                                 <th>Title</th>
                                                 <th>Category</th>
-                                                <th>Tags</th>
                                                 <th>Author</th>
-                                                <th>Date</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                             </tr>
@@ -57,9 +55,7 @@
                                                     <td>{{ $post->id }}</td>
                                                     <td>{{ Str::limit($post->title, 50) }}</td>
                                                     <td>{{ $post->category->title }}</td>
-                                                    <td>{{ $post->tags->pluck('title')->join(', ') }}</td>
                                                     <td>{{ $post->user->username }}</td>
-                                                    <td>{{ $post->created_at }}</td>
                                                     <td>
                                                         @if($post->active === 1)
                                                             <span class="badge bg-success">Active</span>
@@ -72,8 +68,8 @@
                                                               method="post"
                                                               class="float-left">
                                                             <a href="{{ url('article') }}/{{$post->slug}}"
-                                                               class="btn btn-info btn-sm float-left mr-1"
-                                                               target="_blank">
+																																class="btn btn-info btn-sm float-left mr-1"
+																																target="_blank">
                                                                 <i class="ri-eye-fill"></i>
                                                             </a>
                                                             <a href="{{ route('posts.edit', $post->id) }}"
