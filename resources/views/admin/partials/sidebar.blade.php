@@ -27,7 +27,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/rayon">
+          <i class="bi bi-exclude"></i>
+          <span>Rayon</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/galeri">
           <i class="bi bi-images"></i>

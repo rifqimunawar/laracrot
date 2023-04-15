@@ -114,7 +114,7 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::put('/admin/post/{id}', [adminpostcontroller::class, 'update'])->name('posts.update');
     Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
 
-    Route::get('/admin/rayon/', [RayonController::class, 'index'])->name('rayon.index');
+    Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
     Route::get('/admin/rayon/create', [RayonController::class, 'create'])->name('create');
     Route::post('/admin/rayon/store', [RayonController::class, 'store'])->name('store');
     Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');

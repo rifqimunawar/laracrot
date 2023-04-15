@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rayon;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RayonController extends Controller
 {
@@ -25,7 +26,7 @@ class RayonController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.rayon.create');
     }
 
     /**
@@ -33,7 +34,11 @@ class RayonController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rayon = $request -> all();
+        $rayon = Rayon::create($rayon);
+
+        Alert::success('Mantap Sahabat', 'Rayon Berhasil Ditambahkan');
+        return redirect('/admin/rayon');
     }
 
     /**
@@ -47,24 +52,34 @@ class RayonController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Rayon $rayon)
+    public function edit($id)
     {
-        //
+        $rayon = Rayon::findOrFail($id);
+        
+        return view('/admin/rayon/edit', compact('rayon'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Rayon $rayon)
+    public function update($id, Request $request)
     {
-        //
+        $rayon = Rayon ::find($id);
+        $rayon -> rayon = $request->rayon;
+        $rayon -> update();
+
+        Alert::success('Mantap Sahabat', 'Rayon Berhasil Diubah');
+        return redirect('/admin/rayon');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Rayon $rayon)
+    public function destroy($id)
     {
-        //
+        $rayon = rayon::findOrFail($id);
+        $rayon->delete();
+        Alert::success('Mantap Sahabat', 'Rayon Berhasil Dihapus');
+        return redirect('/admin/rayon');
     }
 }
