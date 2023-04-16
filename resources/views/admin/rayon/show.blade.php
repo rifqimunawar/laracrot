@@ -3,9 +3,9 @@
 
 <div class="card info-card sales-card">
     <div class="container">
-        <h2 class="text-center my-2">Data Kader Rayon </h2>
+        <h2 class="text-center my-2">Data Kader Rayon {{ $rayon->slug }} </h2>
         {{-- <h4>Total Rayon: {{ $rayon->count() }}</h4> --}}
-        <h5>Total Kader Rayon: {{ $rayon->count() }}</h5>
+        {{-- <h5>Total Kader Rayon  : {{ $jumlahUsers->count() }}</h5> --}}
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
             <form action="" method="get">
                 <div class="input-group mb-3">

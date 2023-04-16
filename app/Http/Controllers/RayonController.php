@@ -50,7 +50,7 @@ class RayonController extends Controller
         ->where('slug', $slug)
         ->latest()
         ->get();
-
+        // $jumlahUsers = $rayon->users()->count();
         // dd($rayon);
         return view('admin.rayon.show', compact('rayon'));
     }

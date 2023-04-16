@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -11,6 +12,12 @@ class Rayon extends Model
     use HasFactory, Sluggable;
     protected $table='rayon';
     protected $fillable=['rayon'];
+
+    // Define the accessor for the slug
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->title);
+    }
 
     public function users()
     {
