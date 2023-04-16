@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
@@ -40,6 +41,7 @@ Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/search', [SearchController::class,'index'])->name('search');
+Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon');
 // =====================================================
 // Route Auth  =========================================
 // ----------------------------------------------------
@@ -120,5 +122,12 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
     Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
     Route::delete('/admin/rayon/{id}', [RayonController::class, 'destroy'])->name('rayon.destroy');
+
+    Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/admin/user/create', [UserController::class, 'create'])->name('create');
+    Route::post('/admin/user/store', [UserController::class, 'store'])->name('store');
+    Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
 });

@@ -16,12 +16,11 @@ return new class extends Migration
             $table->string('title', 200);
             $table->string('slug')->unique();
             $table->text('content');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('views')->unsigned()->default(0);
             $table->timestamps();
-
             $table->index('title');
         });
     }

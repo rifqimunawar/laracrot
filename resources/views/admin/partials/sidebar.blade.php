@@ -34,6 +34,14 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/user">
+          <i class="bi bi-people"></i>
+          <span>User</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/galeri">
           <i class="bi bi-images"></i>

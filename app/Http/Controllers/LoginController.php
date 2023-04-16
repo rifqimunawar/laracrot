@@ -40,6 +40,7 @@ class LoginController extends Controller
         $user = User::create([
             'username'=>$request->username,
             'email'=>$request->email,
+            'rayon_id'=>$request->rayon_id,
             'password'=>bcrypt( $request->password),
         ]);
 

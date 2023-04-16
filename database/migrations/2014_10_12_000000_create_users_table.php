@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->foreignId('role_id')->default(3);
             $table->string('email');
-            $table->string('nim')->unique();
-            $table->string('kelamin');
+            $table->string('nim')-> nullable();//unique();
+            $table->string('kelamin')->nullable();
             $table->string('rayon_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

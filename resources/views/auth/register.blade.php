@@ -34,6 +34,10 @@
                 <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan email Anda">
               </div>
               <div class="mb-3">
+                <label for="rayon_id" class="form-label">rayon_id</label>
+                <input type="rayon_id" name="rayon_id" class="form-control" id="rayon_id" placeholder="Masukkan rayon_id Anda">
+              </div>
+              <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="pasword" class="form-control" id="password" placeholder="Masukkan password Anda">
               </div>

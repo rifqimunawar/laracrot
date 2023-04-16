@@ -3,11 +3,11 @@
 
 <div class="card info-card sales-card">
     <div class="container">
-        <h2 class="text-center my-2">Data Rayon</h2>
-        {{-- <h4>Total Rayon: {{ $rayon->count() }}</h4> --}}
-        <h5>Total Rayon: {{ $rayon->count() }}</h5>
+        <h2 class="text-center my-2">Data User</h2>
+        {{-- <h4>Total user: {{ $user->count() }}</h4> --}}
+        <h5>Total user: {{ $user->count() }}</h5>
         <div class="mb-3">
-            <a href="/admin/rayon/create" class="btn btn-primary btn-sm">Tambah Rayon</a>
+            <a href="/admin/user/create" class="btn btn-primary btn-sm">Tambah User</a>
         </div>
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
             <form action="" method="get">
@@ -21,27 +21,29 @@
             <table class="table">
                 <tr>
                     <td class="text-center">No</td>
-                    <td class="text-center">Nama Rayon</td>
+                    <td class="text-center">Nama User</td>
+                    <td class="text-center">Rayon</td>
                     <td class="text-center"> </td>
                     <td class="text-center"> Aksi</td>
                     <td class="text-center"> </td>
                 </tr>
-                @foreach ($rayon as $kdr)
+                @foreach ($user as $kdr)
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
-                    <td>{{ $kdr['rayon'] }}</td>
+                    <td>{{ $kdr['username'] }}</td>
+                    <td>{{ $kdr->rayon->slug }}</td>
                     <td class="text-end">
-                        <a href="/admin/rayon/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Kader</a>
+                        <a href="/admin/user/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Lihat Kader</a>
                     </td>
                     <td class="text-center">
-                        <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                     </td>
                     <td class="text-start">
-                        <form action="{{ route('rayon.destroy', $kdr->id) }}" method="POST">
+                        <form action="{{ route('user.destroy', $kdr->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
-                            ('Apakah Anda yakin ingin menghapus rayon ini?')">Hapus</button>
+                            ('Apakah Anda yakin ingin menghapus user ini?')">Hapus</button>
                         </form>
                     </td>
                 </tr>

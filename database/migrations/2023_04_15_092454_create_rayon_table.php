@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('rayon', function (Blueprint $table) {
             $table->id();
             $table->string('rayon', 50)->unique();
+            $table->string('slug');
             $table->timestamps();
         });
     }

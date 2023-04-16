@@ -44,9 +44,15 @@ class RayonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Rayon $rayon)
+    public function show($slug)
     {
-        //
+        $rayon = Rayon :: with ('users')
+        ->where('slug', $slug)
+        ->latest()
+        ->get();
+
+        // dd($rayon);
+        return view('admin.rayon.show', compact('rayon'));
     }
 
     /**
