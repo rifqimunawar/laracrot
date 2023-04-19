@@ -11,12 +11,12 @@ class Rayon extends Model
 {
     use HasFactory, Sluggable;
     protected $table='rayon';
-    protected $fillable=['rayon'];
+    protected $fillable=['rayon', 'slug'];
 
     // Define the accessor for the slug
     public function getSlugAttribute()
     {
-        return Str::slug($this->title);
+        return Str::slug($this->rayon);
     }
 
     public function users()

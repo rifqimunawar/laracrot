@@ -7,7 +7,7 @@
         {{-- <h4>Total Rayon: {{ $rayon->count() }}</h4> --}}
         <h5>Total Rayon: {{ $rayon->count() }}</h5>
         <div class="mb-3">
-            <a href="/admin/rayon/create" class="btn btn-primary btn-sm">Tambah Rayon</a>
+            <a href="/admin/rayon/create/new" class="btn btn-primary btn-sm">Tambah Rayon</a>
         </div>
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
             <form action="" method="get">
@@ -27,11 +27,13 @@
                     <td class="text-center"> </td>
                 </tr>
                 @foreach ($rayon as $kdr)
+                
+                {{-- @dd($kdr) --}}
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $kdr['rayon'] }}</td>
                     <td class="text-end">
-                        <a href="/admin/rayon/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Kader</a>
+                        <a href="{{ route('rayon.show', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
                     </td>
                     <td class="text-center">
                         <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
@@ -47,6 +49,7 @@
                 </tr>
                 @endforeach
             </table>
+
         </div>
     </div>
 

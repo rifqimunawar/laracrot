@@ -18,6 +18,7 @@ class RayonController extends Controller
         $rayon = Rayon ::with('users')
         ->latest()
         ->get();
+        // dd($rayon);
 
         return view('admin.rayon.index', compact('rayon'));
     }

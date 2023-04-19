@@ -41,7 +41,7 @@ Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/search', [SearchController::class,'index'])->name('search');
-Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon');
+Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
 // =====================================================
 // Route Auth  =========================================
 // ----------------------------------------------------
@@ -117,7 +117,7 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
-    Route::get('/admin/rayon/create', [RayonController::class, 'create'])->name('create');
+    Route::get('/admin/rayon/create/new', [RayonController::class, 'create'])->name('create');
     Route::post('/admin/rayon/store', [RayonController::class, 'store'])->name('store');
     Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
     Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
