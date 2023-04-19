@@ -31,7 +31,7 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $kdr['username'] }}</td>
-                    <td>{{ $kdr->rayon->slug }}</td>
+                    <td> <a href="/admin/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->slug }}</a> </td>
                     <td class="text-end">
                         <a href="/admin/user/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Lihat Kader</a>
                     </td>

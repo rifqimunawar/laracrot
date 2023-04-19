@@ -3,9 +3,25 @@
 
 <div class="card info-card sales-card">
     <div class="container">
-        <h2 class="text-center my-2">Data Kader Rayon </h2>
-        {{-- <h4>Total Rayon: {{ $rayon->count() }}</h4> --}}
-        <h5>Total Kader Rayon: {{ $rayon->count() }}</h5>
+        <h2 class="text-center my-2">Data Anggota <br> Rayon 
+
+            @foreach ($rayon as $ray)
+                @foreach ($ray->users->take(1) as $item)
+                    {{ $item->rayon->slug}}
+                @endforeach
+            @endforeach
+
+        </h2>
+
+
+        @foreach ($rayon as $r)
+            <div class="card">
+                <div class="card-header">
+                    <h5>Total Anggota Rayon {{ $r->rayon }}:  {{ $r->users->count() }}</h5>
+                </div>
+            </div>
+        @endforeach
+
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
             <form action="" method="get">
                 <div class="input-group mb-3">

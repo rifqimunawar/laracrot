@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -51,9 +52,11 @@ class RayonController extends Controller
         ->latest()
         ->get();
 
-        // dd($rayon);
+
         return view('admin.rayon.show', compact('rayon'));
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.
