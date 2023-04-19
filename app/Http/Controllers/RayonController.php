@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -50,10 +51,11 @@ class RayonController extends Controller
         ->where('slug', $slug)
         ->latest()
         ->get();
-        // $jumlahUsers = $rayon->users()->count();
-        // dd($rayon);
+
         return view('admin.rayon.show', compact('rayon'));
     }
+
+    
 
     /**
      * Show the form for editing the specified resource.

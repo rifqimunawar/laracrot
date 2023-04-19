@@ -11,9 +11,16 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user = User :: with ('rayon')->latest()->get();
+
+        if ($request->has('search')) {
+            $user = User::Where('username','LIKE','%'.$request->search.'%')
+                        ->get();
+        } else {
+            $user = User :: with ('rayon')->latest()->get();
+        }
+
         return view('admin.user.index', compact('user'));
     }
 

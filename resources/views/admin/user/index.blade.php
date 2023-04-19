@@ -21,7 +21,7 @@
             <table class="table">
                 <tr>
                     <td class="text-center">No</td>
-                    <td class="text-center">Nama User</td>
+                    <td class="text-center">Nama</td>
                     <td class="text-center">Rayon</td>
                     <td class="text-center"> </td>
                     <td class="text-center"> Aksi</td>
@@ -31,9 +31,9 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $kdr['username'] }}</td>
-                    <td>{{ $kdr->rayon->slug }}</td>
+                    <td> <a href="/admin/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
                     <td class="text-end">
-                        <a href="/admin/user/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Lihat Kader</a>
+                        <a href="/admin/user/{{ $kdr->rayon->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                     </td>
                     <td class="text-center">
                         <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
