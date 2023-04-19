@@ -52,7 +52,6 @@ class RayonController extends Controller
         ->latest()
         ->get();
 
-
         return view('admin.rayon.show', compact('rayon'));
     }
 

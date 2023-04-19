@@ -3,6 +3,7 @@
 
 <div class="card info-card sales-card">
     <div class="container">
+
         <h2 class="text-center my-2">Data Anggota <br> Rayon 
 
             @foreach ($rayon as $ray)
