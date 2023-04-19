@@ -7,7 +7,7 @@
 
             @foreach ($rayon as $ray)
                 @foreach ($ray->users->take(1) as $item)
-                    {{ $item->rayon->slug}}
+                    {{ $item->rayon->rayon}}
                 @endforeach
             @endforeach
 
@@ -45,7 +45,7 @@
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $item->username}}</td>
-                        <td>{{ $item->rayon->slug}}</td>
+                        <td>{{ $item->rayon->rayon}}</td>
                         <td class="text-end">
                             <a href="/admin/rayon/{{ $ray->id }}/view" class="btn btn-secondary btn-sm">Lihat Kader</a>
                         </td>
