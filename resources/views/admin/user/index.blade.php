@@ -4,7 +4,6 @@
 <div class="card info-card sales-card">
     <div class="container">
         <h2 class="text-center my-2">Data User</h2>
-        {{-- <h4>Total user: {{ $user->count() }}</h4> --}}
         <h5>Total user: {{ $count_user }}</h5>
         <div class="mb-3">
             <a href="/admin/user/create" class="btn btn-primary btn-sm">Tambah User</a>
