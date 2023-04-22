@@ -18,10 +18,11 @@ class UserController extends Controller
             $user = User::Where('username','LIKE','%'.$request->search.'%')
                         ->get();
         } else {
-            $user = User :: with ('rayon')->latest()->get();
+            $user = User :: with ('rayon')->latest()->paginate(25);
+            $count_user = User::all()->count();
         }
 
-        return view('admin.user.index', compact('user'));
+        return view('admin.user.index', compact('user', 'count_user'));
     }
 
     /**

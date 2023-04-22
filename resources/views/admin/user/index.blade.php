@@ -4,8 +4,7 @@
 <div class="card info-card sales-card">
     <div class="container">
         <h2 class="text-center my-2">Data User</h2>
-        {{-- <h4>Total user: {{ $user->count() }}</h4> --}}
-        <h5>Total user: {{ $user->count() }}</h5>
+        <h5>Total user: {{ $count_user }}</h5>
         <div class="mb-3">
             <a href="/admin/user/create" class="btn btn-primary btn-sm">Tambah User</a>
         </div>
@@ -27,9 +26,13 @@
                     <td class="text-center"> Aksi</td>
                     <td class="text-center"> </td>
                 </tr>
-                @foreach ($user as $kdr)
+                
+                {{-- syntak dibawah 
+                    ($user as $index=> $kdr)
+                    untuk kebutuhan pagination --}}
+                @foreach ($user as $index=> $kdr)
                 <tr>
-                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td class="text-center">{{ $index + $user -> firstItem() }}</td>
                     <td>{{ $kdr['username'] }}</td>
                     <td> <a href="/admin/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
                     <td class="text-end">
@@ -50,6 +53,7 @@
                 @endforeach
             </table>
         </div>
+        {{ $user->links() }}
     </div>
 
 </div>

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('rayon_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->rememberToken() ->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
+            $table->timestamps()->nullable();
         });
     }
 
