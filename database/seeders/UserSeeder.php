@@ -49,5 +49,7 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+
+        User::factory()->count(70)->create();
     }
 }
