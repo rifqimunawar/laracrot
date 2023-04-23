@@ -32,21 +32,15 @@ class AgendaController extends Controller
   
   public function store(Request $request)
   {
-    $events = new Agenda();
-
-        $events->title = $request->title;
-        $events->penyelenggara = $request->penyelenggara;
-        $events->start = $request->start;
-        $events->tempat = $request->tempat;
-        $events->description = $request->description;
+    $events = $request->all();
 
     if ($request->pamflet) {
         $extension = $request->pamflet->getClientOriginalExtension();
         $newFileName = 'agenda' . '_' . $request->penyelenggara . '-' . now()->timestamp . '.' . $extension;
         $request->file('pamflet')->storeAs('/img', $newFileName);
         $events['pamflet'] = $newFileName;
-        $events->save();
     }
+    $events = Agenda::create($events);
     Alert::success('Mantap Sahabat', 'Agenda Berhasil Ditambahkan');
     return redirect('/admin/calendar/');
   }
