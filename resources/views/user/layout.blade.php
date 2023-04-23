@@ -31,7 +31,11 @@
     
     <!-- Libraries Stylesheet -->
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  
+    {{-- calendar agenda  --}}
+    <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css_calendar/bootstrap.min.css">
+    <link rel="stylesheet" href="css_calendar/style.css">
     
     {{-- link for summernote  --}}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">

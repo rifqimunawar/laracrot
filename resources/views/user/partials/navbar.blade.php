@@ -25,6 +25,7 @@
               @auth
                 <li><a class="nav-link scrollto {{ 'perpus' ==request()->path()? 'active' :''}}" href="/perpus">Perpustakaan</a></li>
               @endauth
+              <li><a class="nav-link scrollto" href="/calendar">Agenda</a></li>
               <li><a class="nav-link scrollto" href="#team">Team</a></li>
               <li><a class="nav-link scrollto {{ 'blog' == request()->path()? 'active' : '' }}" href="/post">Blog</a></li>
               <li><a class="nav-link scrollto" href="#contact">Contact</a></li>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KaderController;
@@ -42,6 +43,7 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/search', [SearchController::class,'index'])->name('search');
 Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
+Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 // =====================================================
 // Route Auth  =========================================
 // ----------------------------------------------------
@@ -122,6 +124,11 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
     Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
     Route::delete('/admin/rayon/{id}', [RayonController::class, 'destroy'])->name('rayon.destroy');
+
+    Route::get('/admin/calendar', [AgendaController::class, 'list'])->name('calendar.list');
+    Route::get('/admin/calendar/create', [AgendaController::class, 'create'])->name('calendar.create');
+    Route::post('/admin/calendar/store', [AgendaController::class, 'store'])->name('store');
+    Route::delete('/admin/calendar/destroy/{id}', [AgendaController::class, 'destroy'])->name('calendar.destroy');
 
     Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/admin/user/create', [UserController::class, 'create'])->name('create');

@@ -34,6 +34,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/admin/calendar">
+          <i class="bi bi-calendar-date"></i>
+          <span>Agenda</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/user">
