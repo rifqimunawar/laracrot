@@ -1,14 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Blog\TagController;
 use App\Http\Controllers\Blog\PostController;
@@ -37,6 +38,7 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 // ----------------------------------------------------
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/post', [PostController::class, 'index'])->name('index');
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
 Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');

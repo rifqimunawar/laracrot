@@ -66,7 +66,7 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $post = Post::where('slug', $slug)
-            ->with('category', 'user')
+            ->with('category', 'comments', 'user')
             ->where('active', 1)
             ->orderBy('created_at', 'desc')
             ->firstOrFail();
