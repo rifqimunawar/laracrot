@@ -40,8 +40,7 @@
             </div>
             
             <div class="card" style="width: 100%;">
-              <img src="..." class="card-img-top" alt="..." name="pamflet" id="pamflet">
-              <input type="text" class="form-control" name="pamflet" id="pamflet">
+              <img id="pamflet" src="" alt="Gambar Pamflet">
             </div>
 
             
@@ -69,29 +68,30 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-  var calendarEl = document.getElementById('calendar');
-  var calendar = new FullCalendar.Calendar(calendarEl, {
-    plugins: [ 'interaction', 'dayGrid' ],
-    editable: true,
-    eventLimit: true,
-    events:
-
-      {!! json_encode($events) !!},
-    eventClick: function(info) {
-    // Menampilkan modal saat mengklik acara
-    $('#staticBackdrop').modal('show');
-    // Mengisi data modal dengan informasi dari acara yang diklik
-    $('#staticBackdropLabel').text(info.event.title);
-    $('#title').val(info.event.title);
-    $('#pamflet').val(info.event.extendedProps.pamflet);
-    $('#penyelenggara').val(info.event.extendedProps.penyelenggara);
-    $('#tempat').val(info.event.extendedProps.tempat);
-    $('#start').val(info.event.start);
-    $('#deskripsi').val(info.event.extendedProps.description);
-    }
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      plugins: [ 'interaction', 'dayGrid' ],
+      editable: true,
+      eventLimit: true,
+      events: {!! json_encode($events) !!},
+      eventClick: function(info) {
+        // Menampilkan modal saat mengklik acara
+        $('#staticBackdrop').modal('show');
+        // Mengisi data modal dengan informasi dari acara yang diklik
+        $('#staticBackdropLabel').text(info.event.title);
+        $('#title').val(info.event.title);
+        $('#penyelenggara').val(info.event.extendedProps.penyelenggara);
+        $('#tempat').val(info.event.extendedProps.tempat);
+        $('#start').val(info.event.start);
+        $('#deskripsi').val(info.event.extendedProps.description);
+        // Menampilkan gambar
+        $('#pamflet').attr('src', '/storage/img/' + info.event.extendedProps.pamflet);
+      }
+    });
+    calendar.render();
   });
-  calendar.render();
-});
+
 </script>
+
 
 <script src="js_calendar/main.js"></script>

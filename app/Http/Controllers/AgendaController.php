@@ -14,14 +14,13 @@ class AgendaController extends Controller
   {
       $user=Auth::user();
       $events = Agenda::all();
-
+    // dd($events);
       return view('user.calendar', compact('events', 'user'));
   }
 
   public function list()
   {
       $events = Agenda::all();
-
       return view('admin.calender.index', compact('events'));
   }
 
