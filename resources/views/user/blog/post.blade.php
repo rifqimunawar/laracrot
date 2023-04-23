@@ -60,8 +60,8 @@
                                   <img class="rounded-circle" style="width: 50px" src="{{ asset('storage/img/user.png') }}" alt=""/></div>
                                 <div class="ms-3">
                                     <h6 class="fst-italic fw-semibold">{{ $comment->user->username }}</h6>
-                                    <h6 class="fw-medium">{{ $comment->comment }}</h6>
-                                    <h8 class="fw-light">{{ $comment->created_at->diffForHumans() }}</h8>
+                                    <p class="fst-normal">{{ $comment->comment }}</p>
+                                    <p class="fw-light">{{ $comment->created_at->diffForHumans() }}</p>
                                 </div>
                             </div>
                             @endforeach
