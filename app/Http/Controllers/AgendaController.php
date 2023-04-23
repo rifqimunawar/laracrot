@@ -44,4 +44,11 @@ class AgendaController extends Controller
     return redirect('/admin/calendar/');
   }
 
+  public function destroy($id)
+  {
+      $events = Agenda::findOrFail($id);
+      $events->delete();
+      Alert::success('Mantap Sahabat', 'Agenda Berhasil Dihapus');
+      return redirect('/admin/calendar');
+  }
 }

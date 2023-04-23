@@ -26,17 +26,17 @@
 
             <div class="mb-3">
               <label for="penyelenggara" class="form-label">Penyelenggara Kegiatan</label>
-              <input type="text" class="form-control" name="penyelenggara" id="penyelenggara">
+              <input type="text" class="form-control" name="penyelenggara" id="penyelenggara" readonly >
             </div>
             
             <div class="mb-3">
               <label for="tempat" class="form-label">Tempat</label>
-              <input type="text" class="form-control" name="tempat" id="tempat">
+              <input type="text" class="form-control" name="tempat" id="tempat" readonly >
             </div>
             
             <div class="mb-3">
               <label for="deskripsi" class="form-label">Deskripsi</label>
-              <input type="text" class="form-control" name="deskripsi" id="deskripsi">
+              <input type="text" class="form-control" name="deskripsi" id="deskripsi"readonly >
             </div>
             
             <div class="card" style="width: 100%;">

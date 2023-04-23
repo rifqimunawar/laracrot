@@ -32,7 +32,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
-                            ('Apakah Anda yakin ingin menghapus rayon ini?')">Hapus</button>
+                            ('Apakah Anda yakin ingin menghapus agenda ini?')">Hapus</button>
                         </form>
                     </td>
                 </tr>
