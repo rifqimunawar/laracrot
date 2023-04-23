@@ -15,9 +15,9 @@
                 <img class="img-fluid" src="{{ asset('storage/img/' . $pos->image) }}" alt=""style="height:100px; width:200px; overflow:hidden; object-fit: cover;">
                 @endif
                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                    <div class="mb-2">
+                    <div class="">
                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $pos->category->slug) }}">{{ $pos->category->title }}</a>
-                        <a class="text-body" href=""><small>{{ $pos->views }} Kali Dilihat</small></a>
+                        <p class="text-body" style="padding: 0px; margin: 0px" href="" ><small>{{ $pos->views }} Kali Dilihat</small></p>
                     </div>
                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $pos->slug]) }}">{{ $pos->title }}</a>
                 </div>
