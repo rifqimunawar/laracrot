@@ -37,15 +37,23 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        $user = User::create([
-            'username'=>$request->username,
-            'email'=>$request->email,
-            'rayon_id'=>$request->rayon_id,
-            'password'=>bcrypt( $request->password),
-        ]);
+        $request->validate([
+          'username' => 'required|unique|max:255',
+          'email' => 'required|email|max:255',
+          'rayon_id' => 'required',
+          'password' => 'required',
+      ]);
+
+      $user = User::create([
+          'username'=>$request->username,
+          'email'=>$request->email,
+          'rayon_id'=>$request->rayon_id,
+          'password'=>bcrypt( $request->password),
+      ]);
 
 
-
+        // Set flash message
+        session()->flash('success', 'Pesan berhasil dikirim!');
         // ddd($user);
         Alert::success('Mantap Sahabat', 'Anda Berhasil Register');
         return redirect()->to('/login');
