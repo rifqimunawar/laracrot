@@ -23,11 +23,12 @@ class GaleriController extends Controller
      */
     public function index(Request $request)
     {
-        $user=Auth::user();
-        $galeri = Galeri :: with ('user')->latest()->get();
+        $user = Auth::user();
+        $galeri = Galeri::with('user')->where('status', 1)->latest()->get();
         // dd($galeri);
         return view('user.galeri', compact(['galeri', 'user']));
     }
+    
 
     public function admin_index(Request $request)
     {
@@ -49,6 +50,7 @@ class GaleriController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
+            'status' => 'required',
             'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
         ]);
 

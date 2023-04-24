@@ -92,6 +92,25 @@
                   </div>
     </div>
   </div>
+
+  {{-- validasi confrimsi password harus sama dengan password yang dimasukan  --}}
+  <script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("password").onchange = validatePassword;
+        document.getElementById("password-confirm").onchange = validatePassword;
+    }
+
+    function validatePassword(){
+    var pass2=document.getElementById("password-confirm").value;
+    var pass1=document.getElementById("password").value;
+    if(pass1!=pass2)
+        document.getElementById("password-confirm").setCustomValidity("Passwords Tidak Sama, Coba Lagi");
+    else
+        document.getElementById("password-confirm").setCustomValidity('');
+    }
+</script>
+  
+
   <!-- Link ke script bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>

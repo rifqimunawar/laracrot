@@ -27,7 +27,7 @@
                     <img src="{{ asset('storage/img/'.$galer['img']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                 </td>
                 <td class="text-center">
-                    @if($galer->active === 1)
+                    @if($galer->status === 1)
                         <span class="badge bg-success">Publish</span>
                     @else
                         <span class="badge bg-danger">Private</span>

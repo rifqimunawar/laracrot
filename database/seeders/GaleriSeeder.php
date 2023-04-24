@@ -17,6 +17,7 @@ class GaleriSeeder extends Seeder
         DB::table('galeri')->insert([
             'img' => '1 (23).jpg',
             'user_id'=>'1',
+            'status'=>'1',
             'judul' => 'ikeh iekh kimochiii',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
@@ -25,6 +26,7 @@ class GaleriSeeder extends Seeder
             'img' => '1 (15).jpg',
             'judul' => 'aw aw aw aw',
             'user_id'=>'1',
+            'status'=>'0',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -32,6 +34,7 @@ class GaleriSeeder extends Seeder
             'img' => '1 (8).jpg',
             'judul' => 'Anjay mabar',
             'user_id'=>'1',
+            'status'=>'1',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -39,6 +42,7 @@ class GaleriSeeder extends Seeder
             'img' => '1 (4).jpg',
             'judul' => '123465',
             'user_id'=>'1',
+            'status'=>'1',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
@@ -46,6 +50,7 @@ class GaleriSeeder extends Seeder
             'img' => '1 (10).jpg',
             'judul' => 'So asik lo bangsat',
             'user_id'=>'1',
+            'status'=>'1',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
