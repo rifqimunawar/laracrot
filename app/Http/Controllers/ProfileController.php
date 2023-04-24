@@ -30,6 +30,26 @@ class ProfileController extends Controller
         return view('user.profile', compact('user', 'categories', 'tags'));
     }
 
+    public function account( Request $request)
+    {
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        $user = User ::all();
+        $user=Auth::user();
+        // ddd($user);
+        return view('user.account', compact('user', 'categories', 'tags'));
+    }
+
+    public function uploads( Request $request)
+    {
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        $user = User ::all();
+        $user=Auth::user();
+        // ddd($user);
+        return view('user.uploads', compact('user', 'categories', 'tags'));
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
