@@ -1,6 +1,5 @@
 @extends('admin.layout')
 @section('content')
-
 <div class="card info-card sales-card">
     <div class="container">
         <h2 class="text-center my-2">Data User</h2>

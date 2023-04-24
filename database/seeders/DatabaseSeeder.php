@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             GaleriSeeder::class,
             HomeSeeder::class,
             PerpusSeeder::class,
-            KaderSeeder::class,
+            // KaderSeeder::class,
             CategorySeeder::class,
             TagSeeder::class,
             RayonSeeder::class,

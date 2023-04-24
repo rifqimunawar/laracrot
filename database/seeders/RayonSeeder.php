@@ -14,32 +14,38 @@ class RayonSeeder extends Seeder
     public function run(): void
     {
         DB::table('rayon')->insert([
-            'rayon' => 'teknik',
+            'rayon' => 'Teknik',
             'slug' => 'teknik',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('rayon')->insert([
-            'rayon' => 'hukum',
+            'rayon' => 'Hukum',
             'slug' => 'hukum',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('rayon')->insert([
-            'rayon' => 'fai',
+            'rayon' => 'Fai',
             'slug' => 'fai',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('rayon')->insert([
-            'rayon' => 'ekonomi',
+            'rayon' => 'Ekonomi',
             'slug' => 'ekonomi',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
         DB::table('rayon')->insert([
-            'rayon' => 'fikom',
+            'rayon' => 'Fikom',
             'slug' => 'fikom',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
+        DB::table('rayon')->insert([
+            'rayon' => 'Fkip',
+            'slug' => 'fkip',
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);

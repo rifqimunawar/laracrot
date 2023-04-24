@@ -1,81 +1,8 @@
 
           
           {{-- Right side columns --> --}}
-          <div class="col-lg-4">
+          <div class="col-lg-12">
 
-            <!-- Recent Activity -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-  
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-  
-              <div class="card-body">
-                <h5 class="card-title">Recent Activity <span>| Today</span></h5>
-  
-                <div class="activity">
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">32 min</div>
-                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                    <div class="activity-content">
-                      Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">56 min</div>
-                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                    <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 hrs</div>
-                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                    <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">1 day</div>
-                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                    <div class="activity-content">
-                      Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 days</div>
-                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                    <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">4 weeks</div>
-                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                    <div class="activity-content">
-                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                    </div>
-                  </div><!-- End activity item-->
-  
-                </div>
-  
-              </div>
-            </div><!-- End Recent Activity -->
-  
             <!-- Budget Report -->
             <div class="card">
               <div class="filter">
@@ -94,7 +21,7 @@
               <div class="card-body pb-0">
                 <h5 class="card-title">Budget Report <span>| This Month</span></h5>
   
-                <div id="budgetChart" style="min-height: 400px;" class="echart"></div>
+                <div id="budgetChart" style="min-height: 300px;" class="echart"></div>
   
                 <script>
                   document.addEventListener("DOMContentLoaded", () => {
@@ -166,7 +93,7 @@
               </div>
   
               <div class="card-body pb-0">
-                <h5 class="card-title">Website Traffic <span>| Today</span></h5>
+                <h5 class="card-title">Kader Berdasarkan <span>| Jenis Kelamin </span></h5>
   
                 <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
   
@@ -200,25 +127,13 @@
                           show: false
                         },
                         data: [{
-                            value: 1048,
-                            name: 'Search Engine'
+                            value: {{ $user_kelamin_p }},
+                            name: 'Perempuan'
                           },
                           {
-                            value: 735,
-                            name: 'Direct'
+                            value: {{ $user_kelamin_l }},
+                            name: 'Kader Laki-Laki'
                           },
-                          {
-                            value: 580,
-                            name: 'Email'
-                          },
-                          {
-                            value: 484,
-                            name: 'Union Ads'
-                          },
-                          {
-                            value: 300,
-                            name: 'Video Ads'
-                          }
                         ]
                       }]
                     });
@@ -227,7 +142,78 @@
   
               </div>
             </div><!-- End Website Traffic -->
-  
+
+            <!-- Start Pie Chart -->
+            <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Kader Berdasarkan <span>| Rayon </span></h5>
+
+              <!-- Pie Chart -->
+              <div id="pieChart" style="min-height: 600px;" class="echart"></div>
+
+              <script>
+                document.addEventListener("DOMContentLoaded", () => {
+                  echarts.init(document.querySelector("#pieChart")).setOption({
+                    title: {
+                      // text: 'Referer of a Website',
+                      // subtext: 'Fake Data',
+                      left: 'center'
+                    },
+                    tooltip: {
+                      trigger: 'item'
+                    },
+                    legend: {
+                      orient: 'vertical',
+                      left: 'left'
+                    },
+                    series: [{
+                      name: 'Access From',
+                      type: 'pie',
+                      radius: '50%',
+                      data: [{
+                          value: {{ $user_rayon_1 }},
+                          name: 'Teknik'
+                        },
+                        {
+                          value: {{ $user_rayon_2 }},
+                          name: 'Hukum'
+                        },
+                        {
+                          value: {{ $user_rayon_3 }},
+                          name: 'Ulul Albab'
+                        },
+                        {
+                          value: {{ $user_rayon_4 }},
+                          name: 'Ekonomi'
+                        },
+                        {
+                          value: {{ $user_rayon_5 }},
+                          name: 'Fikom'
+                        },
+                        {
+                          value: {{ $user_rayon_6 }},
+                          name: 'Fkip'
+                        }
+                      ],
+                      emphasis: {
+                        itemStyle: {
+                          shadowBlur: 10,
+                          shadowOffsetX: 0,
+                          shadowColor: 'rgba(0, 0, 0, 0.5)'
+                        }
+                      }
+                    }]
+                  });
+                });
+              </script>
+            </div>
+              <!-- End Pie Chart -->
+
+            </div>
+
+
+
+{{--   
             <!-- News & Updates Traffic -->
             <div class="card">
               <div class="filter">
@@ -280,7 +266,7 @@
                 </div><!-- End sidebar recent posts-->
   
               </div>
-            </div><!-- End News & Updates -->
+            </div><!-- End News & Updates --> --}}
 
           </div><!-- End Right side columns --> 
           

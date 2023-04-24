@@ -57,13 +57,13 @@
   <section class="section dashboard">
     <div class="row">
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
               <div>
                 @yield('content')
             </div>
         </div><!-- End Left side columns -->
         
-        @include('admin.partials.rightside')
+        {{-- @include('admin.partials.rightside') --}}
       </div>
     </section>
     
