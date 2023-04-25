@@ -12,17 +12,26 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('username')->unique();
-            $table->foreignId('role_id')->default(3);
-            $table->string('email');
-            $table->string('nim')-> nullable();//unique();
-            $table->string('kelamin')->nullable();
-            $table->string('rayon_id');
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken() ->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
-            $table->timestamps();
+          
+          // hal yang bersifat pribadi
+          $table->string('name'); //public
+          $table->string('nim')->unique();
+          $table->string('kelamin')->nullable(); //public
+          
+          // hal yang berkaitan dengan account 
+          $table->id();
+          $table->foreignId('role_id')->default(3);
+          $table->string('username')->unique(); //public
+          $table->string('email')->nullable();
+          $table->string('password');
+          $table->timestamp('email_verified_at')->nullable();
+          $table->rememberToken() ->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
+          $table->timestamps();
+
+          // hal yang berkaitan dngn orgn 
+          $table->string('rayon_id'); //public
+          $table->string('kaderisasi')->default('Belum Mapaba'); //public
+
         });
     }
 

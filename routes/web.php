@@ -13,6 +13,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Blog\TagController;
 use App\Http\Controllers\Blog\PostController;
+use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\Blog\SearchController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Admin\Blog\TagController as admintagcontroller;
@@ -44,7 +45,6 @@ Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/search', [SearchController::class,'index'])->name('search');
-Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 // =====================================================
 // Route Auth  =========================================
@@ -60,6 +60,8 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // -----------------------------------------------------
     Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
     Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
+    Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
+    Route::get('/profile/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
     Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
     Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
     Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
@@ -76,7 +78,7 @@ Route::middleware(['auth', 'role:1, 2'])->group(function () {
 // Route Auth Superadmin ===============================
 // ----------------------------------------------------
 Route::middleware(['auth', 'role_id:1'])->group(function () {
-    Route::get('/admin', [KaderController::class, 'statistik'])->name('statistik');
+    Route::get('/admin', [StatistikController::class, 'index'])->name('index');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
     Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');
@@ -85,6 +87,7 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::get('/admin/galeri', [GaleriController::class, 'admin_index'])->name('admin_index');
     Route::get('/admin/galeri/create', [GaleriController::class, 'admin_create'])->name('admin_create');
     Route::post('/admin/galeri/store', [GaleriController::class, 'store'])->name('store');
+    Route::put('/admin/galeri/update{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
     Route::delete('/admin/galeri/{id}', [GaleriController::class, 'admin_destroy'])->name('admin_destroy');
 
     Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
@@ -121,6 +124,7 @@ Route::middleware(['auth', 'role_id:1'])->group(function () {
     Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
+    Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
     Route::get('/admin/rayon/create/new', [RayonController::class, 'create'])->name('create');
     Route::post('/admin/rayon/store', [RayonController::class, 'store'])->name('store');
     Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');

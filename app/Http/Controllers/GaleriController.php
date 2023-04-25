@@ -23,11 +23,12 @@ class GaleriController extends Controller
      */
     public function index(Request $request)
     {
-        $user=Auth::user();
-        $galeri = Galeri :: with ('user')->latest()->get();
+        $user = Auth::user();
+        $galeri = Galeri::with('user')->where('status', 1)->latest()->get();
         // dd($galeri);
         return view('user.galeri', compact(['galeri', 'user']));
     }
+    
 
     public function admin_index(Request $request)
     {
@@ -49,6 +50,7 @@ class GaleriController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
+            'status' => 'required',
             'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
         ]);
 
@@ -68,41 +70,16 @@ class GaleriController extends Controller
     }
 
 
+    public function update(Request $request, $id)
+    {
+        $galeri = Galeri::findOrFail($id);
+    
+        $galeri->status = $request->status;
+        $galeri->save();
+    
+        return redirect('/admin/galeri/');
+    }
 
-
-
-    // if ($galeri['galeri']) {
-    //     $request->file('galeri')->storeAs('/uploads', $galeri);
-    // }
-
-    // $galeri = Galeri::create($galeri);
-
-    // return view('admin.galeri.create')->with('success', 'Post created successfully!');
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show(Galeri $galeri): Response
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(Galeri $galeri): Response
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, Galeri $galeri): RedirectResponse
-    // {
-    //     //
-    // }
 
     /**
      * Remove the specified resource from storage.

@@ -16,12 +16,17 @@
             <h4>Login</h4>
           </div>
           <div class="card-body">
+            @if(Session::has('error'))
+            <div class="alert alert-danger">
+                {{ Session::get('error') }}
+            </div>
+            @endif
             <form method="POST" action="authenticate">
               @csrf
   
               <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required autofocus>
+                <label for="username">Username</label>
+                <input type="username" class="form-control" id="username" name="username" required autofocus>
               </div>
   
               <div class="form-group">

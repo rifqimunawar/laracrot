@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('galeri', function (Blueprint $table) {
             $table->id();
-            $table->string('img')->nullable();
+            $table->string('img');
             $table->foreignId('user_id');
-            $table->string('judul', 35)->nullable();
+            $table->string('judul', 50)->nullable();
+            $table->string('status', 2)->default(0);
             $table->timestamps();
         });
     }

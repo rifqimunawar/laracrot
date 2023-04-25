@@ -26,13 +26,27 @@
                 <td class="text-center">
                     <img src="{{ asset('storage/img/'.$galer['img']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                 </td>
-                <td class="text-center">
-                    @if($galer->active === 1)
-                        <span class="badge bg-success">Publish</span>
-                    @else
-                        <span class="badge bg-danger">Private</span>
-                    @endif
-                </td>
+                <td>
+                  @if($galer->status == 1)
+                      Aktif
+                  @else
+                      Nonaktif
+                  @endif
+              </td>
+              <td>
+                  <form action="{{ route('admin.galeri.update', $galer->id) }}" method="POST">
+                      @csrf
+                      @method('PUT')
+                      <input type="hidden" name="status" value="{{ $galer->status == 1 ? 0 : 1 }}">
+                      <button type="submit" class="btn btn-sm btn-warning">
+                          @if($galer->status == 1)
+                              Nonaktifkan
+                          @else
+                              Aktifkan
+                          @endif
+                      </button>
+                  </form>
+              </td>
                 <td class="text-center">
                     <form action="{{ route('admin_destroy', $galer->id) }}" method="POST">
                         @csrf

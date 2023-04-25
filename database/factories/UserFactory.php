@@ -22,13 +22,17 @@ class UserFactory extends Factory
     {
         // $faker = faker::create();
         return [
+            'name' => fake()->name(15),
             'username' =>fake()->unique()->name(13),
             'role_id' => Arr::random(['1', '2', '3']),
+            'kelamin' => Arr::random(['L', 'P']),
             'email' => fake()->email(),
-            'rayon_id' => Arr::random(['1', '2', '3', '4', '5']),
+            'rayon_id' => Arr::random(['1', '2', '3', '4', '5', '6']),
             'email_verified_at' => now(),
             'password' => Hash::make('password'), // password
             'remember_token' => Str::random(10),
+            'kaderisasi'=> Arr::random(['Belum Mapaba', 'Mapaba', 'PKD', 'PKL', 'PKN']),
+            'nim'=> fake()->numberBetween(5, 9999),
         ];
     }
 
