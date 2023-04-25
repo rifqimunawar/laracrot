@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         DB::table('users')->insert([
+            'name' => 'Aing Saha',
             'username' => 'adminsuper',
             'role_id' => '1',
             'email' => 'superadmin@gmail.com',
@@ -28,6 +29,7 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
+            'name' => 'Aing Maung',
             'username' => 'admin',
             'role_id' => '2',
             'email' => 'admin@gmail.com',
@@ -39,6 +41,7 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
+            'name' => 'Aing Ucing',
             'username' => 'user',
             'role_id' => '3',
             'email' => 'user@gmail.com',
