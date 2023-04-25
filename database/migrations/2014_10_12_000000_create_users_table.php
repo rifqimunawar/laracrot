@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('username')->unique();
             $table->foreignId('role_id')->default(3);
-            $table->string('email');
-            $table->string('nim')-> nullable();//unique();
+            $table->string('email')->nullable();
+            $table->string('nim')->unique(); //nullable();
             $table->string('kelamin')->nullable();
             $table->string('rayon_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken() ->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
+
             $table->timestamps();
         });
     }
