@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Aing Saha',
             'username' => 'adminsuper',
+            'slug' => 'adminsuper',
             'role_id' => '1',
             'email' => 'superadmin@gmail.com',
             'kelamin'=>'L',
@@ -31,6 +32,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Aing Maung',
             'username' => 'admin',
+            'slug' => 'admin',
             'role_id' => '2',
             'email' => 'admin@gmail.com',
             'kelamin'=>'P',
@@ -43,6 +45,7 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'Aing Ucing',
             'username' => 'user',
+            'slug' => 'user',
             'role_id' => '3',
             'email' => 'user@gmail.com',
             'kelamin'=>'L',

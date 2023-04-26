@@ -8,6 +8,7 @@ use App\Models\Role;
 use App\Models\Kader;
 use App\Models\Galeri;
 use App\Models\Category;
+use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,7 +16,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -65,5 +66,14 @@ class User extends Authenticatable
     public function rayon()
     {
         return $this->belongsTo(Rayon::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'username'
+            ]
+        ];
     }
 }

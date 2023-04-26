@@ -15,13 +15,14 @@ return new class extends Migration
           
           // hal yang bersifat pribadi
           $table->string('name'); //public
-          $table->string('nim')->unique();
+          $table->string('nim'); //->unique();
           $table->string('kelamin')->nullable(); //public
           
           // hal yang berkaitan dengan account 
           $table->id();
           $table->foreignId('role_id')->default(3);
           $table->string('username')->unique(); //public
+          $table->string('slug');
           $table->string('email')->nullable();
           $table->string('password');
           $table->timestamp('email_verified_at')->nullable();

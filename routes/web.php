@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -46,6 +47,11 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/search', [SearchController::class,'index'])->name('search');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
+Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/rifqimunawar', function () {
+  $user = Auth::user();
+    return view('user.profileuser', compact('user'));
+});
 // =====================================================
 // Route Auth  =========================================
 // ----------------------------------------------------

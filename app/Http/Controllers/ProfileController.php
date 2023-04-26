@@ -121,4 +121,16 @@ class ProfileController extends Controller
         Alert::success('Mantap Sahabat', 'File Berhasil Ditambahkan');
         return redirect('/profile');
     }
+
+
+    public function profile($slug, Request $request)
+    {
+        $user=Auth::user();
+        $profile = User::where('slug', $slug)->firstOrFail();
+        $profilepost = Post::when('user_id', $profile->id)->get();
+        $profilegaleri = Galeri::when('user_id', $profile->id)->get();
+
+        return view('user.profileuser', compact('profile', 'profilepost', 'profilegaleri', 'user'));
+    }
+    
 }
