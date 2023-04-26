@@ -41,7 +41,9 @@ class PerpusController extends Controller
      */
     public function store(Request $request)
     {
-        $perpus = $request->all();
+      
+      $perpus = $request->all();
+      $perpus['user_id'] = Auth::user()->id;
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();

@@ -30,6 +30,8 @@ class ProfileController extends Controller
         return view('user.profile', compact('user', 'categories', 'tags'));
     }
 
+    
+
     public function account( Request $request)
     {
         $categories = Category::pluck('title', 'id')->all();
@@ -46,6 +48,7 @@ class ProfileController extends Controller
         $tags = Tag::pluck('title', 'id')->all();
         $user = User ::all();
         $user=Auth::user();
+        
         // ddd($user);
         return view('user.uploads', compact('user', 'categories', 'tags'));
     }
@@ -123,14 +126,31 @@ class ProfileController extends Controller
     }
 
 
+    // profile user lain 
+
     public function profile($slug, Request $request)
     {
         $user=Auth::user();
         $profile = User::where('slug', $slug)->firstOrFail();
-        $profilepost = Post::when('user_id', $profile->id)->get();
-        $profilegaleri = Galeri::when('user_id', $profile->id)->get();
+        $profileposts = Post::where('user_id', '=', $profile->id)
+                            ->with('category', 'comments', 'user')
+                            ->where('active', 1)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+        $profilegaleri = Galeri::where('user_id', $profile->id)
+                            ->where('status', 1)
+                            ->get();
+        $profileperpus = Perpus::where('user_id', $profile->id)
+                            ->get();
 
-        return view('user.profileuser', compact('profile', 'profilepost', 'profilegaleri', 'user'));
+    // dd($profileperpus);
+        return view('user.profileuser', compact(
+          'user', 
+          'profile', 
+          'profileposts', 
+          'profilegaleri',
+          'profileperpus',
+        ));
     }
     
 }

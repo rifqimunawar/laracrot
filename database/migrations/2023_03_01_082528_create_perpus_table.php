@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('perpus', function (Blueprint $table) {
             $table->id();
             $table->string('judul', 40)->nullable();
+            $table->foreignId('user_id');
             $table->string('image', 40)->nullable();
             $table->string('pdf', 50)->nullable();
             $table->timestamps();

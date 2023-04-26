@@ -20,9 +20,9 @@
     
 
     <!-- Main News Slider Start -->
-    <div class="container-fluid mt-5">
-      <div class="row pt-4">
-          <div class="col-lg-7 px-0">
+    <div class="container-fluid mt-5" style="height: 93vh">
+      <div class="row pt-4"style="height: 93vh">
+          <div class="col-lg-7 px-0"style="height: 93vh">
               <div class="owl-carousel main-carousel position-relative">
 
                 @foreach ($recent_posts->take(3) as $post)
@@ -45,7 +45,7 @@
                   @endforeach
               </div>
           </div>
-          <div class="col-lg-5 px-0">
+          <div class="col-lg-5 px-0"style="height: 93vh">
               <div class="row mx-0">
 
                 @foreach ($trending->take(4) as $post)

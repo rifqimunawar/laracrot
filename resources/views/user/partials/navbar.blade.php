@@ -85,7 +85,7 @@
                     </li>
         
                     <li>
-                      <a class="dropdown-item d-flex align-items-center" href="/profile/uploads">
+                      <a class="dropdown-item d-flex align-items-center" href="/uploads">
                         <i class="bi bi-arrow-up-square"></i>
                         <span>Uploads</span>
                       </a>
