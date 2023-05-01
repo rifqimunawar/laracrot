@@ -78,14 +78,14 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // =====================================================
 // Route Admin =========================================
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:1, 2'])->group(function () {
-
+Route::middleware(['auth', 'role:1'])->group(function () {
+  
 });
 
 // =====================================================
 // Route Auth Superadmin ===============================
 // ----------------------------------------------------
-Route::middleware(['auth', 'role_id:1'])->group(function () {
+Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin', [StatistikController::class, 'index'])->name('index');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');

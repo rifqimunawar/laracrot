@@ -10,7 +10,7 @@
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Total <span>| Pendaftar</span></h5>
+                  <h5 class="card-title">Total <span>| Pengguna</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -58,7 +58,7 @@
               <div class="card info-card sales-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Kader <span>| Mapaba</span></h5>
+                  <h5 class="card-title">Pasca <span>| Mapaba</span></h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">

@@ -12,9 +12,8 @@
           <nav id="navbar" class="navbar">
             <ul>
               @auth 
-                @if (auth()->user()-> role_id == "1")
+              @if (in_array(auth()->user()->role_id, [1, 2]))
                     <li><a class="nav-link scrollto " href="/admin">Admin</a></li>
-                  
                   @endif
                 @endauth
               <li><a class="nav-link scrollto {{ '/' ==request()->path()? 'active' :''}}" href="/">Home</a></li>
