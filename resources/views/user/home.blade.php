@@ -105,24 +105,24 @@
         <div class="row counters">
 
           <div class="col text-center">
-            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="6" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{ $user_mapaba }}" data-purecounter-duration="6" class="purecounter"></span>
             <p>Kader Pasca Mapaba</p>
           </div>
 
           <div class="col text-center">
-            <span data-purecounter-start="0" data-purecounter-end="421" data-purecounter-duration="5" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{ $user_pkd }}" data-purecounter-duration="5" class="purecounter"></span>
             <p>Kader Pasca PKD</p>
           </div>
 
           <div class="col text-center">
-            <span data-purecounter-start="0" data-purecounter-end="1364" data-purecounter-duration="4" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="{{ $user_pkl }}" data-purecounter-duration="4" class="purecounter"></span>
             <p>Kader Pasca PKL</p>
           </div>
-{{-- 
+
           <div class="col-lg-3 col-6 text-center">
-            <span data-purecounter-start="0" data-purecounter-end="38" data-purecounter-duration="1" class="purecounter"></span>
-            <p>Hard Workers</p>
-          </div> --}}
+            <span data-purecounter-start="0" data-purecounter-end="{{ $user_pkn }}" data-purecounter-duration="3" class="purecounter"></span>
+            <p>Kader Pasca PKN</p>
+          </div>
 
         </div>
 
@@ -134,76 +134,76 @@
     </section><!-- End Facts Section -->
 
 
-{{-- 
+    
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Galeri Terbaru</h3>
+        </header>
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        @foreach ($galeries->take(3) as $galeri)
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <figure>
+              <img src="{{ asset('storage/img/' . $galeri->img ) }}" class="img-fluid" alt="" style="width: 120%; height:120%; object-fit:cover; box-shadow: 0px 0px 5px 0px rgba(0,0,5,10);">
+              <a href="{{ asset('storage/img/' . $galeri->img ) }}" data-lightbox="portfolio" data-title="{{ $galeri->judul }}" class="link-preview"><i class="bi bi-plus"></i></a>
+              <a href="/galeri" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
+            </figure>
+
+            <div class="portfolio-info">
+              <h4>{{ $galeri->judul }}</h4>
+              <p>{{ $galeri->user->username }}</p>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
 
     
-    <!--  Chart start -->
-    <div class="col-lg-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Pie Chart</h5>
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="section-bg">
+      <div class="container" data-aos="fade-up">
 
-          <!-- Pie Chart -->
-          <div id="pieChart" style="min-height: 400px;" class="echart"></div>
-
-          <script>
-            document.addEventListener("DOMContentLoaded", () => {
-              echarts.init(document.querySelector("#pieChart")).setOption({
-                title: {
-                  text: 'Referer of a Website',
-                  subtext: 'Fake Data',
-                  left: 'center'
-                },
-                tooltip: {
-                  trigger: 'item'
-                },
-                legend: {
-                  orient: 'vertical',
-                  left: 'left'
-                },
-                series: [{
-                  name: 'Access From',
-                  type: 'pie',
-                  radius: '50%',
-                  data: [{
-                      value: 1048,
-                      name: 'Search Engine'
-                    },
-                    {
-                      value: 735,
-                      name: 'Direct'
-                    },
-                    {
-                      value: 580,
-                      name: 'Email'
-                    },
-                    {
-                      value: 484,
-                      name: 'Union Ads'
-                    },
-                    {
-                      value: 300,
-                      name: 'Video Ads'
-                    }
-                  ],
-                  emphasis: {
-                    itemStyle: {
-                      shadowBlur: 10,
-                      shadowOffsetX: 0,
-                      shadowColor: 'rgba(0, 0, 0, 0.5)'
-                    }
-                  }
-                }]
-              });
-            });
-          </script>
-          <!-- End Pie Chart -->
-
+        <div class="section-header">
+          <h3>Contact Us</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </div>
+
+        <div class="form">
+          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+            <div class="row">
+              <div class="form-group col-md-6">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+            </div>
+            <div class="my-3">
+              <div class="loading">Loading</div>
+              <div class="error-message"></div>
+              <div class="sent-message">Your message has been sent. Thank you!</div>
+            </div>
+            <div class="text-center"><button type="submit">Send Message</button></div>
+          </form>
+        </div>
+
       </div>
-    </div>
-    <!--  Chart End -->
- --}}
+    </section><!-- End Contact Section -->
 
 
 @endsection
