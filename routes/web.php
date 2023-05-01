@@ -62,7 +62,7 @@ Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('au
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // =====================================================
-// Route Auth User ====================================
+// Route Auth User =====================================
 // -----------------------------------------------------
     Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
     Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);

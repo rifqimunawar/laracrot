@@ -2181,6 +2181,52 @@ section {
 # Profile User Start
 --------------------------------------------------------------*/
 
+.gallery-item {
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.profile-info {
+    list-style-type: none;
+}
+
+.galeri img {
+    margin-bottom: 20px;
+    padding: auto;
+    gap: 10px;
+}
+
+.container {
+    list-style-type: none;
+}
+
+.li {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+.galeri-info {
+    list-style-type: none;
+    text-align: center;
+}
+
+.li-2 {
+    gap: 15px;
+    text-align: center;
+}
+
+@media screen and (max-width: 476px) {
+    .gallery-item {
+        padding: 10px;
+        width: 80%;
+    }
+}
+
 /*--------------------------------------------------------------
 # Profile User End
 --------------------------------------------------------------*/

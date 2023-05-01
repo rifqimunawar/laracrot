@@ -16,6 +16,9 @@ return new class extends Migration
           // hal yang bersifat pribadi
           $table->string('name'); //public
           $table->string('nim'); //->unique();
+          $table->string('img')->default('profile.png');
+          $table->string('wa')->nullable();
+          $table->string('ig')->nullable();
           $table->string('kelamin')->nullable(); //public
           
           // hal yang berkaitan dengan account 

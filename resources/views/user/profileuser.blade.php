@@ -4,35 +4,65 @@
     
 <div class="container my-4" style="padding-top: 4rem">
   
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4" style="width: 300px; height: 400px; margin: 0; padding: 0;">
-        <img src="{{ asset('storage/img/blog_-1680510690.jpg') }}" class="img-fluid" style="object-fit: cover; width: 300px; height: 300px; overflow: hidden;">
-      </div>
-      <div class="col-md-4" style="width: 300px; height: 400px; padding:0px; margin:0px">
-        <img src="{{ asset('storage/img/galeri_-1681307502.jpg') }}" class="img-fluid" style="object-fit: cover; width: 300px; height: 300px; overflow: hidden;">
-      </div>
-      <div class="col-md-4" style="width: 300px; height: 400px; padding:0px; margin:0px">
-        <img src="{{ asset('storage/img/profile.png') }}" class="img-fluid" style="object-fit: cover; width: 300px; height: 300px; overflow: hidden;">
-      </div>
-    </div>
-  </div>  
-
-</main>
-</div>
+  <header>
+		<div class="container mt-4">
+			<div class="row">
+				<div class="col-md-3 col-sm-12">
+					<div class="profile-image" >
+						<img src="{{ asset('storage/img/blog_-1680510690.jpg') }}" alt="Profile Image" class="rounded-circle">
+					</div>
+				</div>
+				<div class="col-md-9 col-sm-12">
+					<div class="profile-info">
+						<h1>Who Am I</h1>
+						<p>siapa_aku?</p>
+                        <div class="li">
+                            <li><b>0</b> post</li>
+                            <li><b>1960</b> followers</li>
+                            <li><b>63</b> following</li>
+                        </div>
+                        <li>Profile Isntagram</li>
+                        <li><i>Siapa Anak Teknik?</i></li>
+                        <li><i>Teknik Yang Mana?</i></li>
+						<button class="btn btn-primary">Edit Profile</button>
+                        <br>
+					</div>
+          <div class="ststistik">statistik</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<br>
+	<section class="galeri">
+		<div class="galeri-info">
+			<div class="li-2">
+				<ul class="list-inline">
+					<li><b>0</b> post</li>
+					<li><b>1960</b> followers</li>
+					<li><b>63</b> following</li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-12">
+					<div class="galeri-item">
+						<img src="https://tse3.mm.bing.net/th?id=OIP.1rXqIJSOYCJGm9x9xk2Z3gHaJQ&pid=Api&P=0" alt="Gallery Image" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<div class="galeri-item">
+						<img src="https://tse2.mm.bing.net/th?id=OIP.Tiz1sbGfyPFwhfRwKYOfJAHaJQ&pid=Api&P=0" alt="Gallery Image" class="img-fluid">
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<div class="galeri-item">
+						<img src="https://tse2.mm.bing.net/th?id=OIP.ER4k-d8XgZaDGDDLXgJ-rwAAAA&pid=Api&P=0" alt="Gallery Image" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+	</section>
 
   @endsection
-  

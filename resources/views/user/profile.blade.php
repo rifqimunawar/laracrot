@@ -23,7 +23,8 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              
+              <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" class="rounded-circle" style="height: 150px; widht: 150px">
               <h2></h2>
                   
               <h3>{{ $user ->username }}</h3>
