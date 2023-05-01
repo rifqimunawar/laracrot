@@ -57,7 +57,7 @@
                             @foreach($post->comments as $comment)
                             <div class="d-flex mb-4">
                                 <div class="flex-shrink-0">
-                                  <img class="rounded-circle" style="width: 50px; height:50px; object-fit:cover" src="{{ asset('storage/img/' . $user->img ) }}" alt=""/></div>
+                                  <img class="rounded-circle" style="width: 50px; height:50px; object-fit:cover" src="{{ asset('storage/img/' . $comment->user->img ) }}" alt=""/></div>
                                 <div class="ms-3">
                                     <h6 class="fst-italic fw-semibold">{{ $comment->user->username }}</h6>
                                     <p class="fst-normal">{{ $comment->comment }}</p>

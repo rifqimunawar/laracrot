@@ -144,7 +144,7 @@ class ProfileController extends Controller
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
-        Alert::success('Mantap Sahabat', 'Berhasil Menambah Postingan');
+        Alert::success('Mantap Sahabat', 'Postingan akan ditinjau terlebih dahulu oleh admin');
 
         return redirect('/profile');
     }

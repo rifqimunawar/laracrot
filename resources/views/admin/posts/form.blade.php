@@ -86,12 +86,17 @@
   @endif
 </div>
 
-<div class="form-group">
-	<label>Active: *</label>
-	<label class="radio-inline">
-			<input id="yes" name="active" type="radio" value="1" checked @if(isset($post->active)) @checked($post->active === 1) @endif> Yes
-	</label>
-	<label class="radio-inline">
-			<input id="no" name="active" type="radio" value="0" @if(isset($post->active)) @checked($post->active === 0) @endif> No
-	</label>
-</div>
+
+@auth 
+  @if (in_array(auth()->user()->role_id, [1, 2]))
+    <div class="form-group">
+      <label>Active: *</label>
+      <label class="radio-inline">
+          <input id="yes" name="active" type="radio" value="1" @if(isset($post->active)) @checked($post->active === 1) @endif> Yes
+      </label>
+      <label class="radio-inline">
+          <input id="no" name="active" type="radio" value="0" checked @if(isset($post->active)) @checked($post->active === 0) @endif> No
+      </label>
+    </div>
+  @endif
+@endauth

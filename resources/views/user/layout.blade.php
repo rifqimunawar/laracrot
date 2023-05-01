@@ -68,22 +68,22 @@
     <script src="assets_user/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="assets_user/vendor/php-email-form/validate.js"></script>
   
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
     <!-- Template Main JS File News Papper -->
     <script src="js/main.js"></script>
 
-      {{-- script sweet alert  --}}
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  @include('sweetalert::alert')
+    {{-- script sweet alert  --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @include('sweetalert::alert')
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets_user/js/main.js') }}"></script>
-    
+
   </body>
 
   </html>
