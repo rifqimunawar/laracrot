@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
-use App\Models\Post;
-use App\Models\User;
+use App\Models\Category;
 use App\Models\Galeri;
 use App\Models\Perpus;
-use App\Models\Category;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -26,7 +27,6 @@ class ProfileController extends Controller
         $tags = Tag::pluck('title', 'id')->all();
         $user = User ::all();
         $user=Auth::user();
-        // ddd($user);
         return view('user.profile', compact('user', 'categories', 'tags'));
     }
 
@@ -41,7 +41,25 @@ class ProfileController extends Controller
         // ddd($user);
         return view('user.account', compact('user', 'categories', 'tags'));
     }
-
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->fill($request->only(['alamat', 'wa', 'email', 'twitter', 'fb', 'ig', 'kelamin'])); //ini hasil refactor dari chat gpt agar codingan lebih ringkas
+    
+        if ($request->hasFile('img')) {
+            $extension = $request->img->getClientOriginalExtension();
+            $newFileName = 'profile' . '_' . $user->username . '-' . now()->timestamp . '.' . $extension;
+            $request->file('img')->storeAs('img', $newFileName);
+            $user->img = $newFileName;
+        }
+    
+        $user->save();
+    
+        Alert::success('Mantap Sahabat', 'Profile Anda Sudah Di Perbaharui');
+        return redirect('/profile')->with('user', $user);
+    }
+    
+    
     public function uploads( Request $request)
     {
         $categories = Category::pluck('title', 'id')->all();
@@ -49,7 +67,6 @@ class ProfileController extends Controller
         $user = User ::all();
         $user=Auth::user();
         
-        // ddd($user);
         return view('user.uploads', compact('user', 'categories', 'tags'));
     }
 
@@ -57,28 +74,30 @@ class ProfileController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
-
-            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
-
+            'img' => 'required|image:gif,png,jpg,jpeg|max:5048'
         ]);
-
-        $galeri = $request->all();
-        $galeri['user_id'] = Auth::user()->id;
-
-
-
-
-        if ($request->img) {
-            $extension = $request->img->getClientOriginalExtension();
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        $galeri = new Galeri();
+        $galeri->user_id = Auth::user()->id;
+        $galeri->judul = $request->judul;
+    
+        if ($request->hasFile('img')) {
+            $extension = $request->file('img')->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
             $request->file('img')->storeAs('/img', $newFileName);
-            $galeri['img'] = $newFileName;
+            $galeri->img = $newFileName;
         }
-        $galeri = Galeri::create($galeri);
-
+    
+        $galeri->save();
+    
         Alert::success('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
-        return redirect('/profile')->with('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
+        return redirect('/profile')->with('success', 'Gambar Berhasil Ditambahkan');
     }
+    
 
 
     

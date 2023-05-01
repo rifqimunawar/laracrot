@@ -23,7 +23,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" class="rounded-circle">
+              <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" class="rounded-circle" style="height:200px; width:200px; object-fit: cover;">
               <h2></h2>
                   
               <h3>{{ $user ->username }}</h3>
@@ -101,16 +101,18 @@
                 <div class="tab-pane fade show active profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form>
+                  <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile">
+                        <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" style="height:200px">
                         <div class="pt-2">
                           <div class="mb-3">
                             <div class="mb-3">
                               <label for="formFileSm" class="form-label"></label>
-                              <input class="form-control form-control-sm" id="formFileSm" type="file" name="img">
+                              <input class="form-control form-control" id="formFileSm" type="file" name="img">
                             </div>
                           </div>
                         </div>
@@ -140,54 +142,66 @@
                     <div class="row mb-3">
                       <label for="Country" class="col-md-4 col-lg-3 col-form-label">Negara</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="Indonesia">
+                        <input name="country" type="text" class="form-control" id="Country" value="Indonesia" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
+                      <label for="alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="{{ $user->alamat }}">
+                        <input name="alamat" type="text" class="form-control" id="alamat" value="{{ $user->alamat }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
+                      <label for="kelamin" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="{{ $user->wa }}">
+                        <select class="form-select" name="kelamin" aria-label="Default select example">
+                          <option value="" disabled selected>--- Jenis Kelamin ---</option>
+                          <option value="L" {{ $user->kelamin == 'L' ? 'selected' : '' }}>Laki-Laki</option>
+                          <option value="P" {{ $user->kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+
+                    <div class="row mb-3">
+                      <label for="wa" class="col-md-4 col-lg-3 col-form-label">Whats Apps</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="wa" type="text" class="form-control" id="wa" value="{{ $user->wa }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
+                        <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
+                      <label for="twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="{{ $user->twitter }}" placeholder="link profile twitter anda">
+                        <input name="twitter" type="text" class="form-control" id="twitter" value="{{ $user->twitter }}" placeholder="link profile twitter anda" required>
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
+                      <label for="fb" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="Facebook" value="{{ $user->fb }}" placeholder="link profile facebook anda">
+                        <input name="fb" type="text" class="form-control" id="fb" value="{{ $user->fb }}" placeholder="link profile facebook anda" required> 
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
+                      <label for="ig" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="Instagram" value="{{ $user->ig }}" placeholder="link profile instagram anda" >
+                        <input name="ig" type="text" class="form-control" id="ig" value="{{ $user->ig }}" placeholder="link profile instagram anda" required>
                       </div>
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 

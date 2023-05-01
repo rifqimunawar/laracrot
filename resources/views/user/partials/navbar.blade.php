@@ -56,7 +56,7 @@
         
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                      <img src="{{ asset('storage/img/' . $user->img ) }}" style="width: 40px; heigt:40px; " alt="Profile" class="rounded-circle">
+                      <img src="{{ asset('storage/img/' . $user->img ) }}" style="width: 40px; height:40px; object-fit:cover " alt="Profile" class="rounded-circle">
                       <h6>{{ $user->username }}</h6>
                       <span>{{ $user->kaderisasi }}</span>
                     </li>
