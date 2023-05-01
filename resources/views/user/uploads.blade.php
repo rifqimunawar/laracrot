@@ -253,15 +253,15 @@
                                       type: 'pie',
                                       radius: '50%',
                                       data: [{
-                                          value: 50,
+                                          value: {{ $galeriCount }},
                                           name: 'Foto'
                                         },
                                         {
-                                          value: 735,
+                                          value: {{ $postCount }},
                                           name: 'Tulisan'
                                         },
                                         {
-                                          value: 580,
+                                          value: {{ $perpusCount }},
                                           name: 'Buku'
                                         },
                                       ],

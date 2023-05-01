@@ -60,15 +60,23 @@ class ProfileController extends Controller
     }
     
     
-    public function uploads( Request $request)
+    public function uploads(Request $request)
     {
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-        $user = User ::all();
-        $user=Auth::user();
+        $user = Auth::user();
+        $postCount = Post::where('user_id', $user->id)
+                          ->where('active', 1)
+                          ->count();
+        $galeriCount = Galeri::where('user_id', $user->id)
+                          ->where('status', 1)
+                          ->count();
+        $perpusCount = Perpus::where('user_id', $user->id)
+                          ->count();
         
-        return view('user.uploads', compact('user', 'categories', 'tags'));
+        return view('user.uploads', compact('user', 'categories', 'tags', 'postCount', 'perpusCount', 'galeriCount'));
     }
+    
 
     public function store(Request $request)
     {
