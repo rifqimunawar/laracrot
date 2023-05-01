@@ -17,7 +17,10 @@ return new class extends Migration
           $table->string('name'); //public
           $table->string('nim'); //->unique();
           $table->string('img')->default('profile.png');
+          $table->string('alamat')->nullable()->dafault('uninus pride');
           $table->string('wa')->nullable();
+          $table->string('twitter')->nullable();
+          $table->string('fb')->nullable();
           $table->string('ig')->nullable();
           $table->string('kelamin')->nullable(); //public
           

@@ -23,7 +23,7 @@
           <div class="card">
             <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-              <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+              <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" class="rounded-circle">
               <h2></h2>
                   
               <h3>{{ $user ->username }}</h3>
@@ -62,8 +62,8 @@
                   <h5 class="card-title">Profile Details</h5>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                    <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
+                    <div class="col-lg-9 col-md-8">{{ $user->name }}</div>
                   </div>
 
                   <div class="row">
@@ -72,8 +72,8 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Job</div>
-                    <div class="col-lg-9 col-md-8">Web Designer</div>
+                    <div class="col-lg-3 col-md-4 label">Rayon</div>
+                    <div class="col-lg-9 col-md-8">{{ $user->rayon_id }}</div>
                   </div>
 
                   <div class="row">
@@ -105,10 +105,14 @@
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
-                        <img src="assets/img/profile-img.jpg" alt="Profile">
+                        <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile">
                         <div class="pt-2">
-                          <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                          <div class="mb-3">
+                            <div class="mb-3">
+                              <label for="formFileSm" class="form-label"></label>
+                              <input class="form-control form-control-sm" id="formFileSm" type="file" name="img">
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -116,76 +120,69 @@
                     <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
+                        <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->name }}" readonly>
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
+                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Rayon</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                        <input name="company" type="text" class="form-control" id="company" value="{{ $user->rayon->rayon }}" readonly>
                       </div>
                     </div>
                     <div class="row mb-3">
-                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
+                      <label for="Job" class="col-md-4 col-lg-3 col-form-label">Jenjang Kaderisasi</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="USA">
+                        <input name="job" type="text" class="form-control" id="Job" value="{{ $user->kaderisasi }}" readonly>
                       </div>
                     </div>
 
                     <div class="row mb-3">
-                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
+                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Negara</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                        <input name="country" type="text" class="form-control" id="Country" value="Indonesia">
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="address" type="text" class="form-control" id="Address" value="{{ $user->alamat }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                        <input name="phone" type="text" class="form-control" id="Phone" value="{{ $user->wa }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                        <input name="email" type="email" class="form-control" id="Email" value="{{ $user->email }}">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+                        <input name="twitter" type="text" class="form-control" id="Twitter" value="{{ $user->twitter }}" placeholder="link profile twitter anda">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+                        <input name="facebook" type="text" class="form-control" id="Facebook" value="{{ $user->fb }}" placeholder="link profile facebook anda">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                        <input name="instagram" type="text" class="form-control" id="Instagram" value="{{ $user->ig }}" placeholder="link profile instagram anda" >
                       </div>
                     </div>
 
