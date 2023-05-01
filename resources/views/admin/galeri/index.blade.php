@@ -22,7 +22,7 @@
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
                 <td>{{ $galer['judul'] }}</td>
-                <td>User Upload</td>
+                <td>{{ $galer->user->username }}</td>
                 <td class="text-center">
                     <img src="{{ asset('storage/img/'.$galer['img']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                 </td>
