@@ -68,6 +68,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
     Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
     Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
+    Route::post('/account/newpassword', [ProfileController::class, 'newpassword'])->name('change-password')->middleware(['auth']);
     Route::get('/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
     Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
     Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');

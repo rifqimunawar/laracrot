@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Tag;
+use App\Models\Post;
+use App\Models\User;
 use App\Models\Galeri;
 use App\Models\Perpus;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
@@ -77,6 +78,25 @@ class ProfileController extends Controller
         return view('user.uploads', compact('user', 'categories', 'tags', 'postCount', 'perpusCount', 'galeriCount'));
     }
     
+    public function newpassword(Request $request)
+    {
+      $request->validate([
+          'current_password' => 'required',
+          'new_password' => 'required|string|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+          'reenter_password' => 'required|same:new_password',
+      ]);
+
+      $user = Auth::user();
+
+      if (!Hash::check($request->input('current_password'), $user->password)) {
+          return redirect()->back()->withErrors(['current_password' => 'The provided password does not match your current password.']);
+      }
+
+      $user->password = Hash::make($request->input('new_password'));
+      $user->save();
+
+      return redirect()->back()->with('Mantap Sahabat', 'Password Berhasil Diubah.');
+  }
 
     public function store(Request $request)
     {

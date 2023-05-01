@@ -65,6 +65,21 @@
                   </div>
 
                   <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Username</div>
+                    <div class="col-lg-9 col-md-8">{{ $user->username }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">NIM</div>
+                    <div class="col-lg-9 col-md-8">{{ $user->nim }}</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label ">Jenis Kelamin</div>
+                    <div class="col-lg-9 col-md-8">{{ $user->kelamin }}</div>
+                  </div>
+
+                  <div class="row">
                     <div class="col-lg-3 col-md-4 label">Email</div>
                     <div class="col-lg-9 col-md-8">{{ $user ->email }}</div>
                   </div>
@@ -75,8 +90,13 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat</div>
+                    <div class="col-lg-3 col-md-4 label">Negara</div>
                     <div class="col-lg-9 col-md-8">Indonesia</div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-lg-3 col-md-4 label">Alamat</div>
+                    <div class="col-lg-9 col-md-8">{{ $user->alamat }}</div>
                   </div>
 
                   <div class="row">
