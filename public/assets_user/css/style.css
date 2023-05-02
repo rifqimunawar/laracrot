@@ -8,6 +8,10 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+:root {
+    zoom: 90%;
+    scroll-behavior: smooth;
+}
 body {
     background: #fff;
     color: #666666;
@@ -87,7 +91,7 @@ h6 {
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #fff;
+    background: #000000;
 }
 
 #preloader:before {
@@ -101,7 +105,7 @@ h6 {
     width: 60px;
     height: 60px;
     -webkit-animation: animate-preloader 1s linear infinite;
-    animation: animate-preloader 1s linear infinite;
+    animation: animate-preloader 2s linear infinite;
 }
 
 @-webkit-keyframes animate-preloader {
@@ -394,7 +398,7 @@ h6 {
 --------------------------------------------------------------*/
 #hero {
     width: 100%;
-    height: 100vh;
+    height: 120vh;
     background: #000;
     overflow: hidden;
     position: relative;
@@ -2173,6 +2177,59 @@ section {
     font-size: 14px;
 }
 
+/*--------------------------------------------------------------
+# Profile User Start
+--------------------------------------------------------------*/
+
+.gallery-item {
+    margin-bottom: 20px;
+}
+
+.profile-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.profile-info {
+    list-style-type: none;
+}
+
+.galeri img {
+    margin-bottom: 20px;
+    padding: auto;
+    gap: 10px;
+}
+
+.container {
+    list-style-type: none;
+}
+
+.li {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 10px;
+}
+
+.galeri-info {
+    list-style-type: none;
+    text-align: center;
+}
+
+.li-2 {
+    gap: 15px;
+    text-align: center;
+}
+
+@media screen and (max-width: 476px) {
+    .gallery-item {
+        padding: 10px;
+        width: 80%;
+    }
+}
+
+/*--------------------------------------------------------------
+# Profile User End
+--------------------------------------------------------------*/
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/

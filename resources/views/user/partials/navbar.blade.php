@@ -12,14 +12,13 @@
           <nav id="navbar" class="navbar">
             <ul>
               @auth 
-                @if (auth()->user()-> role_id == "1")
+              @if (in_array(auth()->user()->role_id, [1, 2]))
                     <li><a class="nav-link scrollto " href="/admin">Admin</a></li>
-                  
                   @endif
                 @endauth
               <li><a class="nav-link scrollto {{ '/' ==request()->path()? 'active' :''}}" href="/">Home</a></li>
 
-              <li><a class="nav-link scrollto " href="#about">About</a></li>
+              <li><a class="nav-link scrollto " href="/#about">About</a></li>
               <li><a class="nav-link scrollto {{ 'galeri' ==request()->path()? 'active' :''}}" href="/galeri">Galeri</a></li>
 
               @auth
@@ -28,7 +27,7 @@
               <li><a class="nav-link scrollto {{ 'calendar' ==request()->path()? 'active' :''}}" href="/calendar">Agenda</a></li>
               <li><a class="nav-link scrollto" href="#team">Team</a></li>
               <li><a class="nav-link scrollto {{ 'blog' == request()->path()? 'active' : '' }}" href="/post">Blog</a></li>
-              <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+              <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
 
               <li class="pl-3">
                   <!-- Right Side Of Navbar -->
@@ -40,12 +39,6 @@
                               <a class="nav-link scrollto {{ 'profile' ==request()->path()? 'active' :''}}" href="{{ route('login') }}">{{ __('Login') }}</a>
                           </li>
                       @endif
-
-                      {{-- @if (Route::has('register'))
-                          <li class="nav-item">
-                              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                          </li>
-                      @endif --}}
                   @else
                   <li class="nav-item dropdown pe-3 pl-3">
 
@@ -56,9 +49,9 @@
         
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li class="dropdown-header">
-                      <img src="/assets/img/profile-img.jpg" style="width: 40px; heigt:40px; " alt="Profile" class="rounded-circle">
+                      <img src="{{ asset('storage/img/' . $user->img ) }}" style="width: 40px; height:40px; object-fit:cover " alt="Profile" class="rounded-circle">
                       <h6>{{ $user->username }}</h6>
-                      <span>Web Designer</span>
+                      <span>{{ $user->kaderisasi }}</span>
                     </li>
                     <li>
                       <hr class="dropdown-divider">
@@ -84,16 +77,21 @@
                       <hr class="dropdown-divider">
                     </li>
         
-                    <li>
-                      <a class="dropdown-item d-flex align-items-center" href="/profile/uploads">
-                        <i class="bi bi-arrow-up-square"></i>
-                        <span>Uploads</span>
-                      </a>
-                    </li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-        
+                    @auth 
+                    @if (in_array(auth()->user()->role_id, [1, 2, 3]))
+                          <li>
+                            <a class="dropdown-item d-flex align-items-center" href="/uploads">
+                              <i class="bi bi-arrow-up-square"></i>
+                              <span>Uploads</span>
+                            </a>
+                          </li>
+                          
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        @endif
+                      @endauth
+
                     <li>
                       <a class="dropdown-item d-flex align-items-center" href="/logout">
                         <i class="bi bi-box-arrow-right"></i>

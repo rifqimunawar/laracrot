@@ -11,6 +11,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -26,9 +28,10 @@ class ProfileController extends Controller
         $tags = Tag::pluck('title', 'id')->all();
         $user = User ::all();
         $user=Auth::user();
-        // ddd($user);
         return view('user.profile', compact('user', 'categories', 'tags'));
     }
+
+    
 
     public function account( Request $request)
     {
@@ -39,43 +42,90 @@ class ProfileController extends Controller
         // ddd($user);
         return view('user.account', compact('user', 'categories', 'tags'));
     }
-
-    public function uploads( Request $request)
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->fill($request->only(['alamat', 'wa', 'email', 'twitter', 'fb', 'ig', 'kelamin'])); //ini hasil refactor dari chat gpt agar codingan lebih ringkas
+    
+        if ($request->hasFile('img')) {
+            $extension = $request->img->getClientOriginalExtension();
+            $newFileName = 'profile' . '_' . $user->username . '-' . now()->timestamp . '.' . $extension;
+            $request->file('img')->storeAs('img', $newFileName);
+            $user->img = $newFileName;
+        }
+    
+        $user->save();
+    
+        Alert::success('Mantap Sahabat', 'Profile Anda Sudah Di Perbaharui');
+        return redirect('/profile')->with('user', $user);
+    }
+    
+    
+    public function uploads(Request $request)
     {
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-        $user = User ::all();
-        $user=Auth::user();
-        // ddd($user);
-        return view('user.uploads', compact('user', 'categories', 'tags'));
+        $user = Auth::user();
+        $postCount = Post::where('user_id', $user->id)
+                          ->where('active', 1)
+                          ->count();
+        $galeriCount = Galeri::where('user_id', $user->id)
+                          ->where('status', 1)
+                          ->count();
+        $perpusCount = Perpus::where('user_id', $user->id)
+                          ->count();
+        
+        return view('user.uploads', compact('user', 'categories', 'tags', 'postCount', 'perpusCount', 'galeriCount'));
     }
+    
+    public function newpassword(Request $request)
+    {
+      $request->validate([
+          'current_password' => 'required',
+          'new_password' => 'required|string|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+          'reenter_password' => 'required|same:new_password',
+      ]);
+
+      $user = Auth::user();
+
+      if (!Hash::check($request->input('current_password'), $user->password)) {
+          return redirect()->back()->withErrors(['current_password' => 'The provided password does not match your current password.']);
+      }
+
+      $user->password = Hash::make($request->input('new_password'));
+      $user->save();
+
+      return redirect()->back()->with('Mantap Sahabat', 'Password Berhasil Diubah.');
+  }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
-
-            'img' => 'required', 'simtimes|image:gif,png,jpg,jpeg|max:5048 '
-
+            'img' => 'required|image:gif,png,jpg,jpeg|max:5048'
         ]);
-
-        $galeri = $request->all();
-        $galeri['user_id'] = Auth::user()->id;
-
-
-
-
-        if ($request->img) {
-            $extension = $request->img->getClientOriginalExtension();
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        $galeri = new Galeri();
+        $galeri->user_id = Auth::user()->id;
+        $galeri->judul = $request->judul;
+    
+        if ($request->hasFile('img')) {
+            $extension = $request->file('img')->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
             $request->file('img')->storeAs('/img', $newFileName);
-            $galeri['img'] = $newFileName;
+            $galeri->img = $newFileName;
         }
-        $galeri = Galeri::create($galeri);
-
+    
+        $galeri->save();
+    
         Alert::success('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
-        return redirect('/profile')->with('Mantap Sahabat', 'Gambar Berhasil Ditambahkan');
+        return redirect('/profile')->with('success', 'Gambar Berhasil Ditambahkan');
     }
+    
 
 
     
@@ -94,7 +144,7 @@ class ProfileController extends Controller
         $post = Post::create($data);
         $post->tags()->sync($request->tags);
 
-        Alert::success('Mantap Sahabat', 'Berhasil Menambah Postingan');
+        Alert::success('Mantap Sahabat', 'Postingan akan ditinjau terlebih dahulu oleh admin');
 
         return redirect('/profile');
     }
@@ -121,4 +171,33 @@ class ProfileController extends Controller
         Alert::success('Mantap Sahabat', 'File Berhasil Ditambahkan');
         return redirect('/profile');
     }
+
+
+    // profile user lain 
+
+    public function profile($slug, Request $request)
+    {
+        $user=Auth::user();
+        $profile = User::where('slug', $slug)->firstOrFail();
+        $profileposts = Post::where('user_id', '=', $profile->id)
+                            ->with('category', 'comments', 'user')
+                            ->where('active', 1)
+                            ->orderBy('created_at', 'desc')
+                            ->get();
+        $profilegaleri = Galeri::where('user_id', $profile->id)
+                            ->where('status', 1)
+                            ->get();
+        $profileperpus = Perpus::where('user_id', $profile->id)
+                            ->get();
+
+    // dd($profileperpus);
+        return view('user.profileuser', compact(
+          'user', 
+          'profile', 
+          'profileposts', 
+          'profilegaleri',
+          'profileperpus',
+        ));
+    }
+    
 }

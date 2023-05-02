@@ -253,15 +253,15 @@
                                       type: 'pie',
                                       radius: '50%',
                                       data: [{
-                                          value: 50,
+                                          value: {{ $galeriCount }},
                                           name: 'Foto'
                                         },
                                         {
-                                          value: 735,
+                                          value: {{ $postCount }},
                                           name: 'Tulisan'
                                         },
                                         {
-                                          value: 580,
+                                          value: {{ $perpusCount }},
                                           name: 'Buku'
                                         },
                                       ],
@@ -332,24 +332,10 @@
   </main><!-- End #main -->
 </div>
 
-{{-- script for chart  --}}
-<script src="/assets/vendor/chart.js/chart.umd.js"></script>
-<script src="/assets/vendor/echarts/echarts.min.js"></script>
-
-
-<script>
-$('textarea#summernote').summernote({
-  placeholder: 'Sahabat bisa membuat tulisan disini',
-  tabsize: 2,
-  height: 100,
-  toolbar: [
-        ['font', ['bold', 'italic', 'underline', 'strikethrough', 'superscript', 'subscript', 'clear']],
-        ['color', ['color']],
-        ['para', ['ul', 'ol', 'paragraph']],
-        ['insert', ['link', 'picture', 'hr']],
-        ['view', ['fullscreen', 'codeview']],
-      ],
-    });
-</script>
-
+    {{-- script for chart  --}}
+    <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/assets/vendor/echarts/echarts.min.js"></script>
+    
+    {{-- script untuk editor post txt area  --}}
+    <script src="/assets/vendor/tinymce/tinymce.min.js"></script>
   @endsection

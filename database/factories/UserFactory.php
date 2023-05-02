@@ -24,7 +24,7 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(15),
             'username' =>fake()->unique()->name(13),
-            'role_id' => Arr::random(['1', '2', '3']),
+            'role_id' => Arr::random(['1', '2', '3', '4']),
             'kelamin' => Arr::random(['L', 'P']),
             'email' => fake()->email(),
             'rayon_id' => Arr::random(['1', '2', '3', '4', '5', '6']),

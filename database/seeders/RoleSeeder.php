@@ -28,5 +28,10 @@ class RoleSeeder extends Seeder
             'created_at' => date("Y-m-d H:i:s"),
             'updated_at' => date("Y-m-d H:i:s"),
         ]);
+        DB::table('role')->insert([
+            'role' => 'guest',
+            'created_at' => date("Y-m-d H:i:s"),
+            'updated_at' => date("Y-m-d H:i:s"),
+        ]);
     }
 }

@@ -6,6 +6,11 @@
     background-color: #ffd1d1;
 } */
 
+:root {
+    zoom: 80%;
+    scroll-behavior: smooth;
+}
+
 .box {
     font-family: "Merriweather Sans", sans-serif;
     width: 100%;

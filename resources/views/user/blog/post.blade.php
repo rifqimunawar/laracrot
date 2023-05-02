@@ -48,16 +48,18 @@
                             <form method="POST" class="mb-4" action="{{ route('comments.store') }}">
                               @csrf
                               <input type="hidden" name="post_id" value="{{ $post->id }}">
-                              <textarea name="comment" required class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
-                              <button type="submit" class="btn">Kirim Komentar</button>
+                              <textarea name="comment" required class="form-control" rows="3" placeholder="Komentar Anda...."></textarea>
+                                @auth 
+                                  @if (in_array(auth()->user()->role_id, [1, 2, 3]))
+                                    <button type="submit" class="btn">Kirim Komentar</button>
+                                  @endif
+                                @endauth
                             </form>
-                            {{-- <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form> --}}
-                            <!-- Comment with nested comments-->
                             
                             @foreach($post->comments as $comment)
                             <div class="d-flex mb-4">
                                 <div class="flex-shrink-0">
-                                  <img class="rounded-circle" style="width: 50px" src="{{ asset('storage/img/user.png') }}" alt=""/></div>
+                                  <img class="rounded-circle" style="width: 50px; height:50px; object-fit:cover" src="{{ asset('storage/img/' . $comment->user->img ) }}" alt=""/></div>
                                 <div class="ms-3">
                                     <h6 class="fst-italic fw-semibold">{{ $comment->user->username }}</h6>
                                     <p class="fst-normal">{{ $comment->comment }}</p>

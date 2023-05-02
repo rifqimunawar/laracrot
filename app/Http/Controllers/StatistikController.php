@@ -10,9 +10,21 @@ class StatistikController extends Controller
 {
     public function index(Request $request)
     {
-    $user_count = User::count();
-    $roles = [1, 2, 3];
-    $user_anggota_count = User::whereIn('role_id', $roles)->count();
+    $user_count = User::count(); //total pendaftar aplikasi
+    $roles = [1, 2, 3]; //role untuk user admin dan superadmin
+    $user_anggota_count = User::whereIn('role_id', $roles)->count(); //total anggota dengan role 123
+    $user_unmapaba = User::where('kaderisasi', 'Belum Mapaba')->count(); //total pengguna yang belum mapaba
+    $user_pkn = User::where('kaderisasi', 'pkn')->count(); //total pengguna yang sudah pkn
+
+    $pkl = ['PKL', 'PKN']; //total pkl adalah yang sudah pkl ditambah pkn
+    $user_pkl = User::whereIn('kaderisasi', $pkl)->count(); //total pkl
+    
+    $pkd = ['PKD', 'PKL', 'PKN']; //total pkd adalah yang sudah pkd ditambah pkl dan pkn
+    $user_pkd = User::whereIn('kaderisasi', $pkd)->count(); //total pkd
+
+    $mapaba = ['Mapaba', 'PKD', 'PKL', 'PKN']; //total mapaba ditambah pkd pkl dan pkn
+    $user_mapaba = User::whereIn('kaderisasi', $mapaba)->count(); //total mapaba
+
     $user_kelamin_l = User::where('kelamin', 'L')->count();
     $user_kelamin_p = User::where('kelamin', 'P')->count();
     $user_rayon_1 = User::where('rayon_id', '1')->count();
@@ -22,9 +34,15 @@ class StatistikController extends Controller
     $user_rayon_5 = User::where('rayon_id', '5')->count();
     $user_rayon_6 = User::where('rayon_id', '6')->count();
     
+    //mapaba adalah jumlah orng yang sudah mabapa, pkd dan pkl, karena yang sudha pkd pasti sudah mapaba
       return view('admin.index', compact(
         'user_count', 
         'user_anggota_count',
+        'user_unmapaba',
+        'user_mapaba',
+        'user_pkd',
+        'user_pkl',
+        'user_pkn',
         'user_kelamin_l', 
         'user_kelamin_p',
         'user_rayon_1',

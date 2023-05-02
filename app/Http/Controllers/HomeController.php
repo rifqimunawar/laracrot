@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\User;
+use App\Models\Galeri;
 use App\Models\carausal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +16,24 @@ class HomeController extends Controller
     {
         $user=Auth::user();
         $home = Home::all();
-        return view('/user/home', compact(['home', 'user']));
+        $galeries = Galeri::latest()->take(3)->get();
+
+        $user_pkn = User::where('kaderisasi', 'pkn')->count(); //total pengguna yang sudah pkn
+        $pkl = ['PKL', 'PKN']; //total pkl adalah yang sudah pkl ditambah pkn
+        $user_pkl = User::whereIn('kaderisasi', $pkl)->count(); //total pkl
+        $pkd = ['PKD', 'PKL', 'PKN']; //total pkd adalah yang sudah pkd ditambah pkl dan pkn
+        $user_pkd = User::whereIn('kaderisasi', $pkd)->count(); //total pkd
+        $mapaba = ['Mapaba', 'PKD', 'PKL', 'PKN']; //total mapaba ditambah pkd pkl dan pkn
+        $user_mapaba = User::whereIn('kaderisasi', $mapaba)->count(); //total mapaba
+        return view('/user/home', compact([
+          'home', 
+          'user',
+          'galeries', 
+          'user_mapaba', 
+          'user_pkd', 
+          'user_pkl', 
+          'user_pkn',
+        ]));
     }
 
 
