@@ -106,6 +106,7 @@ final class Application
 
             $pharExtensions                          = null;
             $extensionRequiresCodeCoverageCollection = false;
+            $extensionReplacesOutput                 = false;
             $extensionReplacesProgressOutput         = false;
             $extensionReplacesResultOutput           = false;
 
@@ -116,10 +117,11 @@ final class Application
                     );
                 }
 
-                $extensionRequirements                   = $this->bootstrapExtensions($configuration);
-                $extensionRequiresCodeCoverageCollection = $extensionRequirements['requiresCodeCoverageCollection'];
-                $extensionReplacesProgressOutput         = $extensionRequirements['replacesProgressOutput'];
-                $extensionReplacesResultOutput           = $extensionRequirements['replacesResultOutput'];
+                $bootstrappedExtensions                  = $this->bootstrapExtensions($configuration);
+                $extensionRequiresCodeCoverageCollection = $bootstrappedExtensions['requiresCodeCoverageCollection'];
+                $extensionReplacesOutput                 = $bootstrappedExtensions['replacesOutput'];
+                $extensionReplacesProgressOutput         = $bootstrappedExtensions['replacesProgressOutput'];
+                $extensionReplacesResultOutput           = $bootstrappedExtensions['replacesResultOutput'];
             }
 
             CodeCoverage::instance()->init(
@@ -140,11 +142,13 @@ final class Application
                 $extensionReplacesResultOutput
             );
 
-            $this->writeRuntimeInformation($printer, $configuration);
-            $this->writePharExtensionInformation($printer, $pharExtensions);
-            $this->writeRandomSeedInformation($printer, $configuration);
+            if (!$extensionReplacesOutput) {
+                $this->writeRuntimeInformation($printer, $configuration);
+                $this->writePharExtensionInformation($printer, $pharExtensions);
+                $this->writeRandomSeedInformation($printer, $configuration);
 
-            $printer->print(PHP_EOL);
+                $printer->print(PHP_EOL);
+            }
 
             $this->registerLogfileWriters($configuration);
 
@@ -191,7 +195,10 @@ final class Application
 
             $result = TestResultFacade::result();
 
-            OutputFacade::printResult($result, $testDoxResult, $duration);
+            if (!$extensionReplacesResultOutput) {
+                OutputFacade::printResult($result, $testDoxResult, $duration);
+            }
+
             CodeCoverage::instance()->generateReports($printer, $configuration);
 
             $shellExitCode = (new ShellExitCodeCalculator)->calculate(
@@ -332,7 +339,7 @@ final class Application
     }
 
     /**
-     * @psalm-return array{requiresCodeCoverageCollection: bool, replacesProgressOutput: bool, replacesResultOutput: bool}
+     * @psalm-return array{requiresCodeCoverageCollection: bool, replacesOutput: bool, replacesProgressOutput: bool, replacesResultOutput: bool}
      */
     private function bootstrapExtensions(Configuration $configuration): array
     {
@@ -361,6 +368,7 @@ final class Application
 
         return [
             'requiresCodeCoverageCollection' => $facade->requiresCodeCoverageCollection(),
+            'replacesOutput'                 => $facade->replacesOutput(),
             'replacesProgressOutput'         => $facade->replacesProgressOutput(),
             'replacesResultOutput'           => $facade->replacesResultOutput(),
         ];

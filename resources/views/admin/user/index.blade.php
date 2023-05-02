@@ -7,7 +7,7 @@
         <div class="mb-3">
             <a href="/register" class="btn btn-primary btn-sm">Tambah User</a>
         </div>
-        <div class="my-3 col-12 col-sm-8 col-md-6 ">
+        <div class="my-3 col-12 col-sm-8 col-md-6">
             <form action="" method="get">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="search" placeholder="Search.....">

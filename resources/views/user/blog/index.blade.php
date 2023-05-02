@@ -26,13 +26,13 @@
               <div class="owl-carousel main-carousel position-relative">
 
                 @foreach ($recent_posts->take(3) as $post)
-                <div class="position-relative overflow-hidden" style="height: 500px;">
+                <div class="position-relative overflow-hidden" style="height: 682px;">
                   @if ($post->image)
                       <img class="img-fluid h-100" src="{{ asset('storage/img/' . $post->image) }}" style="object-fit: cover;">
                   @endif
   
                   <div class="overlay">
-                          <div class="mb-2">
+                          <div class="mb-2 overflow-hidden">
                               <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                   href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                   <h8 style="color: #fff">
@@ -50,7 +50,7 @@
 
                 @foreach ($trending->take(4) as $post)
                   <div class="col-md-6 px-0">
-                      <div class="position-relative overflow-hidden" style="height: 250px;">
+                      <div class="position-relative overflow-hidden" style="height: 341px;">
                         @if ($post->image)
                             <img class="img-fluid w-100 h-100" src="{{ asset('storage/img/' . $post->image) }}" style="object-fit: cover;">
                         @endif
@@ -188,7 +188,7 @@
                                 <div class="mb-2">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                 </div>
-                                <div class="mb-2">
+                                <div class="mb-2 overflow-hidden">
                                     <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
                                 </div>
                                 <h8 class="text-secondary"><small>
