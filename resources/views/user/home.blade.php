@@ -102,7 +102,7 @@
           <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </header>
 
-        <div class="row counters">
+        <div class="row counters text-center" >
 
           <div class="col text-center">
             <span data-purecounter-start="0" data-purecounter-end="{{ $user_mapaba }}" data-purecounter-duration="6" class="purecounter"></span>
