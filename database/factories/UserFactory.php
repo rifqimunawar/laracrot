@@ -25,6 +25,7 @@ class UserFactory extends Factory
             'name' => fake()->name(15),
             'username' =>fake()->unique()->name(13),
             'role_id' => Arr::random(['1', '2', '3', '4']),
+            'thn_mapaba' => Arr::random(['2018', '2019', '2020', '2021', '2022', '2023']),
             'kelamin' => Arr::random(['L', 'P']),
             'email' => fake()->email(),
             'rayon_id' => Arr::random(['1', '2', '3', '4', '5', '6']),

@@ -33,12 +33,44 @@
                     <label for="rayon" class="form-label">Rayon</label>
                     <div class="col-md-12">
                       <select id="rayon_id" name="rayon_id" class="form-select" onchange="showOptions()">
-                          <option value="PKD">PKD</option>
-                          <option value="PKL">PKL</option>
-                          <option value="PKN">PKN</option>
+                          <option value="1" {{ $user->rayon_id == '1' ? 'selected' : '' }}>Teknik</option>
+                          <option value="2" {{ $user->rayon_id == '2' ? 'selected' : '' }}>Hukum</option>
+                          <option value="3" {{ $user->rayon_id == '3' ? 'selected' : '' }}>Ulul Albab</option>
+                          <option value="4" {{ $user->rayon_id == '4' ? 'selected' : '' }}>Ekonomi</option>
+                          <option value="5" {{ $user->rayon_id == '5' ? 'selected' : '' }}>Fikom</option>
+                          <option value="6" {{ $user->rayon_id == '6' ? 'selected' : '' }}>Fkip</option>
                       </select>
                   </div>
                 </div>
+                <div class="mb-3">
+                  <label for="prodi">Prodi</label>
+
+                  <div class="col-md-12">
+                      <select id="prodi-teknik" name="prodi" class="form-select" style="display:none;">
+                          <option>-- Prodi Di Teknik --</option>
+                          <option value="Teknik Informatika">Teknik Informatika</option>
+                          <option value="Teknik Elektro">Teknik Elektro</option>
+                          <option value="Teknik Industri">Teknik Industri</option>
+                      </select>                  
+                  </div>
+                  <div class="col-md-12">
+                      <select id="prodi-hukum" name="prodi" class="form-select" style="display:none;">
+                          <option>-- Prodi Di Teknik --</option>
+                          <option value="Ilmu Hukum">Ilmu Hukum</option>
+                          <option value="Hukum Tatanegara">Hukum Tatanegara</option>
+                          <option value="Hukum Industrt">Hukum Industri</option>
+                      </select>
+                  </div>
+                  <div class="col-md-12">
+                      <select id="prodi-ulul-albab" name="prodi" class="form-select" style="display:none;">
+                        <option>-- Prodi Di Ulul Albab --</option>
+                        <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
+                        <option value="Pendidikan Bahasa Arab">Pendidikan Bahasa Arab</option>
+                        <option value="Tafsir Hadis">Tafsir Hadis</option>
+                    </select>
+                  </div>
+
+              </div>
 
                 {{-- jenjang kaderisasi start  --}}
                 <div class="mb-3">
@@ -134,6 +166,30 @@
 
 <script>
   function showOptions() {
+    var rayon = document.getElementById("rayon_id").value;
+    var prodi_teknik = document.getElementById("prodi-teknik");
+    var prodi_hukum = document.getElementById("prodi-hukum");
+    var prodi_ulul_albab = document.getElementById("prodi-ulul-albab");
+
+    if (rayon === "1") {
+        prodi_teknik.style.display = "block";
+        prodi_hukum.style.display = "none";
+        prodi_ulul_albab.style.display = "none";
+    } else if (rayon === "2") {
+        prodi_teknik.style.display = "none";
+        prodi_hukum.style.display = "block";
+        prodi_ulul_albab.style.display = "none";
+    } else if (rayon === "3") {
+        prodi_teknik.style.display = "none";
+        prodi_hukum.style.display = "none";
+        prodi_ulul_albab.style.display = "block";
+    } else {
+        prodi_teknik.style.display = "none";
+        prodi_hukum.style.display = "none";
+        prodi_ulul_albab.style.display = "none";
+    }
+  }
+  function showOptions() {
       var kaderisasi = document.getElementById("kaderisasi").value;
       var thn_mapaba = document.getElementById("thn_mapaba");
       var thn_pkd = document.getElementById("thn_pkd");
@@ -172,5 +228,6 @@
           thn_pkn.style.display = "none";
       }
   }
+
   </script>
 @endsection

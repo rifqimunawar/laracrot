@@ -154,7 +154,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Data Mapaba <span>Dari Tahun Ke Tahun</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -163,15 +163,18 @@
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
+                          name: 'Mapaba',
+                          data: [{{ $mapaba_2018 }}, {{ $mapaba_2019 }}, {{ $mapaba_2020 }}, 
+                          {{ $mapaba_2021 }}, {{ $mapaba_2022 }}, {{ $mapaba_2023 }}, {{ $mapaba_2023 }}],
+                        }, 
+                          // {
+                          //   name: 'Revenue',
+                          //   data: [11, 32, 45, 32, 34, 52, 41]
+                          // }, {
+                          //   name: 'Customers',
+                          //   data: [15, 11, 32, 18, 9, 24, 11]
+                          // }
+                        ],
                         chart: {
                           height: 350,
                           type: 'area',
@@ -201,13 +204,13 @@
                         },
                         xaxis: {
                           type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                          categories: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"]
                         },
                         tooltip: {
                           x: {
-                            format: 'dd/MM/yy HH:mm'
+                            format: 'yyyy'
                           },
-                        }
+                        },
                       }).render();
                     });
                   </script>
