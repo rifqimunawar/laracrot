@@ -49,13 +49,25 @@
                                     <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Rayon') }}</label>
                                     <div class="col-md-6">
                                       <select id="rayon_id" name="rayon_id" class="form-select">
-                                        <option value="Belum Memilih Rayon">--Pilih Rayon--</option>
+                                        <option >--Pilih Rayon--</option>
                                         <option value="1">Rayon Teknik</option>
                                         <option value="2">Rayon Hukum</option>
                                         <option value="4">Rayon Ekonomi</option>
                                         <option value="5">Rayon Fikom</option>
                                         <option value="3">Rayon Ulul Albab</option>
                                         <option value="6">Rayon Fkip</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-group row">
+                                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                                    <div class="col-md-6">
+                                      <select id="role_id" name="role_id" class="form-select">
+                                        <option >--Role--</option>
+                                        <option value="1">Super Admin/Komisariat</option>
+                                        <option value="2">Admin/Rayon</option>
+                                        <option value="3">User/Kader</option>
                                       </select>
                                     </div>
                                   </div>

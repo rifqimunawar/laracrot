@@ -5,7 +5,7 @@
         <h2 class="text-center my-2">Data User</h2>
         <h5>Total user: {{ $count_user }}</h5>
         <div class="mb-3">
-            <a href="/admin/user/create" class="btn btn-primary btn-sm">Tambah User</a>
+            <a href="/register" class="btn btn-primary btn-sm">Tambah User</a>
         </div>
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
             <form action="" method="get">
@@ -33,9 +33,9 @@
                 <tr>
                     <td class="text-center">{{ $index + $user -> firstItem() }}</td>
                     <td>{{ $kdr['username'] }}</td>
-                    <td> <a href="/admin/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
+                    <td> <a href="/admin/user/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
                     <td class="text-end">
-                        <a href="/admin/user/{{ $kdr->rayon->slug }}" class="btn btn-secondary btn-sm">Profile</a>
+                        <a href="/admin/user/{{ $kdr->id }}" class="btn btn-secondary btn-sm">Profile</a>
                     </td>
                     <td class="text-center">
                         <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
-use App\Http\Controllers\Controller;
+use App\Models\Rayon;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
@@ -13,17 +15,42 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
+        $count_user = User::count();
         if ($request->has('search')) {
-            $user = User::Where('username','LIKE','%'.$request->search.'%')
-                        ->get();
+            $user = User::where('username', 'LIKE', '%'.$request->search.'%')
+                          ->orwhere('rayon', 'LIKE', '%'.$request->search.'%')
+                          ->orwhere('name', 'LIKE', '%'.$request->search.'%')
+                          ->orwhere('nim', 'LIKE', '%'.$request->search.'%')
+                          ->paginate(25);
         } else {
-            $user = User :: with ('rayon')->latest()->paginate(25);
-            $count_user = User::all()->count();
+            $user = User::with('rayon')->latest()->paginate(25);
         }
-
-        return view('admin.user.index', compact('user', 'count_user'));
+    
+        $first_item = ($user instanceof \Illuminate\Pagination\LengthAwarePaginator) ? $user->firstItem() : $user->first();
+    
+        return view('admin.user.index', compact('user', 'count_user', 'first_item'));
     }
+    
+    public function list($slug, Request $request)
+    {
+        $rayon = Rayon::where('slug', $slug)
+                        ->with('users')
+                        ->latest()
+                        ->paginate(25);
+    
+        if ($request->has('search')) {
+          $user = User::Where('username','LIKE','%'.$request->search.'%')
+                      ->orWhere('name','LIKE','%'.$request->search.'%')
+                      ->get();
+        } else {
+            $user = User::with('rayon')->latest()->paginate(25);
+            $count_user = User::count();
+        }
+    
+        return view('admin.rayon.show', compact('rayon', 'user'));
+    }
+    
+    
 
     /**
      * Show the form for creating a new resource.
@@ -52,10 +79,14 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id, User $user)
     {
-        //
+        $user = User::find($id);
+        $role = Role::find($user->role_id);
+        $rayon = Rayon::find($user->rayon_id);
+        return view('admin.user.edit', compact('user', 'role', 'rayon'));
     }
+    
 
     /**
      * Update the specified resource in storage.

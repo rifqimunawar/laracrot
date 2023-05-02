@@ -154,7 +154,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Reports <span>/Today</span></h5>
+                  <h5 class="card-title">Data Mapaba <span>Dari Tahun Ke Tahun</span></h5>
 
                   <!-- Line Chart -->
                   <div id="reportsChart"></div>
@@ -163,15 +163,18 @@
                     document.addEventListener("DOMContentLoaded", () => {
                       new ApexCharts(document.querySelector("#reportsChart"), {
                         series: [{
-                          name: 'Sales',
-                          data: [31, 40, 28, 51, 42, 82, 56],
-                        }, {
-                          name: 'Revenue',
-                          data: [11, 32, 45, 32, 34, 52, 41]
-                        }, {
-                          name: 'Customers',
-                          data: [15, 11, 32, 18, 9, 24, 11]
-                        }],
+                          name: 'Mapaba',
+                          data: [{{ $mapaba_2018 }}, {{ $mapaba_2019 }}, {{ $mapaba_2020 }}, 
+                          {{ $mapaba_2021 }}, {{ $mapaba_2022 }}, {{ $mapaba_2023 }}, {{ $mapaba_2023 }}],
+                        }, 
+                          // {
+                          //   name: 'Revenue',
+                          //   data: [11, 32, 45, 32, 34, 52, 41]
+                          // }, {
+                          //   name: 'Customers',
+                          //   data: [15, 11, 32, 18, 9, 24, 11]
+                          // }
+                        ],
                         chart: {
                           height: 350,
                           type: 'area',
@@ -201,13 +204,13 @@
                         },
                         xaxis: {
                           type: 'datetime',
-                          categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
+                          categories: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"]
                         },
                         tooltip: {
                           x: {
-                            format: 'dd/MM/yy HH:mm'
+                            format: 'yyyy'
                           },
-                        }
+                        },
                       }).render();
                     });
                   </script>
@@ -217,7 +220,7 @@
 
               </div>
             </div><!-- End Reports -->
-
+{{-- 
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
@@ -290,11 +293,11 @@
                 </div>
 
               </div>
-            </div><!-- End Recent Sales -->
+            </div><!-- End Recent Sales --> --}}
 
             <!-- Top Selling -->
             <div class="col-12">
-              <div class="card top-selling overflow-auto">
+              <div class="card">
 
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
@@ -309,69 +312,40 @@
                   </ul>
                 </div>
 
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Data Kader <span>Belum Diverifikasi</span></h5>
+                <table class="table table-striped table-hover">
+                  <tr>
+                      <td class="text-center">No</td>
+                      <td class="text-center">Nama</td>
+                      <td class="text-start"> Username:</td>
+                      <td class="text-center">Nim</td>
+                      <td class="text-center">Rayon</td>
+                      <td class="text-center">Profile</td>
+                      <td class="text-center"> Aksi</td>
+                      <td class="text-center">  </td>
+                  </tr>
+                  @foreach ($kader as $user)
+                  <tr>
+                    <td class="text-center">{{ $loop->iteration }}</td>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->username }}</td>
+                    <td class="text-center">{{ $user->nim }}</td>
+                    <td class="text-center">{{ $user->rayon->rayon }}</td>
+                    <td class="text-center">
+                        <img src="{{ asset('storage/img/' . $user->img ) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
+                    </td>
+                    <td class="text-center">
+                        <a href="/admin/user/{{ $user->id }}/edit" class="btn btn-danger btn-sm">Verifikasi</a>
+                    </td>
+                </tr>
+                  @endforeach
+              </table>
 
               </div>
             </div><!-- End Top Selling -->
         </div><!-- End Left side columns -->
 
-
-                {{-- @include('admin.partials.rightside')
-
-
-
-        
+                  @include('admin.partials.rightside')
 
 @endsection

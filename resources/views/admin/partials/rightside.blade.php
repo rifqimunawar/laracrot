@@ -1,8 +1,3 @@
-
-          
-          {{-- Right side columns --> --}}
-          <div class="col-lg-12">
-
             <!-- Budget Report -->
             <div class="card">
               <div class="filter">
