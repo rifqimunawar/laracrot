@@ -74,6 +74,10 @@ body {
     background-color: #edeff4;
 }
 
+.zoom-in {
+    transform: scale(1.1);
+}
+
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }

@@ -20,9 +20,9 @@
     
 
     <!-- Main News Slider Start -->
-    <div class="container-fluid mt-5" style="height: 39rem">
-      <div class="row pt-4"style="height: 100%">
-          <div class="col-lg-7 px-0" style="height: 100%">
+    <div class="container-fluid mt-5">
+      <div class="row pt-4">
+          <div class="col-lg-7 px-0">
               <div class="owl-carousel main-carousel position-relative">
 
                 @foreach ($recent_posts->take(3) as $post)
@@ -45,14 +45,14 @@
                   @endforeach
               </div>
           </div>
-          <div class="col-lg-5 px-0" style="height: 100%">
+          <div class="col-lg-5 px-0">
               <div class="row mx-0">
 
                 @foreach ($trending->take(4) as $post)
                   <div class="col-md-6 px-0">
-                      <div class="position-relative overflow-hidden" style="height: 100%">
+                      <div class="position-relative overflow-hidden" style="height: 250px;">
                         @if ($post->image)
-                            <img class="img-fluid w-100" src="{{ asset('storage/img/' . $post->image) }}" style=" height: 100%; object-fit: cover;">
+                            <img class="img-fluid w-100 h-100" src="{{ asset('storage/img/' . $post->image) }}" style="object-fit: cover;">
                         @endif
                           <div class="overlay">
                               <div class="mb-2">

@@ -20,3 +20,8 @@
         </div>
     </div>
 @endsection
+{{-- link buku buku
+  
+  https://drive.google.com/drive/folders/1szNFTWR41Y0mKuP1BdBIYS8BqRTzyNhg
+
+  --}}
