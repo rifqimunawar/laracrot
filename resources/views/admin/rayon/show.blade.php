@@ -65,7 +65,7 @@
                     @endforeach
                 @endforeach
             </table>
-            {{ $user->links() }}
+            {{ $rayon->links() }}
         </div>
     </div>
 

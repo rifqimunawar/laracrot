@@ -128,6 +128,7 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+    Route::get('/admin/user/rayon/{slug}', [UserController::class, 'list'])->name('user.rayon.list');
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
     Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
