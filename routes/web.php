@@ -15,7 +15,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Blog\TagController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\StatistikController;
-use App\Http\Controllers\Blog\SearchController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Admin\Blog\TagController as admintagcontroller;
 use App\Http\Controllers\Admin\Blog\PostController as adminpostcontroller;
@@ -40,18 +39,14 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 // ----------------------------------------------------
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/post', [PostController::class, 'index'])->name('index');
-Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
 Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
-Route::get('/search', [SearchController::class,'index'])->name('search');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
-Route::get('/rifqimunawar', function () {
-  $user = Auth::user();
-    return view('user.profileuser', compact('user'));
-});
+
+
 // =====================================================
 // Route Auth  =========================================
 // ----------------------------------------------------
@@ -61,30 +56,33 @@ Route::post('/register/store', [LoginController::class, 'store'])->name('store')
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// =====================================================
-// Route Auth User =====================================
-// -----------------------------------------------------
-    Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
-    Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
-    Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
-    Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
-    Route::post('/account/newpassword', [ProfileController::class, 'newpassword'])->name('change-password')->middleware(['auth']);
-    Route::get('/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
-    Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
-    Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
-    Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
-    // Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth', 'role:user, admin, superadmin']);
 
 // =====================================================
-// Route Admin =========================================
+// Route Auth Pengunjung Kader Admin, Superadmin =======
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:1'])->group(function () {
-  
+Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
+  Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
+  Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
+  Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
+  Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
+  Route::post('/account/newpassword', [ProfileController::class, 'newpassword'])->name('change-password')->middleware(['auth']);
 });
 
 // =====================================================
-// Route Auth Superadmin ===============================
-// ----------------------------------------------------
+// Route Kader, Admin Superadmin =======================
+// -----------------------------------------------------
+Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
+  Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
+  Route::get('/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
+  Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
+  Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
+  Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
+});
+
+
+// =====================================================
+// Route Admin dan Superadmin ==========================
+// -----------------------------------------------------
 Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin', [StatistikController::class, 'index'])->name('index');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
@@ -97,18 +95,6 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::post('/admin/galeri/store', [GaleriController::class, 'store'])->name('store');
     Route::put('/admin/galeri/update{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
     Route::delete('/admin/galeri/{id}', [GaleriController::class, 'admin_destroy'])->name('admin_destroy');
-
-    Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
-    Route::get('/admin/kader/create', [KaderController::class, 'create'])->name('create');
-    Route::post('/admin/kader/store', [KaderController::class, 'store'])->name('store');
-    Route::get('/admin/kader/{id}/edit', [KaderController::class, 'edit'])->name('edit');
-    Route::put('/admin/kader/{id}', [KaderController::class, 'update'])->name('update');
-    Route::delete('/admin/kader/{id}', [KaderController::class, 'destroy'])->name('kader.destroy');
-    Route::get('/admin/kader/{id}/view', [KaderController::class, 'view'])->name('view');
-
-    Route::get('/admin/page', [HomeController::class, 'admin_page'])->name('admin_page');
-    Route::get('/admin/page/{id}/edit', [HomeController::class, 'edit'])->name('edit');
-    Route::put('/admin/page/{id}', [HomeController::class, 'update'])->name('update');
 
     Route::get('/admin/post/category', [admincategorycontroller::class, 'index'])->name('categories.index');
     Route::get('/admin/post/category/create', [admincategorycontroller::class, 'create'])->name('categories.create');
@@ -131,14 +117,6 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::put('/admin/post/{id}', [adminpostcontroller::class, 'update'])->name('posts.update');
     Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
 
-    Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
-    Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
-    Route::get('/admin/rayon/create/new', [RayonController::class, 'create'])->name('create');
-    Route::post('/admin/rayon/store', [RayonController::class, 'store'])->name('store');
-    Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
-    Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
-    Route::delete('/admin/rayon/{id}', [RayonController::class, 'destroy'])->name('rayon.destroy');
-
     Route::get('/admin/calendar', [AgendaController::class, 'list'])->name('calendar.list');
     Route::get('/admin/calendar/create', [AgendaController::class, 'create'])->name('calendar.create');
     Route::post('/admin/calendar/store', [AgendaController::class, 'store'])->name('store');
@@ -151,4 +129,30 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
 
-});
+    Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
+    Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
+  });
+    // =====================================================
+    // Route Super Admin only ==============================
+    // -----------------------------------------------------
+Route::middleware(['auth', 'role:1'])->group(function () {
+  
+  Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
+  Route::get('/admin/kader/create', [KaderController::class, 'create'])->name('create');
+  Route::post('/admin/kader/store', [KaderController::class, 'store'])->name('store');
+  Route::get('/admin/kader/{id}/edit', [KaderController::class, 'edit'])->name('edit');
+  Route::put('/admin/kader/{id}', [KaderController::class, 'update'])->name('update');
+  Route::delete('/admin/kader/{id}', [KaderController::class, 'destroy'])->name('kader.destroy');
+  Route::get('/admin/kader/{id}/view', [KaderController::class, 'view'])->name('view');
+
+  Route::get('/admin/page', [HomeController::class, 'admin_page'])->name('admin_page');
+  Route::get('/admin/page/{id}/edit', [HomeController::class, 'edit'])->name('edit');
+  Route::put('/admin/page/{id}', [HomeController::class, 'update'])->name('update');
+
+  Route::get('/admin/rayon/create/new', [RayonController::class, 'create'])->name('create');
+  Route::post('/admin/rayon/store', [RayonController::class, 'store'])->name('store');
+  Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
+  Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
+  Route::delete('/admin/rayon/{id}', [RayonController::class, 'destroy'])->name('rayon.destroy');
+
+  });

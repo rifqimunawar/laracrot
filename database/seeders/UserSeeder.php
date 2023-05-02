@@ -55,6 +55,19 @@ class UserSeeder extends Seeder
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
+        DB::table('users')->insert([
+            'name' => 'Prof',
+            'username' => 'pengunjung',
+            'slug' => 'pengunjung',
+            'role_id' => '4',
+            'email' => 'pengunjung@gmail.com',
+            'kelamin'=>'L',
+            'nim'=>'3',
+            'rayon_id'=>'6',
+            'password' => bcrypt('pengunjung'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
 
         User::factory()->count(135)->create();
     }

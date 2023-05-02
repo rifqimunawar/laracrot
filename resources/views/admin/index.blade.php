@@ -3,7 +3,7 @@
 
         <!-- Left side columns -->
           <div class="row">
-
+{{-- 
             <!-- pkn Card -->
             <div class="col">
 
@@ -17,7 +17,7 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{ $user_count }}</h6>
+                      <h6>{{ $user_anggota_count }}</h6>
                       <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
 
                     </div>
@@ -52,7 +52,7 @@
               </div>
 
             </div><!-- End pkn Card -->
-            
+            --}}
             <!-- Total Mapaba -->
             <div class="col">
               <div class="card info-card sales-card">

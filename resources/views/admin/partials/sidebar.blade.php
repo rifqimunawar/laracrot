@@ -20,20 +20,23 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/kader">
-          <i class="bi bi-person"></i>
-          <span>Kader</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+      @auth 
+          @if (in_array(auth()->user()->role_id, [1]))
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/kader">
+              <i class="bi bi-person"></i>
+              <span>Kader</span>
+            </a>
+          </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/rayon">
-          <i class="bi bi-exclude"></i>
-          <span>Rayon</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/admin/rayon">
+              <i class="bi bi-exclude"></i>
+              <span>Rayon</span>
+            </a>
+          </li><!-- End Profile Page Nav -->
+          @endif
+        @endauth
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/calendar">
           <i class="bi bi-calendar-date"></i>
@@ -64,13 +67,17 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      
+      @auth 
+      @if (in_array(auth()->user()->role_id, [1]))
       <li class="nav-item">
         <a class="nav-link collapsed" href="/admin/page">
           <i class="bi bi-menu-button-wide"></i><span>Pages</span></i>
           {{-- <span>Pages</span> --}}
         </a>
       </li><!-- End Profile Page Nav -->
+          @endif
+        @endauth
+
 
       
       <li class="nav-item">
