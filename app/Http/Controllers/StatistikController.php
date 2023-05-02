@@ -42,9 +42,14 @@ class StatistikController extends Controller
     $mapaba_2021 = User::where('thn_mapaba', '2021')->count(); //total mapaba di tahun 
     $mapaba_2022 = User::where('thn_mapaba', '2022')->count(); //total mapaba di tahun 
     $mapaba_2023 = User::where('thn_mapaba', '2023')->count(); //total mapaba di tahun 
-    
+
+    // data kader yang belum di verifikasi 
+    $kader = User::where('role_id', 4)->take(10)->get();
+
+    // dd($kader);
     //mapaba adalah jumlah orng yang sudah mabapa, pkd dan pkl, karena yang sudha pkd pasti sudah mapaba
       return view('admin.index', compact(
+        'kader', 
         'user_count', 
         'user_anggota_count',
         'user_unmapaba',
