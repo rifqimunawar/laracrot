@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
@@ -78,10 +79,14 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit($id, User $user)
     {
-        //
+        $user = User::find($id);
+        $role = Role::find($user->role_id);
+        $rayon = Rayon::find($user->rayon_id);
+        return view('admin.user.edit', compact('user', 'role', 'rayon'));
     }
+    
 
     /**
      * Update the specified resource in storage.

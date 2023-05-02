@@ -35,7 +35,7 @@
                     <td>{{ $kdr['username'] }}</td>
                     <td> <a href="/admin/user/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
                     <td class="text-end">
-                        <a href="/admin/user/{{ $kdr->rayon->slug }}" class="btn btn-secondary btn-sm">Profile</a>
+                        <a href="/admin/user/{{ $kdr->id }}" class="btn btn-secondary btn-sm">Profile</a>
                     </td>
                     <td class="text-center">
                         <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>

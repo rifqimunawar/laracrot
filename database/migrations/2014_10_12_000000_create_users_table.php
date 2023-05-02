@@ -18,6 +18,13 @@ return new class extends Migration
           $table->string('nim'); //->unique();
           $table->string('img')->default('profile.png');
           $table->string('alamat')->nullable()->dafault('uninus pride');
+          $table->string('t_lahir', 20)->nullable();
+          $table->string('ttl', 20)->nullable();
+          $table->string('hobi', 15)->nullable();
+          $table->string('sma', 50)->nullable();
+          $table->string('thn_lulus', 10)->nullable();
+          $table->string('thn_kuliah', 10)->nullable();
+
           $table->string('wa')->nullable();
           $table->string('twitter')->nullable();
           $table->string('fb')->nullable();
@@ -37,6 +44,13 @@ return new class extends Migration
 
           // hal yang berkaitan dngn orgn 
           $table->string('rayon_id'); //public
+          $table->string('prodi', 30)->nullable();
+          $table->string('thn_mapaba', 10)->nullable();
+          $table->string('thn_pkd', 10)->nullable();
+          $table->string('thn_pkl', 10)->nullable();
+          $table->string('thn_pkn', 10)->nullable();
+          $table->string('informal', 100)->nullable();
+          $table->string('nonformal', 100)->nullable();
           $table->string('kaderisasi')->default('Belum Mapaba'); //public
 
         });
@@ -50,3 +64,8 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
+
+
+
+
+
