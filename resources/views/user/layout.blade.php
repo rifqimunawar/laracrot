@@ -16,7 +16,8 @@
     <link href="{{ asset('assets_user/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
     <link href="{{ asset('assets_user/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets_user/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    
+        <!-- Font Awesome icon Centang biru -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-B2tEivVN/4VghK2ejzVWzW3FkmvHqfN98+Mu7H6QgJY1X1LzOD0PTtIP2Hs5mV6C3y8SvA04O7j/VoIcN44+pw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Font Awesome icon news -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 

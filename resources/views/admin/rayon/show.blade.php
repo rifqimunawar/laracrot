@@ -16,11 +16,8 @@
 
 
         @foreach ($rayon as $r)
-            <div class="card">
-                <div class="card-header">
-                    <h5>Total Anggota Rayon {{ $r->rayon }}:  {{ $r->users->count() }}</h5>
-                </div>
-            </div>
+            
+            <h5>Total Anggota Rayon {{ $r->rayon }}:  {{ $r->users->count() }}</h5>
         @endforeach
 
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
@@ -48,7 +45,7 @@
                         <td>{{ $item->username}}</td>
                         <td>{{ $item->rayon->rayon}}</td>
                         <td class="text-end">
-                            <a href="/admin/rayon/{{ $ray->id }}/view" class="btn btn-secondary btn-sm">Lihat Kader</a>
+                            <a href="/profile/{{ $item->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                         </td>
                         <td class="text-center">
                             <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>

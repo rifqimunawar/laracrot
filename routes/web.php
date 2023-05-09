@@ -44,7 +44,7 @@ Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
-Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
 
 
 // =====================================================
@@ -138,6 +138,8 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     // -----------------------------------------------------
 Route::middleware(['auth', 'role:1'])->group(function () {
   
+
+  Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
   Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
   Route::get('/admin/kader/create', [KaderController::class, 'create'])->name('create');
   Route::post('/admin/kader/store', [KaderController::class, 'store'])->name('store');

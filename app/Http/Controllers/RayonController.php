@@ -46,23 +46,22 @@ class RayonController extends Controller
     /**
      * Display the specified resource.
      */
-// public function show(Request $request, $slug)
-// {
-//     $rayon = Rayon::with('users')
-//         ->where('slug', $slug)
-//         ->latest()
-//         ->paginate(25);
+public function show(Request $request, $slug)
+{
+    $rayon = Rayon::with('users')
+        ->where('slug', $slug)
+        ->paginate(25);
 
-//     if ($request->has('search')) {
-//         $user = User::where('username', 'LIKE', '%' . $request->search . '%')
-//             ->get();
-//     } else {
-//         $user = User::with('rayon')->latest()->paginate(25);
-//         $count_user = User::count();
-//     }
+    if ($request->has('search')) {
+        $user = User::where('username', 'LIKE', '%' . $request->search . '%')
+            ->get();
+    } else {
+        $user = User::with('rayon')->latest()->paginate(25);
+        $count_user = User::count();
+    }
 
-//     return view('admin.rayon.show', compact('rayon', 'user'));
-// }
+    return view('admin.rayon.show', compact('rayon', 'user'));
+}
 
 
     

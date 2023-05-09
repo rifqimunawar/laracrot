@@ -9,7 +9,12 @@
         <div class="d-flex align-items-center">
             <img src="{{ asset('storage/img/'. $profile->img) }}" alt="Profile Image" class="rounded-circle mr-4 profile-image-desktop" style="width: 125px; height: 125px; object-fit: cover;">
             <div class="d-flex flex-column">
-                <h1 class="h4 font-weight-bold">{{ $profile->username }}</h1>
+                <h1 class="h4 font-weight-bold">
+                  {{ $profile->username }} 
+                  @if($profile->centang == '1')
+                    <i class="fas fa-check-circle text-primary"></i>
+                  @endif
+                </h1>
                 <div class="d-flex align-items-center">
                     <span class="mr-4"><strong>{{ $countpost }}</strong> posts</span>
                     <span class="mr-4"><strong>{{ $countgaleri }}</strong> photos</span>

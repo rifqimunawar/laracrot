@@ -21,7 +21,7 @@
                         <!-- Post meta content-->
                         <div class="text-muted my-2">
                             <i class="bi bi-clock"></i> {{ $post->created_at->diffForHumans() }} 
-                            <i class="bi bi-person-fill mx-2"> Upload by:</i>{{ $post->user->username }}
+                            <i class="bi bi-person-fill mx-2"> Upload by:</i> <a href="/profile/{{ $post->user->slug }}"> {{ $post->user->username }} @if($post->user->centang == '1') <i class="fas fa-check-circle text-primary"></i>@endif</a>
                             <i class="bi bi-eye-fill mx-2"> Dilihat: </i>  {{ $post->views }} Kali
                         </div>
                     </header>
@@ -61,7 +61,7 @@
                                 <div class="flex-shrink-0">
                                   <img class="rounded-circle" style="width: 50px; height:50px; object-fit:cover" src="{{ asset('storage/img/' . $comment->user->img ) }}" alt=""/></div>
                                 <div class="ms-3">
-                                    <h6 class="fst-italic fw-semibold">{{ $comment->user->username }}</h6>
+                                    <h6 class="fst-italic fw-semibold"> <a href="/profile/{{ $comment->user->slug }}">{{ $comment->user->username }} @if($comment->user->centang == '1') <i class="fas fa-check-circle text-primary"></i>@endif</a></h6>
                                     <p class="fst-normal">{{ $comment->comment }}</p>
                                     <p class="fw-light">{{ $comment->created_at->diffForHumans() }}</p>
                                 </div>

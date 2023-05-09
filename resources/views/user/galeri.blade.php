@@ -15,7 +15,8 @@
               <img src="{{ asset('storage/img/' . $galer->img ) }}"class="position-absolute top-50 start-50 translate-middle" >
               <div class="box-content mr-2">
                 <span class="post">{{ $galer->judul }}</span>
-                  <span class="title">{{ $galer->user->username }}</span>
+                <a href=" /profile/{{ $galer->user->slug }}"><span class="title">{{ $galer->user->username }} @if($galer->user->centang == '1')
+                  <i class="fas fa-check-circle text-primary"></i>@endif</span></a>
                   <ul class="icon mt-4">
                       <li><a href="{{ asset('storage/img/' . $galer->img ) }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="{{ $galer['judul'] }}"><i class="bi bi-plus"></i></a></li>
                   </ul>

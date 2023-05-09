@@ -15,8 +15,8 @@ return new class extends Migration
           
           // hal yang bersifat pribadi
           $table->string('name'); //public
-          $table->string('nim'); //->unique();
-          $table->string('img')->default('profile.png');
+          $table->string('nim')->unique();
+          $table->string('img')->default('user.png');
           $table->string('alamat')->nullable()->dafault('uninus pride');
           $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
           $table->string('t_lahir', 20)->nullable();
@@ -26,7 +26,7 @@ return new class extends Migration
           $table->string('thn_lulus', 10)->nullable();
           $table->string('thn_kuliah', 10)->nullable();
 
-          $table->string('wa')->nullable();
+          $table->string('wa', 20)->nullable();
           $table->string('twitter')->nullable();
           $table->string('fb')->nullable();
           $table->string('ig')->nullable();
@@ -42,6 +42,7 @@ return new class extends Migration
           $table->timestamp('email_verified_at')->nullable();
           $table->rememberToken() ->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
           $table->timestamps();
+          $table->string('centang', 2)->default('0');
 
           // hal yang berkaitan dngn orgn 
           $table->string('rayon_id'); //public

@@ -173,8 +173,14 @@ class ProfileController extends Controller
     }
 
 
+    // detail user 
+    public function details($id, Request $request)
+    {
+    $user = User::findOrFail($id);
+    $user = User::all();
+    return view('admin.user.detail');
+    }
     // profile user lain 
-
     public function profile($slug, Request $request)
     {
       $user=Auth::user();

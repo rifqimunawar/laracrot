@@ -77,7 +77,7 @@ class LoginController extends Controller
         'username'=>$request->username,
         'email'=>$request->email,
         'rayon_id'=>$request->rayon_id,
-        'role_id'=>$request->role_id,
+        // 'role_id'=>$request->role_id,
         'password'=>bcrypt($request->password),
     ]);
 

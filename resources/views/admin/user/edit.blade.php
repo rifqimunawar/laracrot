@@ -42,6 +42,7 @@
                       </select>
                   </div>
                 </div>
+
                 <div class="mb-3">
                   <label for="prodi">Prodi</label>
 
@@ -144,14 +145,54 @@
               </div>
                 {{-- jenjang kaderisasi end  --}}
 
-                {{-- Role Start --}}
                 <div class="mb-3">
-                  <label for="role_id" class="form-label">Role</label>
+                  <label for="informal" class="form-label">Kader Mengikuti Sekolah Informal</label>
+                  <div class="col-md-12">
+                    <select name="informal" class="form-select" required aria-label="informal">
+                      <option value="0"{{ $user->informal == '0' ? 'selected' : '' }}>Belum Pernah</option>
+                      <option value="1"{{ $user->informal == '1' ? 'selected' : '' }}>Pernah 1 kali</option>
+                      <option value="2"{{ $user->informal == '2' ? 'selected' : '' }}>Pernah 2 Kali</option>
+                      <option value="3"{{ $user->informal == '3' ? 'selected' : '' }}>Pernah 3 Kali</option>
+                      <option value="4"{{ $user->informal == '4' ? 'selected' : '' }}>Pernah 4 Kali</option>
+                      <option value="5"{{ $user->informal == '5' ? 'selected' : '' }}>Pernah 5 Kali</option>
+                      <option value="6"{{ $user->informal == '6' ? 'selected' : '' }}>Pernah 6 Kali</option>
+                      <option value="7"{{ $user->informal == '7' ? 'selected' : '' }}>Pernah 7 Kali</option>
+                      <option value="8"{{ $user->informal == '8' ? 'selected' : '' }}>Pernah 8 Kali</option>
+                      <option value="9"{{ $user->informal == '9' ? 'selected' : '' }}>Pernah 9 Kali</option>
+                      <option value="10"{{ $user->informal == '10' ? 'selected' : '' }}>Lebih dari 9 Kali</option>
+                  </select>
+                </div>
+              </div>
+
+                <div class="mb-3">
+                  <label for="nonformal" class="form-label">Kader Mengikuti Sekolah Non-Formal</label>
+                  <div class="col-md-12">
+                    <select name="nonformal" class="form-select" required aria-label="nonformal">
+                      <option value="0"{{ $user->nonformal == '0' ? 'selected' : '' }}>Belum Pernah</option>
+                      <option value="1"{{ $user->nonformal == '1' ? 'selected' : '' }}>Pernah 1 kali</option>
+                      <option value="2"{{ $user->nonformal == '2' ? 'selected' : '' }}>Pernah 2 Kali</option>
+                      <option value="3"{{ $user->nonformal == '3' ? 'selected' : '' }}>Pernah 3 Kali</option>
+                      <option value="4"{{ $user->nonformal == '4' ? 'selected' : '' }}>Pernah 4 Kali</option>
+                      <option value="5"{{ $user->nonformal == '5' ? 'selected' : '' }}>Pernah 5 Kali</option>
+                      <option value="6"{{ $user->nonformal == '6' ? 'selected' : '' }}>Pernah 6 Kali</option>
+                      <option value="7"{{ $user->nonformal == '7' ? 'selected' : '' }}>Pernah 7 Kali</option>
+                      <option value="8"{{ $user->nonformal == '8' ? 'selected' : '' }}>Pernah 8 Kali</option>
+                      <option value="9"{{ $user->nonformal == '9' ? 'selected' : '' }}>Pernah 9 Kali</option>
+                      <option value="10"{{ $user->nonformal == '10' ? 'selected' : '' }}>Lebih dari 9 Kali</option>
+                  </select>
+                </div>
+              </div>
+
+                {{-- Role Start --}}
+                <div class="my-3 pt-4">
+                  <label for="role_id" class="form-label">Status Keanggotaan</label><br>
+                  <p>Jika Anggota tersebut memang benar tercatat di database rayon, maka pilih "Kader PMII Uninus", <br>
+                  Namun, jika anggota tersebut tidak tercatat di database rayon maka pilih "Bukan Kader PMII Uninus"</p>
                   <div class="col-md-12">
                     <select id="rayon_id" name="rayon_id" class="form-select">
-                        <option value="3" {{ $user->role_id == '3' ? 'selected' : '' }}>Kader PMII</option>
-                        <option value="4" {{ $user->role_id == '4' ? 'selected' : '' }}>Pengjung</option>
-                        <option value="5" {{ $user->role_id == '5' ? 'selected' : '' }}>Bukan Kader PMII/Takedown Akun</option>
+                      <option value="3" {{ $user->role_id == '3' ? 'selected' : '' }}>Kader PMII Uninus</option>
+                      <option value="4" {{ $user->role_id == '4' ? 'selected' : '' }}>Pengjunjung</option>
+                      <option value="5" {{ $user->role_id == '5' ? 'selected' : '' }}>Bukan Kader PMII Uninus</option>
                     </select>
                 </div>
               </div>

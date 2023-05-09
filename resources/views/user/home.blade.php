@@ -58,15 +58,24 @@
 
         <header class="section-header">
           <h3>About Us</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-            laboris nisi ut aliquip ex ea commodo consequat. aliqua. Ut enim ad minim veniam.</p>
+          <p>Pergerakan Mahasiswa Islam Indonesia (PMII) adalah organisasi mahasiswa Islam terbesar dan tertua di 
+            Indonesia. PMII didirikan pada tanggal 17 Februari 1961 di Yogyakarta oleh sekelompok mahasiswa yang ingin
+              memperjuangkan kepentingan Islam dan kepentingan bangsa Indonesia. Tujuan utama PMII adalah untuk 
+              memperjuangkan Islam sebagai agama, memperjuangkan kemerdekaan dan kebebasan rakyat Indonesia, 
+              dan memperjuangkan kemerdekaan dan kebebasan Bangsa-bangsa di seluruh dunia.
+
+            Sejak didirikan, PMII telah berjuang untuk mengembangkan pendidikan Islam, memperjuangkan hak-hak mahasiswa
+            dan masyarakat, serta memperjuangkan reformasi politik dan sosial di Indonesia. PMII juga telah 
+            menjadi tempat bagi banyak pemimpin dan tokoh Islam terkemuka di Indonesia, termasuk tokoh-tokoh 
+            seperti Buya Hamka, Nurcholish Madjid, dan Amien Rais. Saat ini, PMII memiliki jaringan yang luas di 
+            seluruh Indonesia dan terus berjuang untuk memperjuangkan kepentingan mahasiswa Islam dan bangsa 
+            Indonesia secara keseluruhan.</p>
         </header>
 
       </div>
     </section><!-- End About Us Section -->
 
-    
+{{--     
     <!-- ======= Our Clients Section ======= -->
     <section id="clients">
       <div class="container" data-aos="zoom-in">
@@ -83,15 +92,15 @@
             <div class="swiper-slide"><img src="assets_user/img/clients/client-4.png" class="img-fluid" alt=""></div>
             <div class="swiper-slide"><img src="assets_user/img/clients/client-5.png" class="img-fluid" alt=""></div>
             <div class="swiper-slide"><img src="assets_user/img/clients/client-6.png" class="img-fluid" alt=""></div>
-            {{-- <div class="swiper-slide"><img src="assets_user/img/clients/client-7.png" class="img-fluid" alt=""></div>
-            <div class="swiper-slide"><img src="assets_user/img/clients/client-8.png" class="img-fluid" alt=""></div> --}}
+            <div class="swiper-slide"><img src="assets_user/img/clients/client-7.png" class="img-fluid" alt=""></div>
+            <div class="swiper-slide"><img src="assets_user/img/clients/client-8.png" class="img-fluid" alt=""></div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
     </section><!-- End Our Clients Section -->
-
+ --}}
 
     <!-- ======= Facts Section ======= -->
     <section id="facts">
@@ -99,7 +108,7 @@
 
         <header class="section-header">
           <h3>Facts</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          <p>Data Kader PMII UNINUS </p>
         </header>
 
         <div class="row counters text-center" >
@@ -174,7 +183,7 @@
 
         <div class="section-header">
           <h3>Contact Us</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+          <p>Hubungi kami jika anda membutuhkan informasi lebih mengenai PMII Komisariat Uninus Cabang Kota Bandung</p>
         </div>
 
         <div class="form">
