@@ -6,7 +6,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="/admin">
+        <a class="nav-link {{ request()->is('/admin') ? ' active' : ' collapsed' }}"  href="/admin">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -23,22 +23,22 @@
       @auth 
           @if (in_array(auth()->user()->role_id, [1]))
           <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/kader">
+            <a class="nav-link {{ request()->is('admin/kader*') ? ' active' : ' collapsed' }}" href="/admin/kader">
               <i class="bi bi-person"></i>
               <span>Kader</span>
             </a>
           </li><!-- End Profile Page Nav -->
 
           <li class="nav-item">
-            <a class="nav-link collapsed" href="/admin/rayon">
+            <a class="nav-link{{ request()->is('admin/rayon*') ? ' active' : ' collapsed' }}" href="/admin/rayon">
               <i class="bi bi-exclude"></i>
               <span>Rayon</span>
             </a>
-          </li><!-- End Profile Page Nav -->
+          </li>          
           @endif
         @endauth
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/calendar">
+        <a class="nav-link {{ request()->is('admin/calendar*') ? ' active' : ' collapsed' }}" href="/admin/calendar">
           <i class="bi bi-calendar-date"></i>
           <span>Agenda</span>
         </a>
@@ -46,14 +46,14 @@
 
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/user">
+        <a class="nav-link {{ request()->is('admin/user*') ? ' active' : ' collapsed' }}" href="/admin/user">
           <i class="bi bi-people"></i>
           <span>User</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/galeri">
+        <a class="nav-link {{ request()->is('admin/galeri*') ? ' active' : ' collapsed' }}" href="/admin/galeri">
           <i class="bi bi-images"></i>
           <span>Galeri</span>
         </a>
@@ -61,7 +61,7 @@
 
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/perpus">
+        <a class="nav-link {{ request()->is('admin/perpus*') ? ' active' : ' collapsed' }}" href="/admin/perpus">
           <i class="bi bi-book-half"></i>
           <span>Perpustakaan</span>
         </a>
@@ -70,7 +70,7 @@
       @auth 
       @if (in_array(auth()->user()->role_id, [1]))
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/admin/page">
+        <a class="nav-link {{ request()->is('admin/page*') ? ' active' : ' collapsed' }}" href="/admin/page">
           <i class="bi bi-menu-button-wide"></i><span>Pages</span></i>
           {{-- <span>Pages</span> --}}
         </a>

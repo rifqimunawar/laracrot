@@ -62,7 +62,7 @@
                                         {{ $post->created_at->diffForHumans() }}
                                       </h9>
                               </div>
-                              <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                              <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 50) }}</a>
                           </div>
                       </div>
                   </div>
@@ -126,7 +126,7 @@
                       <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
                           style="width: calc(100% - 200px); padding-right: 100px;">
                           @foreach ($recent_posts->take(2) as $post)
-                          <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a></div>
+                          <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 50) }}</a></div>
                           @endforeach
 
                       </div>
@@ -155,7 +155,7 @@
                           <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                               href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                       </div>
-                      <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                      <a class="h6 m-0 text-white text-uppercase font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 50) }}</a>
                   </div>
               </div>
             @endforeach
@@ -188,8 +188,8 @@
                                 <div class="mb-2">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                 </div>
-                                <div class="mb-2 overflow-hidden">
-                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ $post->title }}</a>
+                                <div class="mb-2">
+                                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 30) }}</a>
                                 </div>
                                 <h8 class="text-secondary"><small>
                                   {{ $post->created_at->diffForHumans() }}
