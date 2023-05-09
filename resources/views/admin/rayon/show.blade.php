@@ -51,7 +51,7 @@
                             <a href="/admin/rayon/{{ $ray->id }}/view" class="btn btn-secondary btn-sm">Lihat Kader</a>
                         </td>
                         <td class="text-center">
-                            <a href="/admin/rayon/{{ $ray->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                         </td>
                         <td class="text-start">
                             <form action="{{ route('rayon.destroy', $ray->id) }}" method="POST">

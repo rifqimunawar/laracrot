@@ -177,23 +177,35 @@ class ProfileController extends Controller
 
     public function profile($slug, Request $request)
     {
-        $user=Auth::user();
-        $profile = User::where('slug', $slug)->firstOrFail();
-        $profileposts = Post::where('user_id', '=', $profile->id)
-                            ->with('category', 'comments', 'user')
-                            ->where('active', 1)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
-        $profilegaleri = Galeri::where('user_id', $profile->id)
-                            ->where('status', 1)
-                            ->get();
-        $profileperpus = Perpus::where('user_id', $profile->id)
-                            ->get();
+      $user=Auth::user();
+      $profile = User::where('slug', $slug)->firstOrFail();
+      $profileposts = Post::where('user_id', '=', $profile->id)
+                          ->with('category', 'comments', 'user')
+                          ->where('active', 1)
+                          ->orderBy('created_at', 'desc')
+                          ->get();
+      $profilegaleri = Galeri::where('user_id', $profile->id)
+                          ->where('status', 1)
+                          ->get();
+      $profileperpus = Perpus::where('user_id', $profile->id)
+                          ->get();
+      // menghitung jumlah postingan gambar dan buku yang di upload users 
+      $countpost = Post::where('user_id', '=', $profile->id)
+                        ->where('active', 1)
+                        ->count();
+      $countgaleri = Galeri::where('user_id', '=', $profile->id)
+                        ->where('status', 1)
+                        ->count();
+      $countperpus = Perpus::where('user_id', '=', $profile->id)
+                        ->count();
 
-    // dd($profileperpus);
+    // dd($profilegaleri);
         return view('user.profileuser', compact(
           'user', 
           'profile', 
+          'countpost',
+          'countgaleri',
+          'countperpus',
           'profileposts', 
           'profilegaleri',
           'profileperpus',

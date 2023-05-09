@@ -11,17 +11,17 @@
             <form action="">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="name" value="{{ $user->name }}">
+                    <input type="text" class="form-control" id="name" value="{{ $user->name }}" readonly>
                 </div>
     
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" value="{{ $user->username }}">
+                    <input type="text" class="form-control" id="username" value="{{ $user->username }}" readonly>
                 </div>
     
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}">
+                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}" readonly>
                 </div>
     
                 <div class="mb-3">
@@ -147,7 +147,13 @@
                 {{-- Role Start --}}
                 <div class="mb-3">
                   <label for="role_id" class="form-label">Role</label>
-                  <input type="text" class="form-control" id="role_id" value="{{ $role->role }}">
+                  <div class="col-md-12">
+                    <select id="rayon_id" name="rayon_id" class="form-select">
+                        <option value="3" {{ $user->role_id == '3' ? 'selected' : '' }}>Kader PMII</option>
+                        <option value="4" {{ $user->role_id == '4' ? 'selected' : '' }}>Pengjung</option>
+                        <option value="5" {{ $user->role_id == '5' ? 'selected' : '' }}>Bukan Kader PMII/Takedown Akun</option>
+                    </select>
+                </div>
               </div>
               {{-- Role end  --}}
             </form>

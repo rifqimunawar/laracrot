@@ -40,7 +40,9 @@
                     <td class="text-center">
                         <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                     </td>
-                    <td class="text-start">
+                    @auth
+                      @if (in_array(auth()->user()->role_id, [1]))
+                      <td class="text-start">
                         <form action="{{ route('user.destroy', $kdr->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -48,7 +50,9 @@
                             ('Apakah Anda yakin ingin menghapus user ini?')">Hapus</button>
                         </form>
                     </td>
-                </tr>
+                      @endif
+                    @endauth
+                  </tr>
                 @endforeach
             </table>
         </div>
