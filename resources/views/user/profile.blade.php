@@ -16,7 +16,11 @@
                 </h3><br>
                 <div class="d-flex align-items-center justify-content-between mb-2">
                   <a href="/account" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Edit profile</a>
-                  <a href="/uploads" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Uploads</a>
+                  @auth 
+                    @if (in_array(auth()->user()->role_id, [1, 2, 3]))
+                      <a href="/uploads" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Uploads</a>
+                    @endif
+                  @endauth
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="mr-4"><strong>{{ $countpost }}</strong> posts</span>

@@ -66,7 +66,7 @@
         Licensing information: https://bootstrapmade.com/license/
         Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=BizPage
       -->
-        Designed by <a href="https://www.instagram.com/rifqi_munawar/">PMII Rayon Teknik</a>
+        Designed by <a href="https://www.instagram.com/pmiiteknik_uninus/">PMII Rayon Teknik</a>
       </div>
     </div>
   </footer><!-- End Footer -->

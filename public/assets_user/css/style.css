@@ -138,10 +138,9 @@ h6 {
     height: 80px;
 }
 
-/* transparan navbar =============================== */
-/* #header.header-transparent {
-    background: transparent;
-} */
+#header.header-transparent {
+    background: rgba(0, 0, 0, 0.9);
+}
 
 #header.header-scrolled {
     background: rgba(0, 0, 0, 0.9);
@@ -206,7 +205,7 @@ h6 {
     font-weight: 600;
     color: #fff;
     white-space: nowrap;
-    text-transform: normal;
+    text-transform: uppercase;
     transition: 0.3s;
 }
 
@@ -233,7 +232,7 @@ h6 {
     padding: 10px 0;
     z-index: 99;
     opacity: 0;
-    /* visibility: hidden; */
+    visibility: hidden;
     background: #fff;
     box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
     transition: 0.3s;
