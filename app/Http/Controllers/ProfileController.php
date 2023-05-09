@@ -24,11 +24,44 @@ class ProfileController extends Controller
      */
     public function index( Request $request)
     {
+      $profile = Auth::user();
+      $profileposts = Post::where('user_id', '=', $profile->id)
+                          ->with('category', 'comments', 'user')
+                          ->where('active', 1)
+                          ->orderBy('created_at', 'desc')
+                          ->get();
+      $profilegaleri = Galeri::where('user_id', $profile->id)
+                          ->where('status', 1)
+                          ->get();
+      $profileperpus = Perpus::where('user_id', $profile->id)
+                          ->get();
+      // menghitung jumlah postingan gambar dan buku yang di upload users 
+      $countpost = Post::where('user_id', '=', $profile->id)
+                        ->where('active', 1)
+                        ->count();
+      $countgaleri = Galeri::where('user_id', '=', $profile->id)
+                        ->where('status', 1)
+                        ->count();
+      $countperpus = Perpus::where('user_id', '=', $profile->id)
+                        ->count();
+
+    
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-        $user = User ::all();
         $user=Auth::user();
-        return view('user.profile', compact('user', 'categories', 'tags'));
+        // dd($profilegaleri);
+        return view('user.profile', compact(
+          'tags', 
+          'user', 
+          'profile', 
+          'countpost',
+          'categories',
+          'countgaleri',
+          'countperpus',
+          'profileposts', 
+          'profilegaleri',
+          'profileperpus',
+        ));
     }
 
     

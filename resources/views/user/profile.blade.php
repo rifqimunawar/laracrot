@@ -1,127 +1,60 @@
 @section('title') {{ 'Profile' }}@endsection
 @extends('user.layout')
 @section('content')
-    
-<div class="container my-4" style="padding-top: 4rem">
-  <main id="main" class="main">
-
-    <div class="pagetitle mt-4">
-      <h1>Profile</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Home</a></li>
-          <li class="breadcrumb-item">{{ $user->role->role }}</li>
-          <li class="breadcrumb-item active">foto</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <section class="section profile">
-      <div class="row"> 
-        <div class="col-xl-4">
-
-          <div class="card">
-            <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
-
-              
-              <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" class="rounded-circle" style="height:200px; width:200px; object-fit: cover;">
-              <h2></h2>
-                  
-              <h3>{{ $user ->username }}</h3>
-              <div class="social-links mt-2">
-                <a href="{{ $user->twitter }}" class="twitter"><i class="bi bi-twitter"></i></a>
-                <a href="{{ $user->fb }}" class="facebook"><i class="bi bi-facebook"></i></a>
-                <a href="{{ $user->ig }}" class="instagram"><i class="bi bi-instagram"></i></a>
-                <a href="https://api.whatsapp.com/send/?phone=62{{ $user->wa }}" class="linkedin"><i class="bi bi-whatsapp"></i></a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="col-xl-8">
-
-          <div class="card">
-
-            
-            <div class="card-body pt-3">
-              <!-- Bordered Tabs -->
-              <ul class="nav nav-tabs nav-tabs-bordered">
-
-                <li class="nav-item">
-                  <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Overview</button>
-                </li>
-
-              </ul>
-              <div class="tab-content pt-2">
-
-                <div class="tab-pane fade show active profile-overview" >
-
-                  <h5 class="card-title">Profile Details</h5>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                    <div class="col-lg-9 col-md-8">{{ $user->name }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Username</div>
-                    <div class="col-lg-9 col-md-8">{{ $user->username }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">NIM</div>
-                    <div class="col-lg-9 col-md-8">{{ $user->nim }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Jenis Kelamin</div>
-                    <div class="col-lg-9 col-md-8">{{ $user->kelamin }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Email</div>
-                    <div class="col-lg-9 col-md-8">{{ $user ->email }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Jenajang Kaderisasi</div>
-                    <div class="col-lg-9 col-md-8">{{ $user->kaderisasi }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Negara</div>
-                    <div class="col-lg-9 col-md-8">Indonesia</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Alamat</div>
-                    <div class="col-lg-9 col-md-8">{{ $user->alamat }}</div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Rayon</div>
-                    <div class="col-lg-9 col-md-8">Rayon {{ $user->rayon->rayon }}</div>
-                  </div>
-
+<div class="container my-4" style="padding-top: 5rem">
+  
+  <header class="pt-3 pb-5 bg-white">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+            <img src="{{ asset('storage/img/'. $profile->img) }}" alt="Profile Image" class="rounded-circle mr-4 profile-image-desktop" style="width: 125px; height: 125px; object-fit: cover;">
+            <div class="d-flex flex-column">
+                <h3 class="h4 font-weight-bold">
+                  {{ $profile->username }} 
+                  @if($profile->centang == '1')
+                    <i class="fas fa-check-circle text-primary"></i>
+                  @endif
+                </h3><br>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                  <a href="/account" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Edit profile</a>
+                  <a href="/uploads" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Uploads</a>
                 </div>
-
-                <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
+                <div class="d-flex align-items-center">
+                    <span class="mr-4"><strong>{{ $countpost }}</strong> posts</span>
+                    <span class="mr-4"><strong>{{ $countgaleri }}</strong> photos</span>
+                    <span><strong>{{ $countperpus }}</strong> library</span>
                 </div>
-
-              </div><!-- End Bordered Tabs -->
-
+                <p class="mt-2">{{ $profile->bio }}</p>
             </div>
-
-          </div>
-
         </div>
-      </div>
-    </section>
+    </div>
+</header>
 
-  </main><!-- End #main -->
-</div>
+	<br>
+	<section class="galeri">
+		<div class="galeri-info">
+			<div class="li-2">
+				<ul class="list-inline">
+					<li><b><hr></b></li>
+					<li><b></b></li>
+					<li><b>{{ $countgaleri }}</b> Foto Terbaru</li>
+					<li><b></b>dari {{ $profile->username }}</li>
+          <li><b><hr></b></li>
+				</ul>
+			</div>
+		</div>
+		<div class="container">
+			<div class="galeri-grid">
+
+        @foreach ($profilegaleri as $item)
+        <div class="galeri-item">
+          <img src="{{ asset('storage/img/'. $item->img) }}" alt="Gallery Image" class="img-fluid">
+        </div>
+      @endforeach
+
+			</div>
+		</div>
+  </div>
+	</section>
 <script>
 $('textarea#summernote').summernote({
   placeholder: 'Sahabat bisa membuat tulisan disini',
