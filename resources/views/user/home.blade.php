@@ -26,7 +26,7 @@
             </div>
           </div>
         @foreach ($home as $hom)
-        <div class="carousel-item" style="background-image: url({{ asset('storage/home/' . $hom['gambar']) }});">
+        <div class="carousel-item" style="background-image: url({{ asset('storage/img/' . $hom->gambar ) }});">
           <div class="carousel-container">
             <div class="container position-absolute top-50 start-50 translate-middle">
               <h2 class="animate__animated animate__fadeInDown">{{ $hom['judul'] }}</h2>

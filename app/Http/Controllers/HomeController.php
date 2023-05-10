@@ -9,6 +9,7 @@ use App\Models\Quotes;
 use App\Models\carausal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
@@ -17,7 +18,7 @@ class HomeController extends Controller
     {
         $user=Auth::user();
         $home = Home::all();
-        $galeries = Galeri::latest()->take(3)->get();
+        $galeries = Galeri::with('user')->where('status', 1)->latest()->take(3)->get();
         $quotes = Quotes::latest()->take(5)->get();
 
         $user_pkn = User::where('kaderisasi', 'pkn')->count(); //total pengguna yang sudah pkn
@@ -53,34 +54,22 @@ class HomeController extends Controller
         $pages = Home::find($id);
         return view('admin/page/edit', compact((['pages'])));
     }
+
     public function update($id, Request $request)
     {
-        $pages = Home::find($id);
-        $validator = Validator::make($request->all(), [
-            'judul' => 'required',
-            'deskripsi' => 'required',
-            'link' => 'required',
-            'gambar' => 'required', 'simtimes|image:png,jpg,jpeg',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-        $pages = Home::findOrFail($id);
-        $pages->judul = $request->judul;
-        $pages->deskripsi = $request->deskripsi;
-        $pages->link = $request->link;
-
-        $pages->update();
-        if ($request->gambar) {
-            $extension = $request->gambar->getClientOriginalExtension();
-            $newFileName = 'home' . '_' . $request->home . '-' . now()->timestamp . '.' . $extension;
-            $request->file('gambar')->move(public_path('/storage/img'), $newFileName);
-            $pages['gambar'] = $newFileName;
-            $pages->update();
-        }
-        $pages->save();
-
-        // return view('admin/page/edit', compact((['pages'])));
-        return (view('/admin/page/edit', compact((['pages']))));
+      $pagesToUpdate = Home::findOrFail($id);
+    
+      $pagesData = $request->all();
+      if ($request->gambar) {
+        $extension = $request->gambar->getClientOriginalExtension();
+        $newFileName = 'banner_update' . '_' . $request->name . '-' . now()->timestamp . '.' . $extension;
+        $request->file('gambar')->move(public_path('/storage/img'), $newFileName);
+        $pagesData['gambar'] = $newFileName;
+      }
+    
+      $pagesToUpdate->update($pagesData);
+    
+      Alert::success('Mantap Sahabat', 'Banner Berhasil Di Ubah');
+      return redirect('/admin/page');
     }
 }

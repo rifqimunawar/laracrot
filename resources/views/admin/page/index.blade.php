@@ -20,7 +20,7 @@
                     <td>{{ $page['deskripsi'] }}</td>
                     <td>{{ $page['link'] }}</td>
                     <td class="text-center">
-                        <img src="{{ asset('storage/home/'.$page['gambar']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
+                        <img src="{{ asset('storage/img/' . $page->gambar ) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                     </td>
                     <td class="text-center">
                         <a href="/admin/page/{{ $page->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
