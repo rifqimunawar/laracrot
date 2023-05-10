@@ -19,7 +19,7 @@
                         <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $pos->category->slug) }}">{{ $pos->category->title }}</a>
                         <p class="text-body" style="padding: 0px; margin: 0px" href="" ><small>{{ $pos->views }} Kali Dilihat</small></p>
                     </div>
-                    <a class="h6 m-0 text-secondary text-uppercase font-weight-bold" href="{{ route('post', ['slug' => $pos->slug]) }}">{{ Str::limit ($pos->title, 30) }}</a>
+                    <a class="h6 m-0 text-secondary font-weight-bold" href="{{ route('post', ['slug' => $pos->slug]) }}">{{ Str::limit ($pos->title, 30) }}</a>
                 </div>
             </div>
             @endforeach

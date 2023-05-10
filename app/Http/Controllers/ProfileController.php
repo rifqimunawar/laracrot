@@ -83,7 +83,7 @@ class ProfileController extends Controller
         if ($request->hasFile('img')) {
             $extension = $request->img->getClientOriginalExtension();
             $newFileName = 'profile' . '_' . $user->username . '-' . now()->timestamp . '.' . $extension;
-            $request->file('img')->storeAs('img', $newFileName);
+            $request->file('img')->move(public_path('/storage/img'), $newFileName);
             $user->img = $newFileName;
         }
     

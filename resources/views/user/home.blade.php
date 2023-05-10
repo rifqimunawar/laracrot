@@ -13,15 +13,15 @@
         <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/home2.jpg') }});"/>
+          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/logo-home.jpg') }});"/>
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Selamat Datang</h2>
                 <p class="animate__animated animate__fadeInUp">Selamat Datang Di Website Resmi Pergerakan Mahasiswa Islam Indonesia 
-                  Komisariat Universitas Islam Nusantara Cabang Kota Bandung, Mari Bergabung Bersama Kami! Bersama PMII Membangun 
+                  Komisariat Universitas Islam Nusantara Cabang Kota Bandung, Mari Bergabung Bersama Kami! <br> Bersama PMII Membangun 
                   Indonesia Yang Maju dan Sejahtera Cmiww.....
                 </p>
-                <a href="#about" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                <a href="/login" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@
             <div class="container position-absolute top-50 start-50 translate-middle">
               <h2 class="animate__animated animate__fadeInDown">{{ $hom['judul'] }}</h2>
               <p class="animate__animated animate__fadeInUp">{{ $hom['deskripsi'] }}</p>
-              <a href="{{ $hom['link'] }}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+              <a href="/login" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@
             <p>Kader Pasca PKL</p>
           </div>
 
-          <div class="col-lg-3 col-6 text-center">
+          <div class="col text-center">
             <span data-purecounter-start="0" data-purecounter-end="{{ $user_pkn }}" data-purecounter-duration="3" class="purecounter"></span>
             <p>Kader Pasca PKN</p>
           </div>
@@ -148,11 +148,11 @@
     <section id="portfolio" class="section-bg">
       <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
+        <header class="section-header py-5">
           <h3>Galeri Terbaru</h3>
         </header>
 
-      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+      <div class="row portfolio-container pt-4 mt-4" data-aos="fade-up" data-aos-delay="200">
 
         @foreach ($galeries->take(3) as $galeri)
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
@@ -165,7 +165,7 @@
 
             <div class="portfolio-info">
               <h4>{{ $galeri->judul }}</h4>
-              <p>{{ $galeri->user->username }}</p>
+              <a href="/profile/{{ $galeri->user->slug }}"><p style="text-transform: lowercase; text-decoration:none">{{ $galeri->user->username }}</p></a>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>Testimonials</h3>
+          <h3 style="text-transform:inherit">Quote Of The Day</h3>
         </header>
 
         <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">

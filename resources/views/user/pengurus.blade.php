@@ -2,7 +2,7 @@
 @section('title') {{ 'Pengurus' }}@endsection
 @extends('user.layout')
 @section('content')
-<div class="text-center my-5 pt-3">
+<div class="text-center">
   <h4 class="pt-5"></h4>
 </div>
 <div class="container my-4">
@@ -12,7 +12,11 @@
     <section id="portfolio" >
       <div class="container" data-aos="fade-up">
         <header class="section-header" style="padding: 5rem">
-          <h3>Galeri Terbaru</h3>
+          <h3 style="text-transform: none">PENGURUS 
+              <br> PMII Komisariat <br>
+              Universitas Islam Nusantara <br> 
+              Masa Bakti 2023/2024</h3>
+              <p>Kabinet PMII Maju dan Berkembang</p>
         </header>
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
