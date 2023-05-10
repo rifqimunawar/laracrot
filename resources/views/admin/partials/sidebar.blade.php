@@ -75,6 +75,20 @@
           {{-- <span>Pages</span> --}}
         </a>
       </li><!-- End Profile Page Nav -->
+      
+      <li class="nav-item">
+        <a class="nav-link {{ request()->is('admin/quotes*') ? ' active' : ' collapsed' }}" href="/admin/quotes">
+          <i class="bi bi-chat-left-text"></i><span>Quotes</span></i>
+          {{-- <span>Pages</span> --}}
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {{ request()->is('admin/quotes*') ? ' active' : ' collapsed' }}" href="/admin/pengurus">
+          <i class="bi bi-person-lines-fill"></i><span>Pengurus</span></i>
+          {{-- <span>Pages</span> --}}
+        </a>
+      </li><!-- End Profile Page Nav -->
           @endif
         @endauth
 

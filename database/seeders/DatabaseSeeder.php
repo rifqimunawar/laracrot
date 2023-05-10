@@ -21,11 +21,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
-            // PostsSeeder::class,
+            PengurusSeeder::class,
             GaleriSeeder::class,
             HomeSeeder::class,
             PerpusSeeder::class,
-            // KaderSeeder::class,
+            QuotesSeeder::class,
             CategorySeeder::class,
             TagSeeder::class,
             RayonSeeder::class,

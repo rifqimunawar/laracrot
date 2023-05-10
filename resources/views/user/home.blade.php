@@ -177,6 +177,42 @@
 
 
     
+    <!-- ======= Testimonials Section ======= -->
+    <section id="testimonials" class="section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Testimonials</h3>
+        </header>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+          <div class="swiper-wrapper">
+
+            @foreach ($quotes as $quote)
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <img src="{{ asset('storage/img/'. $quote->img ) }}" class="testimonial-img" 
+                alt="" style="width: 110px; height:110px; object-fit:cover">
+                <h3>{{ $quote->name }}</h3>
+                <h4>{{ $quote->who }}</h4>
+                <p>
+                  <img src="{{ asset('assets_user/img/quote-sign-left.png') }}" class="quote-sign-left" alt="">
+                  {{ $quote->quote }}
+                  <img src="{{ asset('assets_user/img/quote-sign-right.png') }}" class="quote-sign-right" alt="">
+                </p>
+              </div>
+            </div><!-- End testimonial item -->
+            @endforeach
+
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+    </section><!-- End Testimonials Section -->
+
+
+    
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="section-bg">
       <div class="container" data-aos="fade-up">

@@ -20,7 +20,7 @@
               <li class="dropdown"><a href="/#about"><span>About</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="/#about">About Us</a></li>
-                  <li><a href="#team">Pengurus</a></li>
+                  <li><a href="/pengurus">Pengurus</a></li>
                   <li><a href="/calendar">Agenda</a></li>
                   <li><a href="/post">Blog</a></li>
                 </ul>

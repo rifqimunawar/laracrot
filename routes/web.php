@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\QuotesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -40,6 +42,7 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/post', [PostController::class, 'index'])->name('index');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
+Route::get('/pengurus', [PengurusController::class, 'show'])->name('show');
 Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
@@ -157,5 +160,19 @@ Route::middleware(['auth', 'role:1'])->group(function () {
   Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
   Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
   Route::delete('/admin/rayon/{id}', [RayonController::class, 'destroy'])->name('rayon.destroy');
+
+  Route::get('/admin/quotes/', [QuotesController::class, 'index'])->name('index');
+  Route::get('/admin/quotes/create', [QuotesController::class, 'create'])->name('create');
+  Route::post('/admin/quotes/store', [QuotesController::class, 'store'])->name('store');
+  Route::get('/admin/quotes/{id}/edit', [QuotesController::class, 'edit'])->name('quotes.edit');
+  Route::put('/admin/quotes/{id}', [QuotesController::class, 'update'])->name('quotes.update');
+  Route::delete('/admin/quotes/{id}', [QuotesController::class, 'destroy'])->name('quotes.destroy');
+
+  Route::get('/admin/pengurus/', [PengurusController::class, 'index'])->name('index');
+  Route::get('/admin/pengurus/create', [PengurusController::class, 'create'])->name('create');
+  Route::post('/admin/pengurus/store', [PengurusController::class, 'store'])->name('store');
+  Route::get('/admin/pengurus/{id}/edit', [PengurusController::class, 'edit'])->name('pengurus.edit');
+  Route::put('/admin/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
+  Route::delete('/admin/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
 
   });

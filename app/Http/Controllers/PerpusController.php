@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Perpus;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\RedirectResponse;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PerpusController extends Controller
@@ -24,7 +24,7 @@ class PerpusController extends Controller
 
     public function admin_index(Request $request)
     {
-        $perpus = Perpus::all();
+        $perpus = Perpus::paginate(10);
         return view('admin/perpus/index', compact('perpus'));
     }
 
@@ -48,14 +48,14 @@ class PerpusController extends Controller
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
             $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('/img', $newFileName);
+            $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
             $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('pdf')->storeAs('/pdf', $newFileName);
+            $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }
         $perpus = Perpus::create($perpus);

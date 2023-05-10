@@ -149,7 +149,7 @@ class ProfileController extends Controller
         if ($request->hasFile('img')) {
             $extension = $request->file('img')->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('img')->storeAs('/img', $newFileName);
+            $request->file('img')->move(public_path('/storage/img'), $newFileName);
             $galeri->img = $newFileName;
         }
     
@@ -170,7 +170,7 @@ class ProfileController extends Controller
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
             $newFileName = 'blog' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('/img', $newFileName);
+            $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $data['image'] = $newFileName;
         }
 
@@ -189,14 +189,14 @@ class ProfileController extends Controller
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
             $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('/img', $newFileName);
+            $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
             $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('pdf')->storeAs('/pdf', $newFileName);
+            $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }
         $perpus = Perpus::create($perpus);

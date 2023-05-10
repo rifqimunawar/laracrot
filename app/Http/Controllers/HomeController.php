@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Home;
 use App\Models\User;
 use App\Models\Galeri;
+use App\Models\Quotes;
 use App\Models\carausal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class HomeController extends Controller
         $user=Auth::user();
         $home = Home::all();
         $galeries = Galeri::latest()->take(3)->get();
+        $quotes = Quotes::latest()->take(5)->get();
 
         $user_pkn = User::where('kaderisasi', 'pkn')->count(); //total pengguna yang sudah pkn
         $pkl = ['PKL', 'PKN']; //total pkl adalah yang sudah pkl ditambah pkn
@@ -28,6 +30,7 @@ class HomeController extends Controller
         return view('/user/home', compact([
           'home', 
           'user',
+          'quotes',
           'galeries', 
           'user_mapaba', 
           'user_pkd', 
@@ -71,7 +74,7 @@ class HomeController extends Controller
         if ($request->gambar) {
             $extension = $request->gambar->getClientOriginalExtension();
             $newFileName = 'home' . '_' . $request->home . '-' . now()->timestamp . '.' . $extension;
-            $request->file('gambar')->storeAs('/home', $newFileName);
+            $request->file('gambar')->move(public_path('/storage/img'), $newFileName);
             $pages['gambar'] = $newFileName;
             $pages->update();
         }
