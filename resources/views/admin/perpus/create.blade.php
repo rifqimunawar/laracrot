@@ -9,7 +9,9 @@
             @csrf
 
             <label for="pdf">Masukan Buku Pdf/ Karya Tulis Word atau Karya Ilmiah Lainnya</label>
-            <input type="file" class="form-control my-4" name="pdf" id="pdf">
+            <input type="file" class="form-control my-4" name="pdf" id="pdf" 
+            accept="application/pdf,application/vnd.ms-word">
+
             
             <label for="image">Masukan Cover Buku</label>
             <input type="file" class="form-control my-4" name="image" id="image">

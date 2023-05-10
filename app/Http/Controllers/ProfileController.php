@@ -184,18 +184,19 @@ class ProfileController extends Controller
 
     public function storeperpus(Request $request)
     {
-        $perpus = $request->all();
+      $perpus = $request->all();
+      $perpus['user_id'] = Auth::user()->id;
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
             $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
             $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }
