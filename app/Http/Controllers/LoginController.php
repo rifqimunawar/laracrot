@@ -17,6 +17,10 @@ class LoginController extends Controller
 {
     public function login()
     {
+        if (auth()->check()) {
+            return redirect('/profile');
+        }
+    
         return view('auth.login');
     }
     public function authenticate(Request $request)
