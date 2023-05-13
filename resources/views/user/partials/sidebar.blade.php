@@ -33,7 +33,7 @@
         <div class="bg-white border border-top-0 p-3">
             <div class="d-flex flex-wrap m-n1">
                 @foreach ($post_categories as $categories)
-                    <a href="{{ route('category', $categories->slug) }}"class="btn btn-sm btn-outline-secondary m-1">{{ $categories->title }}</a>
+                    <a href="{{ route('category', $categories->slug) }}"class="btn btn-sm text-uppercase btn-outline-secondary m-1">{{ $categories->title }}</a>
                 @endforeach
             </div>
         </div>

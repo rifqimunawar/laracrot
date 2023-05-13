@@ -3,20 +3,6 @@
 @section('content')
 
 
-    <!-- ======= Breadcrumbs ======= -->
-    {{-- <section id="breadcrumbs" class="breadcrumbs">
-      <div class="container">
-        <ol>
-          <li><a href="index.html">Home</a></li>
-        </ol>
-        <h2>Blog</h2>
-
-      </div>
-    </section> --}}
-    <!-- End Breadcrumbs -->
-    {{-- @foreach ($blog as $blok) --}}
-
-
     
 
     <!-- Main News Slider Start -->
@@ -33,7 +19,7 @@
   
                   <div class="overlay">
                           <div class="mb-2 overflow-hidden">
-                              <a class="badge badge-primary font-weight-semi-bold p-2 mr-2"
+                              <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                   href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                   <h8 style="color: #fff">
                                     {{ $post->created_at->diffForHumans() }}
@@ -56,7 +42,7 @@
                         @endif
                           <div class="overlay">
                               <div class="mb-2">
-                                  <a class="badge badge-warning font-weight-semi-bold p-2 mr-2"
+                                  <a class="badge badge-warning text-uppercase font-weight-semi-bold p-2 mr-2"
                                       href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                       <h9 style="color: #fff">
                                         {{ $post->created_at->diffForHumans() }}
@@ -152,7 +138,7 @@
                 @endif
                   <div class="overlay">
                       <div class="mb-2">
-                          <a class="badge badge-primary font-weight-semi-bold p-2 mr-2"
+                          <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                               href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                       </div>
                       <a class="h6 m-0 text-white font-weight-semi-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 50) }}</a>
@@ -186,7 +172,7 @@
                           @endif
                             <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                                 <div class="mb-2">
-                                    <a class="badge badge-primary font-weight-semi-bold p-1 mr-2" href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
+                                    <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                 </div>
                                 <div class="mb-2">
                                     <a class="h6 m-0 text-secondary font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 30) }}</a>

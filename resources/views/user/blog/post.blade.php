@@ -21,7 +21,8 @@
                         <!-- Post meta content-->
                         <div class="text-muted my-2">
                             <i class="bi bi-clock"></i> {{ $post->created_at->diffForHumans() }} 
-                            <i class="bi bi-person-fill mx-2"> Upload by:</i> <a href="/profile/{{ $post->user->slug }}"> {{ $post->user->username }} @if($post->user->centang == '1') <i class="fas fa-check-circle text-primary"></i>@endif</a>
+                            <i class="bi bi-person-fill mx-2"> Upload by:</i> <a href="/profile/{{ $post->user->slug }}"> 
+                              {{ $post->user->username }} @if($post->user->centang == '1') <i class="fas fa-check-circle text-primary"></i>@endif</a>
                             <i class="bi bi-eye-fill mx-2"> Dilihat: </i>  {{ $post->views }} Kali
                         </div>
                     </header>
@@ -49,11 +50,7 @@
                               @csrf
                               <input type="hidden" name="post_id" value="{{ $post->id }}">
                               <textarea name="comment" required class="form-control" rows="3" placeholder="Komentar Anda...."></textarea>
-                                @auth 
-                                  @if (in_array(auth()->user()->role_id, [1, 2, 3]))
-                                    <button type="submit" class="btn">Kirim Komentar</button>
-                                  @endif
-                                @endauth
+                              <button type="submit" class="btn btn-success">Komentar</button>
                             </form>
                             
                             @foreach($post->comments as $comment)

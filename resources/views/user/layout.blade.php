@@ -11,7 +11,7 @@
 
   <!-- Favicons -->
   <link href="{{ asset('assets_user/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets_user/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+  <link href="{{ asset('assets_user/img/favicon.png') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=PT+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -49,10 +49,10 @@
   <link rel="stylesheet" href="{{ asset ('assets_user/css/style.css') }}">
 
   {{-- link css for news ================================================== penyebab error hamburger --}}
-  {{-- <link rel="stylesheet" href="{{ asset('css/stylenews.css') }}"> --}}
+  <link rel="stylesheet" href="{{ asset('css/stylenews.css') }}">
   
   <!-- Libraries Stylesheet carausel news ==================================  penyebab error hamburger-->
-  {{-- <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> --}}
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
   {{-- calendar agenda  --}}
   <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />

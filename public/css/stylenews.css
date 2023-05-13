@@ -74,10 +74,6 @@ body {
     background-color: #edeff4;
 }
 
-.zoom-in {
-    transform: scale(1.1);
-}
-
 [tabindex="-1"]:focus:not(:focus-visible) {
     outline: 0 !important;
 }
@@ -171,13 +167,13 @@ sup {
 }
 
 a {
-    color: #ffcc00;
+    color: #6c757d;
     text-decoration: none;
     background-color: transparent;
 }
 
 a:hover {
-    color: #b38f00;
+    color: #6e9fca;
     text-decoration: underline;
 }
 
@@ -4275,7 +4271,7 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-    position: relative;
+    /* position: relative; */
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -9669,12 +9665,12 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-    color: #ffcc00 !important;
+    color: #0d6efd !important;
 }
 
 a.text-primary:hover,
 a.text-primary:focus {
-    color: #b38f00 !important;
+    color: #0d6efd !important;
 }
 
 .text-secondary {
