@@ -1,132 +1,127 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Register</title>
+  <title>Form Registrasi</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Link ke stylesheet bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
-  <section class="vh-100" style="background-color: #363636;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col col-xl-10">
-          <div class="card" style="border-radius: 1rem;">
-            <div class="row g-0">
-              <div class="col-md-6 col-lg-5 d-none d-md-block">
-                <img src="{{ asset('storage/img/register.jpg') }}"
-                  alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-              </div>
-              <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                <div class="card-body p-4 p-lg-5 text-black">
-                  <form method="POST" action="/register/store">
-                    @csrf
-  
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
-                    <div class="form-group row mb-3">
-                        <div class="col-md-12">
-                            <input id="name" type="text" id="form2Example17" class="form-control form-control-lg" @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                            @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
-                    <div class="form-group row mb-3">
-                        <div class="col-md-12">
-                            <input id="username" type="text" class="form-control form-control-lg" @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
-  
-                            @error('username')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                    
-                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Rayon') }}</label>
-                    <div class="form-group row mb-3">
-                      <div class="col-md-12">
-                        <select id="rayon_id" name="rayon_id" class="form-select">
-                          <option value="3">Rayon Ulul Albab</option>
-                          <option value="2">Rayon Hukum</option>
-                          <option value="1">Rayon Teknik</option>
-                          <option value="4">Rayon Ekonomi</option>
-                          <option value="5">Rayon Fikom</option>
-                          <option value="6">Rayon Fkip</option>
-                        </select>
+  <div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+                      <div class="card">
+                          <div class="card-header">{{ __('Register') }}</div>
+      
+                          <div class="card-body">
+                              <form method="POST" action="/register/store">
+                                  @csrf
+      
+                                  <div class="form-group row">
+                                      <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
+      
+                                      <div class="col-md-6">
+                                          <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+      
+                                          @error('name')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                      </div>
+                                  </div>
+                                  <div class="form-group row">
+                                      <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+      
+                                      <div class="col-md-6">
+                                          <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+      
+                                          @error('username')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                      </div>
+                                  </div>
+                                  
+                                  <div class="form-group row">
+                                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Rayon') }}</label>
+                                    <div class="col-md-6">
+                                      <select id="rayon_id" name="rayon_id" class="form-select">
+                                        <option value="3">Rayon Ulul Albab</option>
+                                        <option value="2">Rayon Hukum</option>
+                                        <option value="1">Rayon Teknik</option>
+                                        <option value="4">Rayon Ekonomi</option>
+                                        <option value="5">Rayon Fikom</option>
+                                        <option value="6">Rayon Fkip</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                  
+                                  <div class="form-group row">
+                                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                                    <div class="col-md-6">
+                                      <select id="role_id" name="role_id" class="form-select">
+                                        {{-- <option value="1">Super Admin/Komisariat</option>
+                                        <option value="2">Admin/Rayon</option> --}}
+                                        <option value="3">User/Kader</option>
+                                      </select>
+                                    </div>
+                                  </div>
+
+                                  
+                                  
+
+                                  <div class="form-group row">
+                                      <label for="nim" class="col-md-4 col-form-label text-md-right">{{ __('Nim') }}</label>
+      
+                                      <div class="col-md-6">
+                                          <input id="nim" type="number" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" autocomplete="nim">
+      
+                                          @error('nim')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                      </div>
+                                  </div>
+      
+                                  <div class="form-group row">
+                                      <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+      
+                                      <div class="col-md-6">
+                                          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+      
+                                          @error('password')
+                                              <span class="invalid-feedback" role="alert">
+                                                  <strong>{{ $message }}</strong>
+                                              </span>
+                                          @enderror
+                                      </div>
+                                  </div>
+      
+                                  <div class="form-group row">
+                                      <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+      
+                                      <div class="col-md-6">
+                                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                      </div>
+                                  </div>
+      
+                                  <div class="form-group row my-2">
+                                      <div class="col-md-6 offset-md-4">
+                                          <button type="submit" class="btn btn-primary">
+                                              {{ __('Register') }}
+                                          </button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
                       </div>
-                    </div>
-                    
-                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
-                    <div class="form-group row mb-3">
-                      <div class="col-md-12">
-                        <select id="role_id" name="role_id" class="form-select">
-                          {{-- <option value="1">Super Admin/Komisariat</option>
-                          <option value="2">Admin/Rayon</option> --}}
-                          <option value="3">User/Kader</option>
-                        </select>
-                      </div>
-                    </div>
-  
-                    
-                    
-  
-                    <label for="nim" class="col-md-4 col-form-label text-md-right">{{ __('Nim') }}</label>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <input id="nim" type="number" class="form-control form-control-lg" @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" autocomplete="nim">
-  
-                            @error('nim')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-  
-                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-                    <div class="form-group row mb-3">
-  
-                        <div class="col-md-12">
-                            <input id="password" type="password" class="form-control form-control-lg" @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-  
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-  
-                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-                    <div class="form-group row mb-3">
-  
-                        <div class="col-md-12">
-                            <input id="password-confirm" type="password" class="form-control form-control-lg" name="password_confirmation" required autocomplete="new-password">
-                        </div>
-                    </div>
-  
-                    <div class="form-group row mb-3">
-                      <div class="col-md-12 offset-md-4">
-                          <a href="/login" class="btn btn-warning btn-lg btn-block" >Kembali</a>
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                {{ __('Register') }}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                  </div>
     </div>
-  </section>
+  </div>
 
   {{-- validasi confrimsi password harus sama dengan password yang dimasukan  --}}
   <script type="text/javascript">
