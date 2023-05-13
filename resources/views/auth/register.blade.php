@@ -60,18 +60,13 @@
                                   </div>
                                   
                                   <div class="form-group row">
-                                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+                                    <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Komisariat') }}</label>
                                     <div class="col-md-6">
                                       <select id="role_id" name="role_id" class="form-select">
-                                        {{-- <option value="1">Super Admin/Komisariat</option>
-                                        <option value="2">Admin/Rayon</option> --}}
-                                        <option value="3">User/Kader</option>
+                                        <option value="4">Uninus</option>
                                       </select>
                                     </div>
                                   </div>
-
-                                  
-                                  
 
                                   <div class="form-group row">
                                       <label for="nim" class="col-md-4 col-form-label text-md-right">{{ __('Nim') }}</label>
