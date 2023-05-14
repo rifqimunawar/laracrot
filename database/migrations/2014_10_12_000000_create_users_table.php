@@ -15,7 +15,7 @@ return new class extends Migration
           
           // hal yang bersifat pribadi
           $table->string('name'); //public
-          $table->string('nim'); //->unique();
+          $table->string('nim')->unique();
           $table->string('img')->default('user.png');
           $table->string('alamat')->nullable()->dafault('uninus pride');
           $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');

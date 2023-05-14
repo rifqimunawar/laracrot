@@ -72,7 +72,7 @@ Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
 });
 
 // =====================================================
-// Route Kader, Admin Superadmin =======================
+// Route Kader, Admin, Superadmin =======================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
   Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');

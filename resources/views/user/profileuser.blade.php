@@ -20,6 +20,21 @@
                     <span class="mr-4"><strong>{{ $countgaleri }}</strong> photos</span>
                     <span><strong>{{ $countperpus }}</strong> library</span>
                 </div>
+                  @if($profile->kaderisasi == 'Belum Mapaba')
+                    <button class="btn btn-danger">Belum Mapaba</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'Mapaba')
+                    <button class="btn btn-success">Kader Muttaqid</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'PKD')
+                    <button class="btn btn-success">Kader Mujjahid</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'PKL')
+                    <button class="btn btn-success">Kader Mujtahid</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'PKN')
+                    <button class="btn btn-success">Kader PKN</button>
+                  @endif   
                 <p class="mt-2">{{ $profile->bio }}</p>
             </div>
         </div>

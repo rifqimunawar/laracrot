@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -91,9 +92,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update($id, Request $request)
     {
-        //
+      $userToUpdate = User::findOrFail($id);
+    
+      $userData = $request->all();
+      if ($request->img) {
+        $extension = $request->img->getClientOriginalExtension();
+        $newFileName = 'user' . '_' . $request->username . '-' . now()->timestamp . '.' . $extension;
+        $request->file('img')->move(public_path('/storage/img'), $newFileName);
+        $userData['img'] = $newFileName;
+      }
+    
+      $userToUpdate->update($userData);
+    
+      Alert::success('Mantap Sahabat', 'User Berhasil Di Update');
+      return redirect('/admin');
     }
 
     /**

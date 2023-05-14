@@ -8,7 +8,9 @@
       </div>
       <div class="row pt-4 mt-5">
         <div class="col-md-6">
-            <form action="">
+            <form action="/admin/user/{{ $user->id }}" method="post">
+              @csrf
+              @method('put')
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama Lengkap</label>
                     <input type="text" class="form-control" id="name" value="{{ $user->name }}" readonly>
@@ -78,7 +80,7 @@
                   <label for="kaderisasi" class="form-label">Jenjang Kaderisasi Saat Ini</label>
                   <div class="col-md-12">
                       <select id="kaderisasi" name="kaderisasi" class="form-select" onchange="showOptions()">
-                          <option>-- Jenjang Kaderisasi Formal Saat ini --</option>
+                          <option value="Belum Mapaba">-- Jenjang Kaderisasi Formal Saat ini --</option>
                           <option value="Belum Mapaba">Belum Mapaba</option>
                           <option value="Mapaba">Mapaba</option>
                           <option value="PKD">PKD</option>
@@ -90,7 +92,7 @@
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_mapaba" name="thn_mapaba" class="form-select" style="display:none;">
-                          <option>-- Mapaba Tahun Berapa --</option>
+                          <option value="-">-- Mapaba Tahun Berapa --</option>
                           <option value="Sebelum 2018">Mapaba Sebelum 2018</option>
                           <option value="2018">Mapaba 2018</option>
                           <option value="2019">Mapaba 2019</option>
@@ -104,7 +106,7 @@
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_pkd" name="thn_pkd" class="form-select" style="display:none;">
-                          <option>-- PKD Tahun Berapa --</option>
+                          <option value="-">-- PKD Tahun Berapa --</option>
                           <option value="Sebelum 2018">PKD Sebelum 2018</option>
                           <option value="2018">PKD 2018</option>
                           <option value="2019">PKD 2019</option>
@@ -118,7 +120,7 @@
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_pkl" name="thn_pkl" class="form-select" style="display:none;">
-                          <option>-- PKL Tahun Berapa --</option>
+                          <option value="-">-- PKL Tahun Berapa --</option>
                           <option value="Sebelum 2018">PKL Sebelum 2018</option>
                           <option value="2018">PKL 2018</option>
                           <option value="2019">PKL 2019</option>
@@ -132,7 +134,7 @@
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_pkn" name="thn_pkn" class="form-select" style="display:none;">
-                          <option>-- PKN Tahun Berapa --</option>
+                          <option value="-" >-- PKN Tahun Berapa --</option>
                           <option value="Sebelum 2018">PKN Sebelum 2018</option>
                           <option value="2018">PKN 2018</option>
                           <option value="2019">PKN 2019</option>
@@ -189,7 +191,7 @@
                   <p>Jika Anggota tersebut memang benar tercatat di database rayon, maka pilih "Kader PMII Uninus", <br>
                   Namun, jika anggota tersebut tidak tercatat di database rayon maka pilih "Bukan Kader PMII Uninus"</p>
                   <div class="col-md-12">
-                    <select id="rayon_id" name="rayon_id" class="form-select">
+                    <select id="role_id" name="role_id" class="form-select">
                       <option value="3" {{ $user->role_id == '3' ? 'selected' : '' }}>Kader PMII Uninus</option>
                       <option value="4" {{ $user->role_id == '4' ? 'selected' : '' }}>Pengjunjung</option>
                       <option value="5" {{ $user->role_id == '5' ? 'selected' : '' }}>Bukan Kader PMII Uninus</option>
@@ -197,6 +199,14 @@
                 </div>
               </div>
               {{-- Role end  --}}
+
+              {{-- Role Start --}}
+              <div class="my-3 pt-4">
+                <div>
+                  <a href="/admin/user"><button class="btn btn-warning" type="submit">Kembali</button></a> 
+                  <button class="btn btn-primary" type="submit">Simpan</button>
+                </div>
+            </div>
             </form>
         </div>
         
