@@ -28,6 +28,23 @@ class HomeController extends Controller
         $user_pkd = User::whereIn('kaderisasi', $pkd)->count(); //total pkd
         $mapaba = ['Mapaba', 'PKD', 'PKL', 'PKN']; //total mapaba ditambah pkd pkl dan pkn
         $user_mapaba = User::whereIn('kaderisasi', $mapaba)->count(); //total mapaba
+
+        $user_kelamin_l = User::where('kelamin', 'L')->count();
+        $user_kelamin_p = User::where('kelamin', 'P')->count();
+        $user_rayon_1 = User::where('rayon_id', '1')->count();
+        $user_rayon_2 = User::where('rayon_id', '2')->count();
+        $user_rayon_3 = User::where('rayon_id', '3')->count();
+        $user_rayon_4 = User::where('rayon_id', '4')->count();
+        $user_rayon_5 = User::where('rayon_id', '5')->count();
+        $user_rayon_6 = User::where('rayon_id', '6')->count();
+
+        $mapaba_sebelum_2018 = User::where('thn_mapaba', 'Sebelum 2018')->count(); //total mapaba sebelum 2018
+        $mapaba_2018 = User::where('thn_mapaba', '2018')->count(); //total mapaba di tahun 2018
+        $mapaba_2019 = User::where('thn_mapaba', '2019')->count(); //total mapaba di tahun 
+        $mapaba_2020 = User::where('thn_mapaba', '2020')->count(); //total mapaba di tahun 
+        $mapaba_2021 = User::where('thn_mapaba', '2021')->count(); //total mapaba di tahun 
+        $mapaba_2022 = User::where('thn_mapaba', '2022')->count(); //total mapaba di tahun 
+        $mapaba_2023 = User::where('thn_mapaba', '2023')->count(); //total mapaba di tahun 
         return view('/user/home', compact([
           'home', 
           'user',
@@ -37,6 +54,21 @@ class HomeController extends Controller
           'user_pkd', 
           'user_pkl', 
           'user_pkn',
+          'mapaba_sebelum_2018',
+          'mapaba_2018',
+          'mapaba_2019',
+          'mapaba_2020',
+          'mapaba_2021',
+          'mapaba_2022',
+          'mapaba_2023',
+          'user_kelamin_l', 
+          'user_kelamin_p',
+          'user_rayon_1',
+          'user_rayon_2',
+          'user_rayon_3',
+          'user_rayon_4',
+          'user_rayon_5',
+          'user_rayon_6',
         ]));
     }
 

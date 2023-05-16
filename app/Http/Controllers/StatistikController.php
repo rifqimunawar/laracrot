@@ -16,15 +16,11 @@ class StatistikController extends Controller
     $roles = [1, 2, 3]; //role untuk user admin dan superadmin
     $user_anggota_count = User::whereIn('role_id', $roles)->count(); //total anggota dengan role 123
     $user_unmapaba = User::where('kaderisasi', 'Belum Mapaba')->count(); //total pengguna yang belum mapaba
-
     $user_pkn = User::where('kaderisasi', 'pkn')->count(); //total pengguna yang sudah pkn
-
     $pkl = ['PKL', 'PKN']; //total pkl adalah yang sudah pkl ditambah pkn
     $user_pkl = User::whereIn('kaderisasi', $pkl)->count(); //total pkl
-    
     $pkd = ['PKD', 'PKL', 'PKN']; //total pkd adalah yang sudah pkd ditambah pkl dan pkn
     $user_pkd = User::whereIn('kaderisasi', $pkd)->count(); //total pkd
-
     $mapaba = ['Mapaba', 'PKD', 'PKL', 'PKN']; //total mapaba ditambah pkd pkl dan pkn
     $user_mapaba = User::whereIn('kaderisasi', $mapaba)->count(); //total mapaba
 

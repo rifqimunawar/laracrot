@@ -143,6 +143,197 @@
     </section><!-- End Facts Section -->
 
 
+            <!-- Reports -->
+    <div class="col-12 p-4"  data-aos="fade-up">
+      <div class="card">
+
+        <div class="card-body">
+          <h5 class="card-title">Data Mapaba <span>Dari Tahun Ke Tahun</span></h5>
+
+          <!-- Line Chart -->
+          <div id="reportsChart"></div>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              new ApexCharts(document.querySelector("#reportsChart"), {
+                series: [{
+                  name: 'Mapaba',
+                  data: [{{ $mapaba_2018 }}, {{ $mapaba_2019 }}, {{ $mapaba_2020 }}, 
+                  {{ $mapaba_2021 }}, {{ $mapaba_2022 }}, {{ $mapaba_2023 }}, {{ $mapaba_2023 }}],
+                }, 
+
+                ],
+                chart: {
+                  height: 350,
+                  type: 'area',
+                  toolbar: {
+                    show: false
+                  },
+                },
+                markers: {
+                  size: 4
+                },
+                colors: ['#4154f1', '#2eca6a', '#ff771d'],
+                fill: {
+                  type: "gradient",
+                  gradient: {
+                    shadeIntensity: 1,
+                    opacityFrom: 0.3,
+                    opacityTo: 0.4,
+                    stops: [0, 90, 100]
+                  }
+                },
+                dataLabels: {
+                  enabled: false
+                },
+                stroke: {
+                  curve: 'smooth',
+                  width: 2
+                },
+                xaxis: {
+                  type: 'datetime',
+                  categories: ["2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025"]
+                },
+                tooltip: {
+                  x: {
+                    format: 'yyyy'
+                  },
+                },
+              }).render();
+            });
+          </script>
+          <!-- End Line Chart -->
+
+        </div>
+
+      </div>
+    </div><!-- End Reports -->
+
+
+    {{-- <div class="row p-5"> --}}
+    <div class="p-4"  data-aos="fade-up">
+      <!-- Website Traffic -->
+      <div class="col-12 mb-2">
+        <div class="card">
+          <div class="card-body pb-0">
+            <h5 class="card-title">Kader Berdasarkan <span>| Jenis Kelamin </span></h5>
+            <div id="trafficChart" style="min-height: 400px;" class="echart"></div>
+            <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                echarts.init(document.querySelector("#trafficChart")).setOption({
+                  tooltip: {
+                    trigger: 'item'
+                  },
+                  legend: {
+                    top: '5%',
+                    left: 'center'
+                  },
+                  series: [{
+                    name: 'Access From',
+                    type: 'pie',
+                    radius: ['40%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                      show: false,
+                      position: 'center'
+                    },
+                    emphasis: {
+                      label: {
+                        show: true,
+                        fontSize: '18',
+                        fontWeight: 'bold'
+                      }
+                    },
+                    labelLine: {
+                      show: false
+                    },
+                    data: [{
+                        value: {{ $user_kelamin_p }},
+                        name: 'Perempuan'
+                      },
+                      {
+                        value: {{ $user_kelamin_l }},
+                        name: 'Kader Laki-Laki'
+                      },
+                    ]
+                  }]
+                });
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <!-- End Website Traffic -->
+    
+      <!-- Start Pie Chart -->
+      <div class="col-12 mb-2"  data-aos="fade-up">
+        <div class="card">
+          <div class="card-body">
+          <h5 class="card-title">Kader Berdasarkan <span>| Rayon </span></h5>
+          <!-- Pie Chart -->
+          <div id="pieChart" style="min-height: 600px;" class="echart"></div>
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              echarts.init(document.querySelector("#pieChart")).setOption({
+                title: {
+                  // text: 'Referer of a Website',
+                  // subtext: 'Fake Data',
+                  left: 'center'
+                },
+                tooltip: {
+                  trigger: 'item'
+                },
+                legend: {
+                  orient: 'vertical',
+                  left: 'left'
+                },
+                series: [{
+                  name: 'Access From',
+                  type: 'pie',
+                  radius: '50%',
+                  data: [{
+                      value: {{ $user_rayon_1 }},
+                      name: 'Teknik'
+                    },
+                    {
+                      value: {{ $user_rayon_2 }},
+                      name: 'Hukum'
+                    },
+                    {
+                      value: {{ $user_rayon_3 }},
+                      name: 'Ulul Albab'
+                    },
+                    {
+                      value: {{ $user_rayon_4 }},
+                      name: 'Ekonomi'
+                    },
+                    {
+                      value: {{ $user_rayon_5 }},
+                      name: 'Fikom'
+                    },
+                    {
+                      value: {{ $user_rayon_6 }},
+                      name: 'Fkip'
+                    }
+                  ],
+                  emphasis: {
+                    itemStyle: {
+                      shadowBlur: 10,
+                      shadowOffsetX: 0,
+                      shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                  }
+                }]
+              });
+            });
+          </script>
+        </div>
+        <!-- End Pie Chart -->
+      </div>
+    </div>
+
+
+
     
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="section-bg">
@@ -248,7 +439,13 @@
         </div>
 
       </div>
+    </div>
     </section><!-- End Contact Section -->
 
 
+    <!-- script for chart --> 
+    <script src="/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="/assets/vendor/echarts/echarts.min.js"></script>
 @endsection
