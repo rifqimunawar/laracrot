@@ -37,8 +37,11 @@
                         <a href="{{ route('rayon.show', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
                     </td>
                     <td class="text-center">
-                        <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                    @if (in_array(auth()->user()->role_id, [1]))
+                      <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                      @endif
                     </td>
+                    
                     {{-- <td class="text-start">
                         <form action="{{ route('rayon.destroy', $kdr->id) }}" method="POST">
                             @csrf

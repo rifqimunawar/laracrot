@@ -138,6 +138,13 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
     Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
+
+    Route::get('/admin/administrator/', [UserController::class, 'administrator'])->name('administrator');
+    Route::get('/admin/quotes/create', [QuotesController::class, 'create'])->name('create');
+    Route::post('/admin/quotes/store', [QuotesController::class, 'store'])->name('store');
+    Route::get('/admin/quotes/{id}/edit', [QuotesController::class, 'edit'])->name('quotes.edit');
+    Route::put('/admin/quotes/{id}', [QuotesController::class, 'update'])->name('quotes.update');
+    Route::delete('/admin/quotes/{id}', [QuotesController::class, 'destroy'])->name('quotes.destroy');
   });
     // =====================================================
     // Route Super Admin only ==============================

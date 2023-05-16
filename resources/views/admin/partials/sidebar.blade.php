@@ -21,7 +21,7 @@
       </li><!-- End Profile Page Nav -->
 
       @auth 
-        @if (in_array(auth()->user()->role_id, [1, 2]))
+        @if (in_array(auth()->user()->role_id, [1]))
           <li class="nav-item">
             <a class="nav-link {{ request()->is('admin/kader*') ? ' active' : ' collapsed' }}" href="/admin/kader">
               <i class="bi bi-person"></i>
@@ -32,7 +32,7 @@
       @endauth
 
       @auth 
-          @if (in_array(auth()->user()->role_id, [1]))
+          @if (in_array(auth()->user()->role_id, [1, 2]))
           <li class="nav-item">
             <a class="nav-link{{ request()->is('admin/rayon*') ? ' active' : ' collapsed' }}" href="/admin/rayon">
               <i class="bi bi-exclude"></i>
@@ -60,6 +60,13 @@
         <a class="nav-link {{ request()->is('admin/galeri*') ? ' active' : ' collapsed' }}" href="/admin/galeri">
           <i class="bi bi-images"></i>
           <span>Galeri</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link {{ request()->is('admin/administrator*') ? ' active' : ' collapsed' }}" href="/admin/administrator">
+          <i class="bi bi-people"></i>
+          <span>Admin</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

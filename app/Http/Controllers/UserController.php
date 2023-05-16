@@ -117,4 +117,11 @@ class UserController extends Controller
     {
         //
     }
+
+    public function administrator(Request $request)
+    {
+        $administrator = User::whereIn('role_id', [1, 2])->latest()->paginate(10);
+        return view('admin.administrator.index', compact('administrator'));
+    }
+    
 }

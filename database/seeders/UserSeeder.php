@@ -32,41 +32,54 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'Aing Maung',
-            'username' => 'admin',
+            'name' => 'Superadmin',
+            'username' => 'superadmin',
             'bio' => 'dzikir pikir amal shaleh',
             'slug' => 'admin',
             'role_id' => '2',
-            'email' => 'admin@gmail.com',
+            'email' => 'superadmin@gmail.com',
             'kelamin'=>'P',
             'nim'=>'2',
             'rayon_id'=>'2',
+            'password' => bcrypt('superadmin'),
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
+            'name' => 'admin',
+            'username' => 'admin',
+            'bio' => 'saya akan segera pkd',
+            'slug' => 'admin',
+            'role_id' => '2',
+            'email' => 'admin@gmail.com',
+            'kelamin'=>'L',
+            'nim'=>'4',
+            'rayon_id'=>'3',
             'password' => bcrypt('admin'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'Aing Ucing',
+            'name' => 'user',
             'username' => 'user',
-            'bio' => 'saya akan segera pkd',
             'slug' => 'user',
             'role_id' => '3',
             'email' => 'user@gmail.com',
             'kelamin'=>'L',
-            'nim'=>'4',
-            'rayon_id'=>'3',
+            'nim'=>'5',
+            'rayon_id'=>'6',
             'password' => bcrypt('user'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
-            'name' => 'Prof',
+            'name' => 'pengunjung',
             'username' => 'pengunjung',
             'slug' => 'pengunjung',
             'role_id' => '4',
             'email' => 'pengunjung@gmail.com',
             'kelamin'=>'L',
-            'nim'=>'5',
+            'nim'=>'6',
             'rayon_id'=>'6',
             'password' => bcrypt('pengunjung'),
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

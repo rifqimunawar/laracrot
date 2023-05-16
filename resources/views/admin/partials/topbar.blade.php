@@ -41,13 +41,9 @@
           </a><!-- End Messages Icon -->
         </li><!-- End Messages Nav --> --}}
 
-        <li class="nav-item dropdown">
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Logout</span>
-            <span class="badge bg-success badge-number"></span>
-          </a><!-- End Messages Icon -->
-        </li><!-- End Messages Nav -->
+        <a class="dropdown-item d-flex align-items-center" href="/logout">
+          <i class="bi bi-box-arrow-right btn btn-success m-4"><span>Logout</span></i>
+        </a>
 
       </ul>
     </nav><!-- End Icons Navigation -->
