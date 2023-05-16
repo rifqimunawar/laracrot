@@ -308,7 +308,7 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Data Gambar <span>Belum Diverifikasi</span></h5>
+                  <h5 class="card-title">Data Post <span>Belum Diverifikasi</span></h5>
                   <table class="table table-bordered table-hover text-nowrap">
                     <thead>
                     <tr>

@@ -52,7 +52,7 @@ class StatistikController extends Controller
     $galeri = Galeri::latest()->where('status', 0)->take(10)->get();
 
     // Data Postingan yang belum diverifikasi
-    $posts = Post::with('category', 'tags')->paginate(10);
+    $posts = Post::with('category', 'tags')->where('active', 0)->take(10)->get();
 
     // dd($kader);
     //mapaba adalah jumlah orng yang sudah mabapa, pkd dan pkl, karena yang sudha pkd pasti sudah mapaba
