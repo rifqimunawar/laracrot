@@ -1,3 +1,4 @@
+@section('title') {{ 'Rayon' }}@endsection
 @extends('admin.layout')
 @section('content')
 

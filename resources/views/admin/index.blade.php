@@ -1,3 +1,4 @@
+@section('title') {{ 'Admin' }}@endsection
 @extends('.admin.layout')
 @section('content')
 
@@ -262,18 +263,16 @@
                           @endif
                       </td>
                       <td>
-                          <form action="{{ route('admin.galeri.update', $galer->id) }}" method="POST">
-                              @csrf
-                              @method('PUT')
-                              <input type="hidden" name="status" value="{{ $galer->status == 1 ? 0 : 1 }}">
-                              <button type="submit" class="btn btn-sm btn-warning">
-                                  @if($galer->status == 1)
-                                      Nonaktifkan
-                                  @else
-                                      Aktifkan
-                                  @endif
-                              </button>
-                          </form>
+                        <form action="{{ route('admin.galeri.update', $galer->id) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <input type="hidden" name="status" value="{{ $galer->status == 1 ? 0 : 1 }}">
+                          @if($galer->status == 1)
+                              <button type="submit" class="btn btn-sm btn-success">Nonaktifkan</button>
+                              @else
+                              <button type="submit" class="btn btn-sm btn-warning">Aktifkan</button>
+                            @endif
+                      </form>
                       </td>
                         <td class="text-center">
                             <form action="{{ route('admin_destroy', $galer->id) }}" method="POST">
@@ -285,6 +284,80 @@
                         </td>
                     </tr>
                     @endforeach
+                </table>
+
+              </div>
+            </div><!-- End Top Selling -->
+        </div><!-- End Left side columns -->
+
+            <!-- Top Post belum diverifikasi -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Data Gambar <span>Belum Diverifikasi</span></h5>
+                  <table class="table table-bordered table-hover text-nowrap">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px">#</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($posts as $post)
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ Str::limit($post->title, 50) }}</td>
+                            <td>{{ $post->category->title }}</td>
+                            <td>{{ $post->user->username }}</td>
+                            <td>
+                                @if($post->active === 1)
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-danger">Nonaktif</span>
+                                @endif
+                            </td>
+                            <td>
+                                <form action="{{ route('posts.destroy', $post->id) }}"
+                                      method="post"
+                                      class="float-left">
+                                    <a href="{{ url('article') }}/{{$post->slug}}"
+                                        class="btn btn-info btn-sm float-left mr-1"
+                                        target="_blank">
+                                        <i class="ri-eye-fill"></i>
+                                    </a>
+                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                        class="btn btn-primary btn-sm float-left mr-1">
+                                        <i class="ri-edit-box-fill"></i>
+                                    </a>
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Do you really want to ' +
+                                              'delete post!')">
+                                        <i class="ri-delete-bin-2-line"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
                 </table>
 
               </div>

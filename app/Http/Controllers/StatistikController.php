@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use App\Models\Galeri;
 use Illuminate\Http\Request;
@@ -50,9 +51,13 @@ class StatistikController extends Controller
     // Data Gambar yang belum di verifikasi
     $galeri = Galeri::latest()->where('status', 0)->take(10)->get();
 
+    // Data Postingan yang belum diverifikasi
+    $posts = Post::with('category', 'tags')->paginate(10);
+
     // dd($kader);
     //mapaba adalah jumlah orng yang sudah mabapa, pkd dan pkl, karena yang sudha pkd pasti sudah mapaba
       return view('admin.index', compact(
+        'posts',
         'galeri',
         'kader', 
         'user_count', 

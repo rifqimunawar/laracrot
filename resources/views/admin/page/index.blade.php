@@ -1,3 +1,4 @@
+@section('title') {{ 'Page' }}@endsection
 @extends('admin.layout')
 @section('content')
 <div class="card info-card sales-card">
