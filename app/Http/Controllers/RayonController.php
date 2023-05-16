@@ -48,9 +48,11 @@ class RayonController extends Controller
      */
 public function show(Request $request, $slug)
 {
-    $rayon = Rayon::with('users')
-        ->where('slug', $slug)
-        ->paginate(25);
+          $rayon = Rayon::with(['users' => function ($query) {
+            $query->whereIn('role_id', [1, 2, 3]);
+            }])
+            ->where('slug', $slug)
+            ->paginate(25);
 
     if ($request->has('search')) {
         $user = User::where('username', 'LIKE', '%' . $request->search . '%')

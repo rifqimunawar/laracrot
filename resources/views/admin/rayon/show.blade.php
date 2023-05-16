@@ -52,12 +52,12 @@
                             <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                         </td>
                         <td class="text-start">
-                            <form action="{{ route('rayon.destroy', $ray->id) }}" method="POST">
+                            {{-- <form action="{{ route('rayon.destroy', $ray->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
                                 ('Apakah Anda yakin ingin menghapus rayon ini?')">Hapus</button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                     @endforeach

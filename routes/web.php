@@ -140,11 +140,12 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
 
     Route::get('/admin/administrator/', [UserController::class, 'administrator'])->name('administrator');
-    Route::get('/admin/quotes/create', [QuotesController::class, 'create'])->name('create');
-    Route::post('/admin/quotes/store', [QuotesController::class, 'store'])->name('store');
-    Route::get('/admin/quotes/{id}/edit', [QuotesController::class, 'edit'])->name('quotes.edit');
-    Route::put('/admin/quotes/{id}', [QuotesController::class, 'update'])->name('quotes.update');
-    Route::delete('/admin/quotes/{id}', [QuotesController::class, 'destroy'])->name('quotes.destroy');
+    Route::get('/admin/kadermapaba/', [UserController::class, 'kadermapaba'])->name('kadermapaba');
+    Route::get('/admin/kaderpkd/', [UserController::class, 'kaderpkd'])->name('kaderpkd');
+    Route::get('/admin/kaderpkl/', [UserController::class, 'kaderpkl'])->name('kaderpkl');
+    Route::get('/admin/kaderpkn/', [UserController::class, 'kaderpkn'])->name('kaderpkn');
+    Route::get('/admin/unverification/', [UserController::class, 'unverification'])->name('unverification');
+    Route::get('/admin/bukankader/', [UserController::class, 'bukankader'])->name('bukankader');
   });
     // =====================================================
     // Route Super Admin only ==============================

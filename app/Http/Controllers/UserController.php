@@ -123,5 +123,42 @@ class UserController extends Controller
         $administrator = User::whereIn('role_id', [1, 2])->latest()->paginate(10);
         return view('admin.administrator.index', compact('administrator'));
     }
+
+    public function kadermapaba(Request $request)
+    {
+        $kadermapaba = User::whereIn('kaderisasi', ['Mapaba', 'PKD', 'PKL', 'PKN'])->latest()->paginate(10);
+        return view('admin.user.mapaba', compact('kadermapaba'));
+    }
+
+    public function kaderpkd(Request $request)
+    {
+        $kaderpkd = User::whereIn('kaderisasi', ['PKD', 'PKL', 'PKN'])->latest()->paginate(10);
+        return view('admin.user.pkd', compact('kaderpkd'));
+    }
+    public function kaderpkl(Request $request)
+    {
+        $kaderpkl = User::whereIn('kaderisasi', ['PKL', 'PKN'])->latest()->paginate(10);
+        return view('admin.user.pkl', compact('kaderpkl'));
+    }
+    public function kaderpkn(Request $request)
+    {
+        $kaderpkn = User::where('kaderisasi', 'PKN')->latest()->paginate(10);
+        return view('admin.user.pkn', compact('kaderpkn'));
+    }
+
+    public function unverification(Request $request)
+    {
+          // data kader yang belum di verifikasi 
+        $unverification = User::where('role_id', 4)->take(10)->get();
+        return view('admin.user.unverification', compact('unverification'));
+    }
+    public function bukankader(Request $request)
+    {
+          // data kader yang belum di verifikasi 
+        $bukankader = User::where('role_id', 5)->take(10)->get();
+        return view('admin.user.bukankader', compact('bukankader'));
+    }
+
+
     
 }

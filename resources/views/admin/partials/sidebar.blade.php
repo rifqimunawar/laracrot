@@ -135,37 +135,32 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="components-alerts.html">
-              <i class="bi bi-circle"></i><span>Total Kader</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-accordion.html">
+            <a href="/admin/kadermapaba/">
               <i class="bi bi-circle"></i><span>Kader Mapaba</span>
             </a>
           </li>
           <li>
-            <a href="components-badges.html">
+            <a href="/admin/kaderpkd/">
               <i class="bi bi-circle"></i><span>Kader PKD</span>
             </a>
           </li>
           <li>
-            <a href="components-breadcrumbs.html">
+            <a href="/admin/kaderpkl/">
               <i class="bi bi-circle"></i><span>Kader PKL</span>
             </a>
           </li>
           <li>
-            <a href="components-buttons.html">
+            <a href="/admin/kaderpkn/">
               <i class="bi bi-circle"></i><span>Kader PKN</span>
             </a>
           </li>
           <li>
-            <a href="components-cards.html">
+            <a href="/admin/unverification/">
               <i class="bi bi-circle"></i><span>Kader Belum diverifikasi</span>
             </a>
           </li>
           <li>
-            <a href="components-carousel.html">
+            <a href="/admin/bukankader/">
               <i class="bi bi-circle"></i><span>Kader Tidak Lulus sensor</span>
             </a>
           </li>
