@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\QuotesController;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,8 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/post', [PostController::class, 'index'])->name('index');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
 Route::get('/pengurus', [PengurusController::class, 'show'])->name('show');
+Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
@@ -64,6 +67,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route Auth Pengunjung Kader Admin, Superadmin =======
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
+  Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
@@ -75,7 +79,6 @@ Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
 // Route Kader, Admin, Superadmin =======================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
-  Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
   Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
   Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');

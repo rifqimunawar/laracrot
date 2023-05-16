@@ -15,20 +15,24 @@
       
       <li class="nav-item">
         <a class="nav-link collapsed" href="/">
-          <i class="bi bi-person"></i>
-          <span>Page Home</span>
+          <i class="bi bi-house-door"></i>
+          <span>Home</span>
         </a>
       </li><!-- End Profile Page Nav -->
 
       @auth 
-          @if (in_array(auth()->user()->role_id, [1]))
+        @if (in_array(auth()->user()->role_id, [1, 2]))
           <li class="nav-item">
             <a class="nav-link {{ request()->is('admin/kader*') ? ' active' : ' collapsed' }}" href="/admin/kader">
               <i class="bi bi-person"></i>
               <span>Kader</span>
             </a>
           </li><!-- End Profile Page Nav -->
+        @endif
+      @endauth
 
+      @auth 
+          @if (in_array(auth()->user()->role_id, [1]))
           <li class="nav-item">
             <a class="nav-link{{ request()->is('admin/rayon*') ? ' active' : ' collapsed' }}" href="/admin/rayon">
               <i class="bi bi-exclude"></i>
