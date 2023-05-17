@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use DB;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,5 +31,7 @@ class DatabaseSeeder extends Seeder
             TagSeeder::class,
             RayonSeeder::class,
         ]);
+
+    // DB::unprepared(file_get_contents(__DIR__ . 'laracrot.sql'));
     }
 }
