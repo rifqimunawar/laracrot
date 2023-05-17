@@ -10,7 +10,6 @@
     <h1>detail kader</h1>
     @foreach ($kader as $kdr)
         <form action="" method="post">
-            
             <input type="text" readonly value="{{ $kdr['nama'] }}" >
         </form>
     @endforeach

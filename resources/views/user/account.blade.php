@@ -119,13 +119,28 @@
                       </div>
                     </div>
 
-                    <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->name }}" readonly>
+                      <div class="row mb-3">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->name }}">
+                        </div>
                       </div>
-                    </div>
 
+                      <div class="row mb-3">
+                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Username</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->username }}" readonly>
+                        </div>
+                      </div>
+
+                      
+                      <div class="row mb-3">
+                        <label for="nim" class="col-md-4 col-lg-3 col-form-label">NIM</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="nim" type="text" class="form-control" id="nim" value="{{ $user->nim }}" readonly>
+                        </div>
+                      </div>
+                      
                     <div class="row mb-3">
                       <label for="company" class="col-md-4 col-lg-3 col-form-label">Rayon</label>
                       <div class="col-md-8 col-lg-9">
@@ -139,10 +154,14 @@
                       </div>
                     </div>
 
-                    <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Negara</label>
+                      <div class="row mb-3">
+                      <label for="kelamin" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="Indonesia" required>
+                        <select class="form-select" name="kelamin" aria-label="Default select example">
+                          <option value="" disabled selected>--- Jenis Kelamin ---</option>
+                          <option value="L" {{ $user->kelamin == 'L' ? 'selected' : '' }}>Laki-Laki</option>
+                          <option value="P" {{ $user->kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
+                        </select>
                       </div>
                     </div>
 
@@ -154,21 +173,67 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="kelamin" class="col-md-4 col-lg-3 col-form-label">Jenis Kelamin</label>
+                      <label for="t_lahir" class="col-md-4 col-lg-3 col-form-label">Kota Kelahiran</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="t_lahir" type="text" class="form-control" id="t_lahir" value="{{ $user->t_lahir }}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="ttl" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="ttl" type="date" class="form-control" id="ttl" value="{{ $user->ttl }}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="hobi" class="col-md-4 col-lg-3 col-form-label">Hobi</label>
                       <div class="col-md-8 col-lg-9">
                         <select class="form-select" name="kelamin" aria-label="Default select example">
-                          <option value="" disabled selected>--- Jenis Kelamin ---</option>
-                          <option value="L" {{ $user->kelamin == 'L' ? 'selected' : '' }}>Laki-Laki</option>
-                          <option value="P" {{ $user->kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
+                          <option value="" disabled selected>--- Pilih Golongan Hobi ---</option>
+                          <option value="Bermain Game" {{ $user->hobi == 'Bermain Game' ? 'selected' : '' }}>Bermain Game Online</option>
+                          <option value="Bermusik" {{ $user->hobi == 'Bermusik' ? 'selected' : '' }}>Bermusik: Mendengarkan/Bermain Musik/ Bernyayi</option>
+                          <option value="Olahraga"{{ $user->hobi == 'Olahraga' ? 'selected' : '' }}>Berolahraga: Basket, sepak bola, atau Olahraga fisik lainnya</option>
+                          <option value="Travelling "{{ $user->hobi == 'Travelling' ? 'selected' : '' }}>Travelling: Jalan-jalan, Touring, naik gunung, mantai</option>
+                          <option value="Membaca "{{ $user->hobi == 'Membaca' ? 'selected' : '' }}>Membaca: Buku, Novel, Al-qur'an, atau yang lainnya</option>
+                          <option value="Seni dan kreativitas "{{ $user->hobi == 'Seni dan kreativitas' ? 'selected' : '' }}> Seni dan kreativitas : melukis, menggambar, fotografi, atau membuat video atau konten kreatif lainnya.</option>
+                          <option value="Menonton film dan serial TV "{{ $user->hobi == 'Menonton film dan serial TV' ? 'selected' : '' }}> Menonton : film, drakor, anime, serial TV </option>
                         </select>
                       </div>
                     </div>
-                    
 
                     <div class="row mb-3">
-                      <label for="wa" class="col-md-4 col-lg-3 col-form-label">Whats Apps</label>
+                      <label for="sma" class="col-md-4 col-lg-3 col-form-label">SMA/Sederajat</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="sma" type="text" class="form-control" id="sma" value="{{ $user->sma }}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="thn_lulus" class="col-md-4 col-lg-3 col-form-label">Tahun Lulus SMA/Sederajat</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="thn_lulus" type="text" class="form-control" id="thn_lulus" value="{{ $user->thn_lulus }}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="thn_kuliah" class="col-md-4 col-lg-3 col-form-label">Tahun Kuliah Di Uninus</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="thn_kuliah" type="text" class="form-control" id="thn_kuliah" value="{{ $user->thn_kuliah }}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="wa" class="col-md-4 col-lg-3 col-form-label">Nomor WhatApps</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="wa" type="text" class="form-control" id="wa" value="{{ $user->wa }}" required>
+                      </div>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Negara</label>
+                      <div class="col-md-8 col-lg-9">
+                        <input name="country" type="text" class="form-control" id="Country" value="Indonesia" required>
                       </div>
                     </div>
 

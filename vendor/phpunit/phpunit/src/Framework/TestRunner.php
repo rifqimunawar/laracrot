@@ -132,6 +132,7 @@ final class TestRunner
         $test->addToAssertionCount(Assert::getCount());
 
         if ($this->configuration->reportUselessTests() &&
+            !$test->doesNotPerformAssertions() &&
             $test->numberOfAssertionsPerformed() === 0) {
             $risky = true;
         }
@@ -193,18 +194,9 @@ final class TestRunner
 
         ErrorHandler::instance()->disable();
 
-        if (isset($e)) {
-            if ($test->wasPrepared()) {
-                Event\Facade::emitter()->testFinished(
-                    $test->valueObjectForEvents(),
-                    $test->numberOfAssertionsPerformed()
-                );
-            }
-
-            return;
-        }
-
-        if ($this->configuration->reportUselessTests() &&
+        if (!$incomplete &&
+            !$skipped &&
+            $this->configuration->reportUselessTests() &&
             !$test->doesNotPerformAssertions() &&
             $test->numberOfAssertionsPerformed() === 0) {
             Event\Facade::emitter()->testConsideredRisky(

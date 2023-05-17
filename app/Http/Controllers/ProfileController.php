@@ -24,11 +24,44 @@ class ProfileController extends Controller
      */
     public function index( Request $request)
     {
+      $profile = Auth::user();
+      $profileposts = Post::where('user_id', '=', $profile->id)
+                          ->with('category', 'comments', 'user')
+                          ->where('active', 1)
+                          ->orderBy('created_at', 'desc')
+                          ->get();
+      $profilegaleri = Galeri::where('user_id', $profile->id)
+                          ->where('status', 1)
+                          ->get();
+      $profileperpus = Perpus::where('user_id', $profile->id)
+                          ->get();
+      // menghitung jumlah postingan gambar dan buku yang di upload users 
+      $countpost = Post::where('user_id', '=', $profile->id)
+                        ->where('active', 1)
+                        ->count();
+      $countgaleri = Galeri::where('user_id', '=', $profile->id)
+                        ->where('status', 1)
+                        ->count();
+      $countperpus = Perpus::where('user_id', '=', $profile->id)
+                        ->count();
+
+    
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
-        $user = User ::all();
         $user=Auth::user();
-        return view('user.profile', compact('user', 'categories', 'tags'));
+        // dd($profilegaleri);
+        return view('user.profile', compact(
+          'tags', 
+          'user', 
+          'profile', 
+          'countpost',
+          'categories',
+          'countgaleri',
+          'countperpus',
+          'profileposts', 
+          'profilegaleri',
+          'profileperpus',
+        ));
     }
 
     
@@ -50,7 +83,7 @@ class ProfileController extends Controller
         if ($request->hasFile('img')) {
             $extension = $request->img->getClientOriginalExtension();
             $newFileName = 'profile' . '_' . $user->username . '-' . now()->timestamp . '.' . $extension;
-            $request->file('img')->storeAs('img', $newFileName);
+            $request->file('img')->move(public_path('/storage/img'), $newFileName);
             $user->img = $newFileName;
         }
     
@@ -116,7 +149,7 @@ class ProfileController extends Controller
         if ($request->hasFile('img')) {
             $extension = $request->file('img')->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('img')->storeAs('/img', $newFileName);
+            $request->file('img')->move(public_path('/storage/img'), $newFileName);
             $galeri->img = $newFileName;
         }
     
@@ -137,7 +170,7 @@ class ProfileController extends Controller
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
             $newFileName = 'blog' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('/img', $newFileName);
+            $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $data['image'] = $newFileName;
         }
 
@@ -151,19 +184,20 @@ class ProfileController extends Controller
 
     public function storeperpus(Request $request)
     {
-        $perpus = $request->all();
+      $perpus = $request->all();
+      $perpus['user_id'] = Auth::user()->id;
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('image')->storeAs('/img', $newFileName);
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
-            $request->file('pdf')->storeAs('/pdf', $newFileName);
+            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }
         $perpus = Perpus::create($perpus);
@@ -173,27 +207,45 @@ class ProfileController extends Controller
     }
 
 
+    // detail user 
+    public function details($id, Request $request)
+    {
+    $user = User::findOrFail($id);
+    $user = User::all();
+    return view('admin.user.detail');
+    }
     // profile user lain 
-
     public function profile($slug, Request $request)
     {
-        $user=Auth::user();
-        $profile = User::where('slug', $slug)->firstOrFail();
-        $profileposts = Post::where('user_id', '=', $profile->id)
-                            ->with('category', 'comments', 'user')
-                            ->where('active', 1)
-                            ->orderBy('created_at', 'desc')
-                            ->get();
-        $profilegaleri = Galeri::where('user_id', $profile->id)
-                            ->where('status', 1)
-                            ->get();
-        $profileperpus = Perpus::where('user_id', $profile->id)
-                            ->get();
+      $user=Auth::user();
+      $profile = User::where('slug', $slug)->firstOrFail();
+      $profileposts = Post::where('user_id', '=', $profile->id)
+                          ->with('category', 'comments', 'user')
+                          ->where('active', 1)
+                          ->orderBy('created_at', 'desc')
+                          ->get();
+      $profilegaleri = Galeri::where('user_id', $profile->id)
+                          ->where('status', 1)
+                          ->get();
+      $profileperpus = Perpus::where('user_id', $profile->id)
+                          ->get();
+      // menghitung jumlah postingan gambar dan buku yang di upload users 
+      $countpost = Post::where('user_id', '=', $profile->id)
+                        ->where('active', 1)
+                        ->count();
+      $countgaleri = Galeri::where('user_id', '=', $profile->id)
+                        ->where('status', 1)
+                        ->count();
+      $countperpus = Perpus::where('user_id', '=', $profile->id)
+                        ->count();
 
-    // dd($profileperpus);
+    // dd($profilegaleri);
         return view('user.profileuser', compact(
           'user', 
           'profile', 
+          'countpost',
+          'countgaleri',
+          'countperpus',
           'profileposts', 
           'profilegaleri',
           'profileperpus',

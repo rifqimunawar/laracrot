@@ -2,64 +2,67 @@
 @extends('user.layout')
 @section('content')
     
-<div class="container my-4" style="padding-top: 4rem">
+<div class="container my-4" style="padding-top: 5rem">
   
-  <header>
-		<div class="container mt-4">
-			<div class="row">
-				<div class="col-md-3 col-sm-12">
-					<div class="profile-image" >
-						<img src="{{ asset('storage/img/blog_-1680510690.jpg') }}" alt="Profile Image" class="rounded-circle">
-					</div>
-				</div>
-				<div class="col-md-9 col-sm-12">
-					<div class="profile-info">
-						<h1>Who Am I</h1>
-						<p>siapa_aku?</p>
-                        <div class="li">
-                            <li><b>0</b> post</li>
-                            <li><b>1960</b> followers</li>
-                            <li><b>63</b> following</li>
-                        </div>
-                        <li>Profile Isntagram</li>
-                        <li><i>Siapa Anak Teknik?</i></li>
-                        <li><i>Teknik Yang Mana?</i></li>
-						<button class="btn btn-primary">Edit Profile</button>
-                        <br>
-					</div>
-          <div class="ststistik">statistik</div>
-				</div>
-			</div>
-		</div>
-	</header>
+  <header class="pt-3 pb-5 bg-white">
+    <div class="container d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+            <img src="{{ asset('storage/img/'. $profile->img) }}" alt="Profile Image" class="rounded-circle mr-4 profile-image-desktop" style="width: 125px; height: 125px; object-fit: cover;">
+            <div class="d-flex flex-column">
+                <h1 class="h4 font-weight-bold">
+                  {{ $profile->username }} 
+                  @if($profile->centang == '1')
+                    <i class="fas fa-check-circle text-primary"></i>
+                  @endif
+                </h1>
+                <div class="d-flex align-items-center">
+                    <span class="mr-4"><strong>{{ $countpost }}</strong> posts</span>
+                    <span class="mr-4"><strong>{{ $countgaleri }}</strong> photos</span>
+                    <span><strong>{{ $countperpus }}</strong> library</span>
+                </div>
+                  @if($profile->kaderisasi == 'Belum Mapaba')
+                    <button class="btn btn-danger">Belum Mapaba</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'Mapaba')
+                    <button class="btn btn-success">Kader Muttaqid</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'PKD')
+                    <button class="btn btn-success">Kader Mujjahid</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'PKL')
+                    <button class="btn btn-success">Kader Mujtahid</button>
+                  @endif   
+                  @if($profile->kaderisasi == 'PKN')
+                    <button class="btn btn-success">Kader PKN</button>
+                  @endif   
+                <p class="mt-2">{{ $profile->bio }}</p>
+            </div>
+        </div>
+    </div>
+</header>
+
 	<br>
 	<section class="galeri">
 		<div class="galeri-info">
 			<div class="li-2">
 				<ul class="list-inline">
-					<li><b>0</b> post</li>
-					<li><b>1960</b> followers</li>
-					<li><b>63</b> following</li>
+					<li><b><hr></b></li>
+					<li><b></b></li>
+					<li><b>{{ $countgaleri }}</b> Foto Terbaru</li>
+					<li><b></b>dari {{ $profile->username }}</li>
+          <li><b><hr></b></li>
 				</ul>
 			</div>
 		</div>
 		<div class="container">
-			<div class="row">
-				<div class="col-md-4 col-sm-12">
-					<div class="galeri-item">
-						<img src="https://tse3.mm.bing.net/th?id=OIP.1rXqIJSOYCJGm9x9xk2Z3gHaJQ&pid=Api&P=0" alt="Gallery Image" class="img-fluid">
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-12">
-					<div class="galeri-item">
-						<img src="https://tse2.mm.bing.net/th?id=OIP.Tiz1sbGfyPFwhfRwKYOfJAHaJQ&pid=Api&P=0" alt="Gallery Image" class="img-fluid">
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-12">
-					<div class="galeri-item">
-						<img src="https://tse2.mm.bing.net/th?id=OIP.ER4k-d8XgZaDGDDLXgJ-rwAAAA&pid=Api&P=0" alt="Gallery Image" class="img-fluid">
-					</div>
-				</div>
+			<div class="galeri-grid">
+
+        @foreach ($profilegaleri as $item)
+        <div class="galeri-item">
+          <img src="{{ asset('storage/img/'. $item->img) }}" alt="Gallery Image" class="img-fluid">
+        </div>
+      @endforeach
+
 			</div>
 		</div>
   </div>

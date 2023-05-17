@@ -1,3 +1,4 @@
+@section('title') {{ 'User' }}@endsection
 @extends('admin.layout')
 @section('content')
 <div class="card info-card sales-card">
@@ -7,7 +8,7 @@
         <div class="mb-3">
             <a href="/register" class="btn btn-primary btn-sm">Tambah User</a>
         </div>
-        <div class="my-3 col-12 col-sm-8 col-md-6 ">
+        <div class="my-3 col-12 col-sm-8 col-md-6">
             <form action="" method="get">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="search" placeholder="Search.....">
@@ -35,12 +36,14 @@
                     <td>{{ $kdr['username'] }}</td>
                     <td> <a href="/admin/user/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
                     <td class="text-end">
-                        <a href="/admin/user/{{ $kdr->id }}" class="btn btn-secondary btn-sm">Profile</a>
+                        <a href="/profile/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                     </td>
                     <td class="text-center">
                         <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                     </td>
-                    <td class="text-start">
+                    @auth
+                      @if (in_array(auth()->user()->role_id, [1]))
+                      <td class="text-start">
                         <form action="{{ route('user.destroy', $kdr->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
@@ -48,7 +51,9 @@
                             ('Apakah Anda yakin ingin menghapus user ini?')">Hapus</button>
                         </form>
                     </td>
-                </tr>
+                      @endif
+                    @endauth
+                  </tr>
                 @endforeach
             </table>
         </div>

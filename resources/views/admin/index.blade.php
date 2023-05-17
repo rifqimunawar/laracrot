@@ -1,58 +1,10 @@
+@section('title') {{ 'Admin' }}@endsection
 @extends('.admin.layout')
 @section('content')
 
         <!-- Left side columns -->
           <div class="row">
-{{-- 
-            <!-- pkn Card -->
-            <div class="col">
 
-              <div class="card info-card customers-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Total <span>| Pengguna</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{ $user_anggota_count }}</h6>
-                      <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End pkn Card -->
-            
-
-            <!-- pkn Card -->
-            <div class="col">
-
-              <div class="card info-card customers-card">
-
-                <div class="card-body">
-                  <h5 class="card-title">Belum <span>| Mapaba</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>{{ $user_unmapaba }}</h6>
-                      <span class="text-danger small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
-
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-            </div><!-- End pkn Card -->
-            --}}
             <!-- Total Mapaba -->
             <div class="col">
               <div class="card info-card sales-card">
@@ -167,13 +119,7 @@
                           data: [{{ $mapaba_2018 }}, {{ $mapaba_2019 }}, {{ $mapaba_2020 }}, 
                           {{ $mapaba_2021 }}, {{ $mapaba_2022 }}, {{ $mapaba_2023 }}, {{ $mapaba_2023 }}],
                         }, 
-                          // {
-                          //   name: 'Revenue',
-                          //   data: [11, 32, 45, 32, 34, 52, 41]
-                          // }, {
-                          //   name: 'Customers',
-                          //   data: [15, 11, 32, 18, 9, 24, 11]
-                          // }
+
                         ],
                         chart: {
                           height: 350,
@@ -220,82 +166,8 @@
 
               </div>
             </div><!-- End Reports -->
-{{-- 
-            <!-- Recent Sales -->
-            <div class="col-12">
-              <div class="card recent-sales overflow-auto">
 
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-
-                  <table class="table table-borderless datatable">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Customer</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#">#2457</a></th>
-                        <td>Brandon Jacob</td>
-                        <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                        <td>$64</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2147</a></th>
-                        <td>Bridie Kessler</td>
-                        <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a></td>
-                        <td>$47</td>
-                        <td><span class="badge bg-warning">Pending</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2049</a></th>
-                        <td>Ashleigh Langosh</td>
-                        <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                        <td>$147</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Angus Grady</td>
-                        <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                        <td>$67</td>
-                        <td><span class="badge bg-danger">Rejected</span></td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#">#2644</a></th>
-                        <td>Raheem Lehner</td>
-                        <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                        <td>$165</td>
-                        <td><span class="badge bg-success">Approved</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Recent Sales --> --}}
-
-            <!-- Top Selling -->
+            <!-- Top Kader belum diverifikasi -->
             <div class="col-12">
               <div class="card">
 
@@ -341,6 +213,152 @@
                 </tr>
                   @endforeach
               </table>
+
+              </div>
+            </div><!-- End Top Selling -->
+        </div><!-- End Left side columns -->
+
+            <!-- Top Gamber belum diverifikasi -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Data Gambar <span>Belum Diverifikasi</span></h5>
+                  <table class="table table-striped table-hover">
+                    <tr>
+                        <td class="text-center">No</td>
+                        <td class="text-center">Judul</td>
+                        <td class="text-start">Upload By:</td>
+                        <td class="text-center">Gambar</td>
+                        <td class="text-center">Keterangan</td>
+                        <td class="text-center"> Aksi</td>
+                        <td class="text-center">  </td>
+                    </tr>
+                    @foreach ($galeri as $galer)
+                    <tr>
+                        <td class="text-center">{{ $loop->iteration }}</td>
+                        <td>{{ $galer['judul'] }}</td>
+                        <td>{{ $galer->user->username }}</td>
+                        <td class="text-center">
+                            <img src="{{ asset('storage/img/'.$galer['img']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
+                        </td>
+                        <td>
+                          @if($galer->status == 1)
+                              Aktif
+                          @else
+                              Nonaktif
+                          @endif
+                      </td>
+                      <td>
+                        <form action="{{ route('admin.galeri.update', $galer->id) }}" method="POST">
+                          @csrf
+                          @method('PUT')
+                          <input type="hidden" name="status" value="{{ $galer->status == 1 ? 0 : 1 }}">
+                          @if($galer->status == 1)
+                              <button type="submit" class="btn btn-sm btn-success">Nonaktifkan</button>
+                              @else
+                              <button type="submit" class="btn btn-sm btn-warning">Aktifkan</button>
+                            @endif
+                      </form>
+                      </td>
+                        <td class="text-center">
+                            <form action="{{ route('admin_destroy', $galer->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
+                                ('Apakah Anda yakin ingin menghapus foto ini?')">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+
+              </div>
+            </div><!-- End Top Selling -->
+        </div><!-- End Left side columns -->
+
+            <!-- Top Post belum diverifikasi -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Data Post <span>Belum Diverifikasi</span></h5>
+                  <table class="table table-bordered table-hover text-nowrap">
+                    <thead>
+                    <tr>
+                        <th style="width: 30px">#</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($posts as $post)
+                        <tr>
+                            <td>{{ $post->id }}</td>
+                            <td>{{ Str::limit($post->title, 50) }}</td>
+                            <td>{{ $post->category->title }}</td>
+                            <td>{{ $post->user->username }}</td>
+                            <td>
+                                @if($post->active === 1)
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-danger">Nonaktif</span>
+                                @endif
+                            </td>
+                            <td>
+                                <form action="{{ route('posts.destroy', $post->id) }}"
+                                      method="post"
+                                      class="float-left">
+                                    <a href="{{ url('article') }}/{{$post->slug}}"
+                                        class="btn btn-info btn-sm float-left mr-1"
+                                        target="_blank">
+                                        <i class="ri-eye-fill"></i>
+                                    </a>
+                                    <a href="{{ route('posts.edit', $post->id) }}"
+                                        class="btn btn-primary btn-sm float-left mr-1">
+                                        <i class="ri-edit-box-fill"></i>
+                                    </a>
+                                    @csrf @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Do you really want to ' +
+                                              'delete post!')">
+                                        <i class="ri-delete-bin-2-line"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
 
               </div>
             </div><!-- End Top Selling -->

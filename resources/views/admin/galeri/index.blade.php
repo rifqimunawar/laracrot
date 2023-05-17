@@ -38,13 +38,11 @@
                       @csrf
                       @method('PUT')
                       <input type="hidden" name="status" value="{{ $galer->status == 1 ? 0 : 1 }}">
-                      <button type="submit" class="btn btn-sm btn-warning">
-                          @if($galer->status == 1)
-                              Nonaktifkan
+                      @if($galer->status == 1)
+                          <button type="submit" class="btn btn-sm btn-success">Nonaktifkan</button>
                           @else
-                              Aktifkan
-                          @endif
-                      </button>
+                          <button type="submit" class="btn btn-sm btn-warning">Aktifkan</button>
+                        @endif
                   </form>
               </td>
                 <td class="text-center">

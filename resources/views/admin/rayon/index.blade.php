@@ -1,3 +1,4 @@
+@section('title') {{ 'Rayon' }}@endsection
 @extends('admin.layout')
 @section('content')
 
@@ -7,14 +8,14 @@
         {{-- <h4>Total Rayon: {{ $rayon->count() }}</h4> --}}
         <h5>Total Rayon: {{ $rayon->count() }}</h5>
         <div class="mb-3">
-            <a href="/admin/rayon/create/new" class="btn btn-primary btn-sm">Tambah Rayon</a>
+            {{-- <a href="/admin/rayon/create/new" class="btn btn-primary btn-sm">Tambah Rayon</a> --}}
         </div>
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
             <form action="" method="get">
-                <div class="input-group mb-3">
+                {{-- <div class="input-group mb-3">
                     <input type="text" class="form-control" name="search" placeholder="Search.....">
                     <button class="btn btn-primary">Search</button>
-                </div>
+                </div> --}}
             </form>
         </div>
         <div class="row">
@@ -36,16 +37,19 @@
                         <a href="{{ route('rayon.show', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
                     </td>
                     <td class="text-center">
-                        <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                    @if (in_array(auth()->user()->role_id, [1]))
+                      <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                      @endif
                     </td>
-                    <td class="text-start">
+                    
+                    {{-- <td class="text-start">
                         <form action="{{ route('rayon.destroy', $kdr->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm
                             ('Apakah Anda yakin ingin menghapus rayon ini?')">Hapus</button>
                         </form>
-                    </td>
+                    </td> --}}
                 </tr>
                 @endforeach
             </table>

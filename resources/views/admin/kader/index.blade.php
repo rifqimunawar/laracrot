@@ -1,3 +1,4 @@
+@section('title') {{ 'Kader' }}@endsection
 @extends('admin.layout')
 @section('content')
 

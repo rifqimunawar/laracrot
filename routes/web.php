@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\QuotesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -40,11 +43,14 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/post', [PostController::class, 'index'])->name('index');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
+Route::get('/pengurus', [PengurusController::class, 'show'])->name('show');
+Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
 Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
-Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profile');
+Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
 
 
 // =====================================================
@@ -61,6 +67,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route Auth Pengunjung Kader Admin, Superadmin =======
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
+  Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
@@ -69,10 +76,9 @@ Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
 });
 
 // =====================================================
-// Route Kader, Admin Superadmin =======================
+// Route Kader, Admin, Superadmin =======================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
-  Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
   Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
   Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
@@ -132,12 +138,22 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
     Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
+
+    Route::get('/admin/administrator/', [UserController::class, 'administrator'])->name('administrator');
+    Route::get('/admin/kadermapaba/', [UserController::class, 'kadermapaba'])->name('kadermapaba');
+    Route::get('/admin/kaderpkd/', [UserController::class, 'kaderpkd'])->name('kaderpkd');
+    Route::get('/admin/kaderpkl/', [UserController::class, 'kaderpkl'])->name('kaderpkl');
+    Route::get('/admin/kaderpkn/', [UserController::class, 'kaderpkn'])->name('kaderpkn');
+    Route::get('/admin/unverification/', [UserController::class, 'unverification'])->name('unverification');
+    Route::get('/admin/bukankader/', [UserController::class, 'bukankader'])->name('bukankader');
   });
     // =====================================================
     // Route Super Admin only ==============================
     // -----------------------------------------------------
 Route::middleware(['auth', 'role:1'])->group(function () {
   
+
+  Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
   Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
   Route::get('/admin/kader/create', [KaderController::class, 'create'])->name('create');
   Route::post('/admin/kader/store', [KaderController::class, 'store'])->name('store');
@@ -155,5 +171,19 @@ Route::middleware(['auth', 'role:1'])->group(function () {
   Route::get('/admin/rayon/{id}/edit', [RayonController::class, 'edit'])->name('rayon.edit');
   Route::put('/admin/rayon/{id}', [RayonController::class, 'update'])->name('rayon.update');
   Route::delete('/admin/rayon/{id}', [RayonController::class, 'destroy'])->name('rayon.destroy');
+
+  Route::get('/admin/quotes/', [QuotesController::class, 'index'])->name('index');
+  Route::get('/admin/quotes/create', [QuotesController::class, 'create'])->name('create');
+  Route::post('/admin/quotes/store', [QuotesController::class, 'store'])->name('store');
+  Route::get('/admin/quotes/{id}/edit', [QuotesController::class, 'edit'])->name('quotes.edit');
+  Route::put('/admin/quotes/{id}', [QuotesController::class, 'update'])->name('quotes.update');
+  Route::delete('/admin/quotes/{id}', [QuotesController::class, 'destroy'])->name('quotes.destroy');
+
+  Route::get('/admin/pengurus/', [PengurusController::class, 'index'])->name('index');
+  Route::get('/admin/pengurus/create', [PengurusController::class, 'create'])->name('create');
+  Route::post('/admin/pengurus/store', [PengurusController::class, 'store'])->name('store');
+  Route::get('/admin/pengurus/{id}/edit', [PengurusController::class, 'edit'])->name('pengurus.edit');
+  Route::put('/admin/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
+  Route::delete('/admin/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
 
   });

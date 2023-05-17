@@ -25,6 +25,11 @@
           <div class="modal-body">
 
             <div class="mb-3">
+              <label for="title" class="form-label">Nama Kegiatan</label>
+              <input type="text" class="form-control" name="title" id="title" readonly >
+            </div>
+
+            <div class="mb-3">
               <label for="penyelenggara" class="form-label">Penyelenggara Kegiatan</label>
               <input type="text" class="form-control" name="penyelenggara" id="penyelenggara" readonly >
             </div>

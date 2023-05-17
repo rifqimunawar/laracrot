@@ -18,17 +18,6 @@
                 <button type="submit" class="btn btn-primary btn-sm mx-3">Upload Gambar</button>
             </div>
         </form>
-    
-
-
-
-        {{-- <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="photo" accept="image/*">
-            <textarea name="text"></textarea>
-            <button type="submit">Upload</button>
-        </form> --}}
-
     </div>
 </div>
 @endsection

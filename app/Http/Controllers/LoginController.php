@@ -17,6 +17,10 @@ class LoginController extends Controller
 {
     public function login()
     {
+        if (auth()->check()) {
+            return redirect('/profile');
+        }
+    
         return view('auth.login');
     }
     public function authenticate(Request $request)
@@ -44,46 +48,48 @@ class LoginController extends Controller
     {
         return view('auth.register');
     }
-
-  public function store(Request $request)
-{
-    // Rule validasi untuk username dan password
-    $rules = [
-        'username' => 'required|unique:users,username',
-        'nim' => 'required|unique',
-        'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
-    ];
-
-    // Pesan validasi
-    $messages = [
-        'username.required' => 'Username wajib diisi.',
-        'username.unique' => 'Username sudah digunakan.',
-        'nim.required' => 'Nim wajib diisi.',
-        'nim.unique' => 'Nim sudah digunakan.',
-        'password.required' => 'Password wajib diisi.',
-        'password.min' => 'Password minimal 8 karakter.',
-        'password.regex' => 'Password harus terdiri dari huruf kapital, huruf kecil, dan angka.',
-    ];
-
-    // Validasi input
-    $validator = Validator::make($request->all(), $rules, $messages);
-
-    if ($validator->fails()) {
-        return redirect()->back()->withErrors($validator)->withInput();
+    public function store(Request $request)
+    {
+        // Rule validasi untuk username dan password
+        $rules = [
+            'username' => 'required|unique:users,username',
+            'nim' => 'required|unique:users,nim',
+            'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+        ];
+    
+        // Pesan validasi
+        $messages = [
+            'username.required' => 'Username wajib diisi.',
+            'username.unique' => 'Username sudah digunakan.',
+            'nim.required' => 'Nim wajib diisi.',
+            'nim.unique' => 'Nim sudah digunakan.',
+            'password.required' => 'Password wajib diisi.',
+            'password.min' => 'Password minimal 8 karakter.',
+            'password.regex' => 'Password harus terdiri dari huruf kapital, huruf kecil, dan angka.',
+        ];
+    
+        // Validasi input
+        $validator = Validator::make($request->all(), $rules, $messages);
+    
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+    
+        // Buat user baru
+        $user = User::create([
+            'name'=>$request->name,
+            'nim'=>$request->nim,
+            'username'=>$request->username,
+            'email'=>$request->email,
+            'rayon_id'=>$request->rayon_id,
+            'role_id'=>$request->role_id,
+            'password'=>bcrypt($request->password),
+        ]);
+    
+        Alert::success('Mantap Sahabat', 'Anda Berhasil Register');
+        return redirect()->to('/login');
     }
-
-    // Buat user baru
-    $user = User::create([
-        'username'=>$request->username,
-        'email'=>$request->email,
-        'rayon_id'=>$request->rayon_id,
-        'role_id'=>$request->role_id,
-        'password'=>bcrypt($request->password),
-    ]);
-
-    Alert::success('Mantap Sahabat', 'Anda Berhasil Register');
-    return redirect()->to('/login');
-}
+    
 
     /**
      * Summary of logout

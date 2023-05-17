@@ -1,3 +1,4 @@
+@section('title') {{ 'Perpus' }}@endsection
 @extends('admin.layout')
 @section('content')
 <div class="card info-card sales-card">
@@ -19,7 +20,7 @@
                 @foreach ($perpus as $perp)
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
-                    <td>{{ $perp['judul'] }}</td>
+                    <td>{{ $perp->judul }}</td>
                     <td class="text-center">
                         <img src="{{ asset('storage/img/'.$perp['image']) }}" width="60" class="img-fluid img-thumbnail" style="max-height: 60px">
                     </td>
@@ -34,6 +35,7 @@
                 </tr>
                 @endforeach
             </table>
+            {{ $perpus->links() }}
         </div>
 
     </div>

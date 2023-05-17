@@ -36,7 +36,7 @@ class AgendaController extends Controller
     if ($request->pamflet) {
         $extension = $request->pamflet->getClientOriginalExtension();
         $newFileName = 'agenda' . '_' . $request->penyelenggara . '-' . now()->timestamp . '.' . $extension;
-        $request->file('pamflet')->storeAs('/img', $newFileName);
+        $request->file('pamflet')->move(public_path('/storage/img'), $newFileName);
         $events['pamflet'] = $newFileName;
     }
     $events = Agenda::create($events);

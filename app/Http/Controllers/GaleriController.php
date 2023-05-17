@@ -61,7 +61,7 @@ class GaleriController extends Controller
         if ($request->img) {
             $extension = $request->img->getClientOriginalExtension();
             $newFileName = 'galeri' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
-            $request->file('img')->storeAs('/img', $newFileName);
+            $request->file('img')->move(public_path('/storage/img'), $newFileName);
             $galeri['img'] = $newFileName;
         }
         $galeri = Galeri::create($galeri);

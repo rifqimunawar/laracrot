@@ -1,51 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title') | PMII UNINUS </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
-    
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets_user/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets_user/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets_user/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets_user/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets_user/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets_user/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    
-    <!-- Font Awesome icon news -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
 
-    {{-- link untuk hover galeri  --}}
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    {{-- <link rel="stylesheet" href="css/style.css"> --}}
-    <link rel="stylesheet" href="{{ asset ('assets_user/css/style.css') }}">
+  <title>@yield('title') | PMII UNINUS </title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    {{-- link css for news  --}}
-    <link rel="stylesheet" href="{{ asset('css/stylenews.css') }}">
-    
-    <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    {{-- calendar agenda  --}}
-    <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
-    <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
-    <link rel="stylesheet" href="css_calendar/bootstrap.min.css">
-    <link rel="stylesheet" href="css_calendar/style.css">
-    
-    {{-- link for summernote  --}}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
-    
-  </head>
+  <!-- Favicons -->
+  <link href="{{ asset('assets_user/img/favicon.png') }}" rel="icon">
+  <link href="{{ asset('assets_user/img/favicon.png') }}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+
+  <!-- Vendor CSS Files -->
+  <link href="{{ asset('assets_user/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets_user/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets_user/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets_user/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets_user/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets_user/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{{ asset('assets_user/css/style.css') }}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: BizPage
+  * Updated: Mar 10 2023 with Bootstrap v5.2.3
+  * Template URL: https://bootstrapmade.com/bizpage-bootstrap-business-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <!-- Font Awesome icon Centang biru -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-B2tEivVN/4VghK2ejzVWzW3FkmvHqfN98+Mu7H6QgJY1X1LzOD0PTtIP2Hs5mV6C3y8SvA04O7j/VoIcN44+pw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Font Awesome icon news -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css" rel="stylesheet">
+
+  {{-- link untuk hover galeri  --}}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  {{-- <link rel="stylesheet" href="css/style.css"> --}}
+  <link rel="stylesheet" href="{{ asset ('assets_user/css/style.css') }}">
+
+  {{-- link css for news ================================================== penyebab error hamburger --}}
+  <link rel="stylesheet" href="{{ asset('css/stylenews.css') }}">
+  
+  <!-- Libraries Stylesheet carausel news ==================================  penyebab error hamburger-->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+  {{-- calendar agenda  --}}
+  <link href='fullcalendar/packages/core/main.css' rel='stylesheet' />
+  <link href='fullcalendar/packages/daygrid/main.css' rel='stylesheet' />
+  {{-- <link rel="stylesheet" href="css_calendar/bootstrap.min.css"> --}}
+  <link rel="stylesheet" href="css_calendar/style.css">
+
+  {{-- link for summernote ini penyebab ============================================= error hamburger --}}
+  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"> --}}
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
+</head>
+
 
   <body>
 
@@ -59,14 +82,15 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <!-- Vendor JS Files -->
-    <script src="assets_user/vendor/aos/aos.js"></script>
-    <script src="assets_user/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets_user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets_user/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets_user/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets_user/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets_user/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets_user/vendor/php-email-form/validate.js"></script>
+    
+    <script src="{{ asset('assets_user/vendor/aos/aos.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/purecounter/purecounter_vanilla.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/waypoints/noframework.waypoints.js') }}"></script>
+    <script src="{{ asset('assets_user/vendor/php-email-form/validate.js') }}"></script>
   
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

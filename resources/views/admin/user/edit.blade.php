@@ -1,3 +1,4 @@
+@section('title') {{ 'User' }}@endsection
 @extends('admin.layout')
 @section('content')
 <div class="card info-card sales-card">
@@ -8,20 +9,22 @@
       </div>
       <div class="row pt-4 mt-5">
         <div class="col-md-6">
-            <form action="">
+            <form action="/admin/user/{{ $user->id }}" method="post">
+              @csrf
+              @method('put')
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="name" value="{{ $user->name }}">
+                    <input type="text" class="form-control" id="name" value="{{ $user->name }}" readonly>
                 </div>
     
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" value="{{ $user->username }}">
+                    <input type="text" class="form-control" id="username" value="{{ $user->username }}" readonly>
                 </div>
     
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}">
+                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}" readonly>
                 </div>
     
                 <div class="mb-3">
@@ -42,6 +45,7 @@
                       </select>
                   </div>
                 </div>
+
                 <div class="mb-3">
                   <label for="prodi">Prodi</label>
 
@@ -77,79 +81,137 @@
                   <label for="kaderisasi" class="form-label">Jenjang Kaderisasi Saat Ini</label>
                   <div class="col-md-12">
                       <select id="kaderisasi" name="kaderisasi" class="form-select" onchange="showOptions()">
-                          <option>-- Jenjang Kaderisasi Formal Saat ini --</option>
-                          <option value="Belum Mapaba">Belum Mapaba</option>
-                          <option value="Mapaba">Mapaba</option>
-                          <option value="PKD">PKD</option>
-                          <option value="PKL">PKL</option>
-                          <option value="PKN">PKN</option>
+                          <option value="-">-- Jenjang Kaderisasi Formal Saat ini --</option>
+                          <option value="Belum Mapaba" {{ $user->kaderisasi == 'Belum Mapaba' ? 'selected' : '' }}>Belum Mapaba</option>
+                          <option value="Mapaba" {{ $user->kaderisasi == 'Mapaba' ? 'selected' : '' }} >Mapaba</option>
+                          <option value="PKD" {{ $user->kaderisasi == 'PKD' ? 'selected' : '' }}>PKD</option>
+                          <option value="PKL" {{ $user->kaderisasi == 'PKL' ? 'selected' : '' }}>PKL</option>
+                          <option value="PKN" {{ $user->kaderisasi == 'PKN' ? 'selected' : '' }}>PKN</option>
                       </select>
                   </div>
               </div>
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_mapaba" name="thn_mapaba" class="form-select" style="display:none;">
-                          <option>-- Mapaba Tahun Berapa --</option>
-                          <option value="Sebelum 2018">Mapaba Sebelum 2018</option>
-                          <option value="2018">Mapaba 2018</option>
-                          <option value="2019">Mapaba 2019</option>
-                          <option value="2020">Mapaba 2020</option>
-                          <option value="2021">Mapaba 2021</option>
-                          <option value="2022">Mapaba 2022</option>
-                          <option value="2023">Mapaba 2023</option>
+                          <option >-- Mapaba Tahun Berapa --</option>
+                          <option value="Sebelum 2018" {{ $user->thn_pkd == 'Sebelum 2018' ? 'selected' : '' }}>>Mapaba Sebelum 2018</option>
+                          <option value="2018" {{ $user->thn_mapaba == '2018' ? 'selected' : '' }}>Mapaba 2018</option>
+                          <option value="2019" {{ $user->thn_mapaba == '2019' ? 'selected' : '' }}>Mapaba 2019</option>
+                          <option value="2020" {{ $user->thn_mapaba == '2020' ? 'selected' : '' }}>Mapaba 2020</option>
+                          <option value="2021" {{ $user->thn_mapaba == '2021' ? 'selected' : '' }}>Mapaba 2021</option>
+                          <option value="2022" {{ $user->thn_mapaba == '2022' ? 'selected' : '' }}>Mapaba 2022</option>
+                          <option value="2023" {{ $user->thn_mapaba == '2023' ? 'selected' : '' }}>Mapaba 2023</option>
                       </select>
                   </div>
               </div>
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_pkd" name="thn_pkd" class="form-select" style="display:none;">
-                          <option>-- PKD Tahun Berapa --</option>
-                          <option value="Sebelum 2018">PKD Sebelum 2018</option>
-                          <option value="2018">PKD 2018</option>
-                          <option value="2019">PKD 2019</option>
-                          <option value="2020">PKD 2020</option>
-                          <option value="2021">PKD 2021</option>
-                          <option value="2022">PKD 2022</option>
-                          <option value="2023">PKD 2023</option>
+                          <option value="-" >-- PKD Tahun Berapa --</option>
+                          <option value="Sebelum 2018" {{ $user->thn_pkd == 'Sebelum 2018' ? 'selected' : '' }}>>PKD Sebelum 2018</option>
+                          <option value="2018" {{ $user->thn_pkd == '2018' ? 'selected' : '' }}>PKD 2018</option>
+                          <option value="2019" {{ $user->thn_pkd == '2019' ? 'selected' : '' }}>PKD 2019</option>
+                          <option value="2020" {{ $user->thn_pkd == '2020' ? 'selected' : '' }}>PKD 2020</option>
+                          <option value="2021" {{ $user->thn_pkd == '2021' ? 'selected' : '' }}>PKD 2021</option>
+                          <option value="2022" {{ $user->thn_pkd == '2022' ? 'selected' : '' }}>PKD 2022</option>
+                          <option value="2023" {{ $user->thn_pkd == '2023' ? 'selected' : '' }}>PKD 2023</option>
                       </select>
                   </div>
               </div>
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_pkl" name="thn_pkl" class="form-select" style="display:none;">
-                          <option>-- PKL Tahun Berapa --</option>
-                          <option value="Sebelum 2018">PKL Sebelum 2018</option>
-                          <option value="2018">PKL 2018</option>
-                          <option value="2019">PKL 2019</option>
-                          <option value="2020">PKL 2020</option>
-                          <option value="2021">PKL 2021</option>
-                          <option value="2022">PKL 2022</option>
-                          <option value="2023">PKL 2023</option>
+                          <option value="-" >-- PKL Tahun Berapa --</option>
+                          <option value="Sebelum 2018" {{ $user->thn_pkl == 'Sebelum 2018' ? 'selected' : '' }}>PKL Sebelum 2018</option>
+                          <option value="2018" {{ $user->thn_pkl == '2018' ? 'selected' : '' }}>PKL 2018</option>
+                          <option value="2019" {{ $user->thn_pkl == '2019' ? 'selected' : '' }}>PKL 2019</option>
+                          <option value="2020" {{ $user->thn_pkl == '2020' ? 'selected' : '' }}>PKL 2020</option>
+                          <option value="2021" {{ $user->thn_pkl == '2021' ? 'selected' : '' }}>PKL 2021</option>
+                          <option value="2022" {{ $user->thn_pkl == '2022' ? 'selected' : '' }}>PKL 2022</option>
+                          <option value="2023" {{ $user->thn_pkl == '2023' ? 'selected' : '' }}>PKL 2023</option>
                       </select>
                   </div>
               </div>
               <div class="mb-3">
                   <div class="col-md-12">
                       <select id="thn_pkn" name="thn_pkn" class="form-select" style="display:none;">
-                          <option>-- PKN Tahun Berapa --</option>
-                          <option value="Sebelum 2018">PKN Sebelum 2018</option>
-                          <option value="2018">PKN 2018</option>
-                          <option value="2019">PKN 2019</option>
-                          <option value="2020">PKN 2020</option>
-                          <option value="2021">PKN 2021</option>
-                          <option value="2022">PKN 2022</option>
-                          <option value="2023">PKN 2023</option>
+                          <option value="-">-- PKN Tahun Berapa --</option>
+                          <option value="Sebelum 2018" {{ $user->thn_pkn == 'Sebelum 2018' ? 'selected' : '' }}>PKN Sebelum 2018</option>
+                          <option value="2018" {{ $user->thn_pkn == '2018' ? 'selected' : '' }}>PKN 2018</option>
+                          <option value="2019" {{ $user->thn_pkn == '2019' ? 'selected' : '' }}>PKN 2019</option>
+                          <option value="2020" {{ $user->thn_pkn == '2020' ? 'selected' : '' }}>PKN 2020</option>
+                          <option value="2021" {{ $user->thn_pkn == '2021' ? 'selected' : '' }}>PKN 2021</option>
+                          <option value="2022" {{ $user->thn_pkn == '2022' ? 'selected' : '' }}>PKN 2022</option>
+                          <option value="2023" {{ $user->thn_pkn == '2023' ? 'selected' : '' }}>PKN 2023</option>
                       </select>
                   </div>
               </div>
                 {{-- jenjang kaderisasi end  --}}
 
-                {{-- Role Start --}}
                 <div class="mb-3">
-                  <label for="role_id" class="form-label">Role</label>
-                  <input type="text" class="form-control" id="role_id" value="{{ $role->role }}">
+                  <label for="informal" class="form-label">Kader Mengikuti Sekolah Informal</label>
+                  <div class="col-md-12">
+                    <select name="informal" class="form-select" required aria-label="informal">
+                      <option value="0"{{ $user->informal == '0' ? 'selected' : '' }}>Belum Pernah</option>
+                      <option value="1"{{ $user->informal == '1' ? 'selected' : '' }}>Pernah 1 kali</option>
+                      <option value="2"{{ $user->informal == '2' ? 'selected' : '' }}>Pernah 2 Kali</option>
+                      <option value="3"{{ $user->informal == '3' ? 'selected' : '' }}>Pernah 3 Kali</option>
+                      <option value="4"{{ $user->informal == '4' ? 'selected' : '' }}>Pernah 4 Kali</option>
+                      <option value="5"{{ $user->informal == '5' ? 'selected' : '' }}>Pernah 5 Kali</option>
+                      <option value="6"{{ $user->informal == '6' ? 'selected' : '' }}>Pernah 6 Kali</option>
+                      <option value="7"{{ $user->informal == '7' ? 'selected' : '' }}>Pernah 7 Kali</option>
+                      <option value="8"{{ $user->informal == '8' ? 'selected' : '' }}>Pernah 8 Kali</option>
+                      <option value="9"{{ $user->informal == '9' ? 'selected' : '' }}>Pernah 9 Kali</option>
+                      <option value="10"{{ $user->informal == '10' ? 'selected' : '' }}>Lebih dari 9 Kali</option>
+                  </select>
+                </div>
+              </div>
+
+                <div class="mb-3">
+                  <label for="nonformal" class="form-label">Kader Mengikuti Sekolah Non-Formal</label>
+                  <div class="col-md-12">
+                    <select name="nonformal" class="form-select" required aria-label="nonformal">
+                      <option value="0"{{ $user->nonformal == '0' ? 'selected' : '' }}>Belum Pernah</option>
+                      <option value="1"{{ $user->nonformal == '1' ? 'selected' : '' }}>Pernah 1 kali</option>
+                      <option value="2"{{ $user->nonformal == '2' ? 'selected' : '' }}>Pernah 2 Kali</option>
+                      <option value="3"{{ $user->nonformal == '3' ? 'selected' : '' }}>Pernah 3 Kali</option>
+                      <option value="4"{{ $user->nonformal == '4' ? 'selected' : '' }}>Pernah 4 Kali</option>
+                      <option value="5"{{ $user->nonformal == '5' ? 'selected' : '' }}>Pernah 5 Kali</option>
+                      <option value="6"{{ $user->nonformal == '6' ? 'selected' : '' }}>Pernah 6 Kali</option>
+                      <option value="7"{{ $user->nonformal == '7' ? 'selected' : '' }}>Pernah 7 Kali</option>
+                      <option value="8"{{ $user->nonformal == '8' ? 'selected' : '' }}>Pernah 8 Kali</option>
+                      <option value="9"{{ $user->nonformal == '9' ? 'selected' : '' }}>Pernah 9 Kali</option>
+                      <option value="10"{{ $user->nonformal == '10' ? 'selected' : '' }}>Lebih dari 9 Kali</option>
+                  </select>
+                </div>
+              </div>
+
+                {{-- Role Start --}}
+                <div class="my-3 pt-4">
+                  <label for="role_id" class="form-label">Status Keanggotaan</label><br>
+                  <p>Jika Anggota tersebut memang benar tercatat di database rayon, maka pilih "Kader PMII Uninus", <br>
+                  Namun, jika anggota tersebut tidak tercatat di database rayon maka pilih "Bukan Kader PMII Uninus"</p>
+                  <div class="col-md-12">
+                    <select id="role_id" name="role_id" class="form-select">
+                      @if (in_array(auth()->user()->role_id, [1]))
+                      <option value="1" {{ $user->role_id == '1' ? 'selected' : '' }}>Admin Komisariat</option>
+                      <option value="2" {{ $user->role_id == '2' ? 'selected' : '' }}>Admin Rayon</option>
+                      @endif
+                      <option value="3" {{ $user->role_id == '3' ? 'selected' : '' }}>Kader PMII Uninus</option>
+                      <option value="4" {{ $user->role_id == '4' ? 'selected' : '' }}>Pengjunjung</option>
+                      <option value="5" {{ $user->role_id == '5' ? 'selected' : '' }}>Bukan Kader PMII Uninus</option>
+                    </select>
+                </div>
               </div>
               {{-- Role end  --}}
+
+              {{-- Role Start --}}
+              <div class="my-3 pt-4">
+                <div>
+                  <a href="/admin/user"><button class="btn btn-warning" type="submit">Kembali</button></a> 
+                  <button class="btn btn-primary" type="submit">Simpan</button>
+                </div>
+            </div>
             </form>
         </div>
         

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
@@ -91,9 +92,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update($id, Request $request)
     {
-        //
+      $userToUpdate = User::findOrFail($id);
+    
+      $userData = $request->all();
+      if ($request->img) {
+        $extension = $request->img->getClientOriginalExtension();
+        $newFileName = 'user' . '_' . $request->username . '-' . now()->timestamp . '.' . $extension;
+        $request->file('img')->move(public_path('/storage/img'), $newFileName);
+        $userData['img'] = $newFileName;
+      }
+    
+      $userToUpdate->update($userData);
+    
+      Alert::success('Mantap Sahabat', 'User Berhasil Di Update');
+      return redirect('/admin');
     }
 
     /**
@@ -103,4 +117,48 @@ class UserController extends Controller
     {
         //
     }
+
+    public function administrator(Request $request)
+    {
+        $administrator = User::whereIn('role_id', [1, 2])->latest()->paginate(10);
+        return view('admin.administrator.index', compact('administrator'));
+    }
+
+    public function kadermapaba(Request $request)
+    {
+        $kadermapaba = User::whereIn('kaderisasi', ['Mapaba', 'PKD', 'PKL', 'PKN'])->latest()->paginate(10);
+        return view('admin.user.mapaba', compact('kadermapaba'));
+    }
+
+    public function kaderpkd(Request $request)
+    {
+        $kaderpkd = User::whereIn('kaderisasi', ['PKD', 'PKL', 'PKN'])->latest()->paginate(10);
+        return view('admin.user.pkd', compact('kaderpkd'));
+    }
+    public function kaderpkl(Request $request)
+    {
+        $kaderpkl = User::whereIn('kaderisasi', ['PKL', 'PKN'])->latest()->paginate(10);
+        return view('admin.user.pkl', compact('kaderpkl'));
+    }
+    public function kaderpkn(Request $request)
+    {
+        $kaderpkn = User::where('kaderisasi', 'PKN')->latest()->paginate(10);
+        return view('admin.user.pkn', compact('kaderpkn'));
+    }
+
+    public function unverification(Request $request)
+    {
+          // data kader yang belum di verifikasi 
+        $unverification = User::where('role_id', 4)->take(10)->get();
+        return view('admin.user.unverification', compact('unverification'));
+    }
+    public function bukankader(Request $request)
+    {
+          // data kader yang belum di verifikasi 
+        $bukankader = User::where('role_id', 5)->take(10)->get();
+        return view('admin.user.bukankader', compact('bukankader'));
+    }
+
+
+    
 }

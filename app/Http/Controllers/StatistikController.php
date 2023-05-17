@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
+use App\Models\Galeri;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,17 +16,10 @@ class StatistikController extends Controller
     $roles = [1, 2, 3]; //role untuk user admin dan superadmin
     $user_anggota_count = User::whereIn('role_id', $roles)->count(); //total anggota dengan role 123
     $user_unmapaba = User::where('kaderisasi', 'Belum Mapaba')->count(); //total pengguna yang belum mapaba
-
-    $user_pkn = User::where('kaderisasi', 'pkn')->count(); //total pengguna yang sudah pkn
-
-    $pkl = ['PKL', 'PKN']; //total pkl adalah yang sudah pkl ditambah pkn
-    $user_pkl = User::whereIn('kaderisasi', $pkl)->count(); //total pkl
-    
-    $pkd = ['PKD', 'PKL', 'PKN']; //total pkd adalah yang sudah pkd ditambah pkl dan pkn
-    $user_pkd = User::whereIn('kaderisasi', $pkd)->count(); //total pkd
-
-    $mapaba = ['Mapaba', 'PKD', 'PKL', 'PKN']; //total mapaba ditambah pkd pkl dan pkn
-    $user_mapaba = User::whereIn('kaderisasi', $mapaba)->count(); //total mapaba
+    $user_pkn = User::where('kaderisasi', 'PKN')->count(); //total pengguna yang sudah pkn
+    $user_pkl = User::whereIn('kaderisasi', ['PKL', 'PKN'])->count(); //total pkl
+    $user_pkd = User::whereIn('kaderisasi', ['PKD', 'PKL', 'PKN'])->count(); //total pkd
+    $user_mapaba = User::whereIn('kaderisasi', ['Mapaba', 'PKD', 'PKL', 'PKN'])->count(); // Total mapaba
 
     $user_kelamin_l = User::where('kelamin', 'L')->count();
     $user_kelamin_p = User::where('kelamin', 'P')->count();
@@ -46,9 +41,17 @@ class StatistikController extends Controller
     // data kader yang belum di verifikasi 
     $kader = User::where('role_id', 4)->take(10)->get();
 
+    // Data Gambar yang belum di verifikasi
+    $galeri = Galeri::latest()->where('status', 0)->take(10)->get();
+
+    // Data Postingan yang belum diverifikasi
+    $posts = Post::with('category', 'tags')->where('active', 0)->take(10)->get();
+
     // dd($kader);
     //mapaba adalah jumlah orng yang sudah mabapa, pkd dan pkl, karena yang sudha pkd pasti sudah mapaba
       return view('admin.index', compact(
+        'posts',
+        'galeri',
         'kader', 
         'user_count', 
         'user_anggota_count',

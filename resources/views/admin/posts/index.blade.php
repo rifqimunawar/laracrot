@@ -1,3 +1,4 @@
+@section('title') {{ 'Post' }}@endsection
 @extends('admin.layout')
 @section('content')
     <!-- Content Wrapper. Contains page content -->
