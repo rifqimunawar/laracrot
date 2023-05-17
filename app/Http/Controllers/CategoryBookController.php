@@ -4,64 +4,65 @@ namespace App\Http\Controllers;
 
 use App\Models\CategoryBook;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreCategoryBookRequest;
 use App\Http\Requests\UpdateCategoryBookRequest;
 
 class CategoryBookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  public function index(Request $request)
+  {
+    $categorybook = CategoryBook::with('perpus')->get();
+    return view('admin.categorybook.index', compact('categorybook'));
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  public function create()
+  {
+  return view('admin.categorybook.create');
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreCategoryBookRequest $request)
-    {
-        //
+  public function store(Request $request)
+  {
+    $categorybook = $request -> all();
+    $request->file('img')->getClientOriginalExtension();
+    if ($request->img) {
+      $extension = $request->img->getClientOriginalExtension();
+      $newFileName = 'categorybook' . '_' . $request->name . '-' . now()->timestamp . '.' . $extension;
+      $request->file('img')->move(public_path('/storage/img'), $newFileName);
+      $categorybook['img'] = $newFileName;
+  }
+    $categorybook = CategoryBook::create($categorybook);
+    Alert::success('Mantap Sahabat', 'Category Buku Berhasil Ditambahkan');
+    return redirect('/admin/categorybook');
+  }
+  public function edit($id, Request $request)
+  {
+    $categorybook = CategoryBook ::find($id);
+    return view('admin.categorybook.edit', compact('categorybook'));
+  }
+  public function update($id, Request $request)
+  {
+    $categorybookToUpdate = CategoryBook::findOrFail($id);
+  
+    $categorybookData = $request->all();
+    if ($request->img) {
+      $extension = $request->img->getClientOriginalExtension();
+      $newFileName = 'categorybook_update' . '_' . $request->name . '-' . now()->timestamp . '.' . $extension;
+      $request->file('img')->move(public_path('/storage/img'), $newFileName);
+      $categorybookData['img'] = $newFileName;
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(CategoryBook $categoryBook)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(CategoryBook $categoryBook)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdateCategoryBookRequest $request, CategoryBook $categoryBook)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(CategoryBook $categoryBook)
-    {
-        //
-    }
+  
+    $categorybookToUpdate->update($categorybookData);
+  
+    Alert::success('Mantap Sahabat', 'Category Buku Berhasil Di Ubah');
+    return redirect('/admin/categorybook');
+  }
+  public function destroy($id)
+  {
+      $categorybook = CategoryBook::findOrFail($id);
+      $categorybook->delete();
+      Alert::success('Mantap Sahabat', 'Category Buku Berhasil Dihapus');
+      return redirect('/admin/categorybook/');
+  }
 }
