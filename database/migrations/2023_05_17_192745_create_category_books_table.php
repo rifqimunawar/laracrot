@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('perpus', function (Blueprint $table) {
+        Schema::create('category_books', function (Blueprint $table) {
             $table->id();
-            $table->string('judul', )->nullable();
-            $table->string('deskripsi', )->nullable();
-            $table->string('categorybook_id', )->default(1);
-            $table->foreignId('user_id');
-            $table->string('image', )->nullable();
-            $table->string('pdf', )->nullable();
+            $table->string('title', 50);
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('perpus');
+        Schema::dropIfExists('category_books');
     }
 };

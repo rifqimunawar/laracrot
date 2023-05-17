@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             TagSeeder::class,
             RayonSeeder::class,
+            CategoryBookSeeder::class,
         ]);
 
     // DB::unprepared(file_get_contents(__DIR__ . 'laracrot.sql'));

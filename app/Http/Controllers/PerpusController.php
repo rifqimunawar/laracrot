@@ -18,8 +18,9 @@ class PerpusController extends Controller
     public function index(Request $request)
     {
         $user=Auth::user();
-        return view('/user/perpus', [ "perpus" => Perpus::latest()->get(),
-    ], compact('user'));
+        $perpus = Perpus::with('categorybooks')->latest()->get();
+        // dd($perpus);
+        return view('/user/perpus', compact('user', 'perpus'));
     }
 
     public function admin_index(Request $request)
