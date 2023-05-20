@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\CategoryBook;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Http\Requests\StoreCategoryBookRequest;
-use App\Http\Requests\UpdateCategoryBookRequest;
 
 class CategoryBookController extends Controller
 {
@@ -23,13 +21,19 @@ class CategoryBookController extends Controller
   }
   public function store(Request $request)
   {
-      $category = new CategoryBook();
-      $category->title = $request->title;
-      $category->save();
+      $categoryData = $request->only('title', 'slug');
+      $category = CategoryBook::create($categoryData);
   
       Alert::success('Mantap Sahabat', 'Category Buku Berhasil Ditambahkan');
       return redirect('/admin/categorybooks');
   }
+  
+  public function show($id, Request $request)
+  {
+      $categorybook = CategoryBook::with('perpus')->paginate(10)->find($id);
+      return view('admin.categorybook.show', compact('categorybook'));
+  }
+  
   
   public function edit($id, Request $request)
   {
@@ -40,27 +44,21 @@ class CategoryBookController extends Controller
   {
     $categorybookToUpdate = CategoryBook::findOrFail($id);
   
-    $categorybookData = $request->all();
-    if ($request->img) {
-      $extension = $request->img->getClientOriginalExtension();
-      $newFileName = 'categorybook_update' . '_' . $request->name . '-' . now()->timestamp . '.' . $extension;
-      $request->file('img')->move(public_path('/storage/img'), $newFileName);
-      $categorybookData['img'] = $newFileName;
-    }
-  
+    $categorybookData = $request->all();  
     $categorybookToUpdate->update($categorybookData);
   
     Alert::success('Mantap Sahabat', 'Category Buku Berhasil Di Ubah');
-    return redirect('/admin/categorybook');
+    return redirect('/admin/categorybooks/');
   }
   public function destroy($id)
   {
       $categorybook = CategoryBook::findOrFail($id);
       if ($categorybook->perpus()->count()) {
-        return redirect('/admin/categorybook/')->with('error', 'Error! The category has entries.');
+          Alert::error('Error Sahabat', 'Category Buku Sedang Terisi / Tidak Kosong');
+          return redirect('/admin/categorybooks')->with('error', 'Error! The category has entries.');
       }
       $categorybook->delete();
       Alert::success('Mantap Sahabat', 'Category Buku Berhasil Dihapus');
-      return redirect('/admin/categorybook/');
+      return redirect('/admin/categorybooks');
   }
 }

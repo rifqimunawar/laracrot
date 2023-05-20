@@ -21,15 +21,21 @@
                 <td>{{ $category->title }}</td>
                 <td>{{ $category->perpus->count() }}</td>
                 <td class="text-center">
-                  <form action="">
-                    <a href="" class="btn btn-success btn-sm">Lihat</a>
+                  <form action="{{ route('categorybooks.destroy', $category->id) }}" method="POST">
+                    <a href="{{ route('categorybooks.show', $category->id) }}" class="btn btn-success btn-sm">Lihat</a>
                     <a href="{{ route('categorybooks.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    @csrf
+                    @method('DELETE')
+                      <button type="submit" class="btn btn-danger btn-sm pl-2" onclick="return confirm
+                    ('Apakah Anda yakin ingin menghapus Category ini?')">Hapus</button>
                   </form>
                 </td>
             </tr>
             @endforeach
         </table>
-
+        <div>
+          <a href="/admin" class="btn btn-warning btn-sm" >Kembali</a>
+        </div>
     </div>
 </div>
 @endsection

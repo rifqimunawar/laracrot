@@ -4,7 +4,7 @@
 <div class="card info-card sales-card">
     <div class="container">
         <h4 class="text-center mb-2 mt-5">Tambah Category Books</h4>
-        <form action="/admin/categorybooks/store" method="post">
+        <form action="/admin/categorybooks/store" method="post" enctype="multipart/form-data">
             @csrf
             
             <div class="my-3">
