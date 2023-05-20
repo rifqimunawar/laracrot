@@ -14,6 +14,6 @@ class Perpus extends Model
 
     public function categorybooks(): BelongsTo
     {
-        return $this->belongsTo(CategoryBook::class);
-    }
+        return $this->belongsTo(CategoryBook::class, 'categorybook_id');
+    }    
 }

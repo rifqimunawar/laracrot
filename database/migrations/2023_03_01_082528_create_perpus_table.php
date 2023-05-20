@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('perpus', function (Blueprint $table) {
             $table->id();
-            $table->string('judul', )->nullable();
-            $table->string('deskripsi', )->nullable();
-            $table->foreignId('categorybook_id', )->default(1);
+            $table->string('judul')->nullable();
+            $table->string('deskripsi')->nullable();
+            $table->unsignedBigInteger('categorybook_id')->default(1);
             $table->foreignId('user_id');
-            $table->string('image', )->nullable();
-            $table->string('pdf', )->nullable();
+            $table->string('image')->nullable();
+            $table->string('pdf')->nullable();
             $table->timestamps();
         });
     }
+    
 
     /**
      * Reverse the migrations.

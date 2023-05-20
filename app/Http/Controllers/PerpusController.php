@@ -17,17 +17,18 @@ class PerpusController extends Controller
      */
     public function index(Request $request)
     {
-        $user=Auth::user();
+        $user = Auth::user();
         $perpus = Perpus::with('categorybooks')->latest()->get();
-        // dd($perpus);
         return view('/user/perpus', compact('user', 'perpus'));
     }
+    
 
     public function admin_index(Request $request)
     {
-        $perpus = Perpus::paginate(10);
+        $perpus = Perpus::with('categorybooks')->paginate(10);
         return view('admin/perpus/index', compact('perpus'));
     }
+    
 
     /**
      * Show the form for creating a new resource.

@@ -13,8 +13,8 @@ class CategoryBook extends Model
     protected $guarded = [];
     public function perpus(): HasMany
     {
-        return $this->hasMany(Perpus::class,'categorybook_id');
-    }
+        return $this->hasMany(Perpus::class, 'categorybook_id');
+    }    
     public function sluggable(): array
     {
         return [
