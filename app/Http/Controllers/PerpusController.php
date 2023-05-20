@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Perpus;
-use Illuminate\Http\RedirectResponse;
+use App\Models\CategoryBook;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PerpusController extends Controller
@@ -17,23 +18,32 @@ class PerpusController extends Controller
      */
     public function index(Request $request)
     {
-        $user=Auth::user();
-        return view('/user/perpus', [ "perpus" => Perpus::latest()->get(),
-    ], compact('user'));
+        $user = Auth::user();
+        $perpus = Perpus::with('categorybooks')->latest()->get();
+        return view('/user/perpus', compact('user', 'perpus'));
+    }
+    public function details($id, Request $request)
+    {
+        $user = Auth::user();
+        $perpus = Perpus::find($id);
+
+        return view('/user/details', compact('user', 'perpus'));
     }
 
     public function admin_index(Request $request)
     {
-        $perpus = Perpus::paginate(10);
+        $perpus = Perpus::with('categorybooks')->paginate(10);
         return view('admin/perpus/index', compact('perpus'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
     {
-        return view('admin.perpus.create');
+        $category = CategoryBook::all();
+        return view('admin.perpus.create', compact('category'));
     }
 
     /**
@@ -47,14 +57,14 @@ class PerpusController extends Controller
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
             $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
             $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }

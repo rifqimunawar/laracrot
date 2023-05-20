@@ -18,40 +18,40 @@ class UserController extends Controller
     {
         $count_user = User::count();
         if ($request->has('search')) {
-            $user = User::where('username', 'LIKE', '%'.$request->search.'%')
-                          ->orwhere('rayon', 'LIKE', '%'.$request->search.'%')
-                          ->orwhere('name', 'LIKE', '%'.$request->search.'%')
-                          ->orwhere('nim', 'LIKE', '%'.$request->search.'%')
-                          ->paginate(25);
+            $user = User::where('username', 'LIKE', '%' . $request->search . '%')
+                //   ->orwhere('rayon', 'LIKE', '%'.$request->search.'%')
+                ->orwhere('name', 'LIKE', '%' . $request->search . '%')
+                ->orwhere('nim', 'LIKE', '%' . $request->search . '%')
+                ->paginate(25);
         } else {
             $user = User::with('rayon')->latest()->paginate(25);
         }
-    
+
         $first_item = ($user instanceof \Illuminate\Pagination\LengthAwarePaginator) ? $user->firstItem() : $user->first();
-    
+
         return view('admin.user.index', compact('user', 'count_user', 'first_item'));
     }
-    
+
     public function list($slug, Request $request)
     {
         $rayon = Rayon::where('slug', $slug)
-                        ->with('users')
-                        ->latest()
-                        ->paginate(25);
-    
+            ->with('users')
+            ->latest()
+            ->paginate(25);
+
         if ($request->has('search')) {
-          $user = User::Where('username','LIKE','%'.$request->search.'%')
-                      ->orWhere('name','LIKE','%'.$request->search.'%')
-                      ->get();
+            $user = User::Where('username', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('name', 'LIKE', '%' . $request->search . '%')
+                ->get();
         } else {
             $user = User::with('rayon')->latest()->paginate(25);
             $count_user = User::count();
         }
-    
+
         return view('admin.rayon.show', compact('rayon', 'user'));
     }
-    
-    
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -87,27 +87,27 @@ class UserController extends Controller
         $rayon = Rayon::find($user->rayon_id);
         return view('admin.user.edit', compact('user', 'role', 'rayon'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update($id, Request $request)
     {
-      $userToUpdate = User::findOrFail($id);
-    
-      $userData = $request->all();
-      if ($request->img) {
-        $extension = $request->img->getClientOriginalExtension();
-        $newFileName = 'user' . '_' . $request->username . '-' . now()->timestamp . '.' . $extension;
-        $request->file('img')->move(public_path('/storage/img'), $newFileName);
-        $userData['img'] = $newFileName;
-      }
-    
-      $userToUpdate->update($userData);
-    
-      Alert::success('Mantap Sahabat', 'User Berhasil Di Update');
-      return redirect('/admin');
+        $userToUpdate = User::findOrFail($id);
+
+        $userData = $request->all();
+        if ($request->img) {
+            $extension = $request->img->getClientOriginalExtension();
+            $newFileName = 'user' . '_' . $request->username . '-' . now()->timestamp . '.' . $extension;
+            $request->file('img')->move(public_path('/storage/img'), $newFileName);
+            $userData['img'] = $newFileName;
+        }
+
+        $userToUpdate->update($userData);
+
+        Alert::success('Mantap Sahabat', 'User Berhasil Di Update');
+        return redirect('/admin');
     }
 
     /**
@@ -148,17 +148,14 @@ class UserController extends Controller
 
     public function unverification(Request $request)
     {
-          // data kader yang belum di verifikasi 
+        // data kader yang belum di verifikasi 
         $unverification = User::where('role_id', 4)->take(10)->get();
         return view('admin.user.unverification', compact('unverification'));
     }
     public function bukankader(Request $request)
     {
-          // data kader yang belum di verifikasi 
+        // data kader yang belum di verifikasi 
         $bukankader = User::where('role_id', 5)->take(10)->get();
         return view('admin.user.bukankader', compact('bukankader'));
     }
-
-
-    
 }

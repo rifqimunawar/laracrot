@@ -72,11 +72,30 @@
 
       
       <li class="nav-item">
+        <a class="nav-link {{ request()->is('admin/perpus*') ? ' active' : ' collapsed' }}" data-bs-target="#tables-books" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-book-half"></i></i><span>Perpustkaan</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-books" class="nav-content collapse " data-bs-parent="#tables-books">
+          <li>
+            <a href="/admin/categorybooks/">
+              <i class="bi bi-circle"></i><span>Category</span>
+            </a>
+          </li>
+          <li>
+            <a href="/admin/perpus">
+              <i class="bi bi-circle"></i><span>Books</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      {{-- <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/perpus*') ? ' active' : ' collapsed' }}" href="/admin/perpus">
           <i class="bi bi-book-half"></i>
           <span>Perpustakaan</span>
         </a>
-      </li><!-- End Profile Page Nav -->
+      </li> --}}
+      <!-- End Profile Page Nav -->
 
       @auth 
       @if (in_array(auth()->user()->role_id, [1]))

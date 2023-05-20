@@ -15,9 +15,9 @@ class RayonController extends Controller
      */
     public function index()
     {
-        $rayon = Rayon ::with('users')
-        ->latest()
-        ->get();
+        $rayon = Rayon::with('users')
+            ->latest()
+            ->get();
         // dd($rayon);
 
         return view('admin.rayon.index', compact('rayon'));
@@ -36,7 +36,7 @@ class RayonController extends Controller
      */
     public function store(Request $request)
     {
-        $rayon = $request -> all();
+        $rayon = $request->all();
         $rayon = Rayon::create($rayon);
 
         Alert::success('Mantap Sahabat', 'Rayon Berhasil Ditambahkan');
@@ -46,27 +46,28 @@ class RayonController extends Controller
     /**
      * Display the specified resource.
      */
-public function show(Request $request, $slug)
-{
-          $rayon = Rayon::with(['users' => function ($query) {
+    public function show(Request $request, $slug)
+    {
+        $rayon = Rayon::with(['users' => function ($query) {
             $query->whereIn('role_id', [1, 2, 3]);
-            }])
+        }])
             ->where('slug', $slug)
             ->paginate(25);
 
-    if ($request->has('search')) {
-        $user = User::where('username', 'LIKE', '%' . $request->search . '%')
-            ->get();
-    } else {
-        $user = User::with('rayon')->latest()->paginate(25);
-        $count_user = User::count();
+        if ($request->has('search')) {
+            $user = Rayon::where('username', 'LIKE', '%' . $request->search . '%')
+                ->orwhere('name', 'LIKE', '%' . $request->search . '%')
+                ->paginate(25);
+        } else {
+            $user = Rayon::with('rayon')->latest()->paginate(25);
+            $count_user = Rayon::count();
+        }
+
+        return view('admin.rayon.show', compact('rayon', 'user'));
     }
 
-    return view('admin.rayon.show', compact('rayon', 'user'));
-}
 
 
-    
 
     /**
      * Show the form for editing the specified resource.
@@ -74,7 +75,7 @@ public function show(Request $request, $slug)
     public function edit($id)
     {
         $rayon = Rayon::findOrFail($id);
-        
+
         return view('/admin/rayon/edit', compact('rayon'));
     }
 
@@ -83,9 +84,9 @@ public function show(Request $request, $slug)
      */
     public function update($id, Request $request)
     {
-        $rayon = Rayon ::find($id);
-        $rayon -> rayon = $request->rayon;
-        $rayon -> update();
+        $rayon = Rayon::find($id);
+        $rayon->rayon = $request->rayon;
+        $rayon->update();
 
         Alert::success('Mantap Sahabat', 'Rayon Berhasil Diubah');
         return redirect('/admin/rayon');

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\QuotesController;
@@ -69,6 +70,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
   Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
+  Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
   Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
@@ -146,6 +148,14 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/kaderpkn/', [UserController::class, 'kaderpkn'])->name('kaderpkn');
     Route::get('/admin/unverification/', [UserController::class, 'unverification'])->name('unverification');
     Route::get('/admin/bukankader/', [UserController::class, 'bukankader'])->name('bukankader');
+
+    Route::get('/admin/categorybooks/', [CategoryBookController::class, 'index'])->name('categorybooks');
+    Route::get('/admin/categorybooks/create', [CategoryBookController::class, 'create'])->name('create');
+    Route::post('/admin/categorybooks/store', [CategoryBookController::class, 'store'])->name('store');
+    Route::get('/admin/categorybooks/{id}/show', [CategoryBookController::class, 'show'])->name('categorybooks.show');
+    Route::get('/admin/categorybooks/{id}/edit', [CategoryBookController::class, 'edit'])->name('categorybooks.edit');
+    Route::put('/admin/categorybooks/{id}', [CategoryBookController::class, 'update'])->name('categorybooks.update');
+    Route::delete('/admin/categorybooks/{id}', [CategoryBookController::class, 'destroy'])->name('categorybooks.destroy');
   });
     // =====================================================
     // Route Super Admin only ==============================
