@@ -29,9 +29,9 @@
 
                 </dl>             
                 </div>
-                <div class="col">
-                  <figure class="movie-poster"><img src="{{ asset('storage/img/Screenshot_13.jpg' ) }}" alt="#"></figure>
-                  <div class="pb-5 d-flex justify-content-start">
+                <div class="col mt-5">
+                  <figure class="movie-poster"><img width="300" src="{{ asset('storage/img/' . $perpus->image ) }}" alt="#"></figure>
+                  <div class="pb-5 text-center">
                     <a href="/perpus"class="btn btn-warning btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px; margin-left: 5px;">Kembali</a>
                     <a href="{{ asset('storage/pdf/'.$perpus['pdf'])  }}" download type="button" class="btn btn-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px; margin-left: 5px;">Download</a>
                     <a href="{{ asset('storage/pdf/'.$perpus['pdf'])  }}" type="button" class="btn btn-success btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px; margin-left: 5px;">Baca</a>

@@ -12,49 +12,48 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-          
-          // hal yang bersifat pribadi
-          $table->string('name'); //public
-          $table->string('nim')->unique();
-          $table->string('img')->default('user.png');
-          $table->string('alamat')->nullable()->dafault('uninus pride');
-          $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
-          $table->string('t_lahir', 20)->nullable();
-          $table->string('ttl', 20)->nullable();
-          $table->string('hobi', 15)->nullable();
-          $table->string('sma', 50)->nullable();
-          $table->string('thn_lulus', 10)->nullable();
-          $table->string('thn_kuliah', 10)->nullable();
 
-          $table->string('wa', 20)->nullable();
-          $table->string('twitter')->nullable();
-          $table->string('fb')->nullable();
-          $table->string('ig')->nullable();
-          $table->string('kelamin')->nullable(); //public
-          
-          // hal yang berkaitan dengan account 
-          $table->id();
-          $table->foreignId('role_id')->default(4);
-          $table->string('username')->unique(); //public
-          $table->string('slug');
-          $table->string('email')->nullable();
-          $table->string('password');
-          $table->timestamp('email_verified_at')->nullable();
-          $table->rememberToken() ->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
-          $table->timestamps();
-          $table->string('centang', 2)->default('0');
+            // hal yang bersifat pribadi
+            $table->string('name'); //public
+            $table->string('nim');
+            $table->string('img')->default('user.png');
+            $table->string('alamat')->nullable()->dafault('uninus pride');
+            $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
+            $table->string('t_lahir', 20)->nullable();
+            $table->string('ttl', 20)->nullable();
+            $table->string('hobi', 15)->nullable();
+            $table->string('sma', 50)->nullable();
+            $table->string('thn_lulus', 10)->nullable();
+            $table->string('thn_kuliah', 10)->nullable();
 
-          // hal yang berkaitan dngn orgn 
-          $table->string('rayon_id'); //public
-          $table->string('prodi', 30)->nullable();
-          $table->string('kaderisasi')->default('Belum Mapaba'); //public
-          $table->string('thn_mapaba', 10)->nullable();
-          $table->string('thn_pkd', 10)->nullable();
-          $table->string('thn_pkl', 10)->nullable();
-          $table->string('thn_pkn', 10)->nullable();
-          $table->string('informal', 100)->nullable();
-          $table->string('nonformal', 100)->nullable();
+            $table->string('wa', 20)->nullable();
+            $table->string('twitter')->nullable();
+            $table->string('fb')->nullable();
+            $table->string('ig')->nullable();
+            $table->string('kelamin')->nullable(); //public
 
+            // hal yang berkaitan dengan account 
+            $table->id();
+            $table->foreignId('role_id')->default(4);
+            $table->string('username')->unique(); //public
+            $table->string('slug');
+            $table->string('email')->nullable();
+            $table->string('password');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken()->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
+            $table->timestamps();
+            $table->string('centang', 2)->default('0');
+
+            // hal yang berkaitan dngn orgn 
+            $table->string('rayon_id'); //public
+            $table->string('prodi', 30)->nullable();
+            $table->string('kaderisasi')->default('Belum Mapaba'); //public
+            $table->string('thn_mapaba', 10)->nullable();
+            $table->string('thn_pkd', 10)->nullable();
+            $table->string('thn_pkl', 10)->nullable();
+            $table->string('thn_pkn', 10)->nullable();
+            $table->string('informal', 100)->nullable();
+            $table->string('nonformal', 100)->nullable();
         });
     }
 
@@ -66,8 +65,3 @@ return new class extends Migration
         Schema::dropIfExists('users');
     }
 };
-
-
-
-
-
