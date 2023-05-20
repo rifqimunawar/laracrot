@@ -61,6 +61,9 @@ class CategoryBookController extends Controller
   public function destroy($id)
   {
       $categorybook = CategoryBook::findOrFail($id);
+      if ($categorybook->perpus()->count()) {
+        return redirect('/admin/categorybook/')->with('error', 'Error! The category has entries.');
+      }
       $categorybook->delete();
       Alert::success('Mantap Sahabat', 'Category Buku Berhasil Dihapus');
       return redirect('/admin/categorybook/');

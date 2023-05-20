@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul', )->nullable();
             $table->string('deskripsi', )->nullable();
-            $table->string('categorybook_id', )->default(1);
+            $table->foreignId('categorybook_id', )->default(1);
             $table->foreignId('user_id');
             $table->string('image', )->nullable();
             $table->string('pdf', )->nullable();

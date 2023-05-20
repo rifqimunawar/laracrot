@@ -10,26 +10,21 @@
         
         <table class="table table-striped table-hover">
             <tr>
-                <td class="text-center">No</td>
-                <td class="text-center">Category</td>
-                <td class="text-start">Jumlah</td>
-                <td class="text-center"> Aksi</td>
+                <th class="text-center">No</th>
+                <th >Category</th>
+                <th class="text-start">Jumlah</th>
+                <th class="text-center"> Aksi</th>
             </tr>
             @foreach ($categorybook as $category)
             <tr>
                 <td class="text-center">{{ $loop->iteration }}</td>
-                <td>{{ $category->name }}</td>
+                <td>{{ $category->title }}</td>
                 <td>{{ $category->perpus->count() }}</td>
-                <td class="btn-group text-center">
+                <td class="text-center">
                   <form action="">
+                    <a href="" class="btn btn-success btn-sm">Lihat</a>
                     <a href="{{ route('categorybooks.edit', $category->id) }}" class="btn btn-warning btn-sm">Edit</a>
                   </form>
-                  {{-- <form action="{{ route('categorybooks.destroy', $category->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                      <button type="submit" class="btn btn-danger btn-sm pl-2" onclick="return confirm
-                    ('Apakah Anda yakin ingin menghapus categorybooks ini?')">Hapus</button>
-                  </form> --}}
                 </td>
             </tr>
             @endforeach
