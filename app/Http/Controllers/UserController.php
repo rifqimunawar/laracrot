@@ -149,13 +149,13 @@ class UserController extends Controller
     public function unverification(Request $request)
     {
         // data kader yang belum di verifikasi 
-        $unverification = User::where('role_id', 4)->take(10)->get();
+        $unverification = User::where('role_id', 4)->paginate(10);
         return view('admin.user.unverification', compact('unverification'));
     }
     public function bukankader(Request $request)
     {
         // data kader yang belum di verifikasi 
-        $bukankader = User::where('role_id', 5)->take(10)->get();
+        $bukankader = User::where('role_id', 5)->paginate(10);
         return view('admin.user.bukankader', compact('bukankader'));
     }
 }

@@ -36,7 +36,8 @@
         </tr>
           @endforeach
       </table>
-      </div>
+    </div>
+    {{ $bukankader->links() }}
 
     </div>
 </div>

@@ -28,7 +28,7 @@
             </tr>
             @endforeach
         </table>
-
+        {{ $kadermapaba->links() }}
     </div>
 </div>
 @endsection
