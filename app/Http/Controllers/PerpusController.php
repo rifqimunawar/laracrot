@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 use App\Models\Perpus;
-use Illuminate\Http\RedirectResponse;
+use App\Models\CategoryBook;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Http\RedirectResponse;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class PerpusController extends Controller
@@ -35,7 +36,8 @@ class PerpusController extends Controller
      */
     public function create(Request $request)
     {
-        return view('admin.perpus.create');
+        $category = CategoryBook::all();
+        return view('admin.perpus.create', compact('category'));
     }
 
     /**

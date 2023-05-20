@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Galeri;
 use App\Models\Perpus;
 use App\Models\Category;
+use App\Models\CategoryBook;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
@@ -107,8 +108,17 @@ class ProfileController extends Controller
                           ->count();
         $perpusCount = Perpus::where('user_id', $user->id)
                           ->count();
+        $category = CategoryBook::all();
+
         
-        return view('user.uploads', compact('user', 'categories', 'tags', 'postCount', 'perpusCount', 'galeriCount'));
+          return view('user.uploads', compact(
+            'user', 
+            'tags', 
+            'category', 
+            'postCount', 
+            'categories', 
+            'perpusCount', 
+            'galeriCount'));
     }
     
     public function newpassword(Request $request)

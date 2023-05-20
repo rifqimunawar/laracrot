@@ -19,6 +19,15 @@
             <div class="my-3"></div>
             <label for="judul">Judul Buku</label>
             <input type="text" class="form-control" name="judul" id="judul" placeholder="Max 15 Huruf">
+            <div class="my-3"></div>
+            <label for="categorybook_id">Category Buku</label>
+            <select name="categorybook_id" class="form-select" required aria-label="categorybook_id">
+              <option value="1">--- Category Buku ---</option>
+              @foreach ($category as $item)
+              <option value="{{ $item->id }}">{{ $item->title }}</option>
+              @endforeach
+              {{-- <option value="Lantai 1 | 1A" @if ( $edit->posisi == "Lantai 1 | 1A" ) selected @endif>Lantai 1 | 1A</option> --}}
+            </select>
             
             <div class="my-3">
                 <a href="/admin/perpus" class="btn btn-warning btn-sm ">Kembali</a>
