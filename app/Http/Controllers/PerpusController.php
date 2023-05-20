@@ -22,7 +22,13 @@ class PerpusController extends Controller
         $perpus = Perpus::with('categorybooks')->latest()->get();
         return view('/user/perpus', compact('user', 'perpus'));
     }
-    
+    public function details($id, Request $request)
+    {
+        $user = Auth::user();
+        $perpus = Perpus::find($id);
+
+        return view('/user/details', compact('user', 'perpus'));
+    }
 
     public function admin_index(Request $request)
     {
@@ -51,14 +57,14 @@ class PerpusController extends Controller
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
             $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
             $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }

@@ -16,6 +16,7 @@ class PerpusSeeder extends Seeder
     {
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'1',
             'categorybook_id'=>'1',
             'image' => 'Screenshot_3.jpg',
@@ -25,6 +26,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'2',
             'categorybook_id'=>'1',
             'image' => 'Screenshot_4.jpg',
@@ -34,6 +36,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'1',
             'categorybook_id'=>'1',
             'image' => 'Screenshot_5.jpg',
@@ -43,6 +46,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'2',
             'categorybook_id'=>'2',
             'image' => 'Screenshot_6.jpg',
@@ -52,6 +56,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'3',
             'categorybook_id'=>'2',
             'image' => 'Screenshot_7.jpg',
@@ -61,6 +66,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'1',
             'categorybook_id'=>'2',
             'image' => 'Screenshot_8.jpg',
@@ -70,6 +76,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'2',
             'categorybook_id'=>'1',
             'image' => 'Screenshot_9.jpg',
@@ -79,6 +86,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'3',
             'categorybook_id'=>'2',
             'image' => 'Screenshot_10.jpg',
@@ -88,6 +96,7 @@ class PerpusSeeder extends Seeder
         ]);
         DB::table('perpus')->insert([
             'judul' => 'Berita terbaru hari ini',
+            'slug' => 'berita-terbaru-hari-ini',
             'user_id'=>'1',
             'categorybook_id'=>'2',
             'image' => 'Screenshot_11.jpg',

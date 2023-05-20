@@ -70,6 +70,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
   Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
+  Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
   Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);

@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('perpus', function (Blueprint $table) {
             $table->id();
-            $table->string('judul')->nullable();
+            $table->string('judul');
+            $table->string('slug');
+            $table->string('penulis')->nullable();
+            $table->string('penerbit')->nullable();
+            $table->string('thn_terbit')->nullable();
+            $table->string('isbn')->nullable();
+            $table->string('bahasa')->nullable();
+            $table->string('halaman')->nullable();
             $table->string('deskripsi')->nullable();
             $table->unsignedBigInteger('categorybook_id')->default(1);
             $table->foreignId('user_id');

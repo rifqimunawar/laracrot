@@ -6,13 +6,14 @@
         <div class="container card info-card sales-card mt-5">
             <div class="row" style="margin-left:0">
               @foreach ($perpus as $perp)
-                  <div class="col-md-2 my-3 mx-2 shadow p-3 mb-5 bg-body-tertiary rounded" style="width:180px; height:280px; object-fit:cover; margin-right:0; position: relative;">
+                  <div class="col-md-2 my-3 mx-2 shadow p-3 mb-5 bg-body-tertiary rounded" style="width:180px; height:290px; object-fit:cover; margin-right:0; position: relative;">
                         <div>
                           <img src="{{ asset('storage/img/'.$perp['image']) }}" style="width: 100%; height:200px; object-fit:cover; border-radius:20px; box-shadow: 0px 0px 5px 0px rgba(0,0,5,10);">
                       </div>
                       <div class="text-center mt-3" style="position: absolute; bottom: 10px; left: 0; right: 0;">
-                          <a href="{{ asset('storage/pdf/'.$perp['pdf'])  }}" download type="button" class="btn btn-outline-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px;">Download</a>
-                          <a href="{{ asset('storage/pdf/'.$perp['pdf'])  }}" type="button" class="btn btn-outline-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px; margin-left: 5px;">Baca</a>
+                        <span>{{ Str::limit($perp->judul, 15)  }}</span>
+                          <a href="/perpus/details/{{ $perp->id }}" class="btn btn-outline-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px;">Detail</a>
+                          {{-- <a href="{{ asset('storage/pdf/'.$perp['pdf'])  }}" type="button" class="btn btn-outline-secondary btn-sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;  border-radius:10px; margin-left: 5px;">Baca</a> --}}
                       </div>
                   </div>
               @endforeach

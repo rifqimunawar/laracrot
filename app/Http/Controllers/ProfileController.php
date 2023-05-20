@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Tag;
-use App\Models\Post;
-use App\Models\User;
-use App\Models\Galeri;
-use App\Models\Perpus;
 use App\Models\Category;
 use App\Models\CategoryBook;
+use App\Models\Galeri;
+use App\Models\Perpus;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProfileController extends Controller
 {
@@ -64,9 +64,6 @@ class ProfileController extends Controller
           'profileperpus',
         ));
     }
-
-    
-
     public function account( Request $request)
     {
         $categories = Category::pluck('title', 'id')->all();
