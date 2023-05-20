@@ -21,21 +21,16 @@ class CategoryBookController extends Controller
   {
   return view('admin.categorybook.create');
   }
-
   public function store(Request $request)
   {
-    $categorybook = $request -> all();
-    $request->file('img')->getClientOriginalExtension();
-    if ($request->img) {
-      $extension = $request->img->getClientOriginalExtension();
-      $newFileName = 'categorybook' . '_' . $request->name . '-' . now()->timestamp . '.' . $extension;
-      $request->file('img')->move(public_path('/storage/img'), $newFileName);
-      $categorybook['img'] = $newFileName;
+      $category = new CategoryBook();
+      $category->title = $request->title;
+      $category->save();
+  
+      Alert::success('Mantap Sahabat', 'Category Buku Berhasil Ditambahkan');
+      return redirect('/admin/categorybooks');
   }
-    $categorybook = CategoryBook::create($categorybook);
-    Alert::success('Mantap Sahabat', 'Category Buku Berhasil Ditambahkan');
-    return redirect('/admin/categorybook');
-  }
+  
   public function edit($id, Request $request)
   {
     $categorybook = CategoryBook ::find($id);
