@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             RayonSeeder::class,
             CategoryBookSeeder::class,
             HBNSeeder::class,
-            PostSeeder::class,
+            // PostSeeder::class,
         ]);
 
     // $backup = database_path(__DIR__ . 'laracrot.sql');

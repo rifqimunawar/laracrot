@@ -30,7 +30,7 @@
                     <section class="mb-5">
                       <div class="card bg-light">
                         <div class="card-body">
-                          <p class="fs-5 mb-4" style="background-color: black">
+                          <p class="fs-5 mb-4">
                               {!! $post->content !!}
                             </p>
                           </div>
