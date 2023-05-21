@@ -32,6 +32,21 @@ class UserSeeder extends Seeder
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
         DB::table('users')->insert([
+            'name' => 'Raie Aswajjillah',
+            'username' => 'rai___a',
+            'bio' => 'tangan terkepan dan maju kemuka!!!',
+            'slug' => 'rai-a',
+            'role_id' => '2',
+            'email' => 'rai010303@gmail.com',
+            'kelamin' => 'L',
+            'nim' => '41037006211028',
+            'centang' => '1',
+            'rayon_id' => '1',
+            'password' => '$2y$10$ass8pGGsgs.pHslpRs11R.kbQPoxBO/9S9LXw7/R6sXE5A06RnyOS',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+        ]);
+        DB::table('users')->insert([
             'name' => 'Superadmin',
             'username' => 'superadmin',
             'bio' => 'dzikir pikir amal shaleh',
