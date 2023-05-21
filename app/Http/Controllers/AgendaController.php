@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HBN;
 use App\Models\Agenda;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,10 +13,11 @@ class AgendaController extends Controller
 {
   public function index()
   {
+      $hbns = HBN::latest()->take(5)->get();
       $user=Auth::user();
       $events = Agenda::all();
     // dd($events);
-      return view('user.calendar', compact('events', 'user'));
+      return view('user.calendar', compact('events', 'user', 'hbns'));
   }
 
   public function list()

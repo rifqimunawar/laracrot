@@ -14,29 +14,50 @@ class HBNSeeder extends Seeder
     public function run(): void
     {
       DB::table('h_b_n_s')->insert([
-        'title' => 'idul fitri',
+        'title' => 'Hari Buku Nasional',
+        'date' => '2023-05-17',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'Hari Ulang Tahun Perpustakaan RI',
+        'date' => '2023-05-17',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'Hari Kebangkitan Nasional',
+        'date' => '2023-05-20',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'Hari Peringatan Revormasi',
+        'date' => '2023-05-21',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'Hari Keluarga',
+        'date' => '2023-05-29',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'Hari Tanpa Tembakau Sedunia',
+        'date' => '2023-05-31',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'Hari Lahir Pancasila',
         'date' => '2023-06-01',
-        'deskripsi' => 'aw aw aw aw',
-        'created_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s')
-    ]);
-      DB::table('h_b_n_s')->insert([
-        'title' => 'idul adha',
-        'date' => '2023-07-01',
-        'deskripsi' => 'aw aw aw aw',
-        'created_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s')
-    ]);
-      DB::table('h_b_n_s')->insert([
-        'title' => 'valentine',
-        'date' => '2023-02-01',
-        'deskripsi' => 'aw aw aw aw',
-        'created_at' => date('Y-m-d H:i:s'),
-        'updated_at' => date('Y-m-d H:i:s')
-    ]);
-      DB::table('h_b_n_s')->insert([
-        'title' => 'hari pahlawan',
-        'date' => '2023-04-01',
         'deskripsi' => 'aw aw aw aw',
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s')

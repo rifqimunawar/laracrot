@@ -2,17 +2,42 @@
 @section('title') {{ 'Agenda' }}@endsection
 @extends('user.layout')
 @section('content')
-<div class="text-center my-5 pt-3">
+<div class="text-center my-5 pt-3" data-aos="fade-up">
   <h1 class="pt-5">Calender Kegiatan</h1>
 </div>
 <!-- Gallery -->
 <div class="container my-1">
   <div class="row">
     
-    <div class="content py-1 mb-4 pb-2">
+    <div class="content py-1 mb-4 pb-2" data-aos="fade-up">
       <div id='calendar'></div>
     </div>
 
+    <div class="text-center my-5 pt-3" data-aos="fade-up">
+      <h1 class="pt-5">Hari Besar Nasional</h1>
+    </div>
+    <div class="container pt-2 pb-4 mb-4" data-aos="fade-up">
+      <div class="card info-card sales-card" style="box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);">
+      <table class="table table-hover">
+        <tr>
+            <th class="text-center">No</th>
+            <th class="text-start">Hari Besar</th>
+            <th class="text-start">Tanggal</th>
+            <th class="text-center">Waktu</th>
+        </tr>
+        @foreach ($hbns as $hari=>$hbn)
+          <tr>
+            <td class="text-center">{{ $loop->iteration }}</td>
+            <td>{{ $hbn->title }}</td>
+            <td>{{ date('Y-m-d', strtotime($hbn->date)) }}</td>
+            <td class="text-center">
+                <div id="countdown-{{ $loop->iteration }}"></div>
+            </td>
+        </tr>
+        @endforeach
+    </table>
+    </div>
+  </div>
 
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -59,6 +84,36 @@
 
 
 
+    
+  {{-- javascript for looping tanggl di hari besar nasional  --}}
+@foreach ($hbns as $hbn)
+<script>
+    var targetDate{{ $loop->iteration }} = new Date("{{ date('Y-m-d', strtotime($hbn->date)) }}");
+
+    function countdownTimer{{ $loop->iteration }}() {
+        var now = new Date();
+        var distance = targetDate{{ $loop->iteration }} - now;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+        var countdownDiv = document.getElementById('countdown-{{ $loop->iteration }}');
+        countdownDiv.innerHTML = '';
+
+        if (days > 0) {
+            var countdownText = 'Tinggal ' + days + ' hari lagi';
+            countdownDiv.innerHTML = '<p>' + countdownText + '</p>';
+        } else {
+            countdownDiv.innerHTML = '<p>Tanggal telah berlalu</p>';
+        }
+
+        setTimeout(countdownTimer{{ $loop->iteration }}, 1000);
+    }
+
+    countdownTimer{{ $loop->iteration }}();
+</script>
+@endforeach
+
+
   </div>
 </div>
 @endsection
@@ -97,6 +152,4 @@
   });
 
 </script>
-
-
 <script src="js_calendar/main.js"></script>
