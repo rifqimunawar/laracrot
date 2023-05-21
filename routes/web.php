@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HBNController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\QuotesController;
 use Illuminate\Support\Facades\Auth;
@@ -156,6 +157,13 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/categorybooks/{id}/edit', [CategoryBookController::class, 'edit'])->name('categorybooks.edit');
     Route::put('/admin/categorybooks/{id}', [CategoryBookController::class, 'update'])->name('categorybooks.update');
     Route::delete('/admin/categorybooks/{id}', [CategoryBookController::class, 'destroy'])->name('categorybooks.destroy');
+  
+    Route::get('/admin/hbn/', [HBNController::class, 'index'])->name('hbn.index');
+    Route::get('/admin/hbn/create', [HBNController::class, 'create'])->name('hbn.create');
+    Route::post('/admin/hbn/store', [HBNController::class, 'store'])->name('hbn.store');
+    Route::get('/admin/hbn/{id}/edit', [HBNController::class, 'edit'])->name('hbn.edit');
+    Route::put('/admin/hbn/{id}', [HBNController::class, 'update'])->name('hbn.update');
+    Route::delete('/admin/hbn/{id}', [HBNController::class, 'destroy'])->name('hbn.destroy');
   });
     // =====================================================
     // Route Super Admin only ==============================

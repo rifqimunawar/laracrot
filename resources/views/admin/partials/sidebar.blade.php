@@ -48,6 +48,13 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
+      <li class="nav-item">
+        <a class="nav-link {{ request()->is('admin/hbn*') ? ' active' : ' collapsed' }}" href="/admin/hbn">
+          <i class="bi bi-bookmark-check"></i>
+          <span>Hari Besar</span>
+      </a>
+      </li><!-- End Profile Page Nav -->
+
       
       <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/user*') ? ' active' : ' collapsed' }}" href="/admin/user">

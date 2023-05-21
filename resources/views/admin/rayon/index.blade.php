@@ -33,7 +33,7 @@
                     <td>{{ $kdr['rayon'] }}</td>
                     <td class="text-center">
                       <form action="">
-                        <a href="{{ route('rayon.show', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
+                        <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
                         @if (in_array(auth()->user()->role_id, [1]))
                           <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                           @endif
