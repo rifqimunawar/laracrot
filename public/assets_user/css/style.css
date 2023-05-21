@@ -49,39 +49,6 @@ h6 {
     padding: 0;
 }
 
-/*--------------------------------------------------------------
-# Back to top button
---------------------------------------------------------------*/
-.back-to-top {
-    position: fixed;
-    visibility: hidden;
-    opacity: 0;
-    right: 15px;
-    bottom: 15px;
-    z-index: 996;
-    background: #18d26e;
-    width: 40px;
-    height: 40px;
-    border-radius: 50px;
-    transition: all 0.4s;
-}
-
-.back-to-top i {
-    font-size: 28px;
-    color: #fff;
-    line-height: 0;
-}
-
-.back-to-top:hover {
-    background: #2ce782;
-    color: #fff;
-}
-
-.back-to-top.active {
-    visibility: visible;
-    opacity: 1;
-}
-
 /* Prelaoder */
 #preloader {
     position: fixed;
@@ -91,7 +58,7 @@ h6 {
     bottom: 0;
     z-index: 9999;
     overflow: hidden;
-    background: #000000;
+    background: rgba(0, 0, 0, 0.5); /* Warna hitam dengan transparansi 50% */
 }
 
 #preloader:before {
@@ -126,6 +93,38 @@ h6 {
     100% {
         transform: rotate(360deg);
     }
+}
+/*--------------------------------------------------------------
+# Back to top button
+--------------------------------------------------------------*/
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 996;
+    background: #18d26e;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    transition: all 0.4s;
+}
+
+.back-to-top i {
+    font-size: 28px;
+    color: #fff;
+    line-height: 0;
+}
+
+.back-to-top:hover {
+    background: #2ce782;
+    color: #fff;
+}
+
+.back-to-top.active {
+    visibility: visible;
+    opacity: 1;
 }
 
 /*--------------------------------------------------------------

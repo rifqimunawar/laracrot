@@ -21,11 +21,9 @@
         <div class="row">
             <table class="table">
                 <tr>
-                    <td class="text-center">No</td>
-                    <td class="text-center">Nama Rayon</td>
-                    <td class="text-center"> </td>
-                    <td class="text-center"> Aksi</td>
-                    <td class="text-center"> </td>
+                    <th class="text-center">No</th>
+                    <th class="text-start">Nama Rayon</th>
+                    <th class="text-center"> Aksi</th>
                 </tr>
                 @foreach ($rayon as $kdr)
                 
@@ -33,13 +31,13 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $kdr['rayon'] }}</td>
-                    <td class="text-end">
-                        <a href="{{ route('rayon.show', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
-                    </td>
                     <td class="text-center">
-                    @if (in_array(auth()->user()->role_id, [1]))
-                      <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                      @endif
+                      <form action="">
+                        <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
+                        @if (in_array(auth()->user()->role_id, [1]))
+                          <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                          @endif
+                      </form>
                     </td>
                     
                     {{-- <td class="text-start">
