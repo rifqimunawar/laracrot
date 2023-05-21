@@ -17,50 +17,39 @@
                 <td class="text-center"> Aksi</td>
             </tr>
             @foreach ($hbns as $hbn)
-            <tr>
-                <td class="text-center">{{ $loop->iteration }}</td>
-                <td>{{ $hbn->title }}</td>
-                <td>{{ $hbn->date }}</td>
-                <td>
+              <tr>
+                  <td class="text-center">{{ $loop->iteration }}</td>
+                  <td>{{ $hbn->title }}</td>
+                  <td>{{ date('Y-m-d', strtotime($hbn->date)) }}</td>
+                  <td class="text-center">
+                      <div id="countdown-{{ $loop->iteration }}"></div>
+                  </td>
+                  @foreach ($hbns as $hbn)
+                      <script>
+                          var targetDate{{ $loop->iteration }} = new Date("{{ date('Y-m-d', strtotime($hbn->date)) }}");
 
-                  <td>
-                    <script>
-                      CountDownTimer('{{tanggal sekarang}}', 'countdown');
-                      function CountDownTimer(dt, id)
-                      {
-                        var end = new Date('{{$tugas->end_date}}');
-                        var _second = 1000;
-                        var _minute = _second * 60;
-                        var _hour = _minute * 60;
-                        var _day = _hour * 24;
-                        var timer;
-                        function showRemaining() {
-                          var now = new Date();
-                          var distance = end - now;
-                          if (distance < 0) {
-              
-                            clearInterval(timer);
-                            document.getElementById(id).innerHTML = '<b>TUGAS SUDAH BERAKHIR</b> ';
-                            return;
+                          function countdownTimer{{ $loop->iteration }}() {
+                              var now = new Date();
+                              var distance = targetDate{{ $loop->iteration }} - now;
+
+                              var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+
+                              var countdownDiv = document.getElementById('countdown-{{ $loop->iteration }}');
+                              countdownDiv.innerHTML = '';
+
+                              if (days > 0) {
+                                  var countdownText = 'Tinggal ' + days + ' hari lagi';
+                                  countdownDiv.innerHTML = '<p>' + countdownText + '</p>';
+                              } else {
+                                  countdownDiv.innerHTML = '<p>Tanggal telah berlalu</p>';
+                              }
+
+                              setTimeout(countdownTimer{{ $loop->iteration }}, 1000);
                           }
-                          var days = Math.floor(distance / _day);
-                          var hours = Math.floor((distance % _day) / _hour);
-                          var minutes = Math.floor((distance % _hour) / _minute);
-                          var seconds = Math.floor((distance % _minute) / _second);
-              
-                          document.getElementById(id).innerHTML = days + 'days ';
-                          document.getElementById(id).innerHTML += hours + 'hrs ';
-                          document.getElementById(id).innerHTML += minutes + 'mins ';
-                          document.getElementById(id).innerHTML += seconds + 'secs';
-                          document.getElementById(id).innerHTML +='<h2>TUGAS BELUM BERAKHIR</h2>';
-                        }
-                        timer = setInterval(showRemaining, 1000);
-                      }
-                    </script>
-                    <div id="countdown"> 
-                    </td>
 
-                </td>
+                          countdownTimer{{ $loop->iteration }}();
+                      </script>
+                  @endforeach
                 <td class="text-center">
                   <form action="{{ route('quotes.destroy', $hbn->id) }}" method="POST">
                     <i class="bi bi-eye btn btn-success btn-sm pl-2 " data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>

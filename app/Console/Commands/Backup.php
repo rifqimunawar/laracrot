@@ -55,7 +55,6 @@ class Backup extends Command
 
       $tables =  [
         'galeri' => [
-            Galeri::galeri,
         ],
         'permissions' => [
           $tableNames['roles'],

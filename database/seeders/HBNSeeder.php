@@ -15,7 +15,28 @@ class HBNSeeder extends Seeder
     {
       DB::table('h_b_n_s')->insert([
         'title' => 'idul fitri',
-        'date' => '15-05-2023',
+        'date' => '2023-06-01',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'idul adha',
+        'date' => '2023-07-01',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'valentine',
+        'date' => '2023-02-01',
+        'deskripsi' => 'aw aw aw aw',
+        'created_at' => date('Y-m-d H:i:s'),
+        'updated_at' => date('Y-m-d H:i:s')
+    ]);
+      DB::table('h_b_n_s')->insert([
+        'title' => 'hari pahlawan',
+        'date' => '2023-04-01',
         'deskripsi' => 'aw aw aw aw',
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s')
