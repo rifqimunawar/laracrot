@@ -28,9 +28,13 @@
                     </header>
                     
                     <section class="mb-5">
-                        <p class="fs-5 mb-4">
-                            {!! $post->content !!}
-                        </p>
+                      <div class="card bg-light">
+                        <div class="card-body">
+                          <p class="fs-5 mb-4">
+                              {!! $post->content !!}
+                            </p>
+                          </div>
+                        </div>
                     </section>
                     <!-- Post tags-->
                     @if($post->tags->count())
@@ -41,6 +45,45 @@
                             @endforeach
                     @endif
                 </article>
+
+                <div class="row justify-center pt-30">
+                  <div class="col-xl-8 col-lg-9 col-md-11">
+                      <div class="row y-gap-20 justify-between items-center">
+                          <div class="col-auto">
+                              <div class="d-flex items-center">
+                                  <div class="lh-1 text-dark-1 fw-500 mr-20 ">Share</div>
+                                  <div class="d-flex x-gap-15">
+                                      <a target="_blank"
+                                          href="https://www.facebook.com/sharer.php?u={{ route('post.details', $post->slug) }}"
+                                          title="Share To Facebook">
+                                          <i class="fab fa-facebook-f pl-2 pr-2 ml-3 mb-2 btn btn-success sm-btn rounded"></i>
+                                      </a>
+                                      <a target="_blank"
+                                          href="https://api.whatsapp.com/send?text={{ route('post.details', $post->slug) }} {{ $post->title }}"
+                                          title="Share To Whatsapp">
+                                          <i class="fab fa-whatsapp pl-2 pr-2 ml-3 mb-2 btn btn-success sm-btn rounded"></i>
+                                      </a>
+                                      <a target="_blank"
+                                          href="https://twitter.com/share?url={{ route('post.details', $post->slug) }}&text={{ $post->title }}"
+                                          title="Share To Twitter">
+                                          <i class="fab fa-twitter pl-2 pr-2 ml-3 mb-2 btn btn-success sm-btn rounded"></i></a>
+                                      <a target="_blank"
+                                          href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('post.details', $post->slug) }}&title={{ $post->title }}"
+                                          title="Share To Linkedin">
+                                          <i class="fab fa-linkedin-in pl-2 pr-2 ml-3 mb-2 btn btn-success sm-btn rounded"></i>
+                                      </a>
+                                      <a target="_blank"
+                                          href="mailto:?subject={{ $post->title }}&body=Check out this site: {{ route('post.details', $post->slug) }}"
+                                          title="Share by Email';" title="Share Via Email">
+                                          <i class="far fa-envelope pl-2 pr-2 ml-3 mb-2 btn btn-success sm-btn rounded"></i>
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
                 <!-- Comments section-->
                 <section class="mb-5">
                     <div class="card bg-light">

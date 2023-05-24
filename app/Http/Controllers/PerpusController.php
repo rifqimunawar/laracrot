@@ -18,8 +18,17 @@ class PerpusController extends Controller
      */
     public function index(Request $request)
     {
+      if ($request->has('search')) {
+      $perpus = Perpus::with ('categorybooks')
+        ->where('judul', 'LIKE', '%' . $request->search . '%')
+        ->orwhere('penulis', 'LIKE', '%' . $request->search . '%')
+        // ->orwhere('categorybooks', 'LIKE', '%' . $request->search . '%') //title di ambil dari categorybook
+        ->get();
+        } else {
+          $perpus = Perpus::with('categorybooks')->latest()->paginate(25);
+        }
+
         $user = Auth::user();
-        $perpus = Perpus::with('categorybooks')->latest()->get();
         return view('/user/perpus', compact('user', 'perpus'));
     }
     public function details($id, Request $request)

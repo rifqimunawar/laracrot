@@ -43,7 +43,7 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 // Route Frondend  =====================================
 // ----------------------------------------------------
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/post', [PostController::class, 'index'])->name('index');
+Route::get('/post', [PostController::class, 'index'])->name('post.details');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('index');
 Route::get('/pengurus', [PengurusController::class, 'show'])->name('show');
 Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');

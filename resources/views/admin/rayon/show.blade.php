@@ -63,6 +63,7 @@
                     @endforeach
                 @endforeach
             </table>
+
             {{ $rayon->links() }}
         </div>
     </div>
