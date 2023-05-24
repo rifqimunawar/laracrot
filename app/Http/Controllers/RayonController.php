@@ -55,11 +55,13 @@ class RayonController extends Controller
             ->paginate(25);
 
         if ($request->has('search')) {
-            $user = Rayon::where('username', 'LIKE', '%' . $request->search . '%')
+            $rayon = Rayon::with('user')
+                ->where('username', 'LIKE', '%' . $request->search . '%')
                 ->orwhere('name', 'LIKE', '%' . $request->search . '%')
                 ->paginate(25);
+            // dd($request);
         } else {
-            $user = Rayon::with('rayon')->latest()->paginate(25);
+            $rayon = Rayon::with('rayon')->latest()->paginate(25);
             $count_user = Rayon::count();
         }
 
