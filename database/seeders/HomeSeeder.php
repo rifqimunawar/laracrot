@@ -14,18 +14,26 @@ class HomeSeeder extends Seeder
     public function run(): void
     {
         DB::table('home')->insert([
-            'judul' => 'PMII Komisariat Uninus',
-            'deskripsi' => 'Cabang Kota Bandung',
+            'judul' => 'Berita terbaru hari ini',
+            'deskripsi' => 'aw aw aw aw',
             'link' => 'https://www.youtube.com/',
-            'gambar' => 'banner_update_-1684699926.jpg',
+            'gambar' => 'home3.jpg',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
         DB::table('home')->insert([
-            'judul' => 'Tri Moto PMII',
-            'deskripsi' => 'Dzikir, Pikir, Amal Shaleh',
+            'judul' => 'Berita kedua',
+            'deskripsi' => 'ikeh ikeh kimochi',
             'link' => 'https://www.instagram.com/',
-            'gambar' => 'banner_update_-1684700286.jpeg',
+            'gambar' => 'home1.jpg',
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+        DB::table('home')->insert([
+            'judul' => 'Berita ketiga',
+            'deskripsi' => 'baru anjay mabar',
+            'link' => 'https://www.instagram.com/',
+            'gambar' => 'home2.jpg',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);

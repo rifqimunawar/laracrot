@@ -24,8 +24,6 @@
                     <dd class="col-sm-9">{{ $perpus->isbn }}</dd>
                     <dt class="col-sm-3">Category</dt>
                     <dd class="col-sm-9">{{ $perpus->categorybooks->title }}</dd>
-                    {{-- <dt class="col-sm-3">Upload By</dt>
-                    <dd class="col-sm-9">{{ $perpus->user_id}}</dd> --}}
                     <dt class="col-sm-3 text-truncate">Deskripsi</dt>
                     <dd class="col-sm-9">{{ $perpus->deskripsi }}</dd>
 

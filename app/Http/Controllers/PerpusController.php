@@ -36,13 +36,12 @@ class PerpusController extends Controller
         $user = Auth::user();
         $perpus = Perpus::find($id);
 
-    // dd($perpus);
         return view('/user/details', compact('user', 'perpus'));
     }
 
     public function admin_index(Request $request)
     {
-        $perpus = Perpus::with('categorybooks')->latest()->paginate(10);
+        $perpus = Perpus::with('categorybooks')->paginate(10);
         return view('admin/perpus/index', compact('perpus'));
     }
     

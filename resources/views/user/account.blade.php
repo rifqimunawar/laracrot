@@ -120,9 +120,16 @@
                     </div>
 
                       <div class="row mb-3">
-                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                        <label for="name" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                         <div class="col-md-8 col-lg-9">
-                          <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->name }}">
+                          <input name="name" type="text" class="form-control" id="name" value="{{ $user->name }}">
+                        </div>
+                      </div>
+
+                      <div class="row mb-3">
+                        <label for="bio" class="col-md-4 col-lg-3 col-form-label">Biografi</label>
+                        <div class="col-md-8 col-lg-9">
+                          <input name="bio" type="text" class="form-control" id="bio" value="{{ $user->bio }}">
                         </div>
                       </div>
 
@@ -173,13 +180,6 @@
                     </div>
 
                     <div class="row mb-3">
-                      <label for="t_lahir" class="col-md-4 col-lg-3 col-form-label">Kota Kelahiran</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="t_lahir" type="text" class="form-control" id="t_lahir" value="{{ $user->t_lahir }}" required>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
                       <label for="ttl" class="col-md-4 col-lg-3 col-form-label">Tanggal Lahir</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="ttl" type="date" class="form-control" id="ttl" value="{{ $user->ttl }}" required>
@@ -189,7 +189,7 @@
                     <div class="row mb-3">
                       <label for="hobi" class="col-md-4 col-lg-3 col-form-label">Hobi</label>
                       <div class="col-md-8 col-lg-9">
-                        <select class="form-select" name="kelamin" aria-label="Default select example">
+                        <select class="form-select" name="hobi" aria-label="Default select example">
                           <option value="" disabled selected>--- Pilih Golongan Hobi ---</option>
                           <option value="Bermain Game" {{ $user->hobi == 'Bermain Game' ? 'selected' : '' }}>Bermain Game Online</option>
                           <option value="Bermusik" {{ $user->hobi == 'Bermusik' ? 'selected' : '' }}>Bermusik: Mendengarkan/Bermain Musik/ Bernyayi</option>
@@ -227,13 +227,6 @@
                       <label for="wa" class="col-md-4 col-lg-3 col-form-label">Nomor WhatApps</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="wa" type="text" class="form-control" id="wa" value="{{ $user->wa }}" required>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Negara</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="Indonesia" required>
                       </div>
                     </div>
 
