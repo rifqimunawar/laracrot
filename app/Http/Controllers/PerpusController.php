@@ -42,7 +42,7 @@ class PerpusController extends Controller
 
     public function admin_index(Request $request)
     {
-        $perpus = Perpus::with('categorybooks')->paginate(10);
+        $perpus = Perpus::with('categorybooks')->latest()->paginate(10);
         return view('admin/perpus/index', compact('perpus'));
     }
     
