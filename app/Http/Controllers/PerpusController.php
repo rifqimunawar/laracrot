@@ -83,29 +83,30 @@ class PerpusController extends Controller
         return redirect('/admin/perpus');
     }
 
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show(string $id): Response
-    // {
-    //     //
-    // }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit(string $id): Response
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, string $id): RedirectResponse
-    // {
-    //     //
-    // }
+    public function edit($id, Request $request)
+    {
+      $perpus = Perpus ::find($id);
+      $category = CategoryBook::all();
+      return view('admin.perpus.edit', compact('perpus', 'category'));
+    }
+    public function update($id, Request $request)
+    {
+      $perpusToUpdate = Perpus::findOrFail($id);
+    
+      $perpusData = $request->all();
+      if ($request->img) {
+        $extension = $request->img->getClientOriginalExtension();
+        $newFileName = 'quotes_update' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
+        $request->file('img')->move(public_path('/storage/img'), $newFileName);
+        $perpusData['img'] = $newFileName;
+      }
+    
+      $perpusToUpdate->update($perpusData);
+    
+      Alert::success('Mantap Sahabat', 'Buku Berhasil Di Ubah');
+      return redirect('/admin/perpus');
+    }
 
     /**
      * Remove the specified resource from storage.

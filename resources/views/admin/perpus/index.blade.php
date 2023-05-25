@@ -30,6 +30,7 @@
                     <form action="{{ route('perpus.destroy', $perp->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
+                        <a href="{{ route('perpus.edit', $perp->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus buku ini?')">Hapus</button>
                     </form>
                 </td>

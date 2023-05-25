@@ -97,6 +97,8 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
     Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');
+    Route::get('/admin/perpus/{id}/edit', [PerpusController::class, 'edit'])->name('perpus.edit');
+    Route::put('/admin/perpus/{id}', [PerpusController::class, 'update'])->name('perpus.update');
     Route::delete('/admin/perpus/{id}', [PerpusController::class, 'destroy'])->name('perpus.destroy');
 
     Route::get('/admin/galeri', [GaleriController::class, 'admin_index'])->name('admin_index');
