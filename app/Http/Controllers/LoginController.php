@@ -53,20 +53,20 @@ class LoginController extends Controller
         // Rule validasi untuk username dan password
         $rules = [
             'username' => 'required|unique:users,username',
-            'nim' => 'required|unique:users,nim',
+            'nim' => 'required|min:14|unique:users,nim',
             'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         ];
     
-        // Pesan validasi
         $messages = [
-            'username.required' => 'Username wajib diisi.',
-            'username.unique' => 'Username sudah digunakan.',
-            'nim.required' => 'Nim wajib diisi.',
-            'nim.unique' => 'Nim sudah digunakan.',
-            'password.required' => 'Password wajib diisi.',
-            'password.min' => 'Password minimal 8 karakter.',
-            'password.regex' => 'Password harus terdiri dari huruf kapital, huruf kecil, dan angka.',
-        ];
+          'username.required' => 'Username wajib diisi.',
+          'username.unique' => 'Username sudah digunakan.',
+          'nim.required' => 'Nim wajib diisi.',
+          'nim.unique' => 'Nim sudah digunakan.',
+          'nim.min' => 'Nim kurang ajg minimal 14 Angka.',
+          'password.required' => 'Password wajib diisi.',
+          'password.min' => 'Password minimal 8 karakter.',
+          'password.regex' => 'Password harus terdiri dari huruf kapital, huruf kecil, dan angka.',
+      ];
     
         // Validasi input
         $validator = Validator::make($request->all(), $rules, $messages);

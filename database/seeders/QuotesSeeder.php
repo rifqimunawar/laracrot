@@ -14,29 +14,19 @@ class QuotesSeeder extends Seeder
     public function run(): void
     {
       DB::table('quotes')->insert([
-        'img' => 'user.png',
-        'name' => 'rifqi',
-        'who' => 'penakluk zeus',
-        'quote' => 'sakirana cinta ngahalangan kaderisasi!!!!! 
-        TINGGALKAN!!!!!!!!',
+        'img' => 'quotes_update_Soe Hok Gie-1684701036.jpg',
+        'name' => 'Soe Hok Gie',
+        'who' => 'Aktivis Orde Lama',
+        'quote' => 'Hidup adalah keberanian menghadapi tanda tanya.',
         'created_at' => date("Y-m-d H:i:s"),
         'updated_at' => date("Y-m-d H:i:s"),
     ]);
       DB::table('quotes')->insert([
-        'img' => '1 (6).jpg',
-        'name' => 'munawar',
-        'who' => 'penakluk hati wanita',
-        'quote' => 'lebih sulit dari filsafat lebih rumit dari codingan,
+        'img' => 'quotes_update_Khalil Gibran-1684701466.jpeg',
+        'name' => 'Khalil Gibran',
+        'who' => 'Seniman, Penyair, Penulis',
+        'quote' => 'Apa saja yang membakar dan membuat orang lain terbakar adalah berguna.,
         apa itu? cinta',
-        'created_at' => date("Y-m-d H:i:s"),
-        'updated_at' => date("Y-m-d H:i:s"),
-    ]);
-      DB::table('quotes')->insert([
-        'img' => '1 (5).jpg',
-        'name' => 'rifqi',
-        'who' => 'penakluk zeus',
-        'quote' => 'sakirana cinta ngahalangan kaderisasi!!!!! 
-        TINGGALKAN!!!!!!!!',
         'created_at' => date("Y-m-d H:i:s"),
         'updated_at' => date("Y-m-d H:i:s"),
     ]);

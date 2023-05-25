@@ -15,9 +15,13 @@ return new class extends Migration
 
             // hal yang bersifat pribadi
             $table->string('name'); //public
-            $table->string('nim');
+            $table->string('nim')->unique();
             $table->string('img')->default('user.png');
-            $table->string('alamat')->nullable()->dafault('uninus pride');
+            $table->string('provinces')->nullable();
+            $table->string('cities')->nullable();
+            $table->string('districts')->nullable();
+            $table->string('villages')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
             $table->string('t_lahir', 20)->nullable();
             $table->string('ttl', 20)->nullable();

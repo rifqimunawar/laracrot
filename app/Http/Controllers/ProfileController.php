@@ -76,7 +76,14 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $user = Auth::user();
-        $user->fill($request->only(['alamat', 'wa', 'email', 'twitter', 'fb', 'ig', 'kelamin'])); //ini hasil refactor dari chat gpt agar codingan lebih ringkas
+        $user->fill($request->only([
+          'alamat', 'wa', 'email', 
+          'twitter', 'fb', 'ig', 'kelamin',
+          'provinces', 'cities', 'districts', 
+          'villages', 'bio', 't_lahir', 'ttl', 
+          'hobi', 'sma', 'thn_lulus', 'thn_kuliah',
+          
+        ])); //ini hasil refactor dari chat gpt agar codingan lebih ringkas
     
         if ($request->hasFile('img')) {
             $extension = $request->img->getClientOriginalExtension();

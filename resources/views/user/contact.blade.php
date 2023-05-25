@@ -11,8 +11,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h3>Contact Us</h3>
-          <p>Hubungi kami jika anda membutuhkan informasi lebih mengenai PMII Komisariat Uninus Cabang Kota Bandung</p>
+          <h3>Masukan dan Saran</h3>
+          <p>Masukan anda mengenai PMII Komisariat Uninus agar lebih maju dan berkembang</p>
         </div>
 
         <div class="form">
