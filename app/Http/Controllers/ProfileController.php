@@ -215,6 +215,8 @@ class ProfileController extends Controller
             $perpus['pdf'] = $newFileName;
         }
         $perpus = Perpus::create($perpus);
+    // dd($perpus);
+
 
         Alert::success('Mantap Sahabat', 'File Berhasil Ditambahkan');
         return redirect('/profile');

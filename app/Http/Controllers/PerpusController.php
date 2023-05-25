@@ -36,6 +36,7 @@ class PerpusController extends Controller
         $user = Auth::user();
         $perpus = Perpus::find($id);
 
+    // dd($perpus);
         return view('/user/details', compact('user', 'perpus'));
     }
 
