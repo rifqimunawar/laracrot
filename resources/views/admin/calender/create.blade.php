@@ -34,8 +34,13 @@
                 <input type="text" name="tempat" class="form-control" id="tempat" class="mb-3" required id="tempat">
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Deskripsi Kegiatan</label>
-                <input type="text" name="description" class="form-control" id="description" class="mb-3" required id="description">
+                <label for="description" class="form-label">Category Kegiatan</label>
+                <select name="description" class="form-select" required aria-label="description">
+                  <option disabled selected >--- Category Kegiatan ---</option>
+                  <option value="Formal" >Formal</option>
+                  <option value="Non-Formal" >Non-Formal</option>
+                  <option value="InFormal" >InFormal</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="pamflet" class="form-label">Pamflet Bila Ada</label>

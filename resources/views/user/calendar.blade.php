@@ -65,7 +65,7 @@
             </div>
             
             <div class="mb-3">
-              <label for="deskripsi" class="form-label">Deskripsi</label>
+              <label for="deskripsi" class="form-label">Category</label>
               <input type="text" class="form-control" name="deskripsi" id="deskripsi"readonly >
             </div>
             
