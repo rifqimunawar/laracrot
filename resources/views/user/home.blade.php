@@ -333,6 +333,75 @@
     </div>
 
 
+    <div class="col-lg-12 mb-2"  data-aos="fade-up">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Statistik Kegiatan</h5>
+
+          <!-- Vertical Bar Chart -->
+          <div id="verticalBarChart" style="min-height: 400px;" class="echart"></div>
+
+          <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const formalData = [{{ $formalTeknik }}, {{ $formalHukum }}, {{ $formalFai }}, {{ $formalFikom }}, {{ $formalFkip }}, {{ $formalEkonomi }}];
+              const nonFormalData = [{{ $nonformalTeknik }}, {{ $nonformalHukum }}, {{ $nonformalFai }}, {{ $nonformalFikom }}, {{ $nonformalFkip }}, {{ $nonformalEkonomi }}];
+              const informalData = [{{ $informalTeknik }}, {{ $informalHukum }}, {{ $informalFai }}, {{ $informalFikom }}, {{ $informalFkip }}, {{ $informalEkonomi }}];
+          
+              formalData.reverse();
+              nonFormalData.reverse();
+              informalData.reverse();
+          
+              echarts.init(document.querySelector("#verticalBarChart")).setOption({
+                tooltip: {
+                  trigger: 'axis',
+                  axisPointer: {
+                    type: 'shadow'
+                  }
+                },
+                legend: {},
+                grid: {
+                  left: '3%',
+                  right: '4%',
+                  bottom: '3%',
+                  containLabel: true
+                },
+                xAxis: {
+                  type: 'value',
+                  boundaryGap: [0, 0.01]
+                },
+                yAxis: {
+                  type: 'category',
+                  data: ['Teknik', 'Hukum', 'Fai', 'Fikom', 'Fkip', 'Ekonomi'].reverse()
+                },
+                series: [
+                  {
+                    name: 'Formal',
+                    type: 'bar',
+                    data: formalData
+                  },
+                  {
+                    name: 'Non Formal',
+                    type: 'bar',
+                    data: nonFormalData
+                  },
+                  {
+                    name: 'Informal',
+                    type: 'bar',
+                    data: informalData
+                  }
+                ]
+              });
+            });
+          </script>
+          
+          <!-- End Vertical Bar Chart -->
+
+        </div>
+      </div>
+    </div>
+
+
+
 
     
     <!-- ======= Portfolio Section ======= -->

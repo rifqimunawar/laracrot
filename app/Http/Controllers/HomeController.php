@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Agenda;
 use App\Models\Home;
 use App\Models\User;
 use App\Models\Galeri;
@@ -43,7 +44,49 @@ class HomeController extends Controller
         $mapaba_2021 = User::where('thn_mapaba', '2021')->count(); //total mapaba di tahun 
         $mapaba_2022 = User::where('thn_mapaba', '2022')->count(); //total mapaba di tahun 
         $mapaba_2023 = User::where('thn_mapaba', '2023')->count(); //total mapaba di tahun 
+
+        $formalTeknik = Agenda::where('penyelenggara', 'Rayon Teknik')->where('description', 'Formal')->count();
+        $formalHukum = Agenda::where('penyelenggara', 'Rayon Hukum')->where('description', 'Formal')->count();
+        $formalFai = Agenda::where('penyelenggara', 'Rayon Ulul Albab')->where('description', 'Formal')->count();
+        $formalFikom = Agenda::where('penyelenggara', 'Rayon Fikom')->where('description', 'Formal')->count();
+        $formalFkip = Agenda::where('penyelenggara', 'Rayon Fkip')->where('description', 'Formal')->count();
+        $formalEkonomi = Agenda::where('penyelenggara', 'Rayon Ekonomi')->where('description', 'Formal')->count();
+
+        $nonformalTeknik = Agenda::where('penyelenggara', 'Rayon Teknik')->where('description', 'Non-Formal')->count();
+        $nonformalHukum = Agenda::where('penyelenggara', 'Rayon Hukum')->where('description', 'Non-Formal')->count();
+        $nonformalFai = Agenda::where('penyelenggara', 'Rayon Ulul Albab')->where('description', 'Non-Formal')->count();
+        $nonformalFikom = Agenda::where('penyelenggara', 'Rayon Fikom')->where('description', 'Non-Formal')->count();
+        $nonformalFkip = Agenda::where('penyelenggara', 'Rayon Fkip')->where('description', 'Non-Formal')->count();
+        $nonformalEkonomi = Agenda::where('penyelenggara', 'Rayon Ekonomi')->where('description', 'Non-Formal')->count();
+
+        $informalTeknik = Agenda::where('penyelenggara', 'Rayon Teknik')->where('description', 'InFormal')->count();
+        $informalHukum = Agenda::where('penyelenggara', 'Rayon Hukum')->where('description', 'InFormal')->count();
+        $informalFai = Agenda::where('penyelenggara', 'Rayon Ulul Albab')->where('description', 'InFormal')->count();
+        $informalFikom = Agenda::where('penyelenggara', 'Rayon Fikom')->where('description', 'InFormal')->count();
+        $informalFkip = Agenda::where('penyelenggara', 'Rayon Fkip')->where('description', 'InFormal')->count();
+        $informalEkonomi = Agenda::where('penyelenggara', 'Rayon Ekonomi')->where('description', 'InFormal')->count();
+
+    // dd($formalTeknik);
         return view('/user/home', compact([
+          'formalTeknik',
+          'formalHukum',
+          'formalFai',
+          'formalFikom',
+          'formalFkip',
+          'formalEkonomi',
+          'nonformalTeknik',
+          'nonformalHukum',
+          'nonformalFai',
+          'nonformalFikom',
+          'nonformalFkip',
+          'nonformalEkonomi',
+          'informalTeknik',
+          'informalHukum',
+          'informalFai',
+          'informalFikom',
+          'informalFkip',
+          'informalEkonomi',
+
           'home', 
           'user',
           'quotes',
@@ -67,6 +110,7 @@ class HomeController extends Controller
           'user_rayon_4',
           'user_rayon_5',
           'user_rayon_6',
+
         ]));
     }
 
