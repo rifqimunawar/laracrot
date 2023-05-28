@@ -1,0 +1,10 @@
+update versi 1.2
+
+A. Frontend
+- statistik agenda kegiatan per rayon
+- statistik produktifitas kader
+- fitur reset password
+
+B. Backend
+- fitur backup database dengan command langsung ke seeder
+- fitur reset password
