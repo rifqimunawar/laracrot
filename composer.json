@@ -13,6 +13,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "openai-php/client": "^0.3.5",
+        "orangehill/iseed": "^3.0",
         "realrashid/sweet-alert": "^6.0",
         "symfony/serializer-pack": "^1.2",
         "symfony/twig-pack": "^1.0"

@@ -37,6 +37,5 @@ class DatabaseSeeder extends Seeder
 
     // $backup = database_path(__DIR__ . 'laracrot.sql');
     // DB::unprepared(file_get_contents($backup));
-        $this->call(AgendasTableSeeder::class);
     }
 }

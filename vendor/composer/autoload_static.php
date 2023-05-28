@@ -629,6 +629,13 @@ class ComposerStaticInit7a23d6dcace97981633f002a4c2aabd1
     );
 
     public static $prefixesPsr0 = array (
+        'O' => 
+        array (
+            'Orangehill\\Iseed' => 
+            array (
+                0 => __DIR__ . '/..' . '/orangehill/iseed/src',
+            ),
+        ),
         'M' => 
         array (
             'Mockery' => 
@@ -698,6 +705,7 @@ class ComposerStaticInit7a23d6dcace97981633f002a4c2aabd1
         'App\\Models\\Quotes' => __DIR__ . '/../..' . '/app/Models/Quotes.php',
         'App\\Models\\Rayon' => __DIR__ . '/../..' . '/app/Models/Rayon.php',
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
+        'App\\Models\\Tag' => __DIR__ . '/../..' . '/app/Models/Tag.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\CategoryBookPolicy' => __DIR__ . '/../..' . '/app/Policies/CategoryBookPolicy.php',
         'App\\Policies\\PostsPolicy' => __DIR__ . '/../..' . '/app/Policies/PostsPolicy.php',
@@ -931,6 +939,7 @@ class ComposerStaticInit7a23d6dcace97981633f002a4c2aabd1
         'Database\\Factories\\PostFactory' => __DIR__ . '/../..' . '/database/factories/PostFactory.php',
         'Database\\Factories\\TagFactory' => __DIR__ . '/../..' . '/database/factories/TagFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\AgendasTableSeeder' => __DIR__ . '/../..' . '/database/seeders/AgendasTableSeeder.php',
         'Database\\Seeders\\CategoryBookSeeder' => __DIR__ . '/../..' . '/database/seeders/CategoryBookSeeder.php',
         'Database\\Seeders\\CategorySeeder' => __DIR__ . '/../..' . '/database/seeders/CategorySeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
@@ -3792,6 +3801,11 @@ class ComposerStaticInit7a23d6dcace97981633f002a4c2aabd1
         'OpenAI\\ValueObjects\\Transporter\\BaseUri' => __DIR__ . '/..' . '/openai-php/client/src/ValueObjects/Transporter/BaseUri.php',
         'OpenAI\\ValueObjects\\Transporter\\Headers' => __DIR__ . '/..' . '/openai-php/client/src/ValueObjects/Transporter/Headers.php',
         'OpenAI\\ValueObjects\\Transporter\\Payload' => __DIR__ . '/..' . '/openai-php/client/src/ValueObjects/Transporter/Payload.php',
+        'Orangehill\\Iseed\\Facades\\Iseed' => __DIR__ . '/..' . '/orangehill/iseed/src/Orangehill/Iseed/Facades/Iseed.php',
+        'Orangehill\\Iseed\\Iseed' => __DIR__ . '/..' . '/orangehill/iseed/src/Orangehill/Iseed/Iseed.php',
+        'Orangehill\\Iseed\\IseedCommand' => __DIR__ . '/..' . '/orangehill/iseed/src/Orangehill/Iseed/IseedCommand.php',
+        'Orangehill\\Iseed\\IseedServiceProvider' => __DIR__ . '/..' . '/orangehill/iseed/src/Orangehill/Iseed/IseedServiceProvider.php',
+        'Orangehill\\Iseed\\TableNotFoundException' => __DIR__ . '/..' . '/orangehill/iseed/src/Orangehill/Iseed/Exceptions.php',
         'PHPStan\\PhpDocParser\\Ast\\AbstractNodeVisitor' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/AbstractNodeVisitor.php',
         'PHPStan\\PhpDocParser\\Ast\\Attribute' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/Attribute.php',
         'PHPStan\\PhpDocParser\\Ast\\ConstExpr\\ConstExprArrayItemNode' => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src/Ast/ConstExpr/ConstExprArrayItemNode.php',

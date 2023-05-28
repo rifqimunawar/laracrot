@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Agenda;
+use App\Models\Home;
 use App\Models\User;
+use App\Models\Agenda;
 use App\Models\Galeri;
+use App\Models\Category;
 use Illuminate\Console\Command;
 
 class Backup extends Command
@@ -54,14 +56,14 @@ class Backup extends Command
       }
 
       $tables =  [
-        'galeri' => [
-        ],
-        'permissions' => [
-          $tableNames['roles'],
-          $tableNames['permissions'],
-          $tableNames['model_has_permissions'],
-          $tableNames['model_has_roles'],
-          $tableNames['role_has_permissions'],
+        'agendas' => [
+          Agenda::getTableName(),
+      ],
+      'home' => [
+          Home::getTableName(),
+      ],
+      'categories' => [
+        Category::getTableName(),
       ],
     ];
     if ($opt_users == 1 || $arg_type == 'users') echo shell_exec('php artisan iseed users --force');
