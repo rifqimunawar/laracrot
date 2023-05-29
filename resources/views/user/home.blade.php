@@ -336,7 +336,7 @@
     <div class="col-lg-12 mb-2"  data-aos="fade-up">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Statistik Kegiatan</h5>
+          <h5 class="card-title">Produktivitas Rayon</h5>
 
           <!-- Vertical Bar Chart -->
           <div id="verticalBarChart" style="min-height: 400px;" class="echart"></div>
