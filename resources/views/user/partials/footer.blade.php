@@ -41,7 +41,7 @@
       <div class="container">
         <div class="row">
 
-            {{--
+            
           <div class="col-lg-3 col-md-6 footer-info">
             <h3>PMII UNINUS</h3>
             <p>Pergerakan Mahasiswa Islam Indonesia (PMII) adalah organisasi mahasiswa Islam terbesar 
@@ -89,7 +89,7 @@
 
         </div>
       </div>
-    </div> --}}
+    </div>
 
     <div class="container">
       <div class="copyright">
