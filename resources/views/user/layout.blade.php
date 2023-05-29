@@ -16,6 +16,8 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=PT+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
 
+  <!--link dari google adsense-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7116013508016238" crossorigin="anonymous"></script>
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('assets_user/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
