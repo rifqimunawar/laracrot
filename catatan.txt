@@ -2,6 +2,7 @@ update versi 1.2
 
 A. Frontend
 - statistik agenda kegiatan per rayon
+- Persebaran Kader PMII Uninus
 - statistik produktifitas kader
 - fitur reset password
 
