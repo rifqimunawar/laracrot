@@ -1,7 +1,11 @@
 update versi 1.2
 
 A. Frontend
-- statistik agenda kegiatan per rayon
+- statistik agenda kegiatan per rayon = sudah
+- Perubahan About = sudah
+- Perubahan warna navbar 
+- Perubahan carausel 
+- Perubahan warna font 
 - Persebaran Kader PMII Uninus
 - statistik produktifitas kader
 - fitur reset password

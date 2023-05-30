@@ -27,7 +27,7 @@ a {
 a:hover,
 a:active,
 a:focus {
-    color: #18d36e;
+    color: #fcc000;
     outline: none;
     text-decoration: none;
 }
@@ -104,7 +104,7 @@ h6 {
     right: 15px;
     bottom: 15px;
     z-index: 996;
-    background: #18d26e;
+    background: #fcc000;
     width: 40px;
     height: 40px;
     border-radius: 50px;
@@ -118,7 +118,7 @@ h6 {
 }
 
 .back-to-top:hover {
-    background: #2ce782;
+    background: #fcc000;
     color: #fff;
 }
 
@@ -154,11 +154,11 @@ h6 {
     font-weight: 700;
     letter-spacing: 3px;
     padding-left: 10px;
-    border-left: 4px solid #18d26e;
+    border-left: 4px solid #fcc000;
 }
 
 #header .logo a {
-    color: #fff;
+    color: #fcc000;
 }
 
 #header .logo img {
@@ -219,7 +219,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover > a {
-    color: #18d26e;
+    color: #fcc000;
 }
 
 .navbar .dropdown ul {
@@ -254,7 +254,7 @@ h6 {
 .navbar .dropdown ul a:hover,
 .navbar .dropdown ul .active:hover,
 .navbar .dropdown ul li:hover > a {
-    color: #18d26e;
+    color: #fcc000;
 }
 
 .navbar .dropdown:hover > ul {
@@ -2315,7 +2315,11 @@ section {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
     letter-spacing: 3px;
-    border-left: 4px solid #18d26e;
+    color: #fcc000;
+    border-left: 4px solid #fcc000;
+}
+#footer .footer-top .footer-info span {
+    color: #fff;
 }
 
 #footer .footer-top .footer-info p {
@@ -2347,7 +2351,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-    background: #18d26e;
+    background: #fcc000;
     color: #fff;
 }
 
@@ -2375,7 +2379,7 @@ section {
 }
 
 #footer .footer-top h4::after {
-    background: #18d26e;
+    background: #fcc000;
     width: 60px;
 }
 
@@ -2408,7 +2412,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul a:hover {
-    color: #18d26e;
+    color: #fcc000;
 }
 
 #footer .footer-top .footer-contact {
@@ -2430,7 +2434,7 @@ section {
 }
 
 #footer .footer-top .footer-newsletter input[type="submit"] {
-    background: #18d26e;
+    background: #fcc000;
     border: 0;
     width: 35%;
     padding: 6px 0;
@@ -2441,7 +2445,7 @@ section {
 }
 
 #footer .footer-top .footer-newsletter input[type="submit"]:hover {
-    background: #13a456;
+    background: #fcc000;
 }
 
 #footer .copyright {
