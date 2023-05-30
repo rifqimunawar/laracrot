@@ -58,19 +58,9 @@
 
         <header class="section-header">
           <h3>About Us</h3>
-          <p>Pergerakan Mahasiswa Islam Indonesia (PMII) adalah organisasi mahasiswa Islam terbesar dan tertua di 
-            Indonesia. PMII didirikan pada tanggal 17 Februari 1961 di Yogyakarta oleh sekelompok mahasiswa yang ingin
-              memperjuangkan kepentingan Islam dan kepentingan bangsa Indonesia. Tujuan utama PMII adalah untuk 
-              memperjuangkan Islam sebagai agama, memperjuangkan kemerdekaan dan kebebasan rakyat Indonesia, 
-              dan memperjuangkan kemerdekaan dan kebebasan Bangsa-bangsa di seluruh dunia.
-
-            Sejak didirikan, PMII telah berjuang untuk mengembangkan pendidikan Islam, memperjuangkan hak-hak mahasiswa
-            dan masyarakat, serta memperjuangkan reformasi politik dan sosial di Indonesia. PMII juga telah 
-            menjadi tempat bagi banyak pemimpin dan tokoh Islam terkemuka di Indonesia, termasuk tokoh-tokoh 
-            seperti Buya Hamka, Nurcholish Madjid, dan Amien Rais. Saat ini, PMII memiliki jaringan yang luas di 
-            seluruh Indonesia dan terus berjuang untuk memperjuangkan kepentingan mahasiswa Islam dan bangsa 
-            Indonesia secara keseluruhan.</p>
-        </header>
+          <h5>PMII merupakan organisasi gerakan dan kaderisasi yang berlandaskan islam ahlussunah waljamaah. 
+            Berdiri sejak tanggal 17 April 1960 di Surabaya dan hingga lebih dari setengah abad kini PMII 
+            terus eksis untuk memberikan kontribusi bagi kemajuan bangsa dan negara.</h5>
 
       </div>
     </section><!-- End About Us Section -->
