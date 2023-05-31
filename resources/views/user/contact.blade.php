@@ -11,8 +11,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h3>Masukan dan Saran</h3>
-          <p>Masukan anda mengenai PMII Komisariat Uninus agar lebih maju dan berkembang</p>
+          <h3>Kotak Aspirasi</h3>
+          <p>Kritik saran dan masukan akan sangat berharga bagi kami</p>
         </div>
 
         <div class="form">
