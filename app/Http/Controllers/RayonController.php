@@ -55,7 +55,7 @@ class RayonController extends Controller
             ->paginate(25);
 
         if ($request->has('search')) {
-            $rayon = Rayon::with('user')
+            $rayon = Rayon::all()
                 ->where('username', 'LIKE', '%' . $request->search . '%')
                 ->orwhere('name', 'LIKE', '%' . $request->search . '%')
                 ->paginate(25);
