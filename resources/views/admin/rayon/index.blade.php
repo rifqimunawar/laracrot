@@ -23,6 +23,7 @@
                 <tr>
                     <th class="text-center">No</th>
                     <th class="text-start">Nama Rayon</th>
+                    <th class="text-start">Jumlah Kader</th>
                     <th class="text-center"> Aksi</th>
                 </tr>
                 @foreach ($rayon as $kdr)
@@ -31,6 +32,7 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $kdr['rayon'] }}</td>
+                    <td> <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-success btn-sm">{{ $kdr->users->count() }} Kader</a></td>
                     <td class="text-center">
                       <form action="">
                         <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
