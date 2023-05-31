@@ -35,9 +35,7 @@
                     <td class="text-center">No</td>
                     <td class="text-center">Nama</td>
                     <td class="text-center">Kaderisasi</td>
-                    <td class="text-center"> </td>
                     <td class="text-center"> Aksi</td>
-                    <td class="text-center"> </td>
                 </tr>
                 @foreach ($rayon as $ray)
                     @foreach ($ray->users as $item)
@@ -45,11 +43,11 @@
                         <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $item->name}}</td>
                         <td>{{ $item->kaderisasi}}</td>
-                        <td class="text-end">
-                            <a href="/profile/{{ $item->slug }}" class="btn btn-secondary btn-sm">Profile</a>
-                        </td>
                         <td class="text-center">
+                          <form action="">
+                            <a href="/profile/{{ $item->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                             <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                          </form>
                         </td>
                         <td class="text-start">
                             {{-- <form action="{{ route('rayon.destroy', $ray->id) }}" method="POST">

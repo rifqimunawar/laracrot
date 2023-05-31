@@ -32,7 +32,10 @@
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}</td>
                     <td>{{ $kdr['rayon'] }}</td>
-                    <td> <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-success btn-sm">{{ $kdr->users->count() }} Kader</a></td>
+                    <td> 
+                      <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-success btn-sm">
+                        {{ $kdr->users->count() }} Kader</a>
+                    </td>
                     <td class="text-center">
                       <form action="">
                         <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
