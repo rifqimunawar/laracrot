@@ -34,7 +34,7 @@
                 <tr>
                     <td class="text-center">No</td>
                     <td class="text-center">Nama</td>
-                    <td class="text-center">Rayon</td>
+                    <td class="text-center">Kaderisasi</td>
                     <td class="text-center"> </td>
                     <td class="text-center"> Aksi</td>
                     <td class="text-center"> </td>
@@ -43,8 +43,8 @@
                     @foreach ($ray->users as $item)
                     <tr>
                         <td class="text-center">{{ $loop->iteration }}</td>
-                        <td>{{ $item->username}}</td>
-                        <td>{{ $item->rayon->rayon}}</td>
+                        <td>{{ $item->name}}</td>
+                        <td>{{ $item->kaderisasi}}</td>
                         <td class="text-end">
                             <a href="/profile/{{ $item->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                         </td>

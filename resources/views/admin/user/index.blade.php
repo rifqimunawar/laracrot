@@ -33,7 +33,7 @@
                 @foreach ($user as $index=> $kdr)
                 <tr>
                     <td class="text-center">{{ $index + $user -> firstItem() }}</td>
-                    <td>{{ $kdr['username'] }}</td>
+                    <td>{{ $kdr['name'] }}</td>
                     <td> <a href="/admin/user/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
                     <td class="text-end">
                         <a href="/profile/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Profile</a>
