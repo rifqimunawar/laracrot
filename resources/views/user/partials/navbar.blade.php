@@ -30,7 +30,7 @@
             @endauth
             <li><a class="nav-link scrollto {{ 'calendar' ==request()->path()? 'active' :''}}" href="/calendar">Agenda</a></li>
             <li><a class="nav-link scrollto {{ 'blog' == request()->path()? 'active' : '' }}" href="/post">Blog</a></li>
-            <li><a class="nav-link scrollto {{ 'contact' == request()->path()? 'active' : '' }}" href="/contact">Contact</a></li>
+            <li><a class="nav-link scrollto {{ 'contact' == request()->path()? 'active' : '' }}" href="/contact">Aspirasi</a></li>
             <li>
               @guest
                   @if (Route::has('login'))

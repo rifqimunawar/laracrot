@@ -9,6 +9,13 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+{{--   
+  <!-- Core jQuery Script untuk carausel uninus -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+  <!-- Slider Revolution core JavaScript files carausel uninus -->
+  <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
+  <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script> --}}
+
   <!-- Favicons -->
   <link href="{{ asset('assets_user/img/favicon.png') }}" rel="icon">
   <link href="{{ asset('assets_user/img/favicon.png') }}" rel="apple-touch-icon">
