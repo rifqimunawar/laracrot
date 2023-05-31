@@ -80,11 +80,9 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam illum dolore legam minim quorum culpa amet magna export quem marada parida nodela caramase seza.</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+            <h4>Download Now</h4>
+            <p>Download dan install aplikasi PMII Uninus di Play Store</p>
+            <img src="logo play store" alt="logo playstore">
           </div>
 
         </div>
@@ -93,7 +91,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>PMII UNINUS</strong>. All Rights Reserved
+        &copy; Copyright <strong>PMII Komisariat UNINUS</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
