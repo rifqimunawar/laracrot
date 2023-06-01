@@ -13,7 +13,7 @@
         <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/logo-home.jpg') }});"/>
+          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/homepage.jpg') }});"/>
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Selamat Datang</h2>
