@@ -62,11 +62,11 @@
           <div class="col-lg-3 col-md-6 footer-contact">
             <h4>Contact Us</h4>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
+              Jl. Soekarno Hatta No.530, <br>
+              Sekejati, Kec. Buahbatu,<br>
+              Kota Bandung, Jawa Barat 40286 <br>
+              <strong>Phone:</strong> +628561145097<br>
+              <strong>Email:</strong> rifqimunawar48@gmail.com<br>
             </p>
 
             <div class="social-links">
@@ -80,7 +80,9 @@
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Download Now</h4>
             <p>Download dan install aplikasi PMII Uninus di Play Store</p>
-            <img src="logo play store" alt="logo playstore">
+            <a href="https://play.google.com/store/apps">
+              <img style="width: 280px" src="{{ asset('storage/home/ps.png') }}" alt="logo playstore">
+            </a>
           </div>
 
         </div>
