@@ -54,16 +54,16 @@ class RayonController extends Controller
             ->where('slug', $slug)
             ->paginate(25);
 
-        if ($request->has('search')) {
-            $rayon = Rayon::all()
-                ->where('username', 'LIKE', '%' . $request->search . '%')
-                ->orwhere('name', 'LIKE', '%' . $request->search . '%')
-                ->paginate(25);
-            // dd($request);
-        } else {
-            $rayon = Rayon::with('rayon')->latest()->paginate(25);
-            $count_user = Rayon::count();
-        }
+            if ($request->has('search')) {
+              $user = User::where('username', 'LIKE', '%' . $request->search . '%')
+                  //   ->orwhere('rayon', 'LIKE', '%'.$request->search.'%')
+                  ->orwhere('name', 'LIKE', '%' . $request->search . '%')
+                  ->orwhere('nim', 'LIKE', '%' . $request->search . '%')
+                  ->paginate(25);
+          } else {
+              $user = User::with('rayon')->latest()->paginate(25);
+          }
+  
 
         return view('admin.rayon.show', compact('rayon', 'user'));
     }

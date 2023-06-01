@@ -22,12 +22,12 @@
         @endforeach
 
         <div class="my-3 col-12 col-sm-8 col-md-6 ">
-            <form action="" method="get">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="search" placeholder="Search.....">
-                    <button class="btn btn-primary">Search</button>
-                </div>
-            </form>
+          <form action="" method="get">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="search" placeholder="Search.....">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </form>
         </div>
         <div class="row">
             <table class="table">

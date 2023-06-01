@@ -73,10 +73,8 @@
               <a href="https://www.instagram.com/pkpmiiuninus/" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="https://www.instagram.com/pkpmiiuninus/" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="https://www.instagram.com/pkpmiiuninus/" class="instagram"><i class="bi bi-instagram"></i></a>
-              <a href="https://www.instagram.com/pkpmiiuninus/" class="instagram"><i class="bi bi-instagram"></i></a>
               <a href="https://www.instagram.com/pkpmiiuninus/" class="linkedin"><i class="bi bi-linkedin"></i></a>
             </div>
-
           </div>
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
