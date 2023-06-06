@@ -58,7 +58,7 @@
 
         <header class="section-header">
           <h3>About Us</h3>
-          <h5>PMII merupakan organisasi gerakan dan kaderisasi yang berlandaskan islam ahlussunah waljamaah. 
+          <h5 class="text-center">PMII merupakan organisasi gerakan dan kaderisasi yang berlandaskan islam ahlussunah waljamaah. 
             Berdiri sejak tanggal 17 April 1960 di Surabaya dan hingga lebih dari setengah abad kini PMII 
             terus eksis untuk memberikan kontribusi bagi kemajuan bangsa dan negara.</h5>
 
