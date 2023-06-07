@@ -66,7 +66,7 @@
     </section><!-- End About Us Section -->
 
     
-    <!-- ======= Our Clients Section ======= -->
+    {{-- <!-- ======= Our Clients Section ======= -->
     <section id="clients">
       <div class="container" data-aos="zoom-in">
 
@@ -89,7 +89,7 @@
         </div>
 
       </div>
-    </section><!-- End Our Clients Section -->
+    </section><!-- End Our Clients Section --> --}}
 
 
     <!-- ======= Facts Section ======= -->
