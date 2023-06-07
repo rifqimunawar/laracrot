@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agenda;
 use App\Models\Home;
+use App\Models\Post;
 use App\Models\User;
+use App\Models\Agenda;
 use App\Models\Galeri;
 use App\Models\Quotes;
 use App\Models\carausal;
@@ -19,8 +20,19 @@ class HomeController extends Controller
     {
         $user=Auth::user();
         $home = Home::all();
-        $galeries = Galeri::with('user')->where('status', 1)->latest()->take(3)->get();
-        $quotes = Quotes::latest()->take(5)->get();
+        $galeries = Galeri::with('user') 
+            ->where('status', 1)
+            ->latest()
+            ->take(3)
+            ->get();
+        $quotes = Quotes::latest()
+            ->take(5)
+            ->get();
+
+        $recent_posts = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('created_at', 'desc')
+            ->paginate(15);
 
         $user_unmapaba = User::where('kaderisasi', 'Belum Mapaba')->count(); //total pengguna yang belum mapaba
         $user_pkn = User::where('kaderisasi', 'PKN')->count(); //total pengguna yang sudah pkn
@@ -95,6 +107,7 @@ class HomeController extends Controller
           'user_pkd', 
           'user_pkl', 
           'user_pkn',
+          'recent_posts',
           'mapaba_sebelum_2018',
           'mapaba_2018',
           'mapaba_2019',

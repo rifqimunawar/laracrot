@@ -65,13 +65,13 @@
       </div>
     </section><!-- End About Us Section -->
 
-{{--     
+    
     <!-- ======= Our Clients Section ======= -->
     <section id="clients">
       <div class="container" data-aos="zoom-in">
 
         <header class="section-header">
-          <h3>Keluarga PMII UNINUS</h3>
+          <h3>Rayon-Rayon <br> PMII UNINUS</h3>
         </header>
 
         <div class="clients-slider swiper">
@@ -90,7 +90,7 @@
 
       </div>
     </section><!-- End Our Clients Section -->
- --}}
+
 
     <!-- ======= Facts Section ======= -->
     <section id="facts">
@@ -416,6 +416,39 @@
             <div class="portfolio-info">
               <h4>{{ $galeri->judul }}</h4>
               <a href="/profile/{{ $galeri->user->slug }}"><p style="text-transform: lowercase; text-decoration:none">{{ $galeri->user->username }}</p></a>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header py-5">
+          <h3>Tulisan Kader</h3>
+        </header>
+
+      <div class="row portfolio-container pt-4 mt-4" data-aos="fade-up" data-aos-delay="200">
+
+        {{-- @dd($recent_posts) --}}
+        @foreach ($recent_posts->take(3) as $post)
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          <div class="portfolio-wrap">
+            <figure>
+              <img src="{{ asset('storage/img/' . $post->image ) }}" class="img-fluid" alt="" style="width: 120%; height:120%; object-fit:cover; box-shadow: 0px 0px 5px 0px rgba(0,0,5,10);">
+              <a href="{{ asset('storage/img/' . $post->image ) }}" data-lightbox="portfolio" data-title="{{ $post->title }}" class="link-preview"><i class="bi bi-plus"></i></a>
+              <a href="{{ route('post', ['slug' => $post->slug]) }}" class="link-details" title="More Details"><i class="bi bi-link"></i></a>
+            </figure>
+
+            <div class="portfolio-info">
+              <a href="{{ route('post', ['slug' => $post->slug]) }}"><h4>{{ Str::limit($post->title, '15') }}</h4></a> 
+              <a href="{{ route('category', $post->category->slug) }}"><p style="text-transform: none; text-decoration:none">{{ $post->category->title }}</p></a>
             </div>
           </div>
         </div>
