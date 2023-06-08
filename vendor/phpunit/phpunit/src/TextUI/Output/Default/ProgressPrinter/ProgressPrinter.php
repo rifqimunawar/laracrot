@@ -18,11 +18,10 @@ use PHPUnit\Event\EventFacadeIsSealedException;
 use PHPUnit\Event\Facade;
 use PHPUnit\Event\Test\DeprecationTriggered;
 use PHPUnit\Event\Test\Errored;
+use PHPUnit\Event\Test\ErrorTriggered;
 use PHPUnit\Event\Test\NoticeTriggered;
 use PHPUnit\Event\Test\PhpDeprecationTriggered;
 use PHPUnit\Event\Test\PhpNoticeTriggered;
-use PHPUnit\Event\Test\PhpunitDeprecationTriggered;
-use PHPUnit\Event\Test\PhpunitWarningTriggered;
 use PHPUnit\Event\Test\PhpWarningTriggered;
 use PHPUnit\Event\Test\PrintedUnexpectedOutput;
 use PHPUnit\Event\Test\WarningTriggered;
@@ -43,9 +42,6 @@ final class ProgressPrinter
     private readonly bool $colors;
     private readonly int $numberOfColumns;
     private readonly Source $source;
-    private readonly bool $restrictDeprecations;
-    private readonly bool $restrictNotices;
-    private readonly bool $restrictWarnings;
     private int $column             = 0;
     private int $numberOfTests      = 0;
     private int $numberOfTestsWidth = 0;
@@ -58,15 +54,12 @@ final class ProgressPrinter
      * @throws EventFacadeIsSealedException
      * @throws UnknownSubscriberTypeException
      */
-    public function __construct(Printer $printer, Facade $facade, bool $colors, int $numberOfColumns, Source $source, bool $restrictDeprecations, bool $restrictNotices, bool $restrictWarnings)
+    public function __construct(Printer $printer, Facade $facade, bool $colors, int $numberOfColumns, Source $source)
     {
-        $this->printer              = $printer;
-        $this->colors               = $colors;
-        $this->numberOfColumns      = $numberOfColumns;
-        $this->source               = $source;
-        $this->restrictDeprecations = $restrictDeprecations;
-        $this->restrictNotices      = $restrictNotices;
-        $this->restrictWarnings     = $restrictWarnings;
+        $this->printer         = $printer;
+        $this->colors          = $colors;
+        $this->numberOfColumns = $numberOfColumns;
+        $this->source          = $source;
 
         $this->registerSubscribers($facade);
     }
@@ -105,23 +98,64 @@ final class ProgressPrinter
         $this->updateTestStatus(TestStatus::incomplete());
     }
 
-    public function testTriggeredNotice(PhpNoticeTriggered|NoticeTriggered $event): void
+    public function testTriggeredNotice(NoticeTriggered $event): void
     {
-        if ($this->restrictNotices && !(new SourceFilter)->includes($this->source, $event->file())) {
+        if ($this->source->restrictNotices() &&
+            !(new SourceFilter)->includes($this->source, $event->file())) {
+            return;
+        }
+
+        if (!$this->source->ignoreSuppressionOfNotices() && $event->wasSuppressed()) {
             return;
         }
 
         $this->updateTestStatus(TestStatus::notice());
     }
 
-    public function testTriggeredDeprecation(PhpDeprecationTriggered|PhpunitDeprecationTriggered|DeprecationTriggered $event): void
+    public function testTriggeredPhpNotice(PhpNoticeTriggered $event): void
     {
-        if (!$event instanceof PhpunitDeprecationTriggered &&
-            $this->restrictDeprecations &&
+        if ($this->source->restrictNotices() &&
             !(new SourceFilter)->includes($this->source, $event->file())) {
             return;
         }
 
+        if (!$this->source->ignoreSuppressionOfPhpNotices() && $event->wasSuppressed()) {
+            return;
+        }
+
+        $this->updateTestStatus(TestStatus::notice());
+    }
+
+    public function testTriggeredDeprecation(DeprecationTriggered $event): void
+    {
+        if ($this->source->restrictDeprecations() &&
+            !(new SourceFilter)->includes($this->source, $event->file())) {
+            return;
+        }
+
+        if (!$this->source->ignoreSuppressionOfDeprecations() && $event->wasSuppressed()) {
+            return;
+        }
+
+        $this->updateTestStatus(TestStatus::deprecation());
+    }
+
+    public function testTriggeredPhpDeprecation(PhpDeprecationTriggered $event): void
+    {
+        if ($this->source->restrictDeprecations() &&
+            !(new SourceFilter)->includes($this->source, $event->file())) {
+            return;
+        }
+
+        if (!$this->source->ignoreSuppressionOfPhpDeprecations() && $event->wasSuppressed()) {
+            return;
+        }
+
+        $this->updateTestStatus(TestStatus::deprecation());
+    }
+
+    public function testTriggeredPhpunitDeprecation(): void
+    {
         $this->updateTestStatus(TestStatus::deprecation());
     }
 
@@ -130,15 +164,46 @@ final class ProgressPrinter
         $this->updateTestStatus(TestStatus::risky());
     }
 
-    public function testTriggeredWarning(PhpWarningTriggered|PhpunitWarningTriggered|WarningTriggered $event): void
+    public function testTriggeredWarning(WarningTriggered $event): void
     {
-        if (!$event instanceof PhpunitWarningTriggered &&
-            $this->restrictWarnings &&
+        if ($this->source->restrictWarnings() &&
             !(new SourceFilter)->includes($this->source, $event->file())) {
             return;
         }
 
+        if (!$this->source->ignoreSuppressionOfWarnings() && $event->wasSuppressed()) {
+            return;
+        }
+
         $this->updateTestStatus(TestStatus::warning());
+    }
+
+    public function testTriggeredPhpWarning(PhpWarningTriggered $event): void
+    {
+        if ($this->source->restrictWarnings() &&
+            !(new SourceFilter)->includes($this->source, $event->file())) {
+            return;
+        }
+
+        if (!$this->source->ignoreSuppressionOfPhpWarnings() && $event->wasSuppressed()) {
+            return;
+        }
+
+        $this->updateTestStatus(TestStatus::warning());
+    }
+
+    public function testTriggeredPhpunitWarning(): void
+    {
+        $this->updateTestStatus(TestStatus::warning());
+    }
+
+    public function testTriggeredError(ErrorTriggered $event): void
+    {
+        if (!$this->source->ignoreSuppressionOfErrors() && $event->wasSuppressed()) {
+            return;
+        }
+
+        $this->updateTestStatus(TestStatus::error());
     }
 
     public function testFailed(): void
@@ -305,8 +370,8 @@ final class ProgressPrinter
                     $this->numberOfTestsWidth . 'd (%3s%%)',
                     $this->numberOfTestsRun,
                     $this->numberOfTests,
-                    floor(($this->numberOfTestsRun / $this->numberOfTests) * 100)
-                )
+                    floor(($this->numberOfTestsRun / $this->numberOfTests) * 100),
+                ),
             );
 
             if ($this->column === $this->maxColumn) {
