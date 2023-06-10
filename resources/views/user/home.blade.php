@@ -8,12 +8,13 @@
   <!-- ======= hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
-      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="20000">
 
         <ol id="hero-carousel-indicators" class="carousel-indicators"></ol>
 
         <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/homepage.jpg') }});"/>
+
+          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/homepage.jpg') }});">
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Selamat Datang</h2>
@@ -36,6 +37,7 @@
           </div>
         </div>
         @endforeach
+        
         </div>
 
         <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
