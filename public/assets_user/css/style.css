@@ -299,6 +299,10 @@ h6 {
 }
 
 @media (max-width: 991px) {
+  #hero{
+    margin-top: 5rem;
+    height: 13rem;
+  }
     .mobile-nav-toggle {
         display: block;
     }
@@ -403,6 +407,10 @@ h6 {
 }
 
 @media (max-height: 500px) {
+  #hero{
+    margin-top: 5rem;
+    height: 13rem;
+  }
     #hero {
         height: 150vh;
     }
@@ -448,11 +456,15 @@ h6 {
 #hero h2 {
     color: #fff;
     margin-bottom: 30px;
-    font-size: 48px;
+    font-size: 36px;
     font-weight: 700;
 }
 
 @media (max-width: 768px) {
+  #hero{
+    margin-top: 5rem;
+    height: 13rem;
+  }
     #hero h2 {
         font-size: 28px;
     }
