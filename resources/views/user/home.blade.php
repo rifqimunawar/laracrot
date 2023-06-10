@@ -18,10 +18,10 @@
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Selamat Datang</h2>
-                <p class="animate__animated animate__fadeInUp">Selamat Datang Di Website Resmi Pergerakan Mahasiswa Islam Indonesia 
+                {{-- <p class="animate__animated animate__fadeInUp">Selamat Datang Di Website Resmi Pergerakan Mahasiswa Islam Indonesia 
                   Komisariat Universitas Islam Nusantara Cabang Kota Bandung, Mari Bergabung Bersama Kami! <br> Bersama PMII Membangun 
                   Indonesia Yang Maju dan Sejahtera Cmiww.....
-                </p>
+                </p> --}}
                 <a href="/login" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
               </div>
             </div>
@@ -31,7 +31,7 @@
           <div class="carousel-container">
             <div class="container position-absolute top-50 start-50 translate-middle">
               <h2 class="animate__animated animate__fadeInDown">{{ $hom['judul'] }}</h2>
-              <p class="animate__animated animate__fadeInUp">{{ $hom['deskripsi'] }}</p>
+              {{-- <p class="animate__animated animate__fadeInUp">{{ $hom['deskripsi'] }}</p> --}}
               <a href="/login" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
             </div>
           </div>
