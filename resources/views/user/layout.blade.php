@@ -9,12 +9,11 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-{{--   
-  <!-- Core jQuery Script untuk carausel uninus -->
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
-  <!-- Slider Revolution core JavaScript files carausel uninus -->
-  <script type="text/javascript" src="revolution/js/jquery.themepunch.tools.min.js"></script>
-  <script type="text/javascript" src="revolution/js/jquery.themepunch.revolution.min.js"></script> --}}
+
+  <!--link dari google adsense-->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7116013508016238" 
+  crossorigin="anonymous"></script>
+
 
   <!-- Favicons -->
   <link href="{{ asset('assets_user/img/favicon.png') }}" rel="icon">
