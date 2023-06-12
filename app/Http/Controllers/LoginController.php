@@ -25,7 +25,7 @@ class LoginController extends Controller
     }
     public function authenticate(Request $request)
     {
-        $credentials = $request->only('username', 'password');
+        $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
             // Authentication passed...
@@ -33,12 +33,12 @@ class LoginController extends Controller
             return redirect()->intended('/profile');
         } else {
             // Authentication failed...
-            $user = User::where('username', $credentials['username'])->first();
+            $user = User::where('email', $credentials['email'])->first();
 
             if (!$user) {
-                return redirect()->back()->with('error', 'Username atau Password Salah');
+                return redirect()->back()->with('error', 'Email atau Password Salah');
             } else {
-                return redirect()->back()->with('error', 'Username atau Password Salah');
+                return redirect()->back()->with('error', 'Email atau Password Salah');
             }
         }
     }
@@ -53,6 +53,7 @@ class LoginController extends Controller
         // Rule validasi untuk username dan password
         $rules = [
             'username' => 'required|unique:users,username',
+            'email' => 'required|unique:users,email',
             'nim' => 'required|min:14|unique:users,nim',
             'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
         ];
@@ -60,6 +61,7 @@ class LoginController extends Controller
         $messages = [
           'username.required' => 'Username wajib diisi.',
           'username.unique' => 'Username sudah digunakan.',
+          'email.unique' => 'email sudah digunakan.',
           'nim.required' => 'Nim wajib diisi.',
           'nim.unique' => 'Nim sudah digunakan.',
           'nim.min' => 'Nim kurang ajg minimal 14 Angka.',

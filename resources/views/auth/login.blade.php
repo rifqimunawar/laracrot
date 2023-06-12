@@ -33,8 +33,8 @@
                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
   
                     <div class="form-outline mb-4">
-                      <input type="username" name="username" id="form2Example17" autofocus class="form-control form-control-lg" />
-                      <label class="form-label" for="form2Example17">Username</label>
+                      <input type="email" name="email" id="form2Example17" autofocus class="form-control form-control-lg" />
+                      <label class="form-label" for="form2Example17">Email</label>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -45,15 +45,23 @@
                       @endif
                     </div>
   
-                    <div class="form-outline mb-4">
+                    <div class="form-outline mb-2">
                       <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" />
                       <label class="form-label" for="form2Example27">Password</label>
                     </div>
   
-                    <div class="pt-1 mb-4">
-                      <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
-                      <a href="/register" class="btn btn-warning btn-lg btn-block" >Register</a>
+                    <div class="pb-2">
+                      <a href="" style="text-decoration: none">
+                        <h6>Lupa Password</h6>
+                      </a>
                     </div>
+                    <div class="pt-1 mb-4 d-flex justify-content-between">
+                      <a href="/" class="btn btn-warning btn-lg">Kembali</a>
+                      <div>
+                          <button class="btn btn-dark btn-lg" type="submit">Login</button>
+                          <a href="/register" class="btn btn-success btn-lg ml-2">Register</a>
+                      </div>
+                  </div>                  
 
                   </form>
   
