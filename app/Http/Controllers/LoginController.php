@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -104,5 +106,14 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect ('/');
+    }
+
+    // fitru reset passsword
+    public function reset() {
+      return view('auth.forget'); 
+    }
+
+    public function emailreset() {
+      Mail::to('rifqi@gmail.com')->send(new SendEmail());
     }
 }

@@ -51,7 +51,7 @@
                     </div>
   
                     <div class="pb-2">
-                      <a href="" style="text-decoration: none">
+                      <a href="/reset" style="text-decoration: none">
                         <h6>Lupa Password</h6>
                       </a>
                     </div>

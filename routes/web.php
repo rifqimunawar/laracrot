@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HBNController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\QuotesController;
@@ -39,6 +40,10 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 // Route::get('/singgle', function () {
 //     return view('user.Post.singgle');
 // });
+
+Route::get('/emails', function () {
+    return view('mails.reset');
+});
 // =====================================================
 // Route Frondend  =====================================
 // ----------------------------------------------------
@@ -63,6 +68,8 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register/store', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/reset', [LoginController::class, 'reset'])->name('reset');
+Route::post('/email/reset', [LoginController::class, 'emailreset'])->name('emailreset');
 
 
 // =====================================================
