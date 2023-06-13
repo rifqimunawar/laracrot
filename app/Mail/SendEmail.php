@@ -28,8 +28,8 @@ class SendEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('rifqimunawar@example.com', 'rifqimunawar Way'),
-            subject: 'Send Email',
+            from: new Address('pkpmiiuninus.official@gmail.com', 'PMII Komisariat UNINUS'),
+            subject: 'PMII Komisariat Uninus',
         );
     }
 
@@ -39,7 +39,7 @@ class SendEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mails.reset'
         );
     }
 

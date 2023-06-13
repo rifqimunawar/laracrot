@@ -1,26 +1,30 @@
 <?php
 
-use App\Http\Controllers\CategoryBookController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\HBNController;
-use App\Http\Controllers\PengurusController;
-use App\Http\Controllers\QuotesController;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HBNController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
+use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
+use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Blog\TagController;
+use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\StatistikController;
+use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\Blog\CategoryController;
+use App\Http\Controllers\ForgetPasswordControler;
 use App\Http\Controllers\Admin\Blog\TagController as admintagcontroller;
 use App\Http\Controllers\Admin\Blog\PostController as adminpostcontroller;
 use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontroller;
@@ -39,6 +43,10 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 // Route::get('/singgle', function () {
 //     return view('user.Post.singgle');
 // });
+
+Route::get('/emails', function () {
+    return view('mails.reset');
+});
 // =====================================================
 // Route Frondend  =====================================
 // ----------------------------------------------------
@@ -57,12 +65,41 @@ Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('prof
 
 // =====================================================
 // Route Auth  =========================================
-// ----------------------------------------------------
+// -----------------------------------------------------
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register/store', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+
+// =====================================================
+// Forget Password  ====================================
+// -----------------------------------------------------
+
+// Menampilkan form lupa kata sandi
+Route::get('/forgot-password', [ForgetPasswordControler::class, 'showForgotPasswordForm'])
+    ->middleware('guest')
+    ->name('password.request');
+
+// Mengirim tautan reset kata sandi
+Route::post('/forgot-password', [ForgetPasswordControler::class, 'sendResetLinkEmail'])
+    ->middleware('guest')
+    ->name('password.email');
+
+// Menampilkan form reset kata sandi
+Route::get('/reset-password/{token}', [ForgetPasswordControler::class, 'showResetPasswordForm'])
+    ->middleware('guest')
+    ->name('password.reset');
+
+// Melakukan reset kata sandi
+Route::post('/reset-password', [ForgetPasswordControler::class, 'resetPassword'])
+    ->middleware('guest')
+    ->name('password.update');
+
+
+
 
 
 // =====================================================

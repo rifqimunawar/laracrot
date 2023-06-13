@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\RedirectResponse;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Tests\Foundation\FoundationFormRequestTest;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /**
  * Summary of LoginController
@@ -105,4 +108,5 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect ('/');
     }
+
 }

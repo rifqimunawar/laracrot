@@ -20,8 +20,8 @@
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
-                  
-                  <form method="POST" action="authenticate">
+                    
+                  <form method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <div class="d-flex align-items-center justify-content-center mb-6 pb-1 text-center">
                       <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
@@ -30,41 +30,36 @@
                       </span>
                     </div>                    
   
-                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
-  
-                    <div class="form-outline mb-4">
-                      <input type="email" name="email" id="form2Example17" autofocus class="form-control form-control-lg" />
-                      <label class="form-label" for="form2Example17">Email</label>
+                    <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Forget Your Password</h3>
+                    <h6 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Please Input Your Email Here!</h6>
+                        <!-- Jika tautan reset kata sandi berhasil dikirim -->
+                        @if (session('status') === trans('passwords.sent'))
+                        <div class="alert alert-success">
+                            {{ trans('passwords.sent') }}
+                        </div>
+                    @endif
+
+                    <!-- Jika terjadi kesalahan saat mengirim tautan reset kata sandi -->
+                    @if ($errors->has('email'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+
+                    <div class="form-group mb-3">
+                      <label class="font-weight-bold text-uppercase">Email Address</label>
+                      <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                          name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                          placeholder="Masukkan Alamat Email">
                     </div>
 
-                    <div class="form-outline mb-4">
-                      @if(Session::has('error'))
-                      <div class="alert alert-danger">
-                          {{ Session::get('error') }}
-                      </div>
-                      @endif
-                    </div>
-  
-                    <div class="form-outline mb-2">
-                      <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" />
-                      <label class="form-label" for="form2Example27">Password</label>
-                    </div>
-  
-                    <div class="pb-2">
-                      <a href="{{ route('password.request') }}" style="text-decoration: none">
-                        <h6>Lupa Password</h6>
-                      </a>
-                    </div>
                     <div class="pt-1 mb-4 d-flex justify-content-between">
-                      <a href="/" class="btn btn-warning btn-lg">Kembali</a>
-                      <div>
-                          <button class="btn btn-dark btn-lg" type="submit">Login</button>
-                          <a href="/register" class="btn btn-success btn-lg ml-2">Register</a>
-                      </div>
+                      <a href="/login" class="btn btn-warning btn-lg">Kembali</a>
+                      <button class="btn btn-success btn-lg" type="submit">Reset Password</button>
                   </div>                  
 
                   </form>
-  
+
                 </div>
               </div>
             </div>
@@ -81,4 +76,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
 </html>
-
