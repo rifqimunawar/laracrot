@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HBNController;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
+use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
@@ -22,6 +24,7 @@ use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\StatistikController;
 use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\Blog\CategoryController;
+use App\Http\Controllers\ForgetPasswordControler;
 use App\Http\Controllers\Admin\Blog\TagController as admintagcontroller;
 use App\Http\Controllers\Admin\Blog\PostController as adminpostcontroller;
 use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontroller;
@@ -62,7 +65,7 @@ Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('prof
 
 // =====================================================
 // Route Auth  =========================================
-// ----------------------------------------------------
+// -----------------------------------------------------
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register/store', [LoginController::class, 'store'])->name('store');
@@ -70,24 +73,30 @@ Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('au
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/forgot-password', function () {
-  return view('auth.forgot-password');
-})->middleware('guest')->name('password.request');
 
-Route::post('/forgot-password', function ( Request $request) {
-  $request->validate(['email' => 'required|email']);
+// =====================================================
+// Forget Password  ====================================
+// -----------------------------------------------------
 
-  $status = Password::sendResetLink($request->only('email'));
+// Menampilkan form lupa kata sandi
+Route::get('/forgot-password', [ForgetPasswordControler::class, 'showForgotPasswordForm'])
+    ->middleware('guest')
+    ->name('password.request');
 
-  return $status === Password::RESET_LINK_SENT
-      ? back()->with(['status' => __($status)])->withInput()
-      : back()->withErrors(['email' => __($status)])->withInput();
-})->name('password.email');
+// Mengirim tautan reset kata sandi
+Route::post('/forgot-password', [ForgetPasswordControler::class, 'sendResetLinkEmail'])
+    ->middleware('guest')
+    ->name('password.email');
 
-Route::get('/reset-password/{token}', function (string $token) {
-  // return view('auth.reset-password', ['token' => $token]);
-  return 'berhasil kirim email notifikasi';
-})->middleware('guest')->name('password.reset');
+// Menampilkan form reset kata sandi
+Route::get('/reset-password/{token}', [ForgetPasswordControler::class, 'showResetPasswordForm'])
+    ->middleware('guest')
+    ->name('password.reset');
+
+// Melakukan reset kata sandi
+Route::post('/reset-password', [ForgetPasswordControler::class, 'resetPassword'])
+    ->middleware('guest')
+    ->name('password.update');
 
 
 

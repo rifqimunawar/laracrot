@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Mail\SendEmail;
+use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Password;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 /**
  * Summary of LoginController
@@ -108,22 +109,4 @@ class LoginController extends Controller
         return redirect ('/');
     }
 
-    // fitru reset passsword
-    // public function ForgotPassword()
-    // {
-    //     return view('auth.forgot-password');
-    // }
-
-    // public function ResetLinkEmail(Request $request)
-    // {
-    //     $request->validate(['email' => 'required|email']);
-
-    //     $status = Password::ResetLinkEmail(
-    //         $request->only('email')
-    //     );
-
-    //     return $status === Password::RESET_LINK_SENT
-    //         ? back()->with(['status' => __($status)])
-    //         : back()->withErrors(['email' => __($status)]);
-    // }
 }
