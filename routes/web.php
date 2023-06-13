@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HBNController;
-use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\EmailController;
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
@@ -69,8 +68,26 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register/store', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/forgot-password', [LoginController::class, 'ForgotPassword'])->middleware('guest')->name('password.request');
-Route::post('/forgot-password', [LoginController::class, 'ResetLinkEmail'])->middleware('guest')->name('password.email');
+
+
+Route::get('/forgot-password', function () {
+  return view('auth.forgot-password');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', function ( Request $request) {
+  $request->validate(['email' => 'required|email']);
+
+  $status = Password::sendResetLink($request->only('email'));
+
+  return $status === Password::RESET_LINK_SENT
+      ? back()->with(['status' => __($status)])->withInput()
+      : back()->withErrors(['email' => __($status)])->withInput();
+})->name('password.email');
+
+Route::get('/reset-password/{token}', function (string $token) {
+  // return view('auth.reset-password', ['token' => $token]);
+  return 'berhasil kirim email notifikasi';
+})->middleware('guest')->name('password.reset');
 
 
 

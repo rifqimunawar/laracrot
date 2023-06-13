@@ -11,7 +11,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Password;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Request as Requesttttt;
 
 /**
  * Summary of LoginController
@@ -110,21 +109,21 @@ class LoginController extends Controller
     }
 
     // fitru reset passsword
-    public function ForgotPassword()
-    {
-        return view('auth.forgot-password');
-    }
+    // public function ForgotPassword()
+    // {
+    //     return view('auth.forgot-password');
+    // }
 
-    public function ResetLinkEmail(Requesttttt $request)
-    {
-        $request->validate(['email' => 'required|email']);
+    // public function ResetLinkEmail(Request $request)
+    // {
+    //     $request->validate(['email' => 'required|email']);
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+    //     $status = Password::ResetLinkEmail(
+    //         $request->only('email')
+    //     );
 
-        return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
-    }
+    //     return $status === Password::RESET_LINK_SENT
+    //         ? back()->with(['status' => __($status)])
+    //         : back()->withErrors(['email' => __($status)]);
+    // }
 }

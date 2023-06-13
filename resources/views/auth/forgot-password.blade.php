@@ -20,30 +20,37 @@
               </div>
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
-                  
+                    
                   <form method="POST" action="{{ route('password.email') }}">
                     @csrf
+                    <div class="d-flex align-items-center justify-content-center mb-6 pb-1 text-center">
+                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                      <span class="h1 fw-bold mb-0">
+                        <img style="width: 100px; height: 100px; object-fit:cover" src="{{ asset('storage/img/logokomi.png') }}" alt="">
+                      </span>
+                    </div>                    
+  
+                    <h3 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Forget Your Password</h3>
+                    <h6 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Please Input Your Email Here!</h6>
+                        <!-- Jika tautan reset kata sandi berhasil dikirim -->
+                        @if (session('status') === trans('passwords.sent'))
+                        <div class="alert alert-success">
+                            {{ trans('passwords.sent') }}
+                        </div>
+                    @endif
+
+                    <!-- Jika terjadi kesalahan saat mengirim tautan reset kata sandi -->
+                    @if ($errors->has('email'))
+                        <div class="alert alert-danger">
+                            {{ $errors->first('email') }}
+                        </div>
+                    @endif
+
                     <div class="form-group mb-3">
                       <label class="font-weight-bold text-uppercase">Email Address</label>
                       <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
                           name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
                           placeholder="Masukkan Alamat Email">
-                  
-                          @if ($errors->any())
-                            <div class="alert alert-danger mt-2">
-                              <ul>
-                                @foreach ($errors->all as $error)
-                                    <li> <strong>{{ $error }}</strong></li>
-                                @endforeach
-                              </ul>
-                            </div>
-                          @endif
-
-                        {{-- @error('email')
-                        <div class="alert alert-danger mt-2">
-                            <strong>{{ $message }}</strong>
-                        </div>
-                        @enderror --}}
                     </div>
 
                     <div class="pt-1 mb-4 d-flex justify-content-between">
@@ -52,7 +59,7 @@
                   </div>                  
 
                   </form>
-  
+
                 </div>
               </div>
             </div>

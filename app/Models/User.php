@@ -8,15 +8,16 @@ use App\Models\Role;
 use App\Models\Kader;
 use App\Models\Galeri;
 use App\Models\Category;
-use Cviebrock\EloquentSluggable\Sluggable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Sluggable;
+    use HasApiTokens, HasFactory, Notifiable, Sluggable, CanResetPassword;
 
     /**
      * The attributes that are mass assignable.
