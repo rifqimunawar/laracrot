@@ -21,7 +21,7 @@
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
                   
-                  <form method="POST" action="{{ route('emailreset') }}">
+                  <form method="POST" action="{{ route('password.email') }}">
                     @csrf
                     <div class="form-group mb-3">
                       <label class="font-weight-bold text-uppercase">Email Address</label>
@@ -29,16 +29,26 @@
                           name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
                           placeholder="Masukkan Alamat Email">
                   
-                        @error('email')
+                          @if ($errors->any())
+                            <div class="alert alert-danger mt-2">
+                              <ul>
+                                @foreach ($errors->all as $error)
+                                    <li> <strong>{{ $error }}</strong></li>
+                                @endforeach
+                              </ul>
+                            </div>
+                          @endif
+
+                        {{-- @error('email')
                         <div class="alert alert-danger mt-2">
                             <strong>{{ $message }}</strong>
                         </div>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <div class="pt-1 mb-4 d-flex justify-content-between">
                       <a href="/login" class="btn btn-warning btn-lg">Kembali</a>
-                      <button class="btn btn-success btn-lg" type="submit">Verifikasi</button>
+                      <button class="btn btn-success btn-lg" type="submit">Reset Password</button>
                   </div>                  
 
                   </form>

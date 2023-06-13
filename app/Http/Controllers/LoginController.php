@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SendEmail;
 use App\Models\User;
+use App\Mail\SendEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Password;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Tests\Foundation\FoundationFormRequestTest;
+use Illuminate\Support\Facades\Request as Requesttttt;
 
 /**
  * Summary of LoginController
@@ -109,11 +110,21 @@ class LoginController extends Controller
     }
 
     // fitru reset passsword
-    public function reset() {
-      return view('auth.forget'); 
+    public function ForgotPassword()
+    {
+        return view('auth.forgot-password');
     }
 
-    public function emailreset() {
-      Mail::to('rifqi@gmail.com')->send(new SendEmail());
+    public function ResetLinkEmail(Requesttttt $request)
+    {
+        $request->validate(['email' => 'required|email']);
+
+        $status = Password::sendResetLink(
+            $request->only('email')
+        );
+
+        return $status === Password::RESET_LINK_SENT
+            ? back()->with(['status' => __($status)])
+            : back()->withErrors(['email' => __($status)]);
     }
 }

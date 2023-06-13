@@ -1,26 +1,27 @@
 <?php
 
-use App\Http\Controllers\CategoryBookController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\EmailController;
-use App\Http\Controllers\HBNController;
-use App\Http\Controllers\PengurusController;
-use App\Http\Controllers\QuotesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HBNController;
+use Illuminate\Support\Facades\Request;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\KaderController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RayonController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
+use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Blog\TagController;
+use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\StatistikController;
+use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Admin\Blog\TagController as admintagcontroller;
 use App\Http\Controllers\Admin\Blog\PostController as adminpostcontroller;
@@ -68,8 +69,11 @@ Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register/store', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/reset', [LoginController::class, 'reset'])->name('reset');
-Route::post('/email/reset', [LoginController::class, 'emailreset'])->name('emailreset');
+Route::get('/forgot-password', [LoginController::class, 'ForgotPassword'])->middleware('guest')->name('password.request');
+Route::post('/forgot-password', [LoginController::class, 'ResetLinkEmail'])->middleware('guest')->name('password.email');
+
+
+
 
 
 // =====================================================
