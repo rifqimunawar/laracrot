@@ -55,17 +55,17 @@ class Backup extends Command
           echo 'Berhasil backup data sebelumnya' . PHP_EOL;
       }
 
-      $tables =  [
+      $tables = [
         'agendas' => [
-          Agenda::getTableName(),
-      ],
-      'home' => [
-          Home::getTableName(),
-      ],
-      'categories' => [
-        Category::getTableName(),
-      ],
-    ];
+            'agendas',
+        ],
+        'home' => [
+            'home',
+        ],
+        'categories' => [
+            'categories',
+        ],
+    ];    
     if ($opt_users == 1 || $arg_type == 'users') echo shell_exec('php artisan iseed users --force');
     foreach ($tables as $k => $t) {
         $type = $arg_type == 'all' ? $tables[$k] : ($k == $arg_type ? $t : []);

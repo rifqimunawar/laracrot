@@ -73,7 +73,7 @@ class PerpusController extends Controller
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = $request->judul . '-' . now()->timestamp . '.' . $extension;
             $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }

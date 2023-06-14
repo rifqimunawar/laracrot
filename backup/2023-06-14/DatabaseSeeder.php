@@ -40,6 +40,5 @@ class DatabaseSeeder extends Seeder
         $this->call(AgendasTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
-        $this->call(HomeTableSeeder::class);
     }
 }
