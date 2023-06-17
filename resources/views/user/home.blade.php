@@ -2,9 +2,6 @@
 @extends('user.layout')
 @section('content')
 
-
-
-
   <!-- ======= hero Section ======= -->
   <section id="hero">
     <div class="hero-container">
