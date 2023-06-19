@@ -1,0 +1,20 @@
+update versi 1.1
+
+A. Frontend
+[sudah]  statistik agenda kegiatan per rayon
+[sudah]  Perubahan About
+[sudah]  Perubahan warna navbar
+[sudah]  Perubahan carausel
+[sudah]  Perubahan warna font 
+[sudah]  statistik produktifitas kader
+[sudah]  fitur reset password
+
+[belum]  Laporan Kegiatan Rayon
+[belum]  Sensus Anggota
+[belum]  Persebaran Kader PMII Uninus
+
+B. Backend
+[sudah]  fitur backup database dengan command console langsung ke seeder
+[sudah]  fitur reset password
+
+[belum]  Sensus Anggota ->(pemisahan db user dengan kader, lalu relasi one to one)

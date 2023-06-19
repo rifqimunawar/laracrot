@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('thn_lulus', 10)->nullable();
             $table->string('pesantren', 50)->nullable();
             $table->string('thn_kuliah', 10)->nullable();
-            $table->string('fakultas', 30)->nullable();
-            $table->string('jurusan', 30)->nullable();
+            $table->string('fakultas', )->nullable();
+            $table->string('jurusan', )->nullable();
             $table->string('thn_mapaba', 10)->nullable();
             $table->string('penyelenggara_mapaba', 30)->nullable();
             $table->string('thn_pkd', 10)->nullable();
