@@ -89,7 +89,7 @@
     <!-- Uncomment below i you want to use a preloader -->
     <div id="preloader"></div>
     
-    {{-- <section>
+    <section>
       <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -105,7 +105,7 @@
             </div>
         </div>
     </div>
-    </section> --}}
+    </section>
 
     @include('user.partials.navbar')
     @yield('content')
