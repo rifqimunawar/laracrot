@@ -4,7 +4,7 @@
 
     <div class="row justify-content-center align-items-center">
       <div class="col-xl-11 d-flex align-items-center justify-content-between">
-        <h1 class="logo"><a href="/" style="text-decoration: none"><img src="/img/logokomi.png" alt="" class="img-fluid"> PMII uin</a></h1>
+        <h1 class="logo"><a href="/" style="text-decoration: none"><img src="/img/logokomi.png" alt="" class="img-fluid"> PMII UNINUS</a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
