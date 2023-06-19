@@ -89,13 +89,12 @@
     <!-- Uncomment below i you want to use a preloader -->
     <div id="preloader"></div>
     
-    <section>
+    {{-- <section>
       <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title text-center" >SENSUS PRESTASI DAN SKILL</h5>
-                    {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
                 </div>
                 <div class="modal-body">
                   <p>Satukan Solidaritas menuju PMII Uninus Maju dengan Sempatkan Waktu Untuk Mengisi Sensus Ini.</p>
@@ -106,7 +105,7 @@
             </div>
         </div>
     </div>
-    </section>
+    </section> --}}
 
     @include('user.partials.navbar')
     @yield('content')
