@@ -18,3 +18,4 @@ B. Backend
 [sudah]  fitur reset password
 
 [belum]  Sensus Anggota ->(pemisahan db user dengan kader, lalu relasi one to one)
+[belum]  CI/CD (Continues Integration and Continues Development)
