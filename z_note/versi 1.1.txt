@@ -1,6 +1,10 @@
 update versi 1.1
 
+--------------------------------------
 A. Frontend
+======================================
+======================================
+
 [sudah]  statistik agenda kegiatan per rayon
 [sudah]  Perubahan About
 [sudah]  Perubahan warna navbar
@@ -13,9 +17,16 @@ A. Frontend
 [belum]  Sensus Anggota
 [belum]  Persebaran Kader PMII Uninus
 
+
+
+--------------------------------------
 B. Backend
+======================================
+======================================
+
 [sudah]  fitur backup database dengan command console langsung ke seeder
 [sudah]  fitur reset password
+[sudah]  CI/CD ==>pada akhirnya di akalin dengan git version
 
+[belum]  integrasi command console di niagahoster, untuk kebutuhan backup
 [belum]  Sensus Anggota ->(pemisahan db user dengan kader, lalu relasi one to one)
-[belum]  CI/CD (Continues Integration and Continues Development)
