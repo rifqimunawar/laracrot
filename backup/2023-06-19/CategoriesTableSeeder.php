@@ -22,42 +22,42 @@ class CategoriesTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'title' => 'Berita',
+                'title' => 'berita',
                 'slug' => 'berita',
-                'created_at' => '2023-05-25 09:55:00',
-                'updated_at' => '2023-05-27 13:10:17',
+                'created_at' => '2023-06-19 07:19:17',
+                'updated_at' => '2023-06-19 07:19:17',
             ),
             1 => 
             array (
                 'id' => 2,
-                'title' => 'Mahasiswa',
+                'title' => 'mahasiswa',
                 'slug' => 'mahasiswa',
-                'created_at' => '2023-05-25 09:55:01',
-                'updated_at' => '2023-05-27 13:10:28',
+                'created_at' => '2023-06-19 07:19:17',
+                'updated_at' => '2023-06-19 07:19:17',
             ),
             2 => 
             array (
                 'id' => 3,
-                'title' => 'PMII',
+                'title' => 'pmii',
                 'slug' => 'pmii',
-                'created_at' => '2023-05-25 09:55:01',
-                'updated_at' => '2023-05-27 13:10:38',
+                'created_at' => '2023-06-19 07:19:17',
+                'updated_at' => '2023-06-19 07:19:17',
             ),
             3 => 
             array (
                 'id' => 4,
-                'title' => 'Opini',
+                'title' => 'kader',
                 'slug' => 'kader',
-                'created_at' => '2023-05-25 09:55:01',
-                'updated_at' => '2023-05-27 13:11:10',
+                'created_at' => '2023-06-19 07:19:17',
+                'updated_at' => '2023-06-19 07:19:17',
             ),
             4 => 
             array (
                 'id' => 5,
-                'title' => 'Teori',
+                'title' => 'kampus',
                 'slug' => 'kampus',
-                'created_at' => '2023-05-25 09:55:01',
-                'updated_at' => '2023-05-27 13:11:20',
+                'created_at' => '2023-06-19 07:19:17',
+                'updated_at' => '2023-06-19 07:19:17',
             ),
         ));
         

@@ -59,12 +59,61 @@ class Backup extends Command
         'agendas' => [
             'agendas',
         ],
-        'home' => [
-            'home',
-        ],
         'categories' => [
             'categories',
         ],
+        'category_books' => [
+            'category_books',
+        ],
+        'comments' => [
+            'comments',
+        ],
+        'contacts' => [
+            'contacts',
+        ],
+        'galeri' => [
+            'galeri',
+        ],
+        'home' => [
+            'home',
+        ],
+        'h_b_n_s' => [
+            'h_b_n_s',
+        ],
+        'kader' => [
+            'kader',
+        ],
+        'penguruses' => [
+            'penguruses',
+        ],
+        'perpus' => [
+            'perpus',
+        ],
+        'posts' => [
+            'posts',
+        ],
+        'post_tag' => [
+            'post_tag',
+        ],
+        'profile' => [
+            'profile',
+        ],
+        'quotes' => [
+            'quotes',
+        ],
+        'rayon' => [
+            'rayon',
+        ],
+        'role' => [
+            'role',
+        ],
+        'tags' => [
+            'tags',
+        ],
+        'users' => [
+            'users',
+        ],
+        
     ];    
     if ($opt_users == 1 || $arg_type == 'users') echo shell_exec('php artisan iseed users --force');
     foreach ($tables as $k => $t) {

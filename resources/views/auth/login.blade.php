@@ -51,15 +51,15 @@
                     </div>
   
                     <div class="pb-2">
-                      <a href="{{ route('password.request') }}" style="text-decoration: none">
-                        <h6>Lupa Password</h6>
-                      </a>
+                      <form action="">
+                        <a href="{{ route('register') }}" style="text-decoration: none"><h6>Belum Punya Akun</h6></a>
+                        <a href="{{ route('password.request') }}" style="text-decoration: none"><h6>Lupa Password</h6></a>
+                      </form>
                     </div>
                     <div class="pt-1 mb-4 d-flex justify-content-between">
                       <a href="/" class="btn btn-warning btn-lg">Kembali</a>
                       <div>
-                          <button class="btn btn-dark btn-lg" type="submit">Login</button>
-                          <a href="/register" class="btn btn-success btn-lg ml-2">Register</a>
+                          <button class="btn btn-primary btn-lg" type="submit">Login</button>
                       </div>
                   </div>                  
 

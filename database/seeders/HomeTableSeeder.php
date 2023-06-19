@@ -22,32 +22,22 @@ class HomeTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'judul' => 'Berita terbaru hari ini',
-                'deskripsi' => 'aw aw aw aw',
+                'judul' => 'PMII Komisariat Uninus',
+                'deskripsi' => 'Cabang Kota Bandung',
                 'link' => 'https://www.youtube.com/',
-                'gambar' => 'home3.jpg',
-                'created_at' => '2023-06-12 15:28:31',
-                'updated_at' => '2023-06-12 15:28:31',
+                'gambar' => 'banner_update_-1684699926.jpg',
+                'created_at' => '2023-05-25 09:54:59',
+                'updated_at' => '2023-05-25 09:54:59',
             ),
             1 => 
             array (
                 'id' => 2,
-                'judul' => 'Berita kedua',
-                'deskripsi' => 'ikeh ikeh kimochi',
+                'judul' => 'Tri Moto PMII',
+                'deskripsi' => 'Dzikir, Pikir, Amal Shaleh',
                 'link' => 'https://www.instagram.com/',
-                'gambar' => 'home1.jpg',
-                'created_at' => '2023-06-12 15:28:31',
-                'updated_at' => '2023-06-12 15:28:31',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'judul' => 'Berita ketiga',
-                'deskripsi' => 'baru anjay mabar',
-                'link' => 'https://www.instagram.com/',
-                'gambar' => 'home2.jpg',
-                'created_at' => '2023-06-12 15:28:31',
-                'updated_at' => '2023-06-12 15:28:31',
+                'gambar' => 'banner_update_-1684700286.jpeg',
+                'created_at' => '2023-05-25 09:54:59',
+                'updated_at' => '2023-05-25 09:54:59',
             ),
         ));
         
