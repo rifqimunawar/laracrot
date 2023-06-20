@@ -33,6 +33,16 @@
               @enderror
             </div>
 
+            <div class="mb-3">
+              <label for="provinces" class="form-label">Alamat Provinsi</label>
+            <select class="form-select" name="provinces" aria-label="Default select example">
+              <option disabled selected>==Pilih Provinsi==</option>
+                @foreach ($provinsi as $provinces)
+                  <option value="{{ $provinces->name }}">{{ $provinces->name }}</option>
+                @endforeach
+            </select>
+            </div>
+
             <div class="pt-3 text-end">
               <a href="/admin/user" class="btn btn-warning btn-sm">Kembali</a>
               <button type="submit" class="btn btn-success btn-sm" >Simpan</button>
@@ -51,4 +61,9 @@
     </div>
 
 </div>
+
+</body>
+</html>
+
+
 @endsection

@@ -59,7 +59,12 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.user.create');
+        $provinsi = \Indonesia::allProvinces();
+        $kota = \Indonesia::allCities()->sortBy('name')->pluck('name', 'id');
+        $kec = \Indonesia::allDistricts()->sortBy('name')->pluck('name', 'id');
+        $desa = \Indonesia::allVillages()->sortBy('name')->pluck('name', 'id');
+        // dd($kota);
+        return view('admin.user.create', compact('provinsi'));
     }
 
     /**

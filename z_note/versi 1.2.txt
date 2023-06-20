@@ -10,8 +10,8 @@ A. Frontend
   [beres]  Laporan Kegiatan Rayon
 
   [proses]  Sensus Anggota
+  [proses]  Persebaran Kader PMII Uninus
 
-  [belum]  Persebaran Kader PMII Uninus
   [belum]  statistik produktifitas kader
   [sudah]  Perubahan warna font 
 
