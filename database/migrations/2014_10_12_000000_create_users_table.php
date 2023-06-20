@@ -12,8 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-
+            
             // hal yang bersifat pribadi
+            $table->id();
             $table->string('name'); //public
             $table->string('nim')->unique();
             $table->string('img')->default('user.png');
@@ -37,7 +38,6 @@ return new class extends Migration
             $table->string('kelamin')->nullable(); //public
 
             // hal yang berkaitan dengan account 
-            $table->id();
             $table->foreignId('role_id')->default(4);
             $table->string('username')->unique(); //public
             $table->string('slug');

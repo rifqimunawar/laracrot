@@ -32,6 +32,10 @@
                       </span>
                     </div>    
 
+                    <div class="text-center mb-3">
+                      <h5>Register</h5>
+                    </div>
+
                     <div class="form-group row">
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
 
@@ -73,7 +77,7 @@
                         </div>
                     </div>
                     
-                    <div class="form-group row">
+                    <div class="form-group row" style="display: none">
                       <label for="rayon_id"class="col-md-4 col-form-label text-md-right">{{ __('Rayon') }}</label>
                       <div class="col-md-6">
                         <select id="rayon_id" name="rayon_id" class="form-select">

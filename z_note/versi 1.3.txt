@@ -1,0 +1,15 @@
+update versi 1.2
+
+Setiap update versi ada Max 5 perubahan di Frontend dan max 5 di Backend
+
+
+--------------------------------------
+A. Frontend
+======================================
+
+  [belum]  Persebaran Kader PMII Uninus
+
+
+--------------------------------------
+B. Backend
+======================================

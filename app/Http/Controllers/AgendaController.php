@@ -16,13 +16,14 @@ class AgendaController extends Controller
       $hbns = HBN::latest()->take(5)->get();
       $user=Auth::user();
       $events = Agenda::all();
-    // dd($events);
+    // ddd($events);
       return view('user.calendar', compact('events', 'user', 'hbns'));
   }
 
   public function list()
   {
       $events = Agenda::all();
+      // ddd($events);
       return view('admin.calender.index', compact('events'));
   }
 
@@ -46,6 +47,26 @@ class AgendaController extends Controller
     return redirect('/admin/calendar/');
   }
 
+  public function edit($id, Request $request)
+  {
+    $event = Agenda ::find($id);
+    return view('admin.calender.edit', compact('event'));
+  }
+  public function update($id, Request $request)
+  {
+      $eventToUpdate = Agenda::findOrFail($id);
+      $event = $request->all();
+    
+      // Periksa apakah checkbox dicentang atau tidak
+      $status = isset($event['status']) ? true : false;
+      $event['status'] = $status;
+    
+      $eventToUpdate->update($event);
+    
+      Alert::success('Mantap Sahabat', 'Agenda Berhasil Di Ubah');
+      return redirect('/admin/calendar/');
+  }
+  
   public function destroy($id)
   {
       $events = Agenda::findOrFail($id);

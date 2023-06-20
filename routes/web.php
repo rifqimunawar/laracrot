@@ -168,6 +168,8 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/calendar', [AgendaController::class, 'list'])->name('calendar.list');
     Route::get('/admin/calendar/create', [AgendaController::class, 'create'])->name('calendar.create');
     Route::post('/admin/calendar/store', [AgendaController::class, 'store'])->name('store');
+    Route::get('/admin/calendar/{id}/edit', [AgendaController::class, 'edit'])->name('calendar.edit');
+    Route::put('/admin/calendar/{id}', [AgendaController::class, 'update'])->name('calendar.update');
     Route::delete('/admin/calendar/destroy/{id}', [AgendaController::class, 'destroy'])->name('calendar.destroy');
 
     Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');

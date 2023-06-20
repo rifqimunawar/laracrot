@@ -65,8 +65,8 @@
               Jl. Soekarno Hatta No.530, <br>
               Sekejati, Kec. Buahbatu,<br>
               Kota Bandung, Jawa Barat 40286 <br>
-              <strong>Phone:</strong> +628561145097<br>
-              <strong>Email:</strong> rifqimunawar48@gmail.com<br>
+              <strong>Phone:</strong> +62 838-2949-5619<br>
+              <strong>Email:</strong> pkpmiiuninus.official@gmail.com<br>
             </p>
 
             <div class="social-links">
@@ -91,7 +91,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>PMII Komisariat UNINUS</strong>. All Rights Reserved
+        &copy; Copyright <strong>PMII Komi UNINUS 1.1</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
