@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <title>Login</title>
 </head>
@@ -24,30 +27,34 @@
                   <form method="POST" action="authenticate">
                     @csrf
                     <div class="d-flex align-items-center justify-content-center mb-6 pb-1 text-center">
-                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                       <span class="h1 fw-bold mb-0">
                         <img style="width: 100px; height: 100px; object-fit:cover" src="{{ asset('storage/img/logokomi.png') }}" alt="">
                       </span>
                     </div>                    
   
-                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                    <h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Sign into your account</h5>
   
-                    <div class="form-outline mb-4">
-                      <input type="email" name="email" id="form2Example17" autofocus class="form-control form-control-lg" />
+                    <div class="form-outline mb-2">
                       <label class="form-label" for="form2Example17">Email</label>
+                      <input type="email" placeholder="email" name="email" id="form2Example17" autofocus class="form-control form-control-lg" />
                     </div>
 
-                    <div class="form-outline mb-4">
+                    <div class="form-outline">
                       @if(Session::has('error'))
                       <div class="alert alert-danger">
                           {{ Session::get('error') }}
                       </div>
                       @endif
                     </div>
-  
+
                     <div class="form-outline mb-2">
-                      <input type="password" name="password" id="form2Example27" class="form-control form-control-lg" />
                       <label class="form-label" for="form2Example27">Password</label>
+                      <div class="input-group">
+                        <input type="password" placeholder="password" name="password" id="form2Example27" class="form-control form-control-lg" />
+                        <button type="button" id="togglePassword" class="btn btn-primary">
+                          <i id="toggleIcon" class="fa fa-eye"></i>
+                        </button>
+                      </div>
                     </div>
   
                     <div class="pb-2">
@@ -74,6 +81,26 @@
     </div>
   </section>
   
+  {{-- script mata di password  --}}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    var passwordInput = document.getElementById("form2Example27");
+    var toggleButton = document.getElementById("togglePassword");
+    var toggleIcon = document.getElementById("toggleIcon");
+  
+    toggleButton.addEventListener("click", function() {
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        toggleIcon.classList.remove("fa fa-eye");
+        toggleIcon.classList.add("fa fa-eye-slash");
+      } else {
+        passwordInput.type = "password";
+        toggleIcon.classList.remove("fa fa-eye-slash");
+        toggleIcon.classList.add("fa fa-eye");
+      }
+    });
+  </script>
+
   {{-- script sweet alert  --}}
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @include('sweetalert::alert')

@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <title>Register</title>
 </head>
@@ -20,13 +23,12 @@
               </div>
 
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                <div class="card-body p-4 p-lg-5 text-black">
+                <div class="card-body p-4 p-lg-4 text-black">
                   
                   <form method="POST" action="/register/store">
                     @csrf
 
-                    <div class="d-flex align-items-center justify-content-center mb-6 pb-1 text-center">
-                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+                    <div class="d-flex align-items-center justify-content-center mb-1 pb-1 text-center">
                       <span class="h1 fw-bold mb-4">
                         <img style="width: 100px; height: 100px; object-fit:cover" src="{{ asset('storage/img/logokomi.png') }}" alt="">
                       </span>
@@ -36,7 +38,7 @@
                       <h5>Register</h5>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mb-1">
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
 
                         <div class="col-md-6">
@@ -49,7 +51,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row mb-1">
                         <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
 
                         <div class="col-md-6">
@@ -63,7 +65,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row  mb-1">
                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email Aktif') }}</label>
 
                         <div class="col-md-6">
@@ -100,7 +102,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row mb-1">
                         <label for="nim" class="col-md-4 col-form-label text-md-right">{{ __('Nim') }}</label>
 
                         <div class="col-md-6">
@@ -114,26 +116,38 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                    <div class="form-group row mb-1">
+                      <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
+                      
+                          <div class="col-md-6">
+                            <div class="input-group">
+                              <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                              
+                              <button type="button" id="togglePassword" class="btn btn-primary">
+                                <i id="toggleIcon" class="fa fa-eye"></i>
+                              </button>
+                            </div>
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                            <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                            </span>
+                          @enderror
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                      <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
-                        <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                      <div class="col-md-6">
+                        <div class="input-group">
+                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                          
+                          <button type="button" id="toggleConfirmPassword" class="btn btn-primary">
+                            <i id="toggleConfirmIcon" class="fa fa-eye"></i>
+                          </button>
                         </div>
+                      </div>
                     </div>
 
                     <div class="form-group row my-2">
@@ -156,6 +170,41 @@
     </div>
   </section>
 
+    {{-- script password dilihat atau tidak  --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script>
+        var passwordInput = document.getElementById("password");
+        var toggleButton = document.getElementById("togglePassword");
+        var toggleIcon = document.getElementById("toggleIcon");
+
+        toggleButton.addEventListener("click", function() {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleIcon.classList.remove("fa-eye");
+            toggleIcon.classList.add("fa-eye-slash");
+          } else {
+            passwordInput.type = "password";
+            toggleIcon.classList.remove("fa-eye-slash");
+            toggleIcon.classList.add("fa-eye");
+          }
+        });
+
+        var confirmPasswordInput = document.getElementById("password-confirm");
+        var toggleConfirmButton = document.getElementById("toggleConfirmPassword");
+        var toggleConfirmIcon = document.getElementById("toggleConfirmIcon");
+
+        toggleConfirmButton.addEventListener("click", function() {
+          if (confirmPasswordInput.type === "password") {
+            confirmPasswordInput.type = "text";
+            toggleConfirmIcon.classList.remove("fa-eye");
+            toggleConfirmIcon.classList.add("fa-eye-slash");
+          } else {
+            confirmPasswordInput.type = "password";
+            toggleConfirmIcon.classList.remove("fa-eye-slash");
+            toggleConfirmIcon.classList.add("fa-eye");
+          }
+        });
+      </script>
     {{-- validasi confrimsi password harus sama dengan password yang dimasukan  --}}
     <script type="text/javascript">
       window.onload = function () {
