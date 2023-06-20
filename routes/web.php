@@ -171,10 +171,10 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::get('/admin/calendar/{id}/edit', [AgendaController::class, 'edit'])->name('calendar.edit');
     Route::put('/admin/calendar/{id}', [AgendaController::class, 'update'])->name('calendar.update');
     Route::delete('/admin/calendar/destroy/{id}', [AgendaController::class, 'destroy'])->name('calendar.destroy');
-
+    
     Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
-    Route::get('/admin/user/create', [UserController::class, 'create'])->name('create');
-    Route::post('/admin/user/store', [UserController::class, 'store'])->name('store');
+    Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
+    Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
     Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');

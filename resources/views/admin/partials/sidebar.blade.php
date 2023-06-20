@@ -59,7 +59,7 @@
       <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/user*') ? ' active' : ' collapsed' }}" href="/admin/user">
           <i class="bi bi-people"></i>
-          <span>User</span>
+          <span>Kader</span>
         </a>
       </li><!-- End Profile Page Nav -->
 

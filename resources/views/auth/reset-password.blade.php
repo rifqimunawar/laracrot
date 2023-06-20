@@ -41,7 +41,7 @@
                       <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('New Password') }}</label>
 
                       <div class="col-md-6">
-                          <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                          <input id="password" type="text" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                           @error('password')
                               <span class="invalid-feedback" role="alert">
@@ -55,7 +55,7 @@
                       <label for="password_confirmation" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                       <div class="col-md-6">
-                          <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                          <input id="password_confirmation" type="text" class="form-control" name="password_confirmation" required autocomplete="new-password">
                       </div>
                   </div>
 
