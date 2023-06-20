@@ -3,10 +3,10 @@
 @section('content')
 <div class="card info-card sales-card">
     <div class="container">
-        <h2 class="text-center my-2">Data User</h2>
-        <h5>Total user: {{ $count_user }}</h5>
+        <h2 class="text-center my-2 pt-2">Data Kader</h2>
+        <h5>Total Kader: {{ $count_user }}</h5>
         <div class="mb-3">
-            <a href="/register" class="btn btn-primary btn-sm">Tambah User</a>
+            <a href="{{ route('create.user') }}" class="btn btn-primary btn-sm">Tambah Kader</a>
         </div>
         <div class="my-3 col-12 col-sm-8 col-md-6">
             <form action="" method="get">
@@ -22,9 +22,7 @@
                     <td class="text-center">No</td>
                     <td class="text-center">Nama</td>
                     <td class="text-center">Rayon</td>
-                    <td class="text-center"> </td>
                     <td class="text-center"> Aksi</td>
-                    <td class="text-center"> </td>
                 </tr>
                 
                 {{-- syntak dibawah 
@@ -35,16 +33,13 @@
                     <td class="text-center">{{ $index + $user -> firstItem() }}</td>
                     <td>{{ $kdr['name'] }}</td>
                     <td> <a href="/admin/user/rayon/{{ $kdr->rayon->slug }}">{{ $kdr->rayon->rayon }}</a> </td>
-                    <td class="text-end">
-                        <a href="/profile/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Profile</a>
-                    </td>
-                    <td class="text-center">
-                        <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                    </td>
+                    
                     @auth
-                      @if (in_array(auth()->user()->role_id, [1]))
-                      <td class="text-start">
+                    <td class="text-center">
                         <form action="{{ route('user.destroy', $kdr->id) }}" method="POST">
+                            <a href="/profile/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Profile</a>
+                            <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
+                            @if (in_array(auth()->user()->role_id, [1]))
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm

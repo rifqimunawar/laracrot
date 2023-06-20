@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('villages')->nullable();
             $table->string('alamat')->nullable()->dafault('uninus pride');
             $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
+            $table->string('pesantren')->nullable();
             $table->string('t_lahir', 20)->nullable();
             $table->string('ttl', 20)->nullable();
             $table->string('hobi', 15)->nullable();
@@ -50,7 +51,7 @@ return new class extends Migration
 
             // hal yang berkaitan dngn orgn 
             $table->string('rayon_id'); //public
-            $table->string('prodi', 30)->nullable();
+            $table->string('prodi', 50)->nullable();
             $table->string('kaderisasi')->default('Belum Mapaba'); //public
             $table->string('thn_mapaba', 10)->nullable();
             $table->string('thn_pkd', 10)->nullable();

@@ -8,6 +8,7 @@ use App\Models\Rayon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -58,7 +59,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user.create');
     }
 
     /**
@@ -66,9 +67,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // Rule validasi
+        $rules = [
+          'name' => 'required|alpha',
+          'nim' => 'required|min:14|unique:users,nim|numeric',
+      ];
+  
+      $messages = [
+        'name.required' => 'Nama wajib diisi.',
+        'name.alpha' => 'Nama Harus Huruf doang Tolol!!!',
+        'nim.required' => 'Nim wajib diisi.',
+        'nim.unique' => 'Nim sudah digunakan.',
+        'nim.min' => 'Nim kurang anjing minimal 14 Angka goblok.',
+        'nim.numeric' => 'Nim Harus Angka Anjing!!!',
+    ];
+  
+      // Validasi input
+      $validator = Validator::make($request->all(), $rules, $messages);
+  
+      if ($validator->fails()) {
+          return redirect()->back()->withErrors($validator)->withInput();
+      }
 
+  Alert::success('Mantap Sahabat', 'Kader Berhasil Ditambahkan');
+  return view('admin.user.index');
+  }
     /**
      * Display the specified resource.
      */

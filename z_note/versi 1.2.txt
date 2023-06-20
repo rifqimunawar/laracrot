@@ -7,9 +7,10 @@ Setiap update versi ada Max 5 perubahan di Frontend dan max 5 di Backend
 A. Frontend
 ======================================
 
-  [digarap]  Laporan Kegiatan Rayon
+  [beres]  Laporan Kegiatan Rayon
 
-  [belum]  Sensus Anggota
+  [proses]  Sensus Anggota
+
   [belum]  Persebaran Kader PMII Uninus
   [belum]  statistik produktifitas kader
   [sudah]  Perubahan warna font 
@@ -18,8 +19,9 @@ A. Frontend
 B. Backend
 ======================================
 
+  [beres]  Laporan Kegiatan Rayon
+
+  [proses]  Sensus Anggota ->membuat db user nullable, agar bisa di input dihalaman admin
+
   [belum]  Add Package laravolt untuk data wilayah seluruh indonesia
   [belum]  integrasi command console di niagahoster, untuk kebutuhan backup
-  [belum]  Sensus Anggota ->membuat db user nullable, agar bisa di input dihalaman admin
-
-  [digarap]  Laporan Kegiatan Rayon
