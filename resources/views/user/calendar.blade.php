@@ -40,47 +40,75 @@
   </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Agenda Kegiatan</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Agenda Kegiatan</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
+      <div class="modal-body">
+        <!-- Konten modal -->
+        <div class="row">
+          <div class="col-md-6">
             <div class="mb-3">
               <label for="title" class="form-label">Nama Kegiatan</label>
-              <input type="text" class="form-control" name="title" id="title" readonly >
+              <input type="text" class="form-control" name="title" id="title" readonly>
             </div>
-
+        
             <div class="mb-3">
               <label for="penyelenggara" class="form-label">Penyelenggara Kegiatan</label>
-              <input type="text" class="form-control" name="penyelenggara" id="penyelenggara" readonly >
+              <input type="text" class="form-control" name="penyelenggara" id="penyelenggara" readonly>
             </div>
-            
+        
             <div class="mb-3">
               <label for="tempat" class="form-label">Tempat</label>
-              <input type="text" class="form-control" name="tempat" id="tempat" readonly >
+              <input type="text" class="form-control" name="tempat" id="tempat" readonly>
             </div>
-            
+          </div>
+        
+          <div class="col-md-6">
             <div class="mb-3">
               <label for="deskripsi" class="form-label">Category</label>
-              <input type="text" class="form-control" name="deskripsi" id="deskripsi"readonly >
+              <input type="text" class="form-control" name="deskripsi" id="deskripsi" readonly>
             </div>
-            
-            <div class="card" style="width: 100%;">
-              <img id="pamflet" src="" alt="Gambar Pamflet">
+        
+            <div class="mb-3">
+              <label for="jmlh_peserta" class="form-label">Jumlah Peserta</label>
+              <input type="text" class="form-control" name="jmlh_peserta" id="jmlh_peserta" readonly>
             </div>
+        
+            <div class="mb-3">
+              <label for="target_capaian" class="form-label">Target Capaian</label>
+              <input type="text" class="form-control" name="target_capaian" id="target_capaian" readonly>
+            </div>
+          </div>
+        </div>        
 
-            
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+        <div class="mb-3">
+          <label for="evaluasi" class="form-label">Evaluasi Kegiatan</label>
+          <input type="text" class="form-control" name="evaluasi" id="evaluasi" readonly>
         </div>
+
+        <div class="mb-3 text-center">
+          <input type="text"name="status" class="btn" id="status" readonly>
+        </div>
+      
       </div>
+
+        <div class="card" style="width: 100%;">
+          <img id="pamflet" src="" alt="Gambar Pamflet">
+        </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+
     </div>
+  </div>
+</div>
 
 
 
@@ -126,6 +154,8 @@
 <script src='fullcalendar/packages/interaction/main.js'></script>
 <script src='fullcalendar/packages/daygrid/main.js'></script>
 
+<!-- Bagian HTML lainnya -->
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -144,12 +174,25 @@
         $('#tempat').val(info.event.extendedProps.tempat);
         $('#start').val(info.event.start);
         $('#deskripsi').val(info.event.extendedProps.description);
+        $('#jmlh_peserta').val(info.event.extendedProps.jmlh_peserta);
+        $('#target_capaian').val(info.event.extendedProps.target_capaian);
+        $('#evaluasi').val(info.event.extendedProps.evaluasi);
+
+        // Pengkondisian untuk status
+        if (info.event.extendedProps.status == 0) {
+          $('#status').val('Belum Terlaksana').removeClass().addClass('btn btn-danger');
+        } else if (info.event.extendedProps.status == 1) {
+          $('#status').val('Terlaksana').removeClass().addClass('btn btn-success');
+        }
+
         // Menampilkan gambar
         $('#pamflet').attr('src', '/storage/img/' + info.event.extendedProps.pamflet);
       }
     });
     calendar.render();
   });
-
 </script>
+
+<!-- Bagian HTML lainnya -->
+
 <script src="js_calendar/main.js"></script>

@@ -1,0 +1,25 @@
+update versi 1.2
+
+Setiap update versi ada Max 5 perubahan di Frontend dan max 5 di Backend
+
+
+--------------------------------------
+A. Frontend
+======================================
+
+  [digarap]  Laporan Kegiatan Rayon
+
+  [belum]  Sensus Anggota
+  [belum]  Persebaran Kader PMII Uninus
+  [belum]  statistik produktifitas kader
+  [sudah]  Perubahan warna font 
+
+--------------------------------------
+B. Backend
+======================================
+
+  [belum]  Add Package laravolt untuk data wilayah seluruh indonesia
+  [belum]  integrasi command console di niagahoster, untuk kebutuhan backup
+  [belum]  Sensus Anggota ->membuat db user nullable, agar bisa di input dihalaman admin
+
+  [digarap]  Laporan Kegiatan Rayon

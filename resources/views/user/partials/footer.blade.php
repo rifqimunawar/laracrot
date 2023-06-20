@@ -91,7 +91,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>PMII Komisariat UNINUS</strong>. All Rights Reserved
+        &copy; Copyright <strong>PMII Komi UNINUS 1.1</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--
