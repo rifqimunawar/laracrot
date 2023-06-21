@@ -180,7 +180,7 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/admin/user/rayon/{slug}', [UserController::class, 'list'])->name('user.rayon.list');
 
-    Route::get('provinces', [DependentDropdownController::class, 'provinces'])->name('provinces');
+    Route::post('/getkabupaten', [UserController::class, 'getkabupaten'])->name('getkabupaten');
 
     // Route::get('provinces', 'DependentDropdownController@provinces')->name('provinces');
     Route::get('cities', 'DependentDropdownController@cities')->name('cities');

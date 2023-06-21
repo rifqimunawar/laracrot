@@ -60,12 +60,21 @@ class UserController extends Controller
     public function create()
     {
         $provinsi = \Indonesia::allProvinces();
-        $kota = \Indonesia::allCities()->sortBy('name')->pluck('name', 'id');
+        $kabupaten = \Indonesia::allCities();
         $kec = \Indonesia::allDistricts()->sortBy('name')->pluck('name', 'id');
         $desa = \Indonesia::allVillages()->sortBy('name')->pluck('name', 'id');
         // dd($kota);
         return view('admin.user.create', compact('provinsi'));
     }
+
+    
+    public function getkabupaten(Request $request) {
+      $id_provinsi = $request->id_provinsi;
+      $kabupatens = \Indonesia::allCities()->where('province_code', $id_provinsi)->get();
+      foreach ($kabupatens as $kabupaten) {
+          echo "<option value='$kabupaten->id'>$kabupaten->name</option>";
+      }
+  }  
 
     /**
      * Store a newly created resource in storage.
