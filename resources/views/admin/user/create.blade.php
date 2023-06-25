@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
   
@@ -43,22 +44,35 @@
                 @enderror
               </div>
   
-              <div class="mb-3">
-                <label for="provinces" class="form-label">Alamat Provinsi</label>
-              <select class="form-select" name="provinces" aria-label="Default select example" id="provinsi">
-                <option disabled selected>==Pilih Provinsi==</option>
-                  @foreach ($provinsi as $provinces)
-                    <option value="{{ $provinces->id }}">{{ $provinces->name }}</option>
-                  @endforeach
-              </select>
+              <div>
+                <label>Provinsi:</label>
+                <select id="province" name="province">
+                    <option value="">Pilih Provinsi</option>
+                    @foreach ($provinces as $province)
+                        <option value="{{ $province->id }}">{{ $province->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div>
+                  <label>Kabupaten:</label>
+                  <select id="regency" name="regency">
+                      <option value="">Pilih Kabupaten</option>
+                  </select>
               </div>
-  
-              <div class="mb-3">
-                <label for="kabupaten" class="form-label">Alamat Kabupaten</label>
-              <select class="form-select" name="kabupaten" aria-label="Default select example" id="kabupaten">
-                <option disabled selected>==Pilih Kabupaten==</option>
-                  
-              </select>
+              
+              <div>
+                  <label>Kecamatan:</label>
+                  <select id="district" name="district">
+                      <option value="">Pilih Kecamatan</option>
+                  </select>
+              </div>
+              
+              <div>
+                  <label>Desa:</label>
+                  <select id="village" name="village">
+                      <option value="">Pilih Desa</option>
+                  </select>
               </div>
   
               <div class="pt-3 text-end">
@@ -92,7 +106,96 @@
   <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
+
+
+  
+  <script>
+    $(document).ready(function() {
+        // Fungsi untuk mendapatkan data kabupaten berdasarkan provinsi yang dipilih
+        $('#province').change(function() {
+            var provinceId = $(this).val();
+            if (provinceId) {
+                $.ajax({
+                    url: '/regencies/' + provinceId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#regency').empty();
+                        $('#district').empty();
+                        $('#village').empty();
+
+                        $('#regency').append('<option value="">Pilih Kabupaten</option>');
+                        $('#district').append('<option value="">Pilih Kecamatan</option>');
+                        $('#village').append('<option value="">Pilih Desa</option>');
+
+                        $.each(data, function(key, value) {
+                            $('#regency').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#regency').empty();
+                $('#district').empty();
+                $('#village').empty();
+            }
+        });
+
+        // Fungsi untuk mendapatkan data kecamatan berdasarkan kabupaten yang dipilih
+        $('#regency').change(function() {
+            var regencyId = $(this).val();
+            if (regencyId) {
+                $.ajax({
+                    url: '/districts/' + regencyId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#district').empty();
+                        $('#village').empty();
+
+                        $('#district').append('<option value="">Pilih Kecamatan</option>');
+                        $('#village').append('<option value="">Pilih Desa</option>');
+
+                        $.each(data, function(key, value) {
+                            $('#district').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#district').empty();
+                $('#village').empty();
+            }
+        });
+
+        // Fungsi untuk mendapatkan data desa berdasarkan kecamatan yang dipilih
+        $('#district').change(function() {
+            var districtId = $(this).val();
+            if (districtId) {
+                $.ajax({
+                    url: '/villages/' + districtId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        $('#village').empty();
+
+                        $('#village').append('<option value="">Pilih Desa</option>');
+
+                        $.each(data, function(key, value) {
+                            $('#village').append('<option value="' + value.id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#village').empty();
+            }
+        });
+    });
+</script>
+
+
+
+
+
+{{-- <script>
     $(function(){
         $.ajaxSetup({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
@@ -120,7 +223,7 @@
             });
         });
     });
-</script>
+</script> --}}
 
 @endsection
 </body>
