@@ -61,6 +61,7 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
+Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 
 
 // =====================================================
@@ -107,7 +108,6 @@ Route::post('/reset-password', [ForgetPasswordControler::class, 'resetPassword']
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
   Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
-  Route::get('/perpus', [PerpusController::class, 'index'])->name('index')->middleware('auth');
   Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
@@ -179,6 +179,11 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/admin/user/rayon/{slug}', [UserController::class, 'list'])->name('user.rayon.list');
+
+    Route::get('provinces', 'UserController@getProvinces');
+    Route::get('regencies/{province_id}', 'UserController@getRegencies');
+    Route::get('districts/{regency_id}', 'UserController@getDistricts');
+    Route::get('villages/{district_id}', 'UserController@getVillages');
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
     Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
