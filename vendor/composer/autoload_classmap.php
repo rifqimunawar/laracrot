@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\HBNController' => $baseDir . '/app/Http/Controllers/HBNController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\KaderController' => $baseDir . '/app/Http/Controllers/KaderController.php',
+    'App\\Http\\Controllers\\LaravoltController' => $baseDir . '/app/Http/Controllers/LaravoltController.php',
     'App\\Http\\Controllers\\LocationController' => $baseDir . '/app/Http/Controllers/LocationController.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
     'App\\Http\\Controllers\\PengurusController' => $baseDir . '/app/Http/Controllers/PengurusController.php',

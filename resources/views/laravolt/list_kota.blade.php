@@ -1,4 +1,4 @@
-<label for="exampleInputEmail1">Pilih Kota</label>
+<label for="exampleInputEmail1">Alamat Pilih Kota</label>
 {!! Form::select('city_id', $kota, '', [
     'class' => 'form-control',
     'placeholder' => 'Pilih Kota',

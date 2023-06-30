@@ -48,11 +48,10 @@
                 @enderror
               </div>
               <fieldset>
-                <legend>Form Wilayah Indonesia</legend>
 
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Pilih Provinsi</label>
+                        <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
                         {!! Form::select('provinsi', $provinsi, '', [
                             'class' => 'form-control',
                             'placeholder' => 'Pilih Provinsi',

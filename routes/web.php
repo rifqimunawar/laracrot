@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaravoltController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -127,6 +128,13 @@ Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
 
 
 // =====================================================
+// Route For Address Package ===========================
+// -----------------------------------------------------
+  Route::get('contoh-laravolt', [LaravoltController::class, 'index'])->name('laravolt.index');
+  Route::get('get-kota', [LaravoltController::class, 'get_kota'])->name('get.kota');
+  Route::get('get-kecamatan', [LaravoltController::class, 'get_kecamatan'])->name('get.kecamatan');
+  Route::get('get-kelurahan', [LaravoltController::class, 'get_kelurahan'])->name('get.kelurahan');
+// =====================================================
 // Route Admin dan Superadmin ==========================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1,2'])->group(function () {
@@ -174,12 +182,6 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     
     Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
-
-    // for address 
-    Route::get('contoh-laravolt', [UserController::class, 'index'])->name('laravolt.index');
-    Route::get('get-kota', [UserController::class, 'get_kota'])->name('get.kota');
-    Route::get('get-kecamatan', [UserController::class, 'get_kecamatan'])->name('get.kecamatan');
-    Route::get('get-kelurahan', [UserController::class, 'get_kelurahan'])->name('get.kelurahan');
 
     Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
     Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');

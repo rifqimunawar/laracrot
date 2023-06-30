@@ -46,26 +46,10 @@ class AgendasTableSeeder extends Seeder
                 'jmlh_peserta' => '21',
                 'target_capaian' => 'ya nda tau',
                 'evaluasi' => '231',
-                'status' => '1',
+                'status' => '0',
                 'pamflet' => 'agenda_Rayon Teknik-1685505252.jpg',
                 'created_at' => '2023-05-31 03:54:12',
-                'updated_at' => '2023-06-20 06:38:33',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'title' => 'Harlah PMII',
-                'penyelenggara' => 'Komisariat',
-                'start' => '2023-06-23T00:00',
-                'tempat' => 'Solo',
-                'description' => 'Non-Formal',
-                'jmlh_peserta' => NULL,
-                'target_capaian' => NULL,
-                'evaluasi' => NULL,
-                'status' => '0',
-                'pamflet' => 'agenda_Komisariat-1687243330.png',
-                'created_at' => '2023-06-20 06:42:10',
-                'updated_at' => '2023-06-20 06:42:10',
+                'updated_at' => '2023-06-20 06:29:40',
             ),
         ));
         
