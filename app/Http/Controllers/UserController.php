@@ -55,56 +55,42 @@ class UserController extends Controller
 
         return view('admin.rayon.show', compact('rayon', 'user'));
     }
-
-    public function getProvinces()
-    {
-        $provinces = Province::all();
-        
-        return response()->json($provinces);
-    }
-
-    public function getRegencies($province_id)
-    {
-        $regencies = City::where('province_id', $province_id)->get();
-        
-        return response()->json($regencies);
-    }
-
-    public function getDistricts($regency_id)
-    {
-        $districts = District::where('regency_id', $regency_id)->get();
-        
-        return response()->json($districts);
-    }
-
-    public function getVillages($district_id)
-    {
-        $villages = Village::where('district_id', $district_id)->get();
-        
-        return response()->json($villages);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $provinces = Province::all();
-        $kabupaten = City::all();
-        $kec = District::all()->sortBy('name')->pluck('name', 'id');
-        $desa = Village::all()->sortBy('name')->pluck('name', 'id');
-        // dd($kota);
-        return view('admin.user.create', compact('provinces'));
+        $provinsi = \Indonesia::allProvinces()->sortBy('name')->pluck('name', 'id');
+        $route_get_kota = route('get.kota');
+        $route_get_kecamatan = route('get.kecamatan');
+        $route_get_kelurahan = route('get.kelurahan');
+
+        return view('admin.user.create', compact('provinsi', 'route_get_kota', 
+        'route_get_kecamatan', 'route_get_kelurahan'));
     }
 
     
-    public function getkabupaten(Request $request) {
-      $id_provinsi = $request->id_provinsi;
-      $kabupatens = City::where('province_code', $id_provinsi)->get();
-      foreach ($kabupatens as $kabupaten) {
-          echo "<option value='$kabupaten->id'>$kabupaten->name</option>";
-      }
-  }  
+    public function get_kota()
+    {
+        $province_id = request('province_id');
+        $kota = \Indonesia::findProvince($province_id, ['cities'])->cities->sortBy('name')->pluck('name', 'id');
+        return view('laravolt.list_kota', compact('kota'));
+    }
+
+    public function get_kecamatan()
+    {
+        $city_id = request('city_id');
+        $kecamatan = \Indonesia::findCity($city_id, ['districts'])->districts->sortBy('name')->pluck('name', 'id');
+
+        return view('laravolt.list_kecamatan', compact('kecamatan'));
+    }
+    public function get_kelurahan()
+    {
+        $kecamatan_id = request('kecamatan_id');
+        $kelurahan = \Indonesia::findDistrict($kecamatan_id, ['villages'])->villages->sortBy('name')->pluck('name', 'id');
+
+        return view('laravolt.list_kelurahan', compact('kelurahan'));
+    }
 
     /**
      * Store a newly created resource in storage.

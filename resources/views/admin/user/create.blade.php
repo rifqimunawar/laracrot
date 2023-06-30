@@ -1,16 +1,20 @@
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-  
-  @extends('admin.layout')
+
+
+@extends('admin.layout')
   @section('content')
   <div class="card info-card sales-card">
       <div class="container">
@@ -43,38 +47,32 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
               </div>
-  
-              <div>
-                <label>Provinsi:</label>
-                <select id="province" name="province">
-                    <option value="">Pilih Provinsi</option>
-                    @foreach ($provinces as $province)
-                        <option value="{{ $province->id }}">{{ $province->name }}</option>
-                    @endforeach
-                  </select>
-                </div>
+              <fieldset>
+                <legend>Form Wilayah Indonesia</legend>
 
-                <div>
-                  <label>Kabupaten:</label>
-                  <select id="regency" name="regency">
-                      <option value="">Pilih Kabupaten</option>
-                  </select>
-              </div>
-              
-              <div>
-                  <label>Kecamatan:</label>
-                  <select id="district" name="district">
-                      <option value="">Pilih Kecamatan</option>
-                  </select>
-              </div>
-              
-              <div>
-                  <label>Desa:</label>
-                  <select id="village" name="village">
-                      <option value="">Pilih Desa</option>
-                  </select>
-              </div>
-  
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Pilih Provinsi</label>
+                        {!! Form::select('provinsi', $provinsi, '', [
+                            'class' => 'form-control',
+                            'placeholder' => 'Pilih Provinsi',
+                            'id' => 'province_id',
+                        ]) !!}
+                    </div>
+
+                    <div class="form-group" id="form-kota">
+
+                    </div>
+
+                    <div class="form-group" id="form-kecamatan">
+
+                    </div>
+
+                    <div class="form-group" id="form-kelurahan">
+
+                    </div>
+                </div>
+            </fieldset>
               <div class="pt-3 text-end">
                 <a href="/admin/user" class="btn btn-warning btn-sm">Kembali</a>
                 <button type="submit" class="btn btn-success btn-sm" >Simpan</button>
@@ -94,137 +92,68 @@
   
   </div>
 
+@endsection
 
-
-
-{{-- script  --}}
-<script
-  src="https://code.jquery.com/jquery-3.7.0.js"
-  integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-  crossorigin="anonymous"></script>
-
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-
-  
-  <script>
-    $(document).ready(function() {
-        // Fungsi untuk mendapatkan data kabupaten berdasarkan provinsi yang dipilih
-        $('#province').change(function() {
-            var provinceId = $(this).val();
-            if (provinceId) {
-                $.ajax({
-                    url: '/regencies/' + provinceId,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#regency').empty();
-                        $('#district').empty();
-                        $('#village').empty();
-
-                        $('#regency').append('<option value="">Pilih Kabupaten</option>');
-                        $('#district').append('<option value="">Pilih Kecamatan</option>');
-                        $('#village').append('<option value="">Pilih Desa</option>');
-
-                        $.each(data, function(key, value) {
-                            $('#regency').append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#regency').empty();
-                $('#district').empty();
-                $('#village').empty();
-            }
-        });
-
-        // Fungsi untuk mendapatkan data kecamatan berdasarkan kabupaten yang dipilih
-        $('#regency').change(function() {
-            var regencyId = $(this).val();
-            if (regencyId) {
-                $.ajax({
-                    url: '/districts/' + regencyId,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#district').empty();
-                        $('#village').empty();
-
-                        $('#district').append('<option value="">Pilih Kecamatan</option>');
-                        $('#village').append('<option value="">Pilih Desa</option>');
-
-                        $.each(data, function(key, value) {
-                            $('#district').append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#district').empty();
-                $('#village').empty();
-            }
-        });
-
-        // Fungsi untuk mendapatkan data desa berdasarkan kecamatan yang dipilih
-        $('#district').change(function() {
-            var districtId = $(this).val();
-            if (districtId) {
-                $.ajax({
-                    url: '/villages/' + districtId,
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#village').empty();
-
-                        $('#village').append('<option value="">Pilih Desa</option>');
-
-                        $.each(data, function(key, value) {
-                            $('#village').append('<option value="' + value.id + '">' + value.name + '</option>');
-                        });
-                    }
-                });
-            } else {
-                $('#village').empty();
-            }
-        });
-    });
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 </script>
 
+<script>
+$(document).ready(function() {
+    $('body').on('change', '#province_id', function() {
+        let id = $(this).val();
+        let route = "{{ $route_get_kota }}";
 
+        $.ajax({
+            type: 'get',
+            url: route,
+            data: {
+                province_id: id
+            },
+            success: function(data) {
+                $('#form-kota').html(data);
+            }
+        })
+    })
 
+    $('body').on('change', '#city_id', function() {
+        let id = $(this).val();
+        let route = "{{ $route_get_kecamatan }}";
 
+        $.ajax({
+            type: 'get',
+            url: route,
+            data: {
+                city_id: id
+            },
+            success: function(data) {
+                $('#form-kecamatan').html(data);
+            }
+        })
+    })
 
-{{-- <script>
-    $(function(){
-        $.ajaxSetup({
-            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
-        });
+    $('body').on('change', '#kecamatan_id', function() {
+        let id = $(this).val();
+        let route = "{{ $route_get_kelurahan }}";
 
-        $(function(){
-            $('#provinsi').on('change',function(){
-                let id_provinsi = $('#provinsi').val();
-
-                $.ajax({
-                    type: 'POST',
-                    url: "{{ route('getkabupaten') }}",
-                    data: {id_provinsi: id_provinsi},
-                    cache: false,
-
-                    success: function(msg){
-                        $('#kabupaten').html(msg);
-                        $('#kecamatan').html('');
-                        $('#desa').html('');
-                    },
-                    error: function(data){
-                        console.log('error:', data);
-                    }
-                });
-            });
-        });
-    });
-</script> --}}
-
-@endsection
+        $.ajax({
+            type: 'get',
+            url: route,
+            data: {
+                kecamatan_id: id
+            },
+            success: function(data) {
+                $('#form-kelurahan').html(data);
+            }
+        })
+    })
+})
+</script>
 </body>
+
 </html>
