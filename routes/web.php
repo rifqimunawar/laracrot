@@ -46,8 +46,13 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 // });
 
 Route::get('/emails', function () {
-    return view('mails.reset');
+  return view('mails.reset');
 });
+
+Route::get('/mobile', function () {
+  return 'test';
+});
+
 // =====================================================
 // Route Frondend  =====================================
 // ----------------------------------------------------
@@ -62,6 +67,7 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
+Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 
 
@@ -84,23 +90,23 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Menampilkan form lupa kata sandi
 Route::get('/forgot-password', [ForgetPasswordControler::class, 'showForgotPasswordForm'])
-    ->middleware('guest')
-    ->name('password.request');
+  ->middleware('guest')
+  ->name('password.request');
 
 // Mengirim tautan reset kata sandi
 Route::post('/forgot-password', [ForgetPasswordControler::class, 'sendResetLinkEmail'])
-    ->middleware('guest')
-    ->name('password.email');
+  ->middleware('guest')
+  ->name('password.email');
 
 // Menampilkan form reset kata sandi
 Route::get('/reset-password/{token}', [ForgetPasswordControler::class, 'showResetPasswordForm'])
-    ->middleware('guest')
-    ->name('password.reset');
+  ->middleware('guest')
+  ->name('password.reset');
 
 // Melakukan reset kata sandi
 Route::post('/reset-password', [ForgetPasswordControler::class, 'resetPassword'])
-    ->middleware('guest')
-    ->name('password.update');
+  ->middleware('guest')
+  ->name('password.update');
 
 
 
@@ -132,96 +138,96 @@ Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
 // =====================================================
 // Route For Address Package ===========================
 // -----------------------------------------------------
-  Route::get('contoh-laravolt', [LaravoltController::class, 'index'])->name('laravolt.index');
-  Route::get('get-kota', [LaravoltController::class, 'get_kota'])->name('get.kota');
-  Route::get('get-kecamatan', [LaravoltController::class, 'get_kecamatan'])->name('get.kecamatan');
-  Route::get('get-kelurahan', [LaravoltController::class, 'get_kelurahan'])->name('get.kelurahan');
+Route::get('contoh-laravolt', [LaravoltController::class, 'index'])->name('laravolt.index');
+Route::get('get-kota', [LaravoltController::class, 'get_kota'])->name('get.kota');
+Route::get('get-kecamatan', [LaravoltController::class, 'get_kecamatan'])->name('get.kecamatan');
+Route::get('get-kelurahan', [LaravoltController::class, 'get_kelurahan'])->name('get.kelurahan');
 // =====================================================
 // Route Admin dan Superadmin ==========================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1,2'])->group(function () {
-    Route::get('/admin', [StatistikController::class, 'index'])->name('dashboard');
-    Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
-    Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
-    Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');
-    Route::get('/admin/perpus/{id}/edit', [PerpusController::class, 'edit'])->name('perpus.edit');
-    Route::put('/admin/perpus/{id}', [PerpusController::class, 'update'])->name('perpus.update');
-    Route::delete('/admin/perpus/{id}', [PerpusController::class, 'destroy'])->name('perpus.destroy');
+  Route::get('/admin', [StatistikController::class, 'index'])->name('dashboard');
+  Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
+  Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
+  Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');
+  Route::get('/admin/perpus/{id}/edit', [PerpusController::class, 'edit'])->name('perpus.edit');
+  Route::put('/admin/perpus/{id}', [PerpusController::class, 'update'])->name('perpus.update');
+  Route::delete('/admin/perpus/{id}', [PerpusController::class, 'destroy'])->name('perpus.destroy');
 
-    Route::get('/admin/galeri', [GaleriController::class, 'admin_index'])->name('admin_index');
-    Route::get('/admin/galeri/create', [GaleriController::class, 'admin_create'])->name('admin_create');
-    Route::post('/admin/galeri/store', [GaleriController::class, 'store'])->name('store');
-    Route::put('/admin/galeri/update{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
-    Route::delete('/admin/galeri/{id}', [GaleriController::class, 'admin_destroy'])->name('admin_destroy');
+  Route::get('/admin/galeri', [GaleriController::class, 'admin_index'])->name('admin_index');
+  Route::get('/admin/galeri/create', [GaleriController::class, 'admin_create'])->name('admin_create');
+  Route::post('/admin/galeri/store', [GaleriController::class, 'store'])->name('store');
+  Route::put('/admin/galeri/update{id}', [GaleriController::class, 'update'])->name('admin.galeri.update');
+  Route::delete('/admin/galeri/{id}', [GaleriController::class, 'admin_destroy'])->name('admin_destroy');
 
-    Route::get('/admin/post/category', [admincategorycontroller::class, 'index'])->name('categories.index');
-    Route::get('/admin/post/category/create', [admincategorycontroller::class, 'create'])->name('categories.create');
-    Route::post('/admin/post/category/store', [admincategorycontroller::class, 'store'])->name('categories.store');
-    Route::get('/admin/post/category/{id}/edit', [admincategorycontroller::class, 'edit'])->name('categories.edit');
-    Route::put('/admin/post/category/{id}', [admincategorycontroller::class, 'update'])->name('categories.update');
-    Route::delete('/admin/post/category/{id}', [admincategorycontroller::class, 'destroy'])->name('categories.destroy');
+  Route::get('/admin/post/category', [admincategorycontroller::class, 'index'])->name('categories.index');
+  Route::get('/admin/post/category/create', [admincategorycontroller::class, 'create'])->name('categories.create');
+  Route::post('/admin/post/category/store', [admincategorycontroller::class, 'store'])->name('categories.store');
+  Route::get('/admin/post/category/{id}/edit', [admincategorycontroller::class, 'edit'])->name('categories.edit');
+  Route::put('/admin/post/category/{id}', [admincategorycontroller::class, 'update'])->name('categories.update');
+  Route::delete('/admin/post/category/{id}', [admincategorycontroller::class, 'destroy'])->name('categories.destroy');
 
-    Route::get('/admin/post/tag', [admintagcontroller::class, 'index'])->name('tags.index');
-    Route::get('/admin/post/tag/create', [admintagcontroller::class, 'create'])->name('create');
-    Route::post('/admin/post/tag/store', [admintagcontroller::class, 'store'])->name('store');
-    Route::get('/admin/post/tag/{id}/edit', [admintagcontroller::class, 'edit'])->name('tags.edit');
-    Route::put('/admin/post/tag/{id}', [admintagcontroller::class, 'update'])->name('tags.update');
-    Route::delete('/admin/post/tag/{id}', [admintagcontroller::class, 'destroy'])->name('tags.destroy');
+  Route::get('/admin/post/tag', [admintagcontroller::class, 'index'])->name('tags.index');
+  Route::get('/admin/post/tag/create', [admintagcontroller::class, 'create'])->name('create');
+  Route::post('/admin/post/tag/store', [admintagcontroller::class, 'store'])->name('store');
+  Route::get('/admin/post/tag/{id}/edit', [admintagcontroller::class, 'edit'])->name('tags.edit');
+  Route::put('/admin/post/tag/{id}', [admintagcontroller::class, 'update'])->name('tags.update');
+  Route::delete('/admin/post/tag/{id}', [admintagcontroller::class, 'destroy'])->name('tags.destroy');
 
-    Route::get('/admin/post', [adminpostcontroller::class, 'index'])->name('posts.index');
-    Route::get('/admin/post/create', [adminpostcontroller::class, 'create'])->name('posts.create');
-    Route::post('/admin/post/store', [adminpostcontroller::class, 'store'])->name('posts.store');
-    Route::get('/admin/post/{id}/edit', [adminpostcontroller::class, 'edit'])->name('posts.edit');
-    Route::put('/admin/post/{id}', [adminpostcontroller::class, 'update'])->name('posts.update');
-    Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
+  Route::get('/admin/post', [adminpostcontroller::class, 'index'])->name('posts.index');
+  Route::get('/admin/post/create', [adminpostcontroller::class, 'create'])->name('posts.create');
+  Route::post('/admin/post/store', [adminpostcontroller::class, 'store'])->name('posts.store');
+  Route::get('/admin/post/{id}/edit', [adminpostcontroller::class, 'edit'])->name('posts.edit');
+  Route::put('/admin/post/{id}', [adminpostcontroller::class, 'update'])->name('posts.update');
+  Route::delete('/admin/post/{id}', [adminpostcontroller::class, 'destroy'])->name('posts.destroy');
 
-    Route::get('/admin/calendar', [AgendaController::class, 'list'])->name('calendar.list');
-    Route::get('/admin/calendar/create', [AgendaController::class, 'create'])->name('calendar.create');
-    Route::post('/admin/calendar/store', [AgendaController::class, 'store'])->name('store');
-    Route::get('/admin/calendar/{id}/edit', [AgendaController::class, 'edit'])->name('calendar.edit');
-    Route::put('/admin/calendar/{id}', [AgendaController::class, 'update'])->name('calendar.update');
-    Route::delete('/admin/calendar/destroy/{id}', [AgendaController::class, 'destroy'])->name('calendar.destroy');
-    
-    Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
-    Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
+  Route::get('/admin/calendar', [AgendaController::class, 'list'])->name('calendar.list');
+  Route::get('/admin/calendar/create', [AgendaController::class, 'create'])->name('calendar.create');
+  Route::post('/admin/calendar/store', [AgendaController::class, 'store'])->name('store');
+  Route::get('/admin/calendar/{id}/edit', [AgendaController::class, 'edit'])->name('calendar.edit');
+  Route::put('/admin/calendar/{id}', [AgendaController::class, 'update'])->name('calendar.update');
+  Route::delete('/admin/calendar/destroy/{id}', [AgendaController::class, 'destroy'])->name('calendar.destroy');
 
-    Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
-    Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-    Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
-    Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
-    Route::get('/admin/user/rayon/{slug}', [UserController::class, 'list'])->name('user.rayon.list');
+  Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
+  Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
 
-    Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
-    Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
+  Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
+  Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+  Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
+  Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+  Route::get('/admin/user/rayon/{slug}', [UserController::class, 'list'])->name('user.rayon.list');
 
-    Route::get('/admin/administrator/', [UserController::class, 'administrator'])->name('administrator');
-    Route::get('/admin/kadermapaba/', [UserController::class, 'kadermapaba'])->name('kadermapaba');
-    Route::get('/admin/kaderpkd/', [UserController::class, 'kaderpkd'])->name('kaderpkd');
-    Route::get('/admin/kaderpkl/', [UserController::class, 'kaderpkl'])->name('kaderpkl');
-    Route::get('/admin/kaderpkn/', [UserController::class, 'kaderpkn'])->name('kaderpkn');
-    Route::get('/admin/unverification/', [UserController::class, 'unverification'])->name('unverification');
-    Route::get('/admin/bukankader/', [UserController::class, 'bukankader'])->name('bukankader');
+  Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
+  Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');
 
-    Route::get('/admin/categorybooks/', [CategoryBookController::class, 'index'])->name('categorybooks');
-    Route::get('/admin/categorybooks/create', [CategoryBookController::class, 'create'])->name('create');
-    Route::post('/admin/categorybooks/store', [CategoryBookController::class, 'store'])->name('store');
-    Route::get('/admin/categorybooks/{id}/show', [CategoryBookController::class, 'show'])->name('categorybooks.show');
-    Route::get('/admin/categorybooks/{id}/edit', [CategoryBookController::class, 'edit'])->name('categorybooks.edit');
-    Route::put('/admin/categorybooks/{id}', [CategoryBookController::class, 'update'])->name('categorybooks.update');
-    Route::delete('/admin/categorybooks/{id}', [CategoryBookController::class, 'destroy'])->name('categorybooks.destroy');
-  
-    Route::get('/admin/hbn/', [HBNController::class, 'index'])->name('hbn.index');
-    Route::get('/admin/hbn/create', [HBNController::class, 'create'])->name('hbn.create');
-    Route::post('/admin/hbn/store', [HBNController::class, 'store'])->name('hbn.store');
-    Route::get('/admin/hbn/{id}/edit', [HBNController::class, 'edit'])->name('hbn.edit');
-    Route::put('/admin/hbn/{id}', [HBNController::class, 'update'])->name('hbn.update');
-    Route::delete('/admin/hbn/{id}', [HBNController::class, 'destroy'])->name('hbn.destroy');
-  });
-    // =====================================================
-    // Route Super Admin only ==============================
-    // -----------------------------------------------------
+  Route::get('/admin/administrator/', [UserController::class, 'administrator'])->name('administrator');
+  Route::get('/admin/kadermapaba/', [UserController::class, 'kadermapaba'])->name('kadermapaba');
+  Route::get('/admin/kaderpkd/', [UserController::class, 'kaderpkd'])->name('kaderpkd');
+  Route::get('/admin/kaderpkl/', [UserController::class, 'kaderpkl'])->name('kaderpkl');
+  Route::get('/admin/kaderpkn/', [UserController::class, 'kaderpkn'])->name('kaderpkn');
+  Route::get('/admin/unverification/', [UserController::class, 'unverification'])->name('unverification');
+  Route::get('/admin/bukankader/', [UserController::class, 'bukankader'])->name('bukankader');
+
+  Route::get('/admin/categorybooks/', [CategoryBookController::class, 'index'])->name('categorybooks');
+  Route::get('/admin/categorybooks/create', [CategoryBookController::class, 'create'])->name('create');
+  Route::post('/admin/categorybooks/store', [CategoryBookController::class, 'store'])->name('store');
+  Route::get('/admin/categorybooks/{id}/show', [CategoryBookController::class, 'show'])->name('categorybooks.show');
+  Route::get('/admin/categorybooks/{id}/edit', [CategoryBookController::class, 'edit'])->name('categorybooks.edit');
+  Route::put('/admin/categorybooks/{id}', [CategoryBookController::class, 'update'])->name('categorybooks.update');
+  Route::delete('/admin/categorybooks/{id}', [CategoryBookController::class, 'destroy'])->name('categorybooks.destroy');
+
+  Route::get('/admin/hbn/', [HBNController::class, 'index'])->name('hbn.index');
+  Route::get('/admin/hbn/create', [HBNController::class, 'create'])->name('hbn.create');
+  Route::post('/admin/hbn/store', [HBNController::class, 'store'])->name('hbn.store');
+  Route::get('/admin/hbn/{id}/edit', [HBNController::class, 'edit'])->name('hbn.edit');
+  Route::put('/admin/hbn/{id}', [HBNController::class, 'update'])->name('hbn.update');
+  Route::delete('/admin/hbn/{id}', [HBNController::class, 'destroy'])->name('hbn.destroy');
+});
+// =====================================================
+// Route Super Admin only ==============================
+// -----------------------------------------------------
 Route::middleware(['auth', 'role:1'])->group(function () {
-  
+
 
   Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
   Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
@@ -255,5 +261,4 @@ Route::middleware(['auth', 'role:1'])->group(function () {
   Route::get('/admin/pengurus/{id}/edit', [PengurusController::class, 'edit'])->name('pengurus.edit');
   Route::put('/admin/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
   Route::delete('/admin/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
-
-  });
+});

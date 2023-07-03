@@ -2,6 +2,40 @@
 @extends('.admin.layout')
 @section('content')
 
+
+
+{{-- MODAL SENSUS --}}
+<section>
+  <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+              <div class="modal-header text-center">
+                  <h5 class="modal-title text-center">SENSUS ANGGOTA</h5>
+                  {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
+              </div>
+              <div class="modal-body">
+                  <p>Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII
+                      UNINUS.</p>
+                  <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+                  <a href="{{ route('create.user') }}" class="btn btn-success mt-3 mb-2"
+                      style="width: 100%">Daftarkan Kader Sekarang !</a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+{{-- END MODAL SENSUS --}}
+
+{{-- JS MODAL SENSUS --}}
+<script>
+$(document).ready(function () {
+  $("#myModal").modal('show');
+});
+</script>
+{{-- END JS MODAL SENSUS --}}
+
+
+
         <!-- Left side columns -->
           <div class="row">
 
