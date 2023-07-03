@@ -48,3 +48,68 @@ Perlu diingat bahwa fitur-fitur ini dapat bervariasi tergantung pada status anda
 
 -   Halaman Utama
 ![image.png]( https://pmiiuninus.com/storage/img/1.png )
+
+-   Halaman About
+![image.png]( https://pmiiuninus.com/storage/img/2.png )
+
+-   Statistik
+![image.png]( https://pmiiuninus.com/storage/img/3.png )
+
+-   Statistik
+![image.png]( https://pmiiuninus.com/storage/img/3.png )
+![image.png]( https://pmiiuninus.com/storage/img/4.png )
+
+-   Produktivitas Rayon
+![image.png]( https://pmiiuninus.com/storage/img/5.png )
+
+-   Data Pengurus
+![image.png]( https://pmiiuninus.com/storage/img/6.png )
+
+-   Kalender Kegiatan
+![image.png]( https://pmiiuninus.com/storage/img/7.png )
+
+-   Hari Besar Nasional
+![image.png]( https://pmiiuninus.com/storage/img/8.png )
+
+-   Galeri Kader
+![image.png]( https://pmiiuninus.com/storage/img/9.png )
+
+-   Perpustakaan Kader
+![image.png]( https://pmiiuninus.com/storage/img/10.png )
+
+-   Fitur Blog/Berita
+![image.png]( https://pmiiuninus.com/storage/img/11.png )
+![image.png]( https://pmiiuninus.com/storage/img/12.png )
+
+-   Fitur Profile Kader
+![image.png]( https://pmiiuninus.com/storage/img/13.png )
+
+-   Database Kader 
+![image.png]( https://pmiiuninus.com/storage/img/14.png )
+
+
+## Instalasi
+
+### Spesifikasi
+- PHP ^8.1
+- Laravel 10.x
+- Database MySQL
+
+### Cara Install
+
+1. Clone atau download source code
+    - Para terminal, clone repo `git clone ghttps://github.com/rifqimunawar/laracrot.git`
+    - atau `git clone https://github.com/rifqimunawar/laracrot.git`
+    - Jika tidak menggunakan Git, silakan **Download Zip** dan *extract* pada direktori web server (misal: xampp/htdocs)
+2. `cd laracrot`
+3. `composer install`
+4. `cp .env.example .env`
+    - Jika tidak menggunakan Git, bisa rename file `.env.example` menjadi `.env`
+5. Pada terminal `php artisan key:generate`
+6. Buat **database pada mysql** untuk aplikasi ini
+7. **Setting database** pada file `.env`
+8. `php artisan migrate --seed`
+9. `php artisan serve`
+10. Selesai
+
+#salam_pergerakan
