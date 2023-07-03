@@ -51,7 +51,7 @@ class PostController extends Controller
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
-            $newFileName = 'blog' . '_' . $request->nama . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = $request->title . '_' . 'PMII_UNINUS' . '-' . now()->timestamp . '.' . $extension;
             $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $data['image'] = $newFileName;
         }

@@ -8,20 +8,20 @@ A. Frontend
 ======================================
 
   [beres]  Laporan Kegiatan Rayon
-
-  [proses]  Sensus Anggota
-
-  [belum]  Persebaran Kader PMII Uninus
-  [belum]  statistik produktifitas kader
+  [beres]  Sensus Anggota
   [sudah]  Perubahan warna font 
+
+  [proses]  Persebaran Kader PMII Uninus
+
+  [belum]  statistik produktifitas kader
 
 --------------------------------------
 B. Backend
 ======================================
 
   [beres]  Laporan Kegiatan Rayon
+  [beres]  Sensus Anggota ->membuat db user nullable, agar bisa di input dihalaman admin
+  [beres]  Add Package laravolt untuk data wilayah seluruh indonesia
 
-  [proses]  Sensus Anggota ->membuat db user nullable, agar bisa di input dihalaman admin
 
-  [belum]  Add Package laravolt untuk data wilayah seluruh indonesia
   [belum]  integrasi command console di niagahoster, untuk kebutuhan backup

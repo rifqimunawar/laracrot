@@ -46,54 +46,81 @@ class LoginController extends Controller
         }
     }
 
+    public function validasi()  {
+      return view('auth.verifikasi-register');
+    }
 
-    public function register()
+
+
+    public function validasii(Request $request)
     {
-        return view('auth.register');
-    }
-    public function store(Request $request)
-    {
-        // Rule validasi untuk username dan password
-        $rules = [
-            'username' => 'required|unique:users,username',
-            'email' => 'required|unique:users,email',
-            'nim' => 'required|min:14|unique:users,nim',
-            'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
-        ];
+      $nim = $request->input('nim');
+      $user = User::where('nim', $nim)->first();
     
-        $messages = [
-          'username.required' => 'Username wajib diisi.',
-          'username.unique' => 'Username sudah digunakan.',
-          'email.unique' => 'email sudah digunakan.',
-          'nim.required' => 'Nim wajib diisi.',
-          'nim.unique' => 'Nim sudah digunakan.',
-          'nim.min' => 'Nim kurang ajg minimal 14 Angka.',
-          'password.required' => 'Password wajib diisi.',
-          'password.min' => 'Password minimal 8 karakter.',
-          'password.regex' => 'Password harus terdiri dari huruf kapital, huruf kecil, dan angka.',
-      ];
-    
-        // Validasi input
-        $validator = Validator::make($request->all(), $rules, $messages);
-    
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+      if ($user) {
+        if ($user->email) {
+          Alert::info('Sahabat GOBLOK!!!', 
+          'Anda Sudah Memiliki Akun, Tinggal Login Saja. Anjing!!!');
+          return redirect()->route('login');
+        } else {
+          // dd($user); sampai sini sudah benar
+          return redirect()->route('register', ['user' => $user]);
         }
-    
-        // Buat user baru
-        $user = User::create([
-            'name'=>$request->name,
-            'nim'=>$request->nim,
-            'username'=>$request->username,
-            'email'=>$request->email,
-            'rayon_id'=>$request->rayon_id,
-            'role_id'=>$request->role_id,
-            'password'=>bcrypt($request->password),
-        ]);
-    
-        Alert::success('Mantap Sahabat', 'Anda Berhasil Register');
-        return redirect()->to('/login');
+      } else {
+        Alert::error('Maaf Sahabat', 'NIM Anda belum terdaftar. 
+        Mohon minta admin Rayon untuk melakukan 
+        sensus terlebih dahulu, lalu registrasi kembali.');
+        return redirect()->route('login');
+      }
     }
+    
+    public function register($user, Request $request) {
+      $usertoRegis = User::find($user);
+      // dd($user);
+      // dd($usertoRegis);
+      return view('auth.register', compact('usertoRegis'));
+    }
+    
+    public function store($id, Request $request)
+{
+    // Rule validasi untuk username dan password
+    $rules = [
+        'username' => 'required|unique:users,username',
+        'email' => 'required|unique:users,email',
+        'password' => 'required|min:8|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+    ];
+
+    $messages = [
+      'username.required' => 'Username wajib diisi.',
+      'username.unique' => 'Username sudah digunakan.',
+      'email.required' => 'Email wajib diisi.',
+      'email.unique' => 'Email sudah digunakan.',
+      'nim.required' => 'NIM wajib diisi.',
+      'nim.unique' => 'NIM sudah digunakan.',
+      'nim.min' => 'NIM harus memiliki minimal 14 angka.',
+      'password.required' => 'Password wajib diisi.',
+      'password.min' => 'Password minimal 8 karakter.',
+      'password.regex' => 'Password harus terdiri dari huruf kapital, huruf kecil, dan angka.',
+  ];
+
+    // Validasi input
+    $validator = Validator::make($request->all(), $rules, $messages);
+
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
+    }
+
+    // Update user yang sudah ada
+    $user = User::find($id);
+    $user->username = $request->username;
+    $user->email = $request->email;
+    $user->password = bcrypt($request->password);
+    $user->save();
+
+    Alert::success('Mantap Sahabat', 'Anda Berhasil Register');
+    return redirect()->to('/login');
+}
+
     
 
     /**

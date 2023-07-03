@@ -9,60 +9,107 @@
 
 ## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling.
 
--   [Simple, fast routing engine](https://laravel.com/docs/routing).
--   [Powerful dependency injection container](https://laravel.com/docs/container).
--   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
--   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
--   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
--   [Robust background job processing](https://laravel.com/docs/queues).
--   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## About PMII UNINUS 
+Aplikasi sistem informasi anggota organisasi Pergerakan Mahasiswa Islam Indonesia (PMII) Universitas Islam Nusantara adalah sebuah platform digital yang dirancang khusus untuk memudahkan manajemen anggota PMII di Komisariat Universitas Islam Nusanatara. Aplikasi ini menyediakan berbagai fitur dan fungsionalitas yang bertujuan untuk meningkatkan efisiensi, transparansi, dan kolaborasi dalam mengelola anggota organisasi.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur Yang Dimiliki 
+-   Informasi Umum:
+Informasi Umum yang Mencakup nama organisasi, Sejarah Keorganisasian, Tujuan, Visi Misi dan lain-lain 
 
-## Learning Laravel
+-   Pengumuman dan Berita: 
+Aplikasi ini dilengkapi dengan fitur pengumuman atau papan berita yang memungkinkan pengguna untuk mempublikasikan informasi penting atau berita terkini dari masing-masing anggota kepada anggota lain.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+-   Dokumentasi dan Penyimpanan: 
+Fitur ini memungkinkan setiap anggota untuk mengakses dan menyimpan dokumen, file, atau gambar lainnya yang berkaitan dengan organisasi dan Akademik.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   Digital E-Book:
+Fitur ini memungkinkan setiap anggota untuk menyimpan e-book, mengakses e-book, dalam bentuk pdf, word, ataupun excel yang berkaitan dengan organisasi dan Akademik.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   Manajemen Keanggotaan: 
+Fitur ini memungkinkan pengguna untuk mengelola daftar anggota, termasuk menghapus anggota yang tidak aktif, mengubah status keanggotaan, atau mengelompokkan anggota berdasarkan rayon, prodi, dan tingkat kaderisasi.
 
-## Laravel Sponsors
+-   Pelaporan dan Analitik: 
+Fitur ini memungkinkan pengguna untuk mendapatkan laporan dan analisis terkait data keanggotaan, atau aktivitas rayon. Ini membantu pengurus organisasi dalam pemantauan kinerja rayon maupun anggota dan pengambilan keputusan berdasarkan data.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-   Manajemen Profil Anggota: 
+Fitur ini memungkinkan anggota untuk mengelola profil mereka, termasuk mengubah informasi pribadi, memperbaharui password, mengunggah foto pribadi, dan memperbarui data kontak.
 
-### Premium Partners
+-   Manajemen Acara: 
+Fitur ini memungkinkan pengguna untuk mengakses acara atau kegiatan dari rayon-rayon lain, membuat, dan mengelola acara, yang diselenggarakan oleh rayon-rayon ataupun Komisariat. Ini termasuk membuat jadwal, mengatur lokasi, serta mengumpulkan daftar peserta.
 
--   **[Vehikl](https://vehikl.com/)**
--   **[Tighten Co.](https://tighten.co)**
--   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
--   **[64 Robots](https://64robots.com)**
--   **[Cubet Techno Labs](https://cubettech.com)**
--   **[Cyber-Duck](https://cyber-duck.co.uk)**
--   **[Many](https://www.many.co.uk)**
--   **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
--   **[DevSquad](https://devsquad.com)**
--   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
--   **[OP.GG](https://op.gg)**
--   **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
--   **[Lendio](https://lendio.com)**
+-   Keamanan dan Hak Akses: Aplikasi ini sering dilengkapi dengan sistem keamanan yang memungkinkan pengaturan hak akses berdasarkan peran atau tingkat keanggotaan. Hal ini membantu melindungi data sensitif organisasi dan memastikan bahwa setiap anggota memiliki akses sesuai dengan perannya.
 
-## Contributing
+Perlu diingat bahwa fitur-fitur ini dapat bervariasi tergantung pada status anda sebagai anggota organisasi dan tingkat kaderisasi yang anda tempuh,
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## Screenshot
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+-   Halaman Utama
+![image.png]( https://pmiiuninus.com/storage/img/1.png )
 
-## Security Vulnerabilities
+-   Halaman About
+![image.png]( https://pmiiuninus.com/storage/img/2.png )
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   Statistik
+![image.png]( https://pmiiuninus.com/storage/img/3.png )
 
-## License
+-   Statistik
+![image.png]( https://pmiiuninus.com/storage/img/3.png )
+![image.png]( https://pmiiuninus.com/storage/img/4.png )
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   Produktivitas Rayon
+![image.png]( https://pmiiuninus.com/storage/img/5.png )
 
-## For The Next
+-   Data Pengurus
+![image.png]( https://pmiiuninus.com/storage/img/6.png )
+
+-   Kalender Kegiatan
+![image.png]( https://pmiiuninus.com/storage/img/7.png )
+
+-   Hari Besar Nasional
+![image.png]( https://pmiiuninus.com/storage/img/8.png )
+
+-   Galeri Kader
+![image.png]( https://pmiiuninus.com/storage/img/9.png )
+
+-   Perpustakaan Kader
+![image.png]( https://pmiiuninus.com/storage/img/10.png )
+
+-   Fitur Blog/Berita
+![image.png]( https://pmiiuninus.com/storage/img/11.png )
+![image.png]( https://pmiiuninus.com/storage/img/12.png )
+
+-   Fitur Profile Kader
+![image.png]( https://pmiiuninus.com/storage/img/13.png )
+
+-   Database Kader 
+![image.png]( https://pmiiuninus.com/storage/img/14.png )
+
+
+## Instalasi
+
+### Spesifikasi
+- PHP ^8.1
+- Laravel 10.x
+- Database MySQL
+
+### Cara Install
+
+1. Clone atau download source code
+    - Para terminal, clone repo `git clone ghttps://github.com/rifqimunawar/laracrot.git`
+    - atau `git clone https://github.com/rifqimunawar/laracrot.git`
+    - Jika tidak menggunakan Git, silakan **Download Zip** dan *extract* pada direktori web server (misal: xampp/htdocs)
+2. `cd laracrot`
+3. `composer install`
+4. `cp .env.example .env`
+    - Jika tidak menggunakan Git, bisa rename file `.env.example` menjadi `.env`
+5. Pada terminal `php artisan key:generate`
+6. Buat **database pada mysql** untuk aplikasi ini
+7. **Setting database** pada file `.env`
+8. `php artisan migrate --seed`
+9. `php artisan serve`
+10. Selesai
+
+#salam_pergerakan

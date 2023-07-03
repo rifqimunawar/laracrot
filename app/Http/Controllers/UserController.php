@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Rayon;
 use Illuminate\Http\Request;
+use Laravolt\Indonesia\Models\Province;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -51,15 +52,20 @@ class UserController extends Controller
 
         return view('admin.rayon.show', compact('rayon', 'user'));
     }
-
-
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.user.create');
+        $user = Auth();
+
+        $provinsi = Province::all()->sortBy('name')->pluck('name', 'id');
+        $route_get_kota = route('get.kota');
+        $route_get_kecamatan = route('get.kecamatan');
+        $route_get_kelurahan = route('get.kelurahan');
+
+        return view('admin.user.create', compact('provinsi', 'route_get_kota', 
+        'route_get_kecamatan', 'route_get_kelurahan', 'user'));
     }
 
     /**
@@ -71,6 +77,8 @@ class UserController extends Controller
         $rules = [
           'name' => 'required|alpha',
           'nim' => 'required|min:14|unique:users,nim|numeric',
+          'alamat' => 'required',
+          't_lahir' => 'required',
       ];
   
       $messages = [
@@ -80,6 +88,8 @@ class UserController extends Controller
         'nim.unique' => 'Nim sudah digunakan.',
         'nim.min' => 'Nim kurang anjing minimal 14 Angka goblok.',
         'nim.numeric' => 'Nim Harus Angka Anjing!!!',
+        'alamat.required' => 'Alamatnya di isi dong bodo.',
+        't_lahir.required' => 'Tulis nama kota kelahirnya. TOLOL!!!.',
     ];
   
       // Validasi input
@@ -89,8 +99,11 @@ class UserController extends Controller
           return redirect()->back()->withErrors($validator)->withInput();
       }
 
+
+      $request = User::create($request->all());
+
   Alert::success('Mantap Sahabat', 'Kader Berhasil Ditambahkan');
-  return view('admin.user.index');
+  return redirect()->route('user.index');
   }
     /**
      * Display the specified resource.

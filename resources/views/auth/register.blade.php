@@ -25,8 +25,9 @@
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-4 text-black">
                   
-                  <form method="POST" action="/register/store">
-                    @csrf
+                  {{-- <form method="POST" action="/validasii/{{ $user->id }}"> --}}
+                  <form method="POST" action="/register/store/{{ $usertoRegis->id }}">
+                    @csrf @method('put')
 
                     <div class="d-flex align-items-center justify-content-center mb-1 pb-1 text-center">
                       <span class="h1 fw-bold mb-4">
@@ -42,7 +43,7 @@
                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nama Lengkap') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <input id="name" type="text" class="form-control" name="name" value="{{ $usertoRegis->name }}" readonly autocomplete="name" autofocus>
 
                             @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -106,7 +107,8 @@
                         <label for="nim" class="col-md-4 col-form-label text-md-right">{{ __('Nim') }}</label>
 
                         <div class="col-md-6">
-                            <input id="nim" type="number" class="form-control @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" autocomplete="nim">
+                            <input id="nim" type="number" readonly value="{{ $usertoRegis->nim }}" class="form-control 
+                            @error('nim') is-invalid @enderror" name="nim" value="{{ old('nim') }}" autocomplete="nim">
 
                             @error('nim')
                                 <span class="invalid-feedback" role="alert">

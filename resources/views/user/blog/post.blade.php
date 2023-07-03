@@ -8,7 +8,7 @@
                 <!-- Post content-->
                 <article class="my-5">
                     <!-- Post header-->
-                    <header class="mb-4 pt-5">
+                    <header class="mb-4">
                         @if($post->image)
                         <!-- Preview image figure-->
                         <figure class="mb-4">

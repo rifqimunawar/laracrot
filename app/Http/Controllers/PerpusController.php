@@ -66,14 +66,14 @@ class PerpusController extends Controller
 
         if ($request->image) {
             $extension = $request->image->getClientOriginalExtension();
-            $newFileName = 'perpus' . '_' . $request->judul . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = $request->judul . '_' . 'PMII_UNINUS' . '-' . now()->timestamp . '.' . $extension;
             $request->file('image')->move(public_path('/storage/img'), $newFileName);
             $perpus['image'] = $newFileName;
         }
 
         if ($request->pdf) {
             $extension = $request->pdf->getClientOriginalExtension();
-            $newFileName = $request->judul . '-' . now()->timestamp . '.' . $extension;
+            $newFileName = $request->judul . '-' . 'PMII_UNINUS' . now()->timestamp . '.' . $extension;
             $request->file('pdf')->move(public_path('/storage/pdf'), $newFileName);
             $perpus['pdf'] = $newFileName;
         }
