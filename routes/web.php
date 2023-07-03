@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaravoltController;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -68,8 +69,10 @@ Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 // Route Auth  =========================================
 // -----------------------------------------------------
 Route::get('/login', [LoginController::class, 'login'])->name('login');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/register/store', [LoginController::class, 'store'])->name('store');
+Route::get('/validasi', [LoginController::class, 'validasi'])->name('validasi');
+Route::post('/validasii', [LoginController::class, 'validasii'])->name('validasii');
+Route::get('/register/{user}', [LoginController::class, 'register'])->name('register');
+Route::put('/register/store/{id}', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -127,10 +130,17 @@ Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
 
 
 // =====================================================
+// Route For Address Package ===========================
+// -----------------------------------------------------
+  Route::get('contoh-laravolt', [LaravoltController::class, 'index'])->name('laravolt.index');
+  Route::get('get-kota', [LaravoltController::class, 'get_kota'])->name('get.kota');
+  Route::get('get-kecamatan', [LaravoltController::class, 'get_kecamatan'])->name('get.kecamatan');
+  Route::get('get-kelurahan', [LaravoltController::class, 'get_kelurahan'])->name('get.kelurahan');
+// =====================================================
 // Route Admin dan Superadmin ==========================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1,2'])->group(function () {
-    Route::get('/admin', [StatistikController::class, 'index'])->name('index');
+    Route::get('/admin', [StatistikController::class, 'index'])->name('dashboard');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
     Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');
@@ -174,16 +184,12 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
     
     Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
+
     Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
     Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
     Route::delete('/admin/user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/admin/user/rayon/{slug}', [UserController::class, 'list'])->name('user.rayon.list');
-
-    Route::get('provinces', 'UserController@getProvinces');
-    Route::get('regencies/{province_id}', 'UserController@getRegencies');
-    Route::get('districts/{regency_id}', 'UserController@getDistricts');
-    Route::get('villages/{district_id}', 'UserController@getVillages');
 
     Route::get('/admin/rayon', [RayonController::class, 'index'])->name('rayon.index');
     Route::get('/admin/rayon/{slug}', [RayonController::class, 'show'])->name('rayon.show');

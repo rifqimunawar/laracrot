@@ -76,12 +76,45 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote-bs4.js"></script>
 
+
+
+  <script>
+    $(document).ready(function(){
+      $("#myModal").modal('show');
+    });
+  </script>
+
 </head>
 
 
   <body>
     <!-- Uncomment below i you want to use a preloader -->
     <div id="preloader"></div>
+
+
+
+
+    <section>
+      <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title text-center" >SENSUS ANGGOTA</h5>
+                    {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
+                </div>
+                <div class="modal-body">
+                  <p>Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII UNINUS.</p>
+                  <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+                  <a href="#"  target="_blank" class="btn btn-success mt-3 mb-2" 
+                  style="width: 100%">Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII UNINUS.</a>
+              </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
 
     @include('user.partials.navbar')
     @yield('content')

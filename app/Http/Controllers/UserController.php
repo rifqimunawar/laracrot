@@ -5,11 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Rayon;
-use Laravolt\Indonesia\Models\Province;
-use Laravolt\Indonesia\Models\City;
-use Laravolt\Indonesia\Models\District;
-use Laravolt\Indonesia\Models\Village;
 use Illuminate\Http\Request;
+use Laravolt\Indonesia\Models\Province;
 use App\Http\Controllers\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
@@ -55,56 +52,21 @@ class UserController extends Controller
 
         return view('admin.rayon.show', compact('rayon', 'user'));
     }
-
-    public function getProvinces()
-    {
-        $provinces = Province::all();
-        
-        return response()->json($provinces);
-    }
-
-    public function getRegencies($province_id)
-    {
-        $regencies = City::where('province_id', $province_id)->get();
-        
-        return response()->json($regencies);
-    }
-
-    public function getDistricts($regency_id)
-    {
-        $districts = District::where('regency_id', $regency_id)->get();
-        
-        return response()->json($districts);
-    }
-
-    public function getVillages($district_id)
-    {
-        $villages = Village::where('district_id', $district_id)->get();
-        
-        return response()->json($villages);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $provinces = Province::all();
-        $kabupaten = City::all();
-        $kec = District::all()->sortBy('name')->pluck('name', 'id');
-        $desa = Village::all()->sortBy('name')->pluck('name', 'id');
-        // dd($kota);
-        return view('admin.user.create', compact('provinces'));
-    }
+        $user = Auth();
 
-    
-    public function getkabupaten(Request $request) {
-      $id_provinsi = $request->id_provinsi;
-      $kabupatens = City::where('province_code', $id_provinsi)->get();
-      foreach ($kabupatens as $kabupaten) {
-          echo "<option value='$kabupaten->id'>$kabupaten->name</option>";
-      }
-  }  
+        $provinsi = Province::all()->sortBy('name')->pluck('name', 'id');
+        $route_get_kota = route('get.kota');
+        $route_get_kecamatan = route('get.kecamatan');
+        $route_get_kelurahan = route('get.kelurahan');
+
+        return view('admin.user.create', compact('provinsi', 'route_get_kota', 
+        'route_get_kecamatan', 'route_get_kelurahan', 'user'));
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -115,6 +77,8 @@ class UserController extends Controller
         $rules = [
           'name' => 'required|alpha',
           'nim' => 'required|min:14|unique:users,nim|numeric',
+          'alamat' => 'required',
+          't_lahir' => 'required',
       ];
   
       $messages = [
@@ -124,6 +88,8 @@ class UserController extends Controller
         'nim.unique' => 'Nim sudah digunakan.',
         'nim.min' => 'Nim kurang anjing minimal 14 Angka goblok.',
         'nim.numeric' => 'Nim Harus Angka Anjing!!!',
+        'alamat.required' => 'Alamatnya di isi dong bodo.',
+        't_lahir.required' => 'Tulis nama kota kelahirnya. TOLOL!!!.',
     ];
   
       // Validasi input
@@ -133,8 +99,11 @@ class UserController extends Controller
           return redirect()->back()->withErrors($validator)->withInput();
       }
 
+
+      $request = User::create($request->all());
+
   Alert::success('Mantap Sahabat', 'Kader Berhasil Ditambahkan');
-  return view('admin.user.index');
+  return redirect()->route('user.index');
   }
     /**
      * Display the specified resource.
