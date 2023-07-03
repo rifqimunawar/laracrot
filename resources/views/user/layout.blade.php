@@ -96,17 +96,17 @@
 
     <section>
       <div id="myModal" class="modal fade">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h5 class="modal-title text-center" >SENSUS PRESTASI DAN SKILL</h5>
+                    <h5 class="modal-title text-center" >SENSUS ANGGOTA</h5>
                     {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
                 </div>
                 <div class="modal-body">
-                  <p>Satukan Solidaritas menuju PMII Uninus Maju dengan Sempatkan Waktu Untuk Mengisi Sensus Ini.</p>
-                  <img style="width: 100%" src="{{ asset('storage/img/sensus.jpeg') }}" alt="">
-                  <a href="https://forms.gle/f4TvsxjJjD2TNfcj6"  target="_blank" class="btn btn-success mt-3 mb-2" 
-                  style="width: 100%">Isi Sensus Sekarang</a>
+                  <p>Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII UNINUS.</p>
+                  <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+                  <a href="#"  target="_blank" class="btn btn-success mt-3 mb-2" 
+                  style="width: 100%">Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII UNINUS.</a>
               </div>
             </div>
         </div>

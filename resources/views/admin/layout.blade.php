@@ -41,7 +41,40 @@
   ======================================================== -->
 </head>
 
+
+{{-- <script>
+  $(document).ready(function(){
+    $("#myModal").modal('show');
+  });
+</script> --}}
+
+
 <body>
+
+
+  
+  {{-- <section>
+    <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+              <div class="modal-header text-center">
+                  <h5 class="modal-title text-center" >SENSUS ANGGOTA</h5>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <p>Daftarkan Anggota Kader Dari Masing-Masing Rayon.</p>
+                <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+                <a href="#"  target="_blank" class="btn btn-success mt-3 mb-2" 
+                style="width: 100%">Daftarkan Kader!!!</a>
+            </div>
+          </div>
+      </div>
+  </div>
+  </section> --}}
+
+
+
+
 @include('admin.partials.topbar')
 
 @include('admin.partials.sidebar')
@@ -59,9 +92,17 @@
   </div><!-- End Page Title -->
 
   <section class="section dashboard">
-    <div class="row">
+    <div class="row justify-content-center">
+      
+      <a href="{{ route('create.user') }}"  class="btn btn-danger col-lg-8 p-3 m-2"  >
+        <h3> 
+          <strong><b>Sensus Sedang Dilakukan, Daftarkan Kader</b></strong> 
+        </h3>
+      </button> 
+      </a>
         <!-- Left side columns -->
         <div class="col-lg-12">
+
               <div>
                 @yield('content')
             </div>
