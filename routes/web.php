@@ -71,8 +71,8 @@ Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::get('/validasi', [LoginController::class, 'validasi'])->name('validasi');
 Route::post('/validasii', [LoginController::class, 'validasii'])->name('validasii');
-Route::get('/register', [LoginController::class, 'register'])->name('register');
-Route::post('/register/store', [LoginController::class, 'store'])->name('store');
+Route::get('/register/{user}', [LoginController::class, 'register'])->name('register');
+Route::put('/register/store/{id}', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -140,7 +140,7 @@ Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
 // Route Admin dan Superadmin ==========================
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1,2'])->group(function () {
-    Route::get('/admin', [StatistikController::class, 'index'])->name('index');
+    Route::get('/admin', [StatistikController::class, 'index'])->name('dashboard');
     Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
     Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
     Route::post('/admin/perpus/store', [PerpusController::class, 'store'])->name('store');

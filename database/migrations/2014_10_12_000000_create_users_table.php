@@ -19,9 +19,9 @@ return new class extends Migration
             $table->string('nim')->unique();
             $table->string('img')->default('user.png');
             $table->string('provinces')->nullable();
-            $table->string('cities')->nullable();
-            $table->string('districts')->nullable();
-            $table->string('villages')->nullable();
+            $table->string('city_id')->nullable();
+            $table->string('kecamatan_id')->nullable();
+            $table->string('kelurahan_id')->nullable();
             $table->string('alamat')->nullable()->dafault('uninus pride');
             $table->string('pesantren')->nullable();
             $table->string('t_lahir', 20)->nullable();
@@ -40,10 +40,10 @@ return new class extends Migration
             // hal yang berkaitan dengan account 
             $table->foreignId('role_id')->default(4);
             $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
-            $table->string('username')->unique(); //public
-            $table->string('slug');
+            $table->string('username')->nullable()->unique(); //public
+            $table->string('slug')->nullable();
             $table->string('email')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken()->nullable(); //untuk semantara di null aja biar gampang nge faker nyha
             $table->timestamps();

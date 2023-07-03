@@ -691,7 +691,6 @@ class ComposerStaticInit661235367af7dc2533c510b4a4beb0a9
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\KaderController' => __DIR__ . '/../..' . '/app/Http/Controllers/KaderController.php',
         'App\\Http\\Controllers\\LaravoltController' => __DIR__ . '/../..' . '/app/Http/Controllers/LaravoltController.php',
-        'App\\Http\\Controllers\\LocationController' => __DIR__ . '/../..' . '/app/Http/Controllers/LocationController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\PengurusController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengurusController.php',
         'App\\Http\\Controllers\\PerpusController' => __DIR__ . '/../..' . '/app/Http/Controllers/PerpusController.php',

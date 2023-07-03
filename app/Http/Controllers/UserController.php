@@ -99,12 +99,11 @@ class UserController extends Controller
           return redirect()->back()->withErrors($validator)->withInput();
       }
 
-    //   dd($request);
 
-      User::create($request->all());
+      $request = User::create($request->all());
 
   Alert::success('Mantap Sahabat', 'Kader Berhasil Ditambahkan');
-  return view('admin.user.index');
+  return redirect()->route('user.index');
   }
     /**
      * Display the specified resource.

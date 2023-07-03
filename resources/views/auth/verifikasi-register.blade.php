@@ -35,7 +35,7 @@
                     <h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Masukan NIM</h5>
   
                     <div class="form-outline mb-2">
-                      <input type="text" placeholder="" name="id" id="form2Example17" autofocus class="form-control form-control-lg" />
+                      <input type="text" placeholder="" name="nim" id="form2Example17" autofocus class="form-control form-control-lg" />
                     </div>
 
                     <div class="form-outline">
