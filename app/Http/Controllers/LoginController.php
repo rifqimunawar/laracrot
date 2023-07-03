@@ -46,10 +46,28 @@ class LoginController extends Controller
         }
     }
 
+    public function validasi()  {
+      return view('auth.verifikasi-register');
+    }
 
-    public function register()
+
+
+    public function validasii(Request $request)
     {
-        return view('auth.register');
+      $nim = $request->input('id');
+      $user = User::find($nim);
+      return $user;
+  
+      if ($user) {
+          // Jika NIM ditemukan, lanjutkan ke proses registrasi
+          return view('auth.register', compact('user'));
+      } else {
+          // Jika NIM tidak ditemukan, tampilkan pesan error
+      Alert::error('Maaf Sahabat', 'Nim Anda Belum Terdaftar, 
+      Mintalah Admin Rayon Untuk Melakukan Sensus Terlebih Dahulu,
+      Lalu Register Kembali');
+      return redirect()->to('/login');
+      }
     }
     public function store(Request $request)
     {

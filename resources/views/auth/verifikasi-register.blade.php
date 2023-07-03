@@ -24,19 +24,18 @@
               <div class="col-md-6 col-lg-7 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
                   
-                  <form method="POST" action="authenticate">
+                  <form method="POST" action="{{ route('validasii') }}">
                     @csrf
                     <div class="d-flex align-items-center justify-content-center mb-6 pb-1 text-center">
                       <span class="h1 fw-bold mb-0">
                         <img style="width: 100px; height: 100px; object-fit:cover" src="{{ asset('storage/img/logokomi.png') }}" alt="">
                       </span>
-                    </div>                    
+                    </div>
   
-                    <h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+                    <h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Masukan NIM</h5>
   
                     <div class="form-outline mb-2">
-                      <label class="form-label" for="form2Example17">Email</label>
-                      <input type="email" placeholder="email" name="email" id="form2Example17" autofocus class="form-control form-control-lg" />
+                      <input type="text" placeholder="" name="id" id="form2Example17" autofocus class="form-control form-control-lg" />
                     </div>
 
                     <div class="form-outline">
@@ -47,26 +46,10 @@
                       @endif
                     </div>
 
-                    <div class="form-outline mb-2">
-                      <label class="form-label" for="form2Example27">Password</label>
-                      <div class="input-group">
-                        <input type="password" placeholder="password" name="password" id="form2Example27" class="form-control form-control-lg" />
-                        <button type="button" id="togglePassword" class="btn btn-primary">
-                          <i id="toggleIcon" class="fa fa-eye"></i>
-                        </button>
-                      </div>
-                    </div>
-  
-                    <div class="pb-2">
-                      <a href="{{ route('password.request') }}" style="text-decoration: none">
-                        <h6>Lupa Password</h6>
-                      </a>
-                      <a href="{{ route('validasi') }}" style="text-decoration: none"><h6>Belum Punya Akun</h6></a>
-                    </div>
                     <div class="pt-1 mb-4 d-flex justify-content-between">
-                      <a href="/" class="btn btn-warning btn-lg">Kembali</a>
+                      <a href="/login" class="btn btn-warning btn-lg">Kembali</a>
                       <div>
-                          <button class="btn btn-success btn-lg" type="submit">Login</button>
+                          <button class="btn btn-success btn-lg" type="submit">Lanjutkan</button>
                       </div>
                   </div>                  
 

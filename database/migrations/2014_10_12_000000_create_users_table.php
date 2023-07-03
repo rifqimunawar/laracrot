@@ -23,12 +23,11 @@ return new class extends Migration
             $table->string('districts')->nullable();
             $table->string('villages')->nullable();
             $table->string('alamat')->nullable()->dafault('uninus pride');
-            $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
             $table->string('pesantren')->nullable();
             $table->string('t_lahir', 20)->nullable();
             $table->string('ttl', 20)->nullable();
             $table->string('hobi', 15)->nullable();
-            $table->string('sma', 50)->nullable();
+            $table->string('sma', 100)->nullable();
             $table->string('thn_lulus', 10)->nullable();
             $table->string('thn_kuliah', 10)->nullable();
 
@@ -40,6 +39,7 @@ return new class extends Migration
 
             // hal yang berkaitan dengan account 
             $table->foreignId('role_id')->default(4);
+            $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
             $table->string('username')->unique(); //public
             $table->string('slug');
             $table->string('email')->nullable();

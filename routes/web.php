@@ -69,6 +69,8 @@ Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 // Route Auth  =========================================
 // -----------------------------------------------------
 Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::get('/validasi', [LoginController::class, 'validasi'])->name('validasi');
+Route::post('/validasii', [LoginController::class, 'validasii'])->name('validasii');
 Route::get('/register', [LoginController::class, 'register'])->name('register');
 Route::post('/register/store', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
