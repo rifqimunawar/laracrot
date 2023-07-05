@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            Monthly Bills
+        </div>
+        <div class="right">
+            <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#actionSheetForm">
+                <ion-icon name="add-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- Extra Header -->
+    <div class="extraHeader pe-0 ps-0">
+        <ul class="nav nav-tabs lined" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#waiting" role="tab">
+                    Waiting
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#paid" role="tab">
+                    Paid
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- * Extra Header -->
+
+
+    <!-- Form Action Sheet -->
+    <div class="modal fade action-sheet" id="actionSheetForm" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Bill</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content">
+
+                        <form>
+                            <div class="form-group basic">
+                                <label class="label">Bill ID</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" id="basic-addon1">#</span>
+                                    <input type="text" class="form-control" placeholder="Enter an amount" value="41512">
+                                </div>
+                                <div class="input-info">Enter the ID of the bill you want to add.</div>
+                            </div>
+
+
+                            <div class="form-group basic">
+                                <button type="button" class="btn btn-primary btn-block btn-lg"
+                                    data-bs-dismiss="modal">Add</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Form Action Sheet -->
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule" class="extra-header-active full-height">
+
+        <div class="section tab-content mt-2 mb-1">
+
+            <!-- waiting tab -->
+            <div class="tab-pane fade show active" id="waiting" role="tabpanel">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 14</div>
+                            <p>Prime Monthly Subscription</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/2.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 8</div>
+                            <p>Monthly Payment </p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/3.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 15</div>
+                            <p>Envato Elements Subscription</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/4.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 49</div>
+                            <p>Subscription Fees</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/5.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 12</div>
+                            <p>Pro Membership</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 14</div>
+                            <p>Prime Monthly Subscription</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/2.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 8</div>
+                            <p>Monthly Payment </p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/3.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 15</div>
+                            <p>Envato Elements Subscription</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">PAY NOW</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- * waiting tab -->
+
+
+
+            <!-- paid tab -->
+            <div class="tab-pane fade" id="paid" role="tabpanel">
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <div class="bill-box">
+                            <div class="img-wrapper">
+                                <img src="assets/img/sample/brand/1.jpg" alt="img" class="image-block imaged w48">
+                            </div>
+                            <div class="price">$ 14</div>
+                            <p>Prime Monthly Subscription</p>
+                            <a href="#" class="btn btn-primary btn-block btn-sm">DETAIL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- * paid tab -->
+
+        </div>
+
+    </div>
+    <!-- * App Capsule -->
+
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+
+</body>
+
+</html>

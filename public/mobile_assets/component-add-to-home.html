@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords"
+        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Add to Home</div>
+        <div class="right"></div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="section full mt-2">
+            <div class="section-title">Preview</div>
+            <ul class="listview image-listview inset">
+                <li>
+                    <a href="#" class="item" onclick="androidAddtoHome();">
+                        <div class="icon-box bg-success">
+                            <ion-icon name="logo-android"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>Android</div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="item" onclick="iosAddtoHome();">
+                        <div class="icon-box bg-secondary">
+                            <ion-icon name="logo-apple"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>iOS</div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+
+
+        <!-- iOS Add to Home Action Sheet -->
+        <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1"
+            role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add to Home Screen</h5>
+                        <a href="#" class="close-button" data-bs-dismiss="modal">
+                            <ion-icon name="close"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="action-sheet-content text-center">
+                            <div class="mb-1"><img src="assets/img/icon/192x192.png" alt="image"
+                                    class="imaged w64 mb-2">
+                            </div>
+                            <div>
+                                Install <strong>Finapp</strong> on your iPhone's home screen.
+                            </div>
+                            <div>
+                                Tap <ion-icon name="share-outline"></ion-icon> and Add to homescreen.
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * iOS Add to Home Action Sheet -->
+
+
+        <!-- Android Add to Home Action Sheet -->
+        <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1"
+            role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add to Home Screen</h5>
+                        <a href="#" class="close-button" data-bs-dismiss="modal">
+                            <ion-icon name="close"></ion-icon>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <div class="action-sheet-content text-center">
+                            <div class="mb-1">
+                                <img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
+                            </div>
+                            <div>
+                                Install <strong>Finapp</strong> on your Android's home screen.
+                            </div>
+                            <div>
+                                Tap <ion-icon name="ellipsis-vertical"></ion-icon> and Add to homescreen.
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Android Add to Home Action Sheet -->
+
+
+
+        <div class="section mt-2 mb-4">
+            <div class="section-title">Usage</div>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Prepare</h4>
+                    <p class="mb-3">
+                        Don't forget to paste the html codes of add to home modals on the html page you want to use.
+                    </p>
+                    <h4>Trigger</h4>
+                    <p class="mb-3">
+                        You can show Add to Home component with <code>AddtoHome();</code> javascript code.
+                        It shows everytime when the page loaded.
+                    </p>
+                    <h4>Trigger after a delay</h4>
+                    <p class="mb-3">
+                        You can set a delay time.
+                        <br>
+                        <strong>Example:</strong>
+                        <br>
+                        <code>AddtoHome("5000");</code>
+                        <br>
+                        Trigger in 5 seconds after the page load.
+                    </p>
+                    <h4>Trigger only once</h4>
+                    <p class="mb-0">
+                        Trigger the modal only once to users.
+                        <br>
+                        <code>AddtoHome("5000", "once");</code>
+                        <br>
+                        With this example, you can trigger the add to home component only once to user.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+
+</body>
+
+</html>

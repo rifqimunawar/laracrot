@@ -4,6 +4,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\MobileHomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +24,7 @@ use Illuminate\Foundation\Application;
 // });
 
 Route::prefix('mobile')->group(function () {
-  Route::get('/', function () {
-    return view('mobile.index');
-  });
+  Route::get('/', [MobileHomeController::class, 'home'])->name('home');
 });
 
 

@@ -5,15 +5,14 @@
 
 
 {{-- MODAL SENSUS --}}
-<section>
-  <div id="myModal" class="modal fade">
+  {{-- <div id="myModal" class="modal fade">
       <div class="modal-dialog modal-dialog-centered modal-lg">
           <div class="modal-content">
               <div class="modal-header text-center">
                   <h5 class="modal-title text-center">SENSUS ANGGOTA</h5>
                   {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
-              </div>
-              <div class="modal-body">
+              {{-- </div>
+              <div >
                   <p>Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII
                       UNINUS.</p>
                   <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
@@ -22,19 +21,22 @@
               </div>
           </div>
       </div>
-  </div>
-</section>
+  </div> --}}
 {{-- END MODAL SENSUS --}}
 
 {{-- JS MODAL SENSUS --}}
-<script>
+{{-- <script>
 $(document).ready(function () {
   $("#myModal").modal('show');
 });
-</script>
+</script> --}}
 {{-- END JS MODAL SENSUS --}}
 
-
+<div >
+  <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+  <a href="{{ route('create.user') }}" class="btn btn-danger mt-3 mb-2"
+      style="width: 100%">Daftarkan Kader Sekarang !</a>
+</div>
 
         <!-- Left side columns -->
           <div class="row">

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords"
+        content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            Exchange
+        </div>
+        <div class="right">
+            <a href="#" class="headerButton" onclick="toastbox('toast-1', 2000)">
+                <ion-icon name="refresh"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- toast top -->
+    <div id="toast-1" class="toast-box toast-top tap-to-close bg-primary">
+        <div class="in">
+            <div class="text">
+                Exchange rates have been updated!
+            </div>
+        </div>
+    </div>
+    <!-- * toast top -->
+
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+
+        <form action="app-pages.html">
+
+            <div class="section mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group basic p-0">
+                            <div class="exchange-heading">
+                                <label class="group-label" for="fromAmount">From</label>
+                                <div class="exchange-wallet-info">
+                                    Balance : <strong> 5.506,12 USD</strong>
+                                </div>
+                            </div>
+                            <div class="exchange-group">
+                                <div class="input-col">
+                                    <input type="text" class="form-control form-control-lg pe-0 border-0"
+                                        id="fromAmount" placeholder="0" value="380" maxlength="10">
+                                </div>
+                                <div class="select-col">
+                                    <select class="form-select form-select-lg currency">
+                                        <option value="USD" selected>USD</option>
+                                        <option value="BTC">BTC</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="ADA">ADA</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="exchange-line">
+                    <div class="exchange-icon">
+                        <ion-icon name="swap-vertical-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group basic p-0">
+                            <div class="exchange-heading">
+                                <label class="group-label" for="toAmount">To</label>
+                                <div class="exchange-wallet-info">
+                                    Balance : <strong> 0,504 BTC</strong>
+                                </div>
+                            </div>
+                            <div class="exchange-group">
+                                <div class="input-col">
+                                    <input type="text" class="form-control form-control-lg pe-0 border-0" id="toAmount"
+                                        placeholder="0" value="0,014" maxlength="10">
+                                </div>
+                                <div class="select-col">
+                                    <select class="form-select form-select-lg currency">
+                                        <option value="USD">USD</option>
+                                        <option value="BTC" selected>BTC</option>
+                                        <option value="ETH">ETH</option>
+                                        <option value="ADA">ADA</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="section mt-2">
+                <div class="row fontsize-caption">
+                    <div class="col">
+                        <b>1 BTC</b> = 39.019,09 USD
+                    </div>
+                    <div class="col text-end">
+                        Commission rate : <b>2%</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-button-group transparent">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                    Continue
+                </button>
+            </div>
+        </form>
+
+
+    </div>
+    <!-- * App Capsule -->
+
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Apex Charts -->
+    <script src="assets/js/plugins/apexcharts/apexcharts.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+</body>
+
+</html>

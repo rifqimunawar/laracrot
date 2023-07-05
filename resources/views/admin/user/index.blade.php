@@ -37,6 +37,7 @@
                     @auth
                     <td class="text-center">
                         <form action="{{ route('user.destroy', $kdr->id) }}" method="POST">
+                            <a href="/admin/user/{{ $kdr->id }}/details" class="btn btn-success btn-sm">Detail</a>
                             <a href="/profile/{{ $kdr->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                             <a href="/admin/user/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                             @if (in_array(auth()->user()->role_id, [1]))

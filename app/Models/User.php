@@ -14,6 +14,7 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravolt\Indonesia\Models\Province;
 
 class User extends Authenticatable
 {
@@ -67,6 +68,10 @@ class User extends Authenticatable
     public function rayon()
     {
         return $this->belongsTo(Rayon::class);
+    }
+    public function provinsi()
+    {
+        return $this->belongsTo(Province::class);
     }
 
     public function sluggable(): array
