@@ -14,22 +14,54 @@
               @method('put')
                 <div class="mb-3">
                     <label for="name" class="form-label">Nama Lengkap</label>
-                    <input type="text" class="form-control" id="name" value="{{ $user->name }}" readonly>
+                    <input type="text" class="form-control" id="name" value="{{ $user->name }}">
                 </div>
-    
+{{--     
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" value="{{ $user->username }}" readonly>
-                </div>
+                </div> --}}
     
+                <fieldset>
+                  <div class="box-body">
+                      <div class="form-group">
+                          <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
+                          {!! Form::select('provinsi', $provinsi, null, [
+                              'class' => 'form-control',
+                              'placeholder' => 'Pilih Provinsi',
+                              'id' => 'province_id',
+                              'name' => 'provinces',
+                              'value' => 'name'
+                          ]) !!}
+                      </div>
+              
+                      <div class="form-group" name="cities" id="form-kota">
+              
+                      </div>
+              
+                      <div class="form-group" name="districts" id="form-kecamatan">
+              
+                      </div>
+              
+                      <div class="form-group" name="villages" id="form-kelurahan">
+              
+                      </div>
+                  </div>
+              </fieldset>
+
                 <div class="mb-3">
                     <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}" readonly>
+                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}">
                 </div>
     
                 <div class="mb-3">
                     <label for="nim" class="form-label">Nim</label>
                     <input type="text" class="form-control" id="nim" value="{{ $user->nim }}">
+                </div>
+    
+                <div class="mb-3">
+                    <label for="t_lahir" class="form-label">Kota Kelahiran</label>
+                    <input type="text" class="form-control" id="t_lahir" value="{{ $user->t_lahir }}">
                 </div>
     
                 <div class="mb-3">
@@ -46,7 +78,7 @@
                   </div>
                 </div>
 
-                <div class="mb-3">
+                {{-- <div class="mb-3">
                   <label for="prodi">Prodi</label>
 
                   <div class="col-md-12">
@@ -67,14 +99,14 @@
                   </div>
                   <div class="col-md-12">
                       <select id="prodi-ulul-albab" name="prodi" class="form-select" style="display:none;">
-                        <option>-- Prodi Di Ulul Albab --</option>
+                        <option value="-">-- Prodi Di Ulul Albab --</option>
                         <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
                         <option value="Pendidikan Bahasa Arab">Pendidikan Bahasa Arab</option>
                         <option value="Tafsir Hadis">Tafsir Hadis</option>
                     </select>
                   </div>
 
-              </div>
+              </div> --}}
 
                 {{-- jenjang kaderisasi start  --}}
                 <div class="mb-3">
@@ -293,3 +325,109 @@
 
   </script>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
+
+
+<script>
+  $(document).ready(function() {
+      $('body').on('change', '#province_id', function() {
+          let id = $(this).val();
+          let route = "{{ $route_get_kota }}";
+  
+          $.ajax({
+              type: 'get',
+              url: route,
+              data: {
+                  province_id: id
+              },
+              success: function(data) {
+                  $('#form-kota').html(data);
+              }
+          })
+      })
+  
+      $('body').on('change', '#city_id', function() {
+          let id = $(this).val();
+          let route = "{{ $route_get_kecamatan }}";
+  
+          $.ajax({
+              type: 'get',
+              url: route,
+              data: {
+                  city_id: id
+              },
+              success: function(data) {
+                  $('#form-kecamatan').html(data);
+              }
+          })
+      })
+  
+      $('body').on('change', '#kecamatan_id', function() {
+          let id = $(this).val();
+          let route = "{{ $route_get_kelurahan }}";
+  
+          $.ajax({
+              type: 'get',
+              url: route,
+              data: {
+                  kecamatan_id: id
+              },
+              success: function(data) {
+                  $('#form-kelurahan').html(data);
+              }
+          })
+      })
+  })
+  </script>
+  
+  
+  <script>
+    function showOptions() {
+        var kaderisasi = document.getElementById("kaderisasi").value;
+        var thn_mapaba = document.getElementById("thn_mapaba");
+        var thn_pkd = document.getElementById("thn_pkd");
+        var thn_pkl = document.getElementById("thn_pkl");
+        var thn_pkn = document.getElementById("thn_pkn");
+        
+        if (kaderisasi === "Belum Mapaba") {
+            thn_mapaba.style.display = "none";
+            thn_pkd.style.display = "none";
+            thn_pkl.style.display = "none";
+            thn_pkn.style.display = "none";
+        } else if (kaderisasi === "Mapaba") {
+            thn_mapaba.style.display = "block";
+            thn_pkd.style.display = "none";
+            thn_pkl.style.display = "none";
+            thn_pkn.style.display = "none";
+        } else if (kaderisasi === "PKD") {
+            thn_mapaba.style.display = "block";
+            thn_pkd.style.display = "block";
+            thn_pkl.style.display = "none";
+            thn_pkn.style.display = "none";
+        } else if (kaderisasi === "PKL") {
+            thn_mapaba.style.display = "block";
+            thn_pkd.style.display = "block";
+            thn_pkl.style.display = "block";
+            thn_pkn.style.display = "none";
+        } else if (kaderisasi === "PKN") {
+            thn_mapaba.style.display = "block";
+            thn_pkd.style.display = "block";
+            thn_pkl.style.display = "block";
+            thn_pkn.style.display = "block";
+        } else {
+            thn_mapaba.style.display = "none";
+            thn_pkd.style.display = "none";
+            thn_pkl.style.display = "none";
+            thn_pkn.style.display = "none";
+        }
+    }
+    </script>

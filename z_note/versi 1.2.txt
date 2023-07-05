@@ -9,10 +9,13 @@ A. Frontend
 
   [beres]  Laporan Kegiatan Rayon
   [beres]  Sensus Anggota
-  [sudah]  Perubahan warna font 
+  [beres]  Perubahan warna font 
+  [beres]  Fitur Detail Kader
+  [beres]  Penambahan laravolt di edit Kader
 
-  [proses]  Persebaran Kader PMII Uninus
+  [proses]  Fitur Detail Rsyon => tabel keseluruhan data kader by rayon
 
+  [belum]  Persebaran Kader PMII Uninus
   [belum]  statistik produktifitas kader
 
 --------------------------------------

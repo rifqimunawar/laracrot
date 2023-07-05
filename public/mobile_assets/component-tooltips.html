@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Tooltips</div>
+        <div class="right"></div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="section mt-1 mb-2">
+            <div class="section-title">Directions</div>
+            <div class="card">
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top"
+                        title="Tooltip on top">
+                        Top
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="right"
+                        title="Tooltip on right">
+                        Right
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="bottom"
+                        title="Tooltip on bottom">
+                        Bottom
+                    </button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="left"
+                        title="Tooltip on left">
+                        Left
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section mb-2">
+            <div class="section-title">Custom HTML Tooltip</div>
+            <div class="card">
+                <div class="card-body">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-html="true"
+                        title="<em>Tooltip</em> <u>with</u> <b>HTML</b>">
+                        Tooltip with HTML
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section mb-2">
+            <div class="section-title">Text</div>
+            <div class="card">
+                <div class="card-body">
+                    Lorem ipsum dolor sit amet
+                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+                        ultrices
+                    </a>
+                    purus sed hendrerit. Praesent et auctor dolor. Ut sed ultrices justo.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum, urna eget finibus
+                    fermentum,
+                    velit metus maximus erat, nec sodales elit justo vitae sapien. Sed fermentum varius erat, et dictum
+                    lorem. Cras pulvinar purus sed hendrerit. Praesent et auctor dolor. Ut sed ultrices justo.
+                    Phasellus pulvinar lacus nec quam blandit, vel rhoncus risus scelerisque. Morbi diam ex, rhoncus sit
+                    amet augue vitae.
+                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Another tooltip">Proin
+                        blandit</a>
+                    fringilla sem quis luctus. Phasellus ex lectus, mattis in bibendum et, semper id mi. Praesent erat
+                    ante, posuere ut bibendum a, dignissim id
+                    est. Morbi ac mi leo. Cras molestie tincidunt augue id eleifend. Donec vehicula dolor sit amet
+                    ultrices vehicula. In tempus libero elementum, sagittis felis ut, pharetra dolor. Phasellus
+                    vulputate nibh sapien, in semper sem scelerisque sed.
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+</body>
+
+</html>

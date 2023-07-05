@@ -121,9 +121,15 @@ class UserController extends Controller
         $user = User::find($id);
         $role = Role::find($user->role_id);
         $rayon = Rayon::find($user->rayon_id);
-        return view('admin.user.edit', compact('user', 'role', 'rayon'));
-    }
+        $provinsi = Province::all()->sortBy('name')->pluck('name', 'id');
+        $route_get_kota = route('get.kota');
+        $route_get_kecamatan = route('get.kecamatan');
+        $route_get_kelurahan = route('get.kelurahan');
 
+        return view('admin.user.edit', compact('user', 'role', 
+        'rayon', 'provinsi', 'route_get_kota', 
+        'route_get_kecamatan', 'route_get_kelurahan',));
+    }
 
     /**
      * Update the specified resource in storage.

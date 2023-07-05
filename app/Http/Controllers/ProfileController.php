@@ -2,27 +2,82 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\CategoryBook;
+use App\Models\Tag;
+use App\Models\Post;
+// use Illuminate\Http\RedirectResponse;
+// use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Inertia\Inertia;
 use App\Models\Galeri;
 use App\Models\Perpus;
-use App\Models\Post;
-use App\Models\Tag;
-use App\Models\User;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Category;
+use App\Models\CategoryBook;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\RedirectResponse;
+use Laravolt\Indonesia\Models\Province;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Response as ResponseInertia;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 class ProfileController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     */
+     * Display the user's profile form.
+      */
+    // public function edit(Request $request): Response
+    // {
+    //     return Inertia::render('Profile/Edit', [
+    //         'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+    //         'status' => session('status'),
+    //     ]);
+    // }
+
+    // /**
+    //  * Update the user's profile information.
+    //  */
+    // public function update(ProfileUpdateRequest $request): RedirectResponse
+    // {
+    //     $request->user()->fill($request->validated());
+
+    //     if ($request->user()->isDirty('email')) {
+    //         $request->user()->email_verified_at = null;
+    //     }
+
+    //     $request->user()->save();
+
+    //     return Redirect::route('profile.edit');
+    // }
+
+    // /**
+    //  * Delete the user's account.
+    //  */
+    // public function destroy(Request $request): RedirectResponse
+    // {
+    //     $request->validate([
+    //         'password' => ['required', 'current_password'],
+    //     ]);
+
+    //     $user = $request->user();
+
+    //     Auth::logout();
+
+    //     $user->delete();
+
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
+
+    //     return Redirect::to('/');
+    // }
+
+
     public function index( Request $request)
     {
       $profile = Auth::user();
@@ -226,9 +281,15 @@ class ProfileController extends Controller
     // detail user 
     public function details($id, Request $request)
     {
-    $user = User::findOrFail($id);
-    $user = User::all();
-    return view('admin.user.detail');
+        $users = User::findOrFail($id);     // $user = User::all();
+        // $users=User::all()->with('provinsi');
+        $provinsi = Province::all()->sortBy('name')->pluck('name', 'id');
+        $route_get_kota = route('get.kota');
+        $route_get_kecamatan = route('get.kecamatan');
+        $route_get_kelurahan = route('get.kelurahan');
+        
+        // dd($users);
+        return view('admin.user.detail', compact('users', 'provinsi'));
     }
     // profile user lain 
     public function profile($slug, Request $request)
@@ -267,5 +328,4 @@ class ProfileController extends Controller
           'profileperpus',
         ));
     }
-    
 }
