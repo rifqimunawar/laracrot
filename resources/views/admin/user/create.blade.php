@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>User | PMII UNINUS</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -39,6 +39,18 @@
               </div>
   
               <div class="mb-3">
+                <label for="kelamin" class="form-label">Jenis Kelamin</label>
+                <select name="kelamin" id="kelamin" class="form-select @error('kelamin') is-invalid @enderror">
+                    <option disabled selected>Pilih jenis kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+                @error('kelamin')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                </div>
+  
+              <div class="mb-3">
                 <label for="nim" class="form-label">NIM</label>
                 <input type="text" name="nim"id="nim"  class="form-control
                 @error('nim') is-invalid @enderror" id="nim" required>
@@ -47,7 +59,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
               </div>
-              <fieldset>
+              {{-- <fieldset>
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
@@ -55,7 +67,7 @@
                             'class' => 'form-control',
                             'placeholder' => 'Pilih Provinsi',
                             'id' => 'province_id',
-                            'name' => 'provinces',
+                            'name' => 'province_id',
                             'value' => 'name'
                         ]) !!}
                     </div>
@@ -72,18 +84,19 @@
             
                     </div>
                 </div>
-            </fieldset>
+            </fieldset> --}}
             
 
             <div class="mb-3">
-              <label for="alamat" class="form-label">Alamat Detail</label>
-              <input type="text" name="alamat"id="alamat"  class="form-control
-              @error('alamat') is-invalid @enderror" id="alamat" placeholder="Nama jl. / kampung, RT/RW">
-              
+              <label for="alamat" class="form-label">Alamat</label>
+              <textarea name="alamat" id="alamat" class="form-control 
+              @error('alamat') is-invalid @enderror" rows="4" ></textarea>
+            
               @error('alamat')
-                  <div class="alert alert-danger">{{ $message }}</div>
+              <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
+            
 
             <div class="mb-3">
               <label for="pesantren" class="form-label">Nama Pesantren</label>

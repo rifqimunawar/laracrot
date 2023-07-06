@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body class="bg-white">
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">
+            Notifications
+        </div>
+        <div class="right">
+            <a href="#" class="headerButton" onclick="toastbox('toast-example-1', 3000)">
+                <ion-icon name="notifications-off-outline"></ion-icon>
+            </a>
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- toast bottom iconed -->
+    <div id="toast-example-1" class="toast-box toast-bottom bg-primary">
+        <div class="in">
+            <ion-icon name="notifications-off-outline"></ion-icon>
+            <div class="text">
+                Notification sounds have been muted
+            </div>
+        </div>
+        <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+    </div>
+    <!-- * toast bottom iconed -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+        <div class="section full">
+
+            <ul class="listview image-listview flush">
+                <li class="active">
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-primary">
+                            <ion-icon name="arrow-down-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>Payment Received</strong></div>
+                                <div class="text-small mb-05">John sent you <b>$ 50</b></div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                            <span class="badge badge-primary badge-empty"></span>
+                        </div>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-success">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>Money has been sent</strong></div>
+                                <div class="text-small mb-05">The money you sent to John was successfully sent.</div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                            <span class="badge badge-primary">3</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-danger">
+                            <ion-icon name="key-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>Password changed</strong></div>
+                                <div class="text-small mb-05">Your password has been changed</div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-warning">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>New Messages</strong></div>
+                                <div class="text-small mb-05">You have new messages from John</div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-primary">
+                            <ion-icon name="arrow-down-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>Payment Received</strong></div>
+                                <div class="text-small mb-05">John sent you <b>$ 50</b></div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-success">
+                            <ion-icon name="arrow-forward-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>Money has been sent</strong></div>
+                                <div class="text-small mb-05">The money you sent to John was successfully sent.</div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-danger">
+                            <ion-icon name="key-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>Password changed</strong></div>
+                                <div class="text-small mb-05">Your password has been changed</div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="app-notification-detail.html" class="item">
+                        <div class="icon-box bg-warning">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            <div>
+                                <div class="mb-05"><strong>New Messages</strong></div>
+                                <div class="text-small mb-05">You have new messages from John</div>
+                                <div class="text-xsmall">5/3/2020 10:30 AM</div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+    </div>
+    <!-- * App Capsule -->
+
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+
+</body>
+
+</html>

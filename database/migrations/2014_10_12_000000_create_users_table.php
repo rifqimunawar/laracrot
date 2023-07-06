@@ -16,15 +16,16 @@ return new class extends Migration
             // hal yang bersifat pribadi
             $table->id();
             $table->string('name'); //public
+            $table->string('kelamin')->nullable(); //public
             $table->string('nim')->unique();
             $table->string('img')->default('user.png');
-            $table->string('provinces')->nullable();
+            $table->string('province_id')->nullable();
             $table->string('city_id')->nullable();
             $table->string('kecamatan_id')->nullable();
             $table->string('kelurahan_id')->nullable();
             $table->string('alamat')->nullable()->dafault('uninus pride');
             $table->string('pesantren')->nullable();
-            $table->string('t_lahir', 20)->nullable();
+            $table->string('t_lahir',)->nullable();
             $table->string('ttl', 20)->nullable();
             $table->string('hobi', 15)->nullable();
             $table->string('sma', 100)->nullable();
@@ -35,7 +36,6 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('fb')->nullable();
             $table->string('ig')->nullable();
-            $table->string('kelamin')->nullable(); //public
 
             // hal yang berkaitan dengan account 
             $table->foreignId('role_id')->default(4);
@@ -53,10 +53,10 @@ return new class extends Migration
             $table->string('rayon_id'); //public
             $table->string('prodi', 50)->nullable();
             $table->string('kaderisasi')->default('Belum Mapaba'); //public
-            $table->string('thn_mapaba', 10)->nullable();
-            $table->string('thn_pkd', 10)->nullable();
-            $table->string('thn_pkl', 10)->nullable();
-            $table->string('thn_pkn', 10)->nullable();
+            $table->string('thn_mapaba', 50)->nullable();
+            $table->string('thn_pkd', 50)->nullable();
+            $table->string('thn_pkl', 50)->nullable();
+            $table->string('thn_pkn', 50)->nullable();
             $table->string('informal', 100)->nullable();
             $table->string('nonformal', 100)->nullable();
         });

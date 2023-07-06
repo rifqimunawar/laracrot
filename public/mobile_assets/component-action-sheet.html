@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Action Sheet</div>
+        <div class="right"></div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule" class="full-height">
+
+
+        <div class="section mt-2">
+            <div class="section-title">Basic</div>
+            <div class="card">
+                <ul class="listview flush transparent image-listview text">
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheet">
+                            <div class="in">
+                                <div>Default</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetInset">
+                            <div class="in">
+                                <div>Inset</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetIconed">
+                            <div class="in">
+                                <div>Iconed</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="section mt-2 mb-3">
+            <div class="section-title">More</div>
+            <div class="card">
+                <ul class="listview flush transparent image-listview text">
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetForm">
+                            <div class="in">
+                                <div>with Form</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetContent">
+                            <div class="in">
+                                <div>Content</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetAlertIconed">
+                            <div class="in">
+                                <div>Alert - Iconed</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetAlertSuccess">
+                            <div class="in">
+                                <div>Alert - Success</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetAlertError">
+                            <div class="in">
+                                <div>Alert - Error</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="item" data-bs-toggle="modal" data-bs-target="#actionSheetAlertImaged">
+                            <div class="in">
+                                <div>Alert - Imaged</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Default Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheet" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Action Sheet Title</h5>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="action-button-list">
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Send</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Withdraw</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Exchange</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Deposit</span>
+                                </a>
+                            </li>
+                            <li class="action-divider"></li>
+                            <li>
+                                <a href="#" class="btn btn-list text-danger" data-bs-dismiss="modal">
+                                    <span>Cancel</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Default Action Sheet -->
+
+        <!-- Default Action Sheet Inset -->
+        <div class="modal fade action-sheet inset" id="actionSheetInset" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Action Sheet Title</h5>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="action-button-list">
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Send</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Withdraw</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Exchange</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>Deposit</span>
+                                </a>
+                            </li>
+                            <li class="action-divider"></li>
+                            <li>
+                                <a href="#" class="btn btn-list text-danger" data-bs-dismiss="modal">
+                                    <span>Cancel</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Default Action Sheet Inset -->
+
+        <!-- Iconed Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetIconed" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Action Sheet Title</h5>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="action-button-list">
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>
+                                        <ion-icon name="arrow-forward-outline"></ion-icon>
+                                        Send
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>
+                                        <ion-icon name="card-outline"></ion-icon>
+                                        Withdraw
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>
+                                        <ion-icon name="cash-outline"></ion-icon>
+                                        Exchange
+                                    </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                                    <span>
+                                        <ion-icon name="wallet-outline"></ion-icon>
+                                        Deposit
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="action-divider"></li>
+                            <li>
+                                <a href="#" class="btn btn-list text-danger" data-bs-dismiss="modal">
+                                    <span>
+                                        <ion-icon name="close-outline"></ion-icon>
+                                        Cancel
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Iconed Action Sheet -->
+
+        <!-- Form Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetForm" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Deposit Money</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+
+                            <form>
+                                <div class="form-group basic">
+                                    <div class="input-wrapper">
+                                        <label class="label" for="account1">From</label>
+                                        <select class="form-control custom-select" id="account1">
+                                            <option value="0">Savings (*** 5019)</option>
+                                            <option value="1">Investment (*** 6212)</option>
+                                            <option value="2">Mortgage (*** 5021)</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-info">Select a bank account</div>
+                                </div>
+
+                                <div class="form-group basic">
+                                    <label class="label">Enter Amount</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text" id="basic-addon1">$</span>
+                                        <input type="text" class="form-control" placeholder="Enter an amount"
+                                            value="100">
+                                    </div>
+                                    <div class="input-info">Minimum $50</div>
+                                </div>
+
+
+
+                                <div class="form-group basic">
+                                    <button type="button" class="btn btn-primary btn-block btn-lg"
+                                        data-bs-dismiss="modal">Deposit</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Form Action Sheet -->
+
+        <!-- Content Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetContent" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Action Sheet Content</h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc fermentum, urna eget
+                                finibus fermentum, velit metus maximus erat, nec sodales elit justo vitae sapien. Sed
+                                fermentum varius erat, et dictum lorem. Cras pulvinar vestibulum purus sed hendrerit.
+                                Praesent et auctor dolor. Ut sed ultrices justo. Fusce tortor erat, scelerisque sit amet
+                                diam rhoncus, cursus dictum lorem. Ut vitae arcu egestas, congue nulla at, gravida
+                                purus.
+                            </p>
+                            <a href="#" class="btn btn-primary btn-lg btn-block" data-bs-dismiss="modal">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Content Action Sheet -->
+
+        <!-- Alert Iconed Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetAlertIconed" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+                            <div class="iconbox text-primary">
+                                <ion-icon name="finger-print"></ion-icon>
+                            </div>
+                            <div class="text-center p-2">
+                                <h3>Touch ID Required</h3>
+                                <p>Your payment has been sent to John.</p>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-lg btn-block" data-bs-dismiss="modal">Done</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Alert Iconed Action Sheet -->
+
+        <!-- Alert Success Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetAlertSuccess" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+                            <div class="iconbox text-success">
+                                <ion-icon name="checkmark-circle"></ion-icon>
+                            </div>
+                            <div class="text-center p-2">
+                                <h3>Success</h3>
+                                <p>Your payment has been sent to John.</p>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-lg btn-block" data-bs-dismiss="modal">Done</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Alert Success Action Sheet -->
+
+        <!-- Alert Error Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetAlertError" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+                            <div class="iconbox text-danger">
+                                <ion-icon name="alert-circle"></ion-icon>
+                            </div>
+                            <div class="text-center p-2">
+                                <h3>Error</h3>
+                                <p>Something went wrong.</p>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-lg btn-block" data-bs-dismiss="modal">Done</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Alert Error Action Sheet -->
+
+        <!-- Alert Imaged Action Sheet -->
+        <div class="modal fade action-sheet" id="actionSheetAlertImaged" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="action-sheet-content">
+                            <div class="iconbox">
+                                <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="imaged w64 rounded">
+                            </div>
+                            <div class="text-center p-2">
+                                <h3>Jane sent you $200</h3>
+                                <p>This is a example text.</p>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-lg btn-block" data-bs-dismiss="modal">Done</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- * Alert Imaged Action Sheet -->
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+
+</body>
+
+</html>

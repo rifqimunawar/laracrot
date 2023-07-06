@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <title>Finapp</title>
+    <meta name="description" content="Finapp HTML Mobile Template">
+    <meta name="keywords" content="bootstrap, wallet, banking, fintech mobile template, cordova, phonegap, mobile, html, responsive" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="manifest" href="__manifest.json">
+</head>
+
+<body>
+
+    <!-- loader -->
+    <div id="loader">
+        <img src="assets/img/loading-icon.png" alt="icon" class="loading-icon">
+    </div>
+    <!-- * loader -->
+
+    <!-- App Header -->
+    <div class="appHeader">
+        <div class="left">
+            <a href="#" class="headerButton goBack">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+            </a>
+        </div>
+        <div class="pageTitle">Toasts</div>
+        <div class="right">
+        </div>
+    </div>
+    <!-- * App Header -->
+
+    <!-- App Capsule -->
+    <div id="appCapsule">
+
+
+        <div class="section mt-2 mb-2">
+            <div class="section-title">Usage</div>
+            <div class="card">
+                <div class="card-body">
+                    <h4>Basic Usage</h4>
+                    Trigger it with;
+                    <p>
+                        <code>toastbox('toastID')</code>
+                    </p>
+                    <h4>Auto Close</h4>
+                    Also, you can auto close it in any seconds after calls.
+                    <br>
+                    <strong>Example : </strong>
+                    Auto close in 3 seconds.<br>
+                    <code>toastbox('toastID', 3000)</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-title">Top</div>
+        </div>
+        <ul class="listview link-listview inset">
+            <li>
+                <a href="#" onclick="toastbox('toast-1')">
+                    Default
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-2')">
+                    Tap to Close
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-3')">
+                    with Icon
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-4', 2000)">
+                    Auto Close
+                </a>
+            </li>
+        </ul>
+
+        <!-- toast top -->
+        <div id="toast-1" class="toast-box toast-top">
+            <div class="in">
+                <div class="text">
+                    Received a new payment
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast top -->
+
+        <!-- toast top tap to close -->
+        <div id="toast-2" class="toast-box toast-top tap-to-close">
+            <div class="in">
+                <div class="text">
+                    Tap to close me
+                </div>
+            </div>
+        </div>
+        <!-- * toast top tap to close -->
+
+        <!-- toast top iconed -->
+        <div id="toast-3" class="toast-box toast-top">
+            <div class="in">
+                <ion-icon name="cash-outline" class="text-success"></ion-icon>
+                <div class="text">
+                    Money has been sent!
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-success close-button">CLOSE</button>
+        </div>
+        <!-- * toast top iconed -->
+
+        <!-- toast top auto close in 2 seconds -->
+        <div id="toast-4" class="toast-box toast-top">
+            <div class="in">
+                <div class="text">
+                    Auto closing in 2 seconds.
+                </div>
+            </div>
+        </div>
+        <!-- * toast top auto close in 2 seconds -->
+
+
+        <div class="section mt-2">
+            <div class="section-title">Bottom</div>
+        </div>
+        <ul class="listview link-listview inset">
+            <li>
+                <a href="#" onclick="toastbox('toast-5')">
+                    Default
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-6')">
+                    Tap to Close
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-7')">
+                    with Icon
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-8', 2000)">
+                    Auto Close
+                </a>
+            </li>
+        </ul>
+
+        <!-- toast bottom -->
+        <div id="toast-5" class="toast-box toast-bottom">
+            <div class="in">
+                <div class="text">
+                    Received a new payment
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast bottom -->
+
+        <!-- toast bottom tap to close -->
+        <div id="toast-6" class="toast-box toast-bottom tap-to-close">
+            <div class="in">
+                <div class="text">
+                    Tap to close me.
+                </div>
+            </div>
+        </div>
+        <!-- * toast bottom tap to close -->
+
+        <!-- toast bottom iconed -->
+        <div id="toast-7" class="toast-box toast-bottom">
+            <div class="in">
+                <ion-icon name="card-outline" class="text-danger"></ion-icon>
+                <div class="text">
+                    Your card has been removed.
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast bottom iconed -->
+
+        <!-- toast top auto close in 2 seconds -->
+        <div id="toast-8" class="toast-box toast-bottom">
+            <div class="in">
+                <div class="text">
+                    Auto closing in 2 seconds.
+                </div>
+            </div>
+        </div>
+        <!-- * toast top auto close in 2 seconds -->
+
+
+
+
+        <div class="section mt-2">
+            <div class="section-title">Center</div>
+        </div>
+        <ul class="listview link-listview inset">
+            <li>
+                <a href="#" onclick="toastbox('toast-9')">
+                    Default
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-10')">
+                    Tap to Close
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-11')">
+                    with Icon
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-12', 2000)">
+                    Auto Close
+                </a>
+            </li>
+        </ul>
+
+        <!-- toast center -->
+        <div id="toast-9" class="toast-box toast-center">
+            <div class="in">
+                <div class="text">
+                    Centered Toast
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">CLOSE</button>
+        </div>
+        <!-- toast center -->
+
+        <!-- toast center tap to close -->
+        <div id="toast-10" class="toast-box toast-center tap-to-close">
+            <div class="in">
+                <div class="text">
+                    Tap to close me
+                </div>
+            </div>
+        </div>
+        <!-- toast center tap to close -->
+
+        <!-- toast center iconed -->
+        <div id="toast-11" class="toast-box toast-center">
+            <div class="in">
+                <ion-icon name="checkmark-circle" class="text-success"></ion-icon>
+                <div class="text">
+                    Success Message
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">CLOSE</button>
+        </div>
+        <!-- toast center iconed -->
+
+        <!-- toast center auto close in 2 seconds -->
+        <div id="toast-12" class="toast-box toast-center">
+            <div class="in">
+                <div class="text">
+                    Auto close in 2 seconds
+                </div>
+            </div>
+        </div>
+        <!-- toast center auto close in 2 seconds -->
+
+
+
+
+        <div class="section mt-2">
+            <div class="section-title">Colors</div>
+        </div>
+        <ul class="listview link-listview inset mb-2">
+            <li>
+                <a href="#" onclick="toastbox('toast-13')">
+                    <span class="text-primary">Primary</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-14')">
+                    <span class="text-secondary">Secondary</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-15')">
+                    <span class="text-success">Success</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-16')">
+                    <span class="text-danger">Danger</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-17')">
+                    <span class="text-warning">Warning</span>
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="toastbox('toast-18')">
+                    <span class="text-info">Info</span>
+                </a>
+            </li>
+        </ul>
+
+        <!-- toast primary -->
+        <div id="toast-13" class="toast-box toast-bottom bg-primary">
+            <div class="in">
+                <div class="text">
+                    Primary Color
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast primary -->
+
+        <!-- toast secondary -->
+        <div id="toast-14" class="toast-box toast-bottom bg-secondary">
+            <div class="in">
+                <div class="text">
+                    Secondary Color
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast secondary -->
+
+        <!-- toast success -->
+        <div id="toast-15" class="toast-box toast-bottom bg-success">
+            <div class="in">
+                <div class="text">
+                    Success Color
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast success -->
+
+        <!-- toast danger -->
+        <div id="toast-16" class="toast-box toast-bottom bg-danger">
+            <div class="in">
+                <div class="text">
+                    Danger Color
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast danger -->
+
+        <!-- toast warning -->
+        <div id="toast-17" class="toast-box toast-bottom bg-warning">
+            <div class="in">
+                <div class="text">
+                    Warning Color
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast warning -->
+
+        <!-- toast info -->
+        <div id="toast-18" class="toast-box toast-bottom bg-info">
+            <div class="in">
+                <div class="text">
+                    Info Color
+                </div>
+            </div>
+            <button type="button" class="btn btn-sm btn-text-light close-button">OK</button>
+        </div>
+        <!-- * toast info -->
+
+
+
+
+    </div>
+    <!-- * App Capsule -->
+
+    <!-- App Bottom Menu -->
+    <div class="appBottomMenu">
+        <a href="index.html" class="item">
+            <div class="col">
+                <ion-icon name="pie-chart-outline"></ion-icon>
+                <strong>Overview</strong>
+            </div>
+        </a>
+        <a href="app-pages.html" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Pages</strong>
+            </div>
+        </a>
+        <a href="app-components.html" class="item">
+            <div class="col">
+                <ion-icon name="apps-outline"></ion-icon>
+                <strong>Components</strong>
+            </div>
+        </a>
+        <a href="app-cards.html" class="item">
+            <div class="col">
+                <ion-icon name="card-outline"></ion-icon>
+                <strong>My Cards</strong>
+            </div>
+        </a>
+        <a href="app-settings.html" class="item">
+            <div class="col">
+                <ion-icon name="settings-outline"></ion-icon>
+                <strong>Settings</strong>
+            </div>
+        </a>
+    </div>
+    <!-- * App Bottom Menu -->
+
+
+    <!-- ========= JS Files =========  -->
+    <!-- Bootstrap -->
+    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <!-- Ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Splide -->
+    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <!-- Base Js File -->
+    <script src="assets/js/base.js"></script>
+
+</body>
+
+</html>

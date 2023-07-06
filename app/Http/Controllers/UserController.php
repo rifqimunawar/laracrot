@@ -75,14 +75,16 @@ class UserController extends Controller
     {
         // Rule validasi
         $rules = [
-          'name' => 'required|alpha',
+          'name' => 'required',
           'nim' => 'required|min:14|unique:users,nim|numeric',
           'alamat' => 'required',
           't_lahir' => 'required',
+          'kelamin' => 'required',
       ];
   
       $messages = [
         'name.required' => 'Nama wajib diisi.',
+        'kelamin.required' => 'Jenis Kelamin wajib diisi.',
         'name.alpha' => 'Nama Harus Huruf doang Tolol!!!',
         'nim.required' => 'Nim wajib diisi.',
         'nim.unique' => 'Nim sudah digunakan.',
@@ -99,6 +101,7 @@ class UserController extends Controller
           return redirect()->back()->withErrors($validator)->withInput();
       }
 
+      // dd($request);
 
       $request = User::create($request->all());
 
@@ -121,9 +124,15 @@ class UserController extends Controller
         $user = User::find($id);
         $role = Role::find($user->role_id);
         $rayon = Rayon::find($user->rayon_id);
-        return view('admin.user.edit', compact('user', 'role', 'rayon'));
-    }
+        $provinsi = Province::all()->sortBy('name')->pluck('name', 'id');
+        $route_get_kota = route('get.kota');
+        $route_get_kecamatan = route('get.kecamatan');
+        $route_get_kelurahan = route('get.kelurahan');
 
+        return view('admin.user.edit', compact('user', 'role', 
+        'rayon', 'provinsi', 'route_get_kota', 
+        'route_get_kecamatan', 'route_get_kelurahan',));
+    }
 
     /**
      * Update the specified resource in storage.
