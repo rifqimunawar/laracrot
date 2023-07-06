@@ -39,6 +39,18 @@
               </div>
   
               <div class="mb-3">
+                <label for="kelamin" class="form-label">Jenis Kelamin</label>
+                <select name="kelamin" id="kelamin" class="form-select @error('kelamin') is-invalid @enderror">
+                    <option disabled selected>Pilih jenis kelamin</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
+                </select>
+                @error('kelamin')
+                  <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                </div>
+  
+              <div class="mb-3">
                 <label for="nim" class="form-label">NIM</label>
                 <input type="text" name="nim"id="nim"  class="form-control
                 @error('nim') is-invalid @enderror" id="nim" required>
@@ -55,7 +67,7 @@
                             'class' => 'form-control',
                             'placeholder' => 'Pilih Provinsi',
                             'id' => 'province_id',
-                            'name' => 'provinces',
+                            'name' => 'province_id',
                             'value' => 'name'
                         ]) !!}
                     </div>

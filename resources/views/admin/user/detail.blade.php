@@ -16,8 +16,16 @@
         <img src="{{ asset('storage/img/' . $users->img ) }}" alt="avatar"
           class="rounded-circle img-fluid" style="width: 150px; height:150px; object-fit:cover">
         <h5 class="my-3">{{ $users->name }}</h5>
+        <h6 class="my-3"> {{ $users->kelamin }}</h6>
         <h6 class="my-3">Kaderisasi {{ $users->kaderisasi }}</h6>
         <h6 class="my-3">Rayon {{ $users->rayon->rayon }}</h6>
+
+        @if ($users->slug)
+            <a href="/profile/{{ $users->slug }}" class="btn btn-secondary sm">Profile</a>
+        @else
+            <button class="btn btn-danger">Belum Regis</button>
+        @endif
+
         <div class="d-flex justify-content-center mb-2">
           {{-- <button type="button" class="btn btn-primary">Profile</button> --}}
           {{-- <button type="button" class="btn btn-outline-primary ms-1">Message</button> --}}
@@ -50,19 +58,18 @@
         
         <div class="row">
           <div class="col-sm-3">
-            <p class="mb-0">Alamat Provinsi</p>
-          </div>
-          <div class="col-sm-9">
-            <p class="text-muted mb-0">{{ $users->provinces }}</p>
-          </div>
-        </div><hr>
-
-        <div class="row">
-          <div class="col-sm-3">
             <p class="mb-0">Alamat</p>
           </div>
           <div class="col-sm-9">
-            <p class="text-muted mb-0">{{ $users->alamat }}</p>
+            <p class="text-muted mb-0">
+              {{ $provinsi->name ?? '' }},
+              {{ $city->name ?? '' }},
+              {{ $kecamatan->name ?? '' }}, 
+              {{ $kelurahan->name ?? '' }} <br> (
+                  {{ $users->alamat ?? '' }}
+              )           
+
+              
           </div>
         </div><hr>
 
@@ -155,6 +162,10 @@
             <p class="text-muted mb-0">{{ $users->pkn }}</p>
           </div>
         </div><hr>
+
+        <div class="text-center">
+          <a href="{{ route('user.index') }}" class="btn btn-warning sm">Kembali</a>
+        </div>
 
       </div>
       

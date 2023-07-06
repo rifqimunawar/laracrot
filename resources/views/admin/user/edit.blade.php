@@ -16,12 +16,19 @@
                     <label for="name" class="form-label">Nama Lengkap</label>
                     <input type="text" class="form-control" id="name" value="{{ $user->name }}">
                 </div>
-{{--     
+                  
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control" id="username" value="{{ $user->username }}" readonly>
-                </div> --}}
-    
+                    <label for="kelamin" class="form-label">Jenis Kelamin</label>
+                    <select name="kelamin" id="kelamin" class="form-select @error('kelamin') is-invalid @enderror">
+                        <option disabled selected>Pilih jenis kelamin</option>
+                        <option value="Laki-Laki" {{ $user->kelamin == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
+                        <option value="Perempuan" {{ $user->kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                    </select>
+                    @error('kelamin')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                
                 <fieldset>
                   <div class="box-body">
                       <div class="form-group">
@@ -30,7 +37,7 @@
                               'class' => 'form-control',
                               'placeholder' => 'Pilih Provinsi',
                               'id' => 'province_id',
-                              'name' => 'provinces',
+                              'name' => 'province_id',
                               'value' => 'name'
                           ]) !!}
                       </div>
