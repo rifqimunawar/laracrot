@@ -19,9 +19,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
+use Laravolt\Indonesia\Models\City;
+use Laravolt\Indonesia\Models\District;
 use Laravolt\Indonesia\Models\Province;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Response as ResponseInertia;
+use Laravolt\Indonesia\Models\Village;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -282,14 +285,14 @@ class ProfileController extends Controller
     public function details($id, Request $request)
     {
         $users = User::findOrFail($id);     // $user = User::all();
-        // $users=User::all()->with('provinsi');
-        $provinsi = Province::all()->sortBy('name')->pluck('name', 'id');
-        $route_get_kota = route('get.kota');
-        $route_get_kecamatan = route('get.kecamatan');
-        $route_get_kelurahan = route('get.kelurahan');
+        $provinsi = Province::find($users->province_id);
+        $city = City::find($users->city_id);
+        $kecamatan = District::find($users->kecamatan_id);
+        $kelurahan = Village::find($users->kelurahan_id);
         
-        // dd($users);
-        return view('admin.user.detail', compact('users', 'provinsi'));
+        // dd($provinsi);
+        return view('admin.user.detail', compact('users', 'provinsi', 'city',
+      'kecamatan', 'kelurahan'));
     }
     // profile user lain 
     public function profile($slug, Request $request)

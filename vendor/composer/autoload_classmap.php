@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Controllers\\KaderController' => $baseDir . '/app/Http/Controllers/KaderController.php',
     'App\\Http\\Controllers\\LaravoltController' => $baseDir . '/app/Http/Controllers/LaravoltController.php',
     'App\\Http\\Controllers\\LoginController' => $baseDir . '/app/Http/Controllers/LoginController.php',
+    'App\\Http\\Controllers\\MobileHomeController' => $baseDir . '/app/Http/Controllers/MobileHomeController.php',
     'App\\Http\\Controllers\\PengurusController' => $baseDir . '/app/Http/Controllers/PengurusController.php',
     'App\\Http\\Controllers\\PerpusController' => $baseDir . '/app/Http/Controllers/PerpusController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',

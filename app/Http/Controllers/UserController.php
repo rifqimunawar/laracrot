@@ -75,14 +75,16 @@ class UserController extends Controller
     {
         // Rule validasi
         $rules = [
-          'name' => 'required|alpha',
+          'name' => 'required',
           'nim' => 'required|min:14|unique:users,nim|numeric',
           'alamat' => 'required',
           't_lahir' => 'required',
+          'kelamin' => 'required',
       ];
   
       $messages = [
         'name.required' => 'Nama wajib diisi.',
+        'kelamin.required' => 'Jenis Kelamin wajib diisi.',
         'name.alpha' => 'Nama Harus Huruf doang Tolol!!!',
         'nim.required' => 'Nim wajib diisi.',
         'nim.unique' => 'Nim sudah digunakan.',
