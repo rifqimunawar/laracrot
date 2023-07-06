@@ -29,7 +29,7 @@
                     @enderror
                 </div>
                 
-                <fieldset>
+                {{-- <fieldset>
                   <div class="box-body">
                       <div class="form-group">
                           <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
@@ -54,12 +54,13 @@
               
                       </div>
                   </div>
-              </fieldset>
+              </fieldset> --}}
 
-                <div class="mb-3">
-                    <label for="alamat" class="form-label">Alamat</label>
-                    <input type="text" class="form-control" id="alamat" value="{{ $user->alamat }}">
-                </div>
+              <div class="mb-3">
+                <label for="alamat" class="form-label">Alamat</label>
+                <textarea class="form-control" id="alamat" rows="4">{{ $user->alamat }}</textarea>
+            </div>
+            
     
                 <div class="mb-3">
                     <label for="nim" class="form-label">Nim</label>
@@ -68,7 +69,7 @@
     
                 <div class="mb-3">
                     <label for="t_lahir" class="form-label">Kota Kelahiran</label>
-                    <input type="text" class="form-control" id="t_lahir" value="{{ $user->t_lahir }}">
+                    <input type="text" name="t_lahir" class="form-control" id="t_lahir" value="{{ $user->t_lahir }}">
                 </div>
     
                 <div class="mb-3">

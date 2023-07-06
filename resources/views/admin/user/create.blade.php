@@ -59,7 +59,7 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
               </div>
-              <fieldset>
+              {{-- <fieldset>
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
@@ -84,18 +84,19 @@
             
                     </div>
                 </div>
-            </fieldset>
+            </fieldset> --}}
             
 
             <div class="mb-3">
-              <label for="alamat" class="form-label">Alamat Detail</label>
-              <input type="text" name="alamat"id="alamat"  class="form-control
-              @error('alamat') is-invalid @enderror" id="alamat" placeholder="Nama jl. / kampung, RT/RW">
-              
+              <label for="alamat" class="form-label">Alamat</label>
+              <textarea name="alamat" id="alamat" class="form-control 
+              @error('alamat') is-invalid @enderror" rows="4" ></textarea>
+            
               @error('alamat')
-                  <div class="alert alert-danger">{{ $message }}</div>
+              <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
+            
 
             <div class="mb-3">
               <label for="pesantren" class="form-label">Nama Pesantren</label>

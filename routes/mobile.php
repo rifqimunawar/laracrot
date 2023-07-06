@@ -25,6 +25,13 @@ use App\Http\Controllers\MobileHomeController;
 
 Route::prefix('mobile')->group(function () {
   Route::get('/', [MobileHomeController::class, 'home'])->name('home');
+
+  Route::get('/mobile/about', function () {
+    return Inertia::render('Welcome', [
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 });
 
 

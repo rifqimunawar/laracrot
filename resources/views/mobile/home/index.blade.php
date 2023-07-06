@@ -25,34 +25,34 @@
               <div class="wallet-footer">
                   <div class="item">
                       <a href="#" data-bs-toggle="modal" data-bs-target="#withdrawActionSheet">
-                          <div class="icon-wrapper bg-danger">
-                              <ion-icon name="arrow-down-outline"></ion-icon>
+                          <div class="icon-wrapper bg-success">
+                              <ion-icon name="book-outline"></ion-icon>
                           </div>
-                          <strong>Withdraw</strong>
+                          <strong>e-Book</strong>
                       </a>
                   </div>
                   <div class="item">
                       <a href="#" data-bs-toggle="modal" data-bs-target="#sendActionSheet">
                           <div class="icon-wrapper">
-                              <ion-icon name="arrow-forward-outline"></ion-icon>
+                              <ion-icon name="images-outline"></ion-icon>
                           </div>
-                          <strong>Send</strong>
+                          <strong>Galery</strong>
                       </a>
                   </div>
                   <div class="item">
                       <a href="app-cards.html">
                           <div class="icon-wrapper bg-success">
-                              <ion-icon name="card-outline"></ion-icon>
+                              <ion-icon name="newspaper-outline"></ion-icon>
                           </div>
-                          <strong>Cards</strong>
+                          <strong>Post</strong>
                       </a>
                   </div>
                   <div class="item">
                       <a href="#" data-bs-toggle="modal" data-bs-target="#exchangeActionSheet">
-                          <div class="icon-wrapper bg-warning">
-                              <ion-icon name="swap-vertical"></ion-icon>
+                          <div class="icon-wrapper bg-success">
+                              <ion-icon name="calendar-number-outline"></ion-icon>
                           </div>
-                          <strong>Exchange</strong>
+                          <strong>Caldender</strong>
                       </a>
                   </div>
 
@@ -298,7 +298,7 @@
               <div class="col-6">
                   <div class="stat-box">
                       <div class="title">Savings</div>
-                      <div class="value">$ 120.99</div>
+                      {{-- <div class="value">$ 120.99</div> --}}
                   </div>
               </div>
           </div>
