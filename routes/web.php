@@ -70,7 +70,7 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 
 Route::get('/emails', function () {
     return view('mails.reset');
-  });
+});
 
   // =====================================================
   // Route Frondend  =====================================
@@ -88,7 +88,7 @@ Route::get('/emails', function () {
   Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
-  
+
   
   // =====================================================
   // Route Auth  =========================================
@@ -151,9 +151,10 @@ Route::get('/emails', function () {
     Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
     Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
     Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
-  });
-  
-  
+});
+
+require __DIR__.'/auth.php';
+
   // =====================================================
   // Route For Address Package ===========================
   // -----------------------------------------------------
