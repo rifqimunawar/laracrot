@@ -30,5 +30,8 @@ Route::prefix('mobile')->group(function () {
  
  
  Route::get('/mobile/homepage', function () {
-   return Inertia::render('Homepage');
+   return Inertia::render('Homepage', [
+    'title' => 'Home Page',
+    'description' => 'ini aplikasi mobile nya pmii uninus',
+   ]);
 });

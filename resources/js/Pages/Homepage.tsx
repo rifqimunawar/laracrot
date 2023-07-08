@@ -1,7 +1,11 @@
-export default function Homepage() {
+import { Head } from "@inertiajs/react";
+
+export default function Homepage(props) {
+ console.log(props)
 return (
-  <div>
-   <h1>Halaman Utama dibuat dengan react realtime</h1>
+  <div className="flex justify-center items-center h-screen bg-neutral-100">
+   <Head title={props.title}/>
+   <h1>{props.description}</h1>
   </div>
  );
 }

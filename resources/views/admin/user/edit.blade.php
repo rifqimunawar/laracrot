@@ -86,35 +86,42 @@
                   </div>
                 </div>
 
-                {{-- <div class="mb-3">
-                  <label for="prodi">Prodi</label>
+                <div class="mb-3">
+                <label for="prodi" class="form-label">Jurusan</label>
+                <div >
+                <select id="prodi" name="prodi" class="form-select" required>
+                   <option disabled selected>== Pilih Jurusan ==</option>
+                   <option value="Teknik Informatika" {{ $user->prodi == 'Teknik Informatika' ? 'selected' : '' }}>Teknik Informatika</option>
+                   <option value="Teknik Elektro" {{ $user->prodi == 'Teknik Elektro' ? 'selected' : '' }}>Teknik Elektro</option>
+                   <option value="Teknik Industri" {{ $user->prodi == 'Teknik Industri' ? 'selected' : '' }}>Teknik Industri</option>
+                   <option disabled selected> </option>
+                   <option value="Ilmu Hukum" {{ $user->prodi == 'Ilmu Hukum' ? 'selected' : '' }}>Ilmu Hukum</option>
+                   <option disabled selected> </option>
+                   <option value="Agroteknologi" {{ $user->prodi == 'Agroteknologi' ? 'selected' : '' }}>Agroteknologi</option>
+                   <option disabled selected> </option>
+                   <option value="PAI" {{ $user->prodi == 'PAI' ? 'selected' : '' }}>PAI</option>
+                   <option value="Perbankan Syari'ah" {{ $user->prodi == "Perbankan Syari'ah" ? 'selected' : '' }}>Perbankan Syari'ah</option>
+                   <option value="PGMI" {{ $user->prodi == 'PGMI' ? 'selected' : '' }}>PGMI</option>
+                   <option disabled selected> </option>
+                   <option value="KPI" {{ $user->prodi == 'KPI' ? 'selected' : '' }}>KPI</option>
+                   <option value="Ilmu Komunikasi" {{ $user->prodi == 'Ilmu Komunikasi' ? 'selected' : '' }}>Ilmu Komunikasi</option>
+                   <option value="Ilmu Perpustakaan" {{ $user->prodi == 'Ilmu Perpustakaan' ? 'selected' : '' }}>Ilmu Perpustakaan</option>
+                   <option disabled selected> </option>
+                   <option value="Akuntansi" {{ $user->prodi == 'Akuntansi' ? 'selected' : '' }}>Akuntansi</option>
+                   <option value="Manajement" {{ $user->prodi == 'Manajement' ? 'selected' : '' }}>Manajement</option>
+                   <option disabled selected> </option>
+                   <option value="Pd Luar Biasa" {{ $user->prodi == 'Pd Luar Biasa' ? 'selected' : '' }}>Pd Luar Biasa</option>
+                   <option value="Pd Luar Sekolah" {{ $user->prodi == 'Pd Luar Sekolah' ? 'selected' : '' }}>Pd Luar Sekolah</option>
+                   <option value="Pd Guru dan Anak Usia Dini" {{ $user->prodi == 'Pd Guru dan Anak Usia Dini' ? 'selected' : '' }}>Pd Guru dan Anak Usia Dini</option>
+                   <option value="Pd Bhs. dan Sastra Indonesia" {{ $user->prodi == 'Pd Bhs. dan Sastra Indonesia' ? 'selected' : '' }}>Pd Bhs. dan Sastra Indonesia</option>
+                   <option value="Pd Bhs. Inggris" {{ $user->prodi == 'Pd Bhs. Inggris' ? 'selected' : '' }}>Pd Bhs. Inggris</option>
+                   <option value="Pd Bhs. Arab" {{ $user->prodi == 'Pd Bhs. Arab' ? 'selected' : '' }}>Pd Bhs. Arab</option>
+                   <option value="Pd Matematika" {{ $user->prodi == 'Pd Matematika' ? 'selected' : '' }}>Pd Matematika</option>
+                   <option value="PPKN" {{ $user->prodi == 'PPKN' ? 'selected' : '' }}>PPKN</option>
+                 </select>
 
-                  <div class="col-md-12">
-                      <select id="prodi-teknik" name="prodi" class="form-select" style="display:none;">
-                          <option>-- Prodi Di Teknik --</option>
-                          <option value="Teknik Informatika">Teknik Informatika</option>
-                          <option value="Teknik Elektro">Teknik Elektro</option>
-                          <option value="Teknik Industri">Teknik Industri</option>
-                      </select>                  
-                  </div>
-                  <div class="col-md-12">
-                      <select id="prodi-hukum" name="prodi" class="form-select" style="display:none;">
-                          <option>-- Prodi Di Teknik --</option>
-                          <option value="Ilmu Hukum">Ilmu Hukum</option>
-                          <option value="Hukum Tatanegara">Hukum Tatanegara</option>
-                          <option value="Hukum Industrt">Hukum Industri</option>
-                      </select>
-                  </div>
-                  <div class="col-md-12">
-                      <select id="prodi-ulul-albab" name="prodi" class="form-select" style="display:none;">
-                        <option value="-">-- Prodi Di Ulul Albab --</option>
-                        <option value="Pendidikan Agama Islam">Pendidikan Agama Islam</option>
-                        <option value="Pendidikan Bahasa Arab">Pendidikan Bahasa Arab</option>
-                        <option value="Tafsir Hadis">Tafsir Hadis</option>
-                    </select>
-                  </div>
-
-              </div> --}}
+                </div>
+              </div>
 
                 {{-- jenjang kaderisasi start  --}}
                 <div class="mb-3">
