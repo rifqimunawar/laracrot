@@ -1,17 +1,13 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
     plugins: [
-        laravel([
-            'resources/css/app.css',
-            'resources/js/app.js',
-        ]),
+        laravel({
+            input: 'resources/js/app.tsx',
+            refresh: true,
+        }),
+        react(),
     ],
-    build: {
-        rollupOptions: {
-          input: 'src/main.js', // Ganti dengan berkas JavaScript yang sesuai
-          // Konfigurasi tambahan lainnya
-        },
-    },
 });

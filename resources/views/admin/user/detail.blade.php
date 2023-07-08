@@ -19,12 +19,13 @@
         <h6 class="my-3"> {{ $users->kelamin }}</h6>
         <h6 class="my-3">Kaderisasi {{ $users->kaderisasi }}</h6>
         <h6 class="my-3">Rayon {{ $users->rayon->rayon }}</h6>
+        <h6 class="my-3">Prodi {{ $users->prodi }}</h6>
 
-        @if ($users->slug)
+        {{-- @if ($users->slug)
             <a href="/profile/{{ $users->slug }}" class="btn btn-secondary sm">Profile</a>
         @else
             <button class="btn btn-danger">Belum Regis</button>
-        @endif
+        @endif --}}
 
         <div class="d-flex justify-content-center mb-2">
           {{-- <button type="button" class="btn btn-primary">Profile</button> --}}
@@ -165,6 +166,7 @@
 
         <div class="text-center">
           <a href="{{ route('user.index') }}" class="btn btn-warning sm">Kembali</a>
+          <a href="{{ $downloadPDF }}" class="btn btn-success sm">Unduh PDF</a>
         </div>
 
       </div>

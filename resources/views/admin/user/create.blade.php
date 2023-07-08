@@ -59,7 +59,29 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
               </div>
-              <fieldset>
+
+              
+            <div class="mb-3">
+             <label for="t_lahir" class="form-label">Kota Kelahiran</label>
+             <input type="text" name="t_lahir"id="t_lahir"  class="form-control
+             @error('t_lahir') is-invalid @enderror" id="t_lahir" placeholder="Jika Sempat Tinggal Di Pondok">
+             
+             @error('t_lahir')
+                 <div class="alert alert-danger">{{ $message }}</div>
+             @enderror
+           </div>
+
+           <div class="mb-3">
+             <label for="ttl" class="form-label">Tanggal Lahir</label>
+             <input type="date" name="ttl"id="ttl"  class="form-control
+             @error('ttl') is-invalid @enderror" id="ttl" required>
+             
+             @error('ttl')
+                 <div class="alert alert-danger">{{ $message }}</div>
+             @enderror
+           </div>
+
+               <fieldset>
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
@@ -84,18 +106,19 @@
             
                     </div>
                 </div>
-            </fieldset>
+            </fieldset> 
             
 
             <div class="mb-3">
-              <label for="alamat" class="form-label">Alamat Detail</label>
-              <input type="text" name="alamat"id="alamat"  class="form-control
-              @error('alamat') is-invalid @enderror" id="alamat" placeholder="Nama jl. / kampung, RT/RW">
-              
+              <label for="alamat" class="form-label">Alamat</label>
+              <textarea name="alamat" id="alamat" class="form-control 
+              @error('alamat') is-invalid @enderror" rows="4" ></textarea>
+            
               @error('alamat')
-                  <div class="alert alert-danger">{{ $message }}</div>
+              <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
+            
 
             <div class="mb-3">
               <label for="pesantren" class="form-label">Nama Pesantren</label>
@@ -103,26 +126,6 @@
               @error('pesantren') is-invalid @enderror" id="pesantren" placeholder="Jika Sempat Tinggal Di Pondok">
               
               @error('pesantren')
-                  <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            </div>
-
-            <div class="mb-3">
-              <label for="t_lahir" class="form-label">Kota Kelahiran</label>
-              <input type="text" name="t_lahir"id="t_lahir"  class="form-control
-              @error('t_lahir') is-invalid @enderror" id="t_lahir" placeholder="Jika Sempat Tinggal Di Pondok">
-              
-              @error('t_lahir')
-                  <div class="alert alert-danger">{{ $message }}</div>
-              @enderror
-            </div>
-
-            <div class="mb-3">
-              <label for="ttl" class="form-label">Tanggal Lahir</label>
-              <input type="date" name="ttl"id="ttl"  class="form-control
-              @error('ttl') is-invalid @enderror" id="ttl" required>
-              
-              @error('ttl')
                   <div class="alert alert-danger">{{ $message }}</div>
               @enderror
             </div>
@@ -168,6 +171,44 @@
                       <option value="4" >Ekonomi</option>
                       <option value="5" >Fikom</option>
                       <option value="6" >Fkip</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="prodi" class="form-label">Jurusan</label>
+                <div >
+                  <select id="prodi" name="prodi" class="form-select" required onchange="showOptions()">
+                      <option disabled selected>== Pilih Jurusan ==</option>
+                      <option value="Teknik Informatika">Teknik Informatika</option>
+                      <option value="Teknik Elektro" >Teknik Elektro</option>
+                      <option value="Teknik Industri" >Teknik Industri</option>
+                      <option disabled selected> </option>
+                      <option value="Ilmu Hukum" >Ilmu Hukum</option>
+                      <option disabled selected> </option>
+                      <option value="Agroteknologi" >Agroteknologi</option>
+                      <option disabled selected> </option>
+                      <option value="PAI" >PAI</option>
+                      <option value="Perbankan Syari'ah" >Perbankan Syari'ah</option>
+                      <option value="PGMI" >PGMI</option>
+                      <option disabled selected> </option>
+                      <option value="KPI" >KPI</option>
+                      <option value="Ilmu Komunikasi" >Ilmu Komunikasi</option>
+                      <option value="Ilmu Perpustakaan" >Ilmu Perpustakaan</option>
+                      <option disabled selected> </option>
+                      <option value="Akuntansi" >Akuntansi</option>
+                      <option value="Manajement" >Manajement</option>
+                      <option disabled selected> </option>
+                      <option value="Pd Luar Biasa" >Pd Luar Biasa</option>
+                      <option value="Pd Luar Sekolah" >Pd Luar Sekolah</option>
+                      <option value="Pd Guru dan Anak Usia Dini" >Pd Guru dan Anak Usia Dini</option>
+                      <option value="Pd Bhs. dan Sastra Indonesia" >Pd Bhs. dan Sastra Indonesia</option>
+                      <option value="Pd Bhs. Inggris" >Pd Bhs. Inggris</option>
+                      <option value="Pd Bhs. Arab" >Pd Bhs. Arab</option>
+                      <option value="Pd Matematika" >Pd Matematika</option>
+                      <option value="PPKN" >PPKN</option>
+                      <hr>
+
                   </select>
                 </div>
               </div>

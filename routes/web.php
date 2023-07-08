@@ -1,14 +1,14 @@
 <?php
 
 // use App\Http\Controllers\ProfileController; profile dari inertia
-use Illuminate\Foundation\Application;
-use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use App\Http\Controllers\LaravoltController;
 use App\Models\User;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 use App\Http\Controllers\HBNController;
+// use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Password;
@@ -24,6 +24,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Blog\TagController;
+use App\Http\Controllers\LaravoltController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\Blog\PostController;
 use App\Http\Controllers\StatistikController;
@@ -69,7 +70,7 @@ use App\Http\Controllers\Admin\Blog\CategoryController as admincategorycontrolle
 
 Route::get('/emails', function () {
     return view('mails.reset');
-  });
+});
 
   // =====================================================
   // Route Frondend  =====================================
@@ -87,7 +88,7 @@ Route::get('/emails', function () {
   Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
   Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
-  
+
   
   // =====================================================
   // Route Auth  =========================================
@@ -150,9 +151,10 @@ Route::get('/emails', function () {
     Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
     Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
     Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
-  });
-  
-  
+});
+
+require __DIR__.'/auth.php';
+
   // =====================================================
   // Route For Address Package ===========================
   // -----------------------------------------------------
@@ -208,7 +210,8 @@ Route::get('/emails', function () {
   
     Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
-  
+    Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
+    Route::get('/admin/user/download-pdf', [PDFController::class, 'downloadPDF'])->name('download-pdf');
     Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
     Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');
@@ -245,9 +248,7 @@ Route::get('/emails', function () {
   // Route Super Admin only ==============================
   // -----------------------------------------------------
   Route::middleware(['auth', 'role:1'])->group(function () {
-  
-  
-    Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
+
     Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
     Route::get('/admin/kader/create', [KaderController::class, 'create'])->name('create');
     Route::post('/admin/kader/store', [KaderController::class, 'store'])->name('store');

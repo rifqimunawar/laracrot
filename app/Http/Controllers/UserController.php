@@ -101,6 +101,7 @@ class UserController extends Controller
           return redirect()->back()->withErrors($validator)->withInput();
       }
 
+      // dd($request);
 
       $request = User::create($request->all());
 

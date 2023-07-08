@@ -51,7 +51,7 @@ return new class extends Migration
 
             // hal yang berkaitan dngn orgn 
             $table->string('rayon_id'); //public
-            $table->string('prodi', 50)->nullable();
+            $table->string('prodi')->nullable();
             $table->string('kaderisasi')->default('Belum Mapaba'); //public
             $table->string('thn_mapaba', 50)->nullable();
             $table->string('thn_pkd', 50)->nullable();

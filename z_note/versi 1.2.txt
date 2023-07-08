@@ -13,6 +13,7 @@ A. Frontend
   [beres]  Fitur Detail Kader
   [beres]  Penambahan laravolt di edit Kader
 
+  [proses]  Fitur Detail kader => Download PDF cv kader
   [proses]  Fitur Detail Rsyon => tabel keseluruhan data kader by rayon
 
   [belum]  Persebaran Kader PMII Uninus

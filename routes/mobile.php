@@ -25,7 +25,13 @@ use App\Http\Controllers\MobileHomeController;
 
 Route::prefix('mobile')->group(function () {
   Route::get('/', [MobileHomeController::class, 'home'])->name('home');
+
+ });
+ 
+ 
+ Route::get('/mobile/homepage', function () {
+   return Inertia::render('Homepage', [
+    'title' => 'Home Page',
+    'description' => 'ini aplikasi mobile nya pmii uninus',
+   ]);
 });
-
-
-
