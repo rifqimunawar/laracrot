@@ -81,7 +81,7 @@
              @enderror
            </div>
 
-               <fieldset>
+               {{-- <fieldset>
                 <div class="box-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Alamat Pilih Provinsi</label>
@@ -106,7 +106,7 @@
             
                     </div>
                 </div>
-            </fieldset> 
+            </fieldset>  --}}
             
 
             <div class="mb-3">
