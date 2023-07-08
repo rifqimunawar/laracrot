@@ -129,6 +129,7 @@ class UserController extends Controller
         $route_get_kecamatan = route('get.kecamatan');
         $route_get_kelurahan = route('get.kelurahan');
 
+        // dd($user);
         return view('admin.user.edit', compact('user', 'role', 
         'rayon', 'provinsi', 'route_get_kota', 
         'route_get_kecamatan', 'route_get_kelurahan',));
