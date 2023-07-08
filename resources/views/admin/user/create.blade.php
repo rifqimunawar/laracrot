@@ -322,6 +322,11 @@
               </div>
             </div>
 
+            <div class="mb-3">
+             <label for="wa" class="form-label">Telpone</label>
+               <input type="text" name="wa" class="form-control" id="wa" >
+           </div>
+
               {{-- Role Start --}}
               <div class="my-3">
                 <label for="role_id" class="form-label">Status Keanggotaan</label><br>
