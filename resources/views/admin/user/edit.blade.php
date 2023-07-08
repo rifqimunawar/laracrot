@@ -21,8 +21,8 @@
                     <label for="kelamin" class="form-label">Jenis Kelamin</label>
                     <select name="kelamin" id="kelamin" class="form-select @error('kelamin') is-invalid @enderror">
                         <option disabled selected>Pilih jenis kelamin</option>
-                        <option value="Laki-Laki" {{ $user->kelamin == 'Laki-Laki' ? 'selected' : '' }}>Laki-Laki</option>
-                        <option value="Perempuan" {{ $user->kelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+                        <option value="L" {{ $user->kelamin == 'L' ? 'selected' : '' }}>Laki-Laki</option>
+                        <option value="P" {{ $user->kelamin == 'P' ? 'selected' : '' }}>Perempuan</option>
                     </select>
                     @error('kelamin')
                     <div class="alert alert-danger">{{ $message }}</div>
