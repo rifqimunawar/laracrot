@@ -64,7 +64,7 @@
             <div class="mb-3">
              <label for="t_lahir" class="form-label">Kota Kelahiran</label>
              <input type="text" name="t_lahir"id="t_lahir"  class="form-control
-             @error('t_lahir') is-invalid @enderror" id="t_lahir" placeholder="Jika Sempat Tinggal Di Pondok">
+             @error('t_lahir') is-invalid @enderror" id="t_lahir" >
              
              @error('t_lahir')
                  <div class="alert alert-danger">{{ $message }}</div>
