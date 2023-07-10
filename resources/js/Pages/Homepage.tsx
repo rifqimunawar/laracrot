@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+// Homepage.jsx
+import React from "react";
 import { Head } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
@@ -10,10 +11,19 @@ type HomepageProps = {
   totalPKD: string;
   totalPKL: string;
   totalPKN: string;
-  };
+  users: {
+    id: string;
+    name: string;
+    kaderisasi: string;
+    rayon: {
+      rayon: string;
+    };
+  }[];
+};
 
-const Homepage = (props: HomepageProps) => {
-    console.log(props);
+
+const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }) => {
+    console.log(users);
     return (
         <>
             <Head>
@@ -26,45 +36,47 @@ const Homepage = (props: HomepageProps) => {
                 <Navbar />
                 <div id="appCapsule">
                     <Wallet />
-                    <div className="section">
-                        <div className="row mt-2">
-                            <div className="col-6">
-                                <div className="stat-box">
-                                    <div className="title">Mapaba</div>
-                                    <div className="value text-success text-center">
-                                        {props.totalMapaba}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-6">
-                                <div className="stat-box">
-                                    <div className="title">PKD</div>
-                                    <div className="value text-success text-center">
-                                        {props.totalPKD}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <Statistik
+                        totalMapaba={totalMapaba}
+                        totalPKD={totalPKD}
+                        totalPKL={totalPKL}
+                        totalPKN={totalPKN}
+                    />
+                </div>
 
-                        <div className="row mt-2">
-                            <div className="col-6">
-                                <div className="stat-box">
-                                    <div className="title">PKL</div>
-                                    <div className="value text-success text-center">
-                                        {props.totalPKL}
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-6">
-                                <div className="stat-box">
-                                    <div className="title">PKN</div>
-                                    <div className="value text-success text-center">
-                                        {props.totalPKN}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div className="section mt-4 mb-4">
+                    <div className="section-heading">
+                        <h2 className="title">Kader</h2>
+                        {/* <a href="app-transactions.html" className="link">View All</a> */}
                     </div>
+
+                    {users.data.map((user) => (
+                        <div className="transactions mb-4" key={user.id}>
+                            {/* item */}
+                            <a href="app-transaction-detail.html" className="item">
+                                <div className="detail">
+                                <img
+                                    src={`storage/img/${user.img}`}
+                                    alt="img"
+                                    className="image-block imaged"
+                                    style={{ width: '48px', height: '48px', objectFit: 'cover' }}
+                                  />
+                                    <div>
+                                        <strong>{user.name}</strong>
+                                        <p>{user.kaderisasi}</p>
+                                    </div>
+                                </div>
+                                <div className="right">
+                                    <div className="price text-danger">{user.rayon.rayon}</div>
+                                </div>
+                            </a>
+                        </div>
+                    ))}
+
+                </div>
+                
+                <div className="section mt-4 mb-4">
+                    <h1>#salamPergerakan</h1>
                 </div>
                 <Footer />
             </div>
