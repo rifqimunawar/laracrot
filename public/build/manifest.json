@@ -1,6 +1,6 @@
 {
   "resources/js/Pages/Homepage.tsx": {
-    "file": "assets/Homepage-0c82d192.js",
+    "file": "assets/Homepage-f1f5f4f7.js",
     "imports": [
       "resources/js/app.tsx"
     ],
@@ -18,7 +18,7 @@
     "dynamicImports": [
       "resources/js/Pages/Homepage.tsx"
     ],
-    "file": "assets/app-df21566a.js",
+    "file": "assets/app-3aabdfe1.js",
     "isEntry": true,
     "src": "resources/js/app.tsx"
   }
