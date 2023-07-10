@@ -7,18 +7,18 @@ import Wallet from "@/Components/Home/Wallet";
 import Statistik from "@/Components/Home/Statistic";
 
 type HomepageProps = {
-  totalMapaba: string;
-  totalPKD: string;
-  totalPKL: string;
-  totalPKN: string;
-  users: {
-    id: string;
-    name: string;
-    kaderisasi: string;
-    rayon: {
-      rayon: string;
-    };
-  }[];
+    totalMapaba: string;
+    totalPKD: string;
+    totalPKL: string;
+    totalPKN: string;
+    users: {
+        id: string;
+        name: string;
+        kaderisasi: string;
+        rayon: {
+            rayon: string;
+        };
+    }[];
 };
 
 
@@ -50,17 +50,17 @@ const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }) => {
                         {/* <a href="app-transactions.html" className="link">View All</a> */}
                     </div>
 
-                    {users.data.map((user) => (
+                    {users.data.map((user: { id: React.Key | null | undefined; img: any; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; kaderisasi: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; rayon: { rayon: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }; }) => (
                         <div className="transactions mb-4" key={user.id}>
                             {/* item */}
                             <a href="app-transaction-detail.html" className="item">
                                 <div className="detail">
-                                <img
-                                    src={`storage/img/${user.img}`}
-                                    alt="img"
-                                    className="image-block imaged"
-                                    style={{ width: '48px', height: '48px', objectFit: 'cover' }}
-                                  />
+                                    <img
+                                        src={`storage/img/${user.img}`}
+                                        alt="img"
+                                        className="image-block imaged"
+                                        style={{ width: '48px', height: '48px', objectFit: 'cover' }}
+                                    />
                                     <div>
                                         <strong>{user.name}</strong>
                                         <p>{user.kaderisasi}</p>
@@ -74,7 +74,7 @@ const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }) => {
                     ))}
 
                 </div>
-                
+
                 <div className="section mt-4 mb-4">
                     <h1>#salamPergerakan</h1>
                 </div>
