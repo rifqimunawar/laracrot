@@ -1,6 +1,5 @@
 {
     "private": true,
-    "homepage": "https://pmiiuninus.com/mobile",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build && vite build --ssr"
