@@ -12,6 +12,7 @@ type HomepageProps = {
     totalPKL: string;
     totalPKN: string;
     users: {
+        img: any;
         id: string;
         name: string;
         kaderisasi: string;
@@ -22,7 +23,7 @@ type HomepageProps = {
 };
 
 
-const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }) => {
+const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }: HomepageProps) => {
     console.log(users);
     return (
         <>
@@ -50,7 +51,7 @@ const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }) => {
                         {/* <a href="app-transactions.html" className="link">View All</a> */}
                     </div>
 
-                    {users.data.map((user: { id: React.Key | null | undefined; img: any; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; kaderisasi: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; rayon: { rayon: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }; }) => (
+                    {users.map((user) => (
                         <div className="transactions mb-4" key={user.id}>
                             {/* item */}
                             <a href="app-transaction-detail.html" className="item">
