@@ -6,7 +6,7 @@ import { BsCalendar3Week } from "react-icons/bs";
 
 
 
-const Wallet = (props) => {
+const Wallet = () => {
   const [currentDate, setCurrentDate] = useState("");
 
   const [currentTime, setCurrentTime] = useState(
@@ -42,7 +42,7 @@ const Wallet = (props) => {
           </div>
           <div className="right">
             <a href="#" className="button" data-bs-toggle="modal" data-bs-target="#depositActionSheet">
-              <ion-icon name="add-outline"></ion-icon>
+            <AiOutlinePicture/>
             </a>
           </div>
         </div>

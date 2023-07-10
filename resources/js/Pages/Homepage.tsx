@@ -4,8 +4,7 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import Wallet from "@/Components/Home/Wallet";
 
-const Homepage = (props) => {
- console.log(props);
+const Homepage = () => {
   return (
     <>
       <Head>
