@@ -32,13 +32,13 @@ class StatistikController extends Controller
 
     $mapaba_sebelum_2018 = User::where('thn_mapaba', 'Sebelum 2018')->count(); //total mapaba sebelum 2018
     $mapaba_2018 = User::where('thn_mapaba', '2018')->count(); //total mapaba di tahun 2018
-    $mapaba_2019 = User::where('thn_mapaba', '2019')->count(); //total mapaba di tahun 
-    $mapaba_2020 = User::where('thn_mapaba', '2020')->count(); //total mapaba di tahun 
-    $mapaba_2021 = User::where('thn_mapaba', '2021')->count(); //total mapaba di tahun 
-    $mapaba_2022 = User::where('thn_mapaba', '2022')->count(); //total mapaba di tahun 
-    $mapaba_2023 = User::where('thn_mapaba', '2023')->count(); //total mapaba di tahun 
+    $mapaba_2019 = User::where('thn_mapaba', '2019')->count(); //total mapaba di tahun
+    $mapaba_2020 = User::where('thn_mapaba', '2020')->count(); //total mapaba di tahun
+    $mapaba_2021 = User::where('thn_mapaba', '2021')->count(); //total mapaba di tahun
+    $mapaba_2022 = User::where('thn_mapaba', '2022')->count(); //total mapaba di tahun
+    $mapaba_2023 = User::where('thn_mapaba', '2023')->count(); //total mapaba di tahun
 
-    // data kader yang belum di verifikasi 
+    // data kader yang belum di verifikasi
     $kader = User::where('role_id', 4)->take(10)->get();
 
     // Data Gambar yang belum di verifikasi
@@ -52,15 +52,15 @@ class StatistikController extends Controller
       return view('admin.index', compact(
         'posts',
         'galeri',
-        'kader', 
-        'user_count', 
+        'kader',
+        'user_count',
         'user_anggota_count',
         'user_unmapaba',
         'user_mapaba',
         'user_pkd',
         'user_pkl',
         'user_pkn',
-        'user_kelamin_l', 
+        'user_kelamin_l',
         'user_kelamin_p',
         'user_rayon_1',
         'user_rayon_2',
