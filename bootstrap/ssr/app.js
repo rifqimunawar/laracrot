@@ -19,7 +19,7 @@ async function resolvePageComponent(path, pages) {
 ((_a = window.document.getElementsByTagName("title")[0]) == null ? void 0 : _a.innerText) || "Laravel";
 createInertiaApp({
   title: (title) => `${title} - Mobile PMII Uninus`,
-  resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, /* @__PURE__ */ Object.assign({ "./Pages/Homepage.tsx": () => import("./assets/Homepage-fb02f62a.js") })),
+  resolve: (name) => resolvePageComponent(`./Pages/${name}.tsx`, /* @__PURE__ */ Object.assign({ "./Pages/Homepage.tsx": () => import("./assets/Homepage-0d754a2a.js") })),
   setup({ el, App, props }) {
     const root = createRoot(el);
     root.render(/* @__PURE__ */ jsx(App, { ...props }));
