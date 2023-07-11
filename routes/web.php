@@ -82,6 +82,7 @@ Route::get('/emails', function () {
   Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
   Route::post('/contact/store', [ContactController::class, 'store'])->name('contact.store');
   Route::get('/article/{slug}', [PostController::class, 'show'])->name('post');
+  Route::get('/article/nu/{slug}', [PostController::class, 'nushow'])->name('nushow');
   Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('category');
   Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
   Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');

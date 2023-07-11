@@ -54,15 +54,18 @@ class PostController extends Controller
 
 
             // test api 
-        $on_page = is_null($request->get('page')) ? 1 : $request->get('page');
+        $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
 
-        $res = Http::get('https://reqres.in/api/users?page='. $on_page);
+        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5'. $on_page);
 
         $data['users'] = $res->json()['data'];
-        $data['max_pages'] = $res->json()['total_pages'];
+        // $data['max_pages'] = $res->json()['total_pages'];
 
         // dd($data);
-        return view('user.blog.index', compact('data', 'recent_posts', 'post_categories', 'old_posts', 'tags', 'user', 'trending'));
+        return view('user.blog.index', compact(
+            'data', 'recent_posts', 'post_categories', 
+            'old_posts', 'tags', 'user', 'trending'
+        ));
 
     }
 
@@ -105,5 +108,50 @@ class PostController extends Controller
 
 
         return view("user.blog.post", compact('post', 'post_categories', 'tags', 'user', 'trending'));
+    }
+
+    function nushow($slug, Request $request){
+        // {{ route('post', ['slug' => $nuonline['slug']]) }}
+        
+        $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
+
+        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5'. $on_page);
+
+        $data['users'] = $res->json()['data'];
+
+        $user = Auth::user();
+        $post = $data::where('slug', $slug)
+            ->with('category', 'comments', 'user')
+            ->where('active', 1)
+            ->orderBy('created_at', 'desc')
+            ->firstOrFail();
+        // $post_categories = Category::with('posts')
+        //     ->whereHas('posts', function ($query) {
+        //         $query->where('active', 1);
+        //     })
+        //     ->orderBy('title')
+        //     ->latest()
+        //     ->get();
+        // $trending = Post::with('category', 'user')
+        //     ->where('active', '1')
+        //     ->orderBy('views', 'desc')
+        //     ->paginate(15);
+        // $tags = Tag::with('posts')
+        //     ->whereHas('posts', function ($query) {
+        //         $query->where('active', 1);
+        //     })
+        //     ->orderBy('title')
+        //     ->latest()
+        //     ->get();
+
+        ++$post->views;
+        $post->update();
+
+
+        return view("user.blog.post", compact(
+            'post',  'user',
+            // 'tags',  'trending',
+            // 'post_categories',
+        ));
     }
 }
