@@ -91,8 +91,32 @@ const Wallet = () => {
     ] })
   ] }) });
 };
-const Homepage = (props) => {
-  console.log(props);
+const Statistik = (props) => {
+  return /* @__PURE__ */ jsxs("div", { className: "section", children: [
+    /* @__PURE__ */ jsxs("div", { className: "row mt-2", children: [
+      /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
+        /* @__PURE__ */ jsx("div", { className: "title", children: "Mapaba" }),
+        /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalMapaba })
+      ] }) }),
+      /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
+        /* @__PURE__ */ jsx("div", { className: "title", children: "PKD" }),
+        /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalPKD })
+      ] }) })
+    ] }),
+    /* @__PURE__ */ jsxs("div", { className: "row mt-2", children: [
+      /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
+        /* @__PURE__ */ jsx("div", { className: "title", children: "PKL" }),
+        /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalPKL })
+      ] }) }),
+      /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
+        /* @__PURE__ */ jsx("div", { className: "title", children: "PKN" }),
+        /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalPKN })
+      ] }) })
+    ] })
+  ] });
+};
+const Homepage = ({ totalMapaba, totalPKD, totalPKL, totalPKN, users }) => {
+  console.log(users);
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx(Head, { children: /* @__PURE__ */ jsx(
       "link",
@@ -105,29 +129,38 @@ const Homepage = (props) => {
       /* @__PURE__ */ jsx(Navbar, {}),
       /* @__PURE__ */ jsxs("div", { id: "appCapsule", children: [
         /* @__PURE__ */ jsx(Wallet, {}),
-        /* @__PURE__ */ jsxs("div", { className: "section", children: [
-          /* @__PURE__ */ jsxs("div", { className: "row mt-2", children: [
-            /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
-              /* @__PURE__ */ jsx("div", { className: "title", children: "Mapaba" }),
-              /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalMapaba })
-            ] }) }),
-            /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
-              /* @__PURE__ */ jsx("div", { className: "title", children: "PKD" }),
-              /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalPKD })
-            ] }) })
-          ] }),
-          /* @__PURE__ */ jsxs("div", { className: "row mt-2", children: [
-            /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
-              /* @__PURE__ */ jsx("div", { className: "title", children: "PKL" }),
-              /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalPKL })
-            ] }) }),
-            /* @__PURE__ */ jsx("div", { className: "col-6", children: /* @__PURE__ */ jsxs("div", { className: "stat-box", children: [
-              /* @__PURE__ */ jsx("div", { className: "title", children: "PKN" }),
-              /* @__PURE__ */ jsx("div", { className: "value text-success text-center", children: props.totalPKN })
-            ] }) })
-          ] })
-        ] })
+        /* @__PURE__ */ jsx(
+          Statistik,
+          {
+            totalMapaba,
+            totalPKD,
+            totalPKL,
+            totalPKN
+          }
+        )
       ] }),
+      /* @__PURE__ */ jsxs("div", { className: "section mt-4 mb-4", children: [
+        /* @__PURE__ */ jsx("div", { className: "section-heading", children: /* @__PURE__ */ jsx("h2", { className: "title", children: "Kader" }) }),
+        users.map((user) => /* @__PURE__ */ jsx("div", { className: "transactions mb-4", children: /* @__PURE__ */ jsxs("a", { href: "app-transaction-detail.html", className: "item", children: [
+          /* @__PURE__ */ jsxs("div", { className: "detail", children: [
+            /* @__PURE__ */ jsx(
+              "img",
+              {
+                src: `storage/img/${user.img}`,
+                alt: "img",
+                className: "image-block imaged",
+                style: { width: "48px", height: "48px", objectFit: "cover" }
+              }
+            ),
+            /* @__PURE__ */ jsxs("div", { children: [
+              /* @__PURE__ */ jsx("strong", { children: user.name }),
+              /* @__PURE__ */ jsx("p", { children: user.kaderisasi })
+            ] })
+          ] }),
+          /* @__PURE__ */ jsx("div", { className: "right", children: /* @__PURE__ */ jsx("div", { className: "price text-danger", children: user.rayon.rayon }) })
+        ] }) }, user.id))
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "section mt-4 mb-4", children: /* @__PURE__ */ jsx("h1", { children: "#salamPergerakan" }) }),
       /* @__PURE__ */ jsx(Footer, {})
     ] })
   ] });
