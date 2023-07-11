@@ -117,47 +117,42 @@ class PostController extends Controller
     function nushow($slug, Request $request)
     {
         // {{ route('post', ['slug' => $nuonline['slug']]) }}
-
+    
         $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
-
-        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5' . $on_page);
-
+    
+        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=2' . $on_page);
+    
         $data['users'] = $res->json()['data'];
-
+    
         $user = Auth::user();
-        $post = $data::where('slug', $slug)
-            ->with('category', 'comments', 'user')
-            ->where('active', 1)
-            ->orderBy('created_at', 'desc')
-            ->firstOrFail();
-        // $post_categories = Category::with('posts')
-        //     ->whereHas('posts', function ($query) {
-        //         $query->where('active', 1);
-        //     })
-        //     ->orderBy('title')
-        //     ->latest()
-        //     ->get();
-        // $trending = Post::with('category', 'user')
-        //     ->where('active', '1')
-        //     ->orderBy('views', 'desc')
-        //     ->paginate(15);
-        // $tags = Tag::with('posts')
-        //     ->whereHas('posts', function ($query) {
-        //         $query->where('active', 1);
-        //     })
-        //     ->orderBy('title')
-        //     ->latest()
-        //     ->get();
+        $post = collect($data['users'])->where('slug', $slug)->first();
+    
+        $id = $post['id'];
+        $title = $post['title'];
+        $url = $post['url'];
+        $preview = $post['preview'];
+        $category = $post['category'];
+    
+        $full = $post['image']['full'];
+        $author = $post['author'][1]['name'];
+        
+        $date = $post['date']['published'];
+    
+        // $post['views']++;
+        // $post->save();
+    
+        // dd($date);
+        // return  $full;
 
-        ++$post->views;
-        $post->update();
-
-
-        return view("user.blog.post", compact(
-            'post',
-            'user',
-            // 'tags',  'trending',
-            // 'post_categories',
+        return view("user.blog.post-nu", compact(
+            'post', 'user',
+            'full', 'title',
+            'preview', 'url',
+            'category', 'date',
+            'author', 'data',
         ));
+
     }
+    
+    
 }

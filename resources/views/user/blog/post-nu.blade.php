@@ -9,43 +9,46 @@
                 <article class="my-5">
                     <!-- Post header-->
                     <header class="mb-4">
-                        @if($post->image)
                         <!-- Preview image figure-->
                         <figure class="mb-4">
-                            <img class="img-fluid rounded" src="{{ asset('storage/img/' . $post->image) }}" alt="..."/>
-                        </figure>
+                           <img class="img-fluid rounded" src="{{ $full }}" alt="...">
+                       </figure>                     
                         <!-- Post content-->
-                        @endif
                         <!-- Post title-->
-                        <h1 class="fw-bolder mb-1">{{ $post->title }}</h1>
+                        <h1 class="fw-bolder mb-1">{{ $title }}</h1>
                         <!-- Post meta content-->
                         <div class="text-muted my-2">
-                            <i class="bi bi-clock"></i> {{ $post->created_at->diffForHumans() }} 
-                            <i class="bi bi-person-fill mx-2"> Upload by:</i> <a href="/profile/{{ $post->user->slug }}"> 
-                              {{ $post->user->username }} @if($post->user->centang == '1') <i class="fas fa-check-circle text-primary"></i>@endif</a>
-                            <i class="bi bi-eye-fill mx-2"> Dilihat: </i>  {{ $post->views }} Kali
+                            <i class="bi bi-clock"></i> {{ $date }} 
+                            <i class="bi bi-person-fill mx-2"> Upload by: {{ $author }}</i>
+                            <i class="bi bi-info-square"> Sumber: </i>  <a href="https://www.nu.or.id/">NuOnline</a>
                         </div>
                     </header>
                     
                     <section class="mb-5">
                       <div class="card bg-light">
                         <div class="card-body">
-                          <p class="fs-5 mb-4">
-                              {!! $post->content !!}
+                          <p class="fs-5 mb-4" style="color: #222222">
+                              {{ $preview }}
                             </p>
-                          </div>
+                            <a href="{{ $url }}">
+                             <div class="text-center p-4">
+                              <h5>Selengkapnya...</h5>
+                             </div>
+                           </div>
+                            </a>
+                            
                         </div>
                     </section>
                     <!-- Post tags-->
-                    @if($post->tags->count())
+                    {{-- @if($post->tags->count())
                         <i class="bi bi-tags"></i> Tags:
                             @foreach($post->tags as $tag)
                                 <a class="badge bg-secondary text-decoration-none link-light"
                                         href="{{ route('tag', $tag->slug) }}">{{ $tag->title }}</a>
                             @endforeach
-                    @endif
+                    @endif --}}
                 </article>
-
+{{-- 
                 <div class="row justify-center pt-30">
                   <div class="col-xl-8 col-lg-9 col-md-11">
                       <div class="row y-gap-20 justify-between items-center">
@@ -82,8 +85,8 @@
                           </div>
                       </div>
                   </div>
-              </div>
-
+              </div> --}}
+{{-- 
                 <!-- Comments section-->
                 <section class="mb-5">
                     <div class="card bg-light">
@@ -109,7 +112,7 @@
                             @endforeach
                         </div>
                     </div>
-                </section>
+                </section> --}}
             </div>
 
             <!-- Side Bar -->
@@ -123,17 +126,17 @@
                  <div class="bg-white border border-top-0 p-3">
          
          
-                     @foreach ($trending->take(20) as $pos)
+                  @foreach (array_slice($data['users'], 0, 6) as $nuonline)
                      <div class="d-flex align-items-center bg-white mb-3" style="height: 110px;">
-                         @if ($pos->image)
-                         <img class="img-fluid" src="{{ asset('storage/img/' . $pos->image) }}" alt=""style="height:100px; width:200px; overflow:hidden; object-fit: cover;">
-                         @endif
+                         @if (isset($nuonline['image']['thumbnail']))
+                            <img class="img-fluid" src="{{ $nuonline['image']['thumbnail'] }}" alt="" style="height: 100px; width: 150px; overflow: hidden; object-fit: cover;">
+                          @endif
                          <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
                              <div class="">
-                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $pos->category->slug) }}">{{ $pos->category->title }}</a>
-                                 <p class="text-body" style="padding: 0px; margin: 0px" href="" ><small>{{ $pos->views }} Kali Dilihat</small></p>
+                                 <a class="badge badge-primary text-uppercase font-weight-semi-bold pt-1 mr-2" href="{{ route('nushow', ['slug' => $nuonline['slug']]) }}">{{ $nuonline['category']['name'] }}</a>
+                                 {{-- <p class="text-body" style="padding: 0px; margin: 0px" href="" ><small>{{ $pos->views }} Kali Dilihat</small></p> --}}
                              </div>
-                             <a class="h6 m-0 text-secondary font-weight-bold" href="{{ route('post', ['slug' => $pos->slug]) }}">{{ Str::limit ($pos->title, 30) }}</a>
+                             <a class="h6 m-0 text-secondary font-weight-bold" href="{{ route('nushow', ['slug' => $nuonline['slug']]) }}">{{ Str::limit($nuonline['title'], 30) }}</a>
                          </div>
                      </div>
                      @endforeach

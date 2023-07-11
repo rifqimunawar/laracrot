@@ -18,7 +18,7 @@
                   @endif
   
                   <div class="overlay">
-                          <div class="mb-2 overflow-hidden">
+                          <div class="mb-0 overflow-hidden">
                               <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                                   href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                   <h8 style="color: #fff">
@@ -41,7 +41,7 @@
                             <img class="img-fluid w-100 h-100" src="{{ asset('storage/img/' . $post->image) }}" style="object-fit: cover;">
                         @endif
                           <div class="overlay">
-                              <div class="mb-2">
+                              <div class="mb-0">
                                   <a class="badge badge-warning text-uppercase font-weight-semi-bold p-2 mr-2"
                                       href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                       <h9 style="color: #fff">
@@ -58,7 +58,7 @@
                       <div class="position-relative overflow-hidden" style="height: 250px;">
                           <img class="img-fluid w-100 h-100" src="img/news-700x435-2.jpg" style="object-fit: cover;">
                           <div class="overlay">
-                              <div class="mb-2">
+                              <div class="mb-0">
                                   <a class="badge badge-primary font-weight-semi-bold p-2 mr-2"
                                       href="">Business</a>
                                   <a class="text-white" href=""><small>Jan 01, 2045</small></a>
@@ -71,7 +71,7 @@
                       <div class="position-relative overflow-hidden" style="height: 250px;">
                           <img class="img-fluid w-100 h-100" src="img/news-700x435-3.jpg" style="object-fit: cover;">
                           <div class="overlay">
-                              <div class="mb-2">
+                              <div class="mb-0">
                                   <a class="badge badge-primary font-weight-semi-bold p-2 mr-2"
                                       href="">Business</a>
                                   <a class="text-white" href=""><small>Jan 01, 2045</small></a>
@@ -84,7 +84,7 @@
                       <div class="position-relative overflow-hidden" style="height: 250px;">
                           <img class="img-fluid w-100 h-100" src="img/news-700x435-4.jpg" style="object-fit: cover;">
                           <div class="overlay">
-                              <div class="mb-2">
+                              <div class="mb-0">
                                   <a class="badge badge-primary font-weight-semi-bold p-2 mr-2"
                                       href="">Business</a>
                                   <a class="text-white" href=""><small>Jan 01, 2045</small></a>
@@ -137,7 +137,7 @@
                   <img class="img-fluid h-100" src="{{ asset('storage/img/' . $post->image) }}" style="object-fit: cover;">
                 @endif
                   <div class="overlay">
-                      <div class="mb-2">
+                      <div class="mb-0">
                           <a class="badge badge-primary text-uppercase font-weight-semi-bold p-2 mr-2"
                               href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                       </div>
@@ -171,10 +171,10 @@
                           <img class="img-fluid" src="{{ asset('storage/img/' . $post->image) }}" alt="" style="height:100px; width:150px; overflow:hidden; object-fit: cover;">
                           @endif
                             <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                <div class="mb-2">
+                                <div class="mb-0">
                                     <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $post->category->slug) }}">{{ $post->category->title }}</a>
                                 </div>
-                                <div class="mb-2">
+                                <div class="mb-0">
                                     <a class="h6 m-0 text-secondary font-weight-bold" href="{{ route('post', ['slug' => $post->slug]) }}">{{ Str::limit($post->title, 30) }}</a>
                                 </div>
                                 <h8 class="text-secondary"><small>
@@ -224,10 +224,10 @@
                                     <img class="img-fluid" src="{{ $nuonline['image']['thumbnail'] }}" alt="" style="height: 100px; width: 150px; overflow: hidden; object-fit: cover;">
                                 @endif
                                 <div class="w-100 h-100 px-3 d-flex flex-column justify-content-center border border-left-0">
-                                    <div class="mb-2">
-                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('category', $nuonline['category']['slug']) }}">{{ $nuonline['category']['name'] }}</a>
+                                    <div class="mb-0">
+                                        <a class="badge badge-primary text-uppercase font-weight-semi-bold p-1 mr-2" href="{{ route('nushow', ['slug' => $nuonline['slug']]) }}">{{ $nuonline['category']['name'] }}</a>
                                     </div>
-                                    <div class="mb-2">
+                                    <div class="mb-0">
                                         <a class="h6 m-0 text-secondary font-weight-bold" href="{{ route('nushow', ['slug' => $nuonline['slug']]) }}">{{ Str::limit($nuonline['title'], 40) }}</a>
                                     </div>
                                     <p class="text-secondary"><small>{{ $nuonline['date']['published'] }}</small></p>
