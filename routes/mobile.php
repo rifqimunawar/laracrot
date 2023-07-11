@@ -25,4 +25,5 @@ use App\Http\Controllers\MobileHomeController;
 
 Route::prefix('mobile')->group(function () {
   Route::get('/', [MobileHomeController::class, 'homepage'])->name('homepage');
+  Route::get('/about', [MobileHomeController::class, 'about'])->name('about');
  });
