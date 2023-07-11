@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
 
@@ -21,7 +22,7 @@ class PostController extends Controller
      *
      * @return Application|Factory|View
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
         $recent_posts = Post::with('category', 'user')
@@ -51,7 +52,17 @@ class PostController extends Controller
             ->get();
 
 
-        return view('user.blog.index', compact('recent_posts', 'post_categories', 'old_posts', 'tags', 'user', 'trending'));
+
+            // test api 
+        $on_page = is_null($request->get('page')) ? 1 : $request->get('page');
+
+        $res = Http::get('https://reqres.in/api/users?page='. $on_page);
+
+        $data['users'] = $res->json()['data'];
+        $data['max_pages'] = $res->json()['total_pages'];
+
+        // dd($data);
+        return view('user.blog.index', compact('data', 'recent_posts', 'post_categories', 'old_posts', 'tags', 'user', 'trending'));
 
     }
 
