@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
     <link rel="stylesheet" href="{{ asset('mobile_assets/assets/css/style.css') }}">
     <link rel="manifest" href="__manifest.json">
+    @vite ([])
 </head>
 
 <body>
@@ -286,13 +287,13 @@
 
     <!-- ========= JS Files =========  -->
     <!-- Bootstrap -->
-    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('mobile_assets/assets/js/lib/bootstrap.bundle.min.js') }}"></script>
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- Splide -->
-    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <script src="{{ asset('mobile_assets/assets/js/plugins/splide/splide.min.js') }}"></script>
     <!-- Base Js File -->
-    <script src="assets/js/base.js"></script>
+    <script src="{{ asset('mobile_assets/assets/js/base.js') }}"></script>
 
     <script>
         // Add to Home with 2 seconds delay.
