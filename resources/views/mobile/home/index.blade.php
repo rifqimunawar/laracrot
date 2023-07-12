@@ -1,3 +1,4 @@
+@include('mobile.partials.navbar')
 @section('title') {{ 'Home' }}@endsection
 @extends('mobile.layout')
 @section('content')
@@ -278,13 +279,13 @@
               <div class="col-6">
                   <div class="stat-box">
                       <div class="title">Total Mapaba</div>
-                      {{-- <div class="value text-success">$ 552.95</div> --}}
+                      <div class="value text-success text-center">{{ $user_mapaba }}</div>
                   </div>
               </div>
               <div class="col-6">
                   <div class="stat-box">
                       <div class="title">Total PKD</div>
-                      {{-- <div class="value text-danger">$ 86.45</div> --}}
+                      <div class="value text-success text-center">{{ $user_pkd }}</div>
                   </div>
               </div>
           </div>
@@ -292,13 +293,13 @@
               <div class="col-6">
                   <div class="stat-box">
                       <div class="title">Total PKL</div>
-                      {{-- <div class="value">$ 53.25</div> --}}
+                      <div class="value text-success text-center">{{ $user_pkl }}</div>
                   </div>
               </div>
               <div class="col-6">
                   <div class="stat-box">
                       <div class="title">Total PKN</div>
-                      {{-- <div class="value">$ 120.99</div> --}}
+                      <div class="value text-success text-center">{{ $user_pkn }}</div>
                   </div>
               </div>
           </div>
@@ -313,7 +314,6 @@
           </div>
           <div class="transactions">
               <!-- item -->
-              
               
               @foreach ($users as $user)
               <a href="app-transaction-detail.html" class="item">

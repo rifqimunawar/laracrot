@@ -13,15 +13,15 @@
 
   <!-- App Bottom Menu -->
   <div class="appBottomMenu">
-   <a href="#" class="item active">
+   <a href="{{ route('homepage') }}" class="item {{ request()->is('mobile/') ? ' active' : '' }} ">
     <div class="col">
         <ion-icon name="pulse-outline"></ion-icon>
         {{-- <strong>Item 1</strong> --}}
     </div>
 </a>
-<a href="#" class="item">
+<a href="{{ route('search') }}" class="item {{ request()->is('mobile/search*') ? ' active' : '' }} ">
     <div class="col">
-        <ion-icon name="card-outline"></ion-icon>
+        <ion-icon name="search-outline"></ion-icon>
         {{-- <strong>Item 2</strong> --}}
     </div>
 </a>
