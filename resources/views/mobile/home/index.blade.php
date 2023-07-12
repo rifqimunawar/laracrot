@@ -661,13 +661,12 @@
                        
                       <li class="splide__slide">
                           <a href="app-blog-post.html">
-                              <div class="blog-card">
-                                  <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" 
-                                  class="imaged" style="width:100%; heigth:100px; object-fit: cover">
-                                  <div class="text">
-                                      <h4 class="title">{{ $post->title }}</h4>
-                                  </div>
-                              </div>
+                           <div class="blog-card">
+                            <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged" style="width:100%; height:200px; object-fit:cover;">
+                            <div class="text">
+                              <h4 class="title">{{ $post->title }}</h4>
+                            </div>
+                          </div>                          
                           </a>
                       </li>
                       @endforeach

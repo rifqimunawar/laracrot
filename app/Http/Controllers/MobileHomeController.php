@@ -26,7 +26,7 @@ class MobileHomeController extends Controller
      //     'galeries' => $galeries,
      // ]);
 
-     $posts = Post::latest()->paginate(5);
+     $posts = Post::latest()->where('active', '1')->paginate(5);
      $galeries = Galeri::with('user')->where('status', 1)->latest()->get();
      $users = User::with('rayon')->latest()->paginate(5);
      // dd($posts);
