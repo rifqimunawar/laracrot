@@ -16,7 +16,7 @@
         <img src="{{ asset('storage/img/' . $users->img ) }}" alt="avatar"
           class="rounded-circle img-fluid" style="width: 150px; height:150px; object-fit:cover">
         <h5 class="my-3">{{ $users->name }}</h5>
-        <h6 class="my-3"> {{ $users->kelamin }}</h6>
+        {{-- <h6 class="my-3">Kelamin : {{ $users->kelamin }}</h6> --}}
         <h6 class="my-3">Kaderisasi {{ $users->kaderisasi }}</h6>
         <h6 class="my-3">Rayon {{ $users->rayon->rayon }}</h6>
         <h6 class="my-3">Prodi {{ $users->prodi }}</h6>

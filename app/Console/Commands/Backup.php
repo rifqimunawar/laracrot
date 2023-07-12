@@ -52,7 +52,7 @@ class Backup extends Command
           $copy = $is_windows ? 'copy' : 'cp -R';
           shell_exec($win_parse("$copy $root/database/seeders/* $folder_backup"));
 
-          echo 'Berhasil backup data sebelumnya' . PHP_EOL;
+          echo 'Berhasil backup data sebelumnya, jangan lupa nanti sebelum di seeder ulang Class=SeederUser di modif dulu bagian :username, email_verified_at, created_at, updated_at, agar tidak error, chuaaakss' . PHP_EOL;
       }
 
       $tables = [
