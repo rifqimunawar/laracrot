@@ -490,13 +490,6 @@
       </div> --}}
       <!-- * my cards -->
 
-
-
-      {{-- @foreach ($galeries as $galery)
-          <img src="{{ asset('storage/img/' . $galery->img) }}" 
-          style="width: 48px; height:48px; border-radius:50%; object-fit:cover" alt="">
-      @endforeach --}}
-
         <!-- Galery -->
         <div class="section full mt-4">
          <div class="section-heading padding">
@@ -670,7 +663,7 @@
                           <a href="app-blog-post.html">
                               <div class="blog-card">
                                   <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" 
-                                  class="imaged w-100 h-50" style="object-fit: cover">
+                                  class="imaged" style="width:100%; heigth:100px; object-fit: cover">
                                   <div class="text">
                                       <h4 class="title">{{ $post->title }}</h4>
                                   </div>
