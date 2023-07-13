@@ -16,18 +16,19 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
     <link rel="stylesheet" href="{{ asset('mobile_assets/assets/css/style.css') }}">
     <link rel="manifest" href="__manifest.json">
+    @vite ([])
 </head>
 
 <body>
 
     <!-- loader -->
     {{-- <div id="loader">
-        <img src="{{ asset('mobile_asset/assets/img/loading-icon.png') }}" alt="icon" class="loading-icon">
+        <img src="{{ asset('storage/img/logokomi.png') }}" alt="icon" class="loading-icon">
     </div> --}}
     <!-- * loader -->
 
+    {{-- <img style="width: 100px; height: 100px; object-fit:cover" src="{{ asset('storage/img/logokomi.png') }}" alt=""> --}}
 
-    @include('mobile.partials.navbar')
     @yield('content')
     @include('mobile.partials.footer')
     
@@ -216,88 +217,17 @@
     </div>
     <!-- * App Sidebar -->
 
-
-
-    <!-- iOS Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet ios-add-to-home" id="ios-add-to-home-screen" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add to Home Screen</h5>
-                    <a href="#" class="close-button" data-bs-dismiss="modal">
-                        <ion-icon name="close"></ion-icon>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <div class="action-sheet-content text-center">
-                        <div class="mb-1"><img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
-                        </div>
-                        <div>
-                            Install <strong>Finapp</strong> on your iPhone's home screen.
-                        </div>
-                        <div>
-                            Tap <ion-icon name="share-outline"></ion-icon> and Add to homescreen.
-                        </div>
-                        <div class="mt-2">
-                            <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- * iOS Add to Home Action Sheet -->
-
-
-    <!-- Android Add to Home Action Sheet -->
-    <div class="modal inset fade action-sheet android-add-to-home" id="android-add-to-home-screen" tabindex="-1"
-        role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Add to Home Screen</h5>
-                    <a href="#" class="close-button" data-bs-dismiss="modal">
-                        <ion-icon name="close"></ion-icon>
-                    </a>
-                </div>
-                <div class="modal-body">
-                    <div class="action-sheet-content text-center">
-                        <div class="mb-1">
-                            <img src="assets/img/icon/192x192.png" alt="image" class="imaged w64 mb-2">
-                        </div>
-                        <div>
-                            Install <strong>Finapp</strong> on your Android's home screen.
-                        </div>
-                        <div>
-                            Tap <ion-icon name="ellipsis-vertical"></ion-icon> and Add to homescreen.
-                        </div>
-                        <div class="mt-2">
-                            <button class="btn btn-primary btn-block" data-bs-dismiss="modal">CLOSE</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- * Android Add to Home Action Sheet -->
-
-
-
     <!-- ========= JS Files =========  -->
     <!-- Bootstrap -->
-    <script src="assets/js/lib/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('mobile_assets/assets/js/lib/bootstrap.bundle.min.js') }}"></script>
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <!-- Splide -->
-    <script src="assets/js/plugins/splide/splide.min.js"></script>
+    <script src="{{ asset('mobile_assets/assets/js/plugins/splide/splide.min.js') }}"></script>
+    <!-- Apex Charts -->
+    <script src="{{ asset('mobile_assets/assets/js/plugins/apexcharts/apexcharts.min.js') }}"></script>
     <!-- Base Js File -->
-    <script src="assets/js/base.js"></script>
-
-    <script>
-        // Add to Home with 2 seconds delay.
-        AddtoHome("2000", "once");
-    </script>
+    <script src="{{ asset('mobile_assets/assets/js/base.js') }}"></script>
 
 </body>
 

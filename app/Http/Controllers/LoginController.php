@@ -135,5 +135,12 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect ('/');
     }
+    public function mobilelogout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect ('/mobile');
+    }
 
 }

@@ -101,6 +101,7 @@ Route::get('/register/{user}', [LoginController::class, 'register'])->name('regi
 Route::put('/register/store/{id}', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('//mobilelogout', [LoginController::class, 'mobilelogout'])->name('mobilelogout');
 
 
 
