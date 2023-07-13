@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Perpus;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\User;
@@ -52,9 +53,33 @@ class MobileHomeController extends Controller
   return view('mobile.search.index', compact( 'users'));
  }
  
+ public function book() {
+  $books = Perpus::with('categorybooks')->latest()->get();
+  // dd($books);
+  return view('mobile.book.index', compact('books'));
+ }
 
- public function upload() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+ public function mobileUpload() {
   return "upload";
  }
+ public function calender() {
+  return "calender";
+ }
  
+ public function profile() {
+  return view('mobile.profile.index');
+ }
 }
