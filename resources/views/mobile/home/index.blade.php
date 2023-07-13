@@ -310,7 +310,7 @@
       <div class="section mt-4">
           <div class="section-heading">
               <h2 class="title">Kader</h2>
-              <a href="app-transactions.html" class="link">View All</a>
+              <a href="{{ route('search') }}" class="link">View All</a>
           </div>
           <div class="transactions">
               <!-- item -->

@@ -13,7 +13,7 @@
 
   <!-- App Bottom Menu -->
   <div class="appBottomMenu">
-   <a href="{{ route('homepage') }}" class="item {{ request()->is('mobile/') ? ' active' : '' }} ">
+   <a href="{{ route('homepage') }}" class="item {{ request()->is('mobile') ? ' active' : '' }} ">
     <div class="col">
         <ion-icon name="pulse-outline"></ion-icon>
         {{-- <strong>Item 1</strong> --}}
@@ -25,7 +25,7 @@
         {{-- <strong>Item 2</strong> --}}
     </div>
 </a>
-<a href="#" class="item">
+<a href="{{ route('upload') }}" class="item">
     <div class="col">
         <div class="action-button large">
             <ion-icon name="arrow-up-outline"></ion-icon>

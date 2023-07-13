@@ -26,4 +26,9 @@ use App\Http\Controllers\MobileHomeController;
 Route::prefix('mobile')->group(function () {
   Route::get('/', [MobileHomeController::class, 'homepage'])->name('homepage');
   Route::get('/search', [MobileHomeController::class, 'search'])->name('search');
+  Route::get('/upload', [MobileHomeController::class, 'upload'])->name('upload')->middleware();
  });
+
+ Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
+  Route::get('mobile/uploads', [MobileHomeController::class, 'uploads'])->middleware(['auth']);
+});

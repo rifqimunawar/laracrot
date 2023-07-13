@@ -22,9 +22,9 @@
 <body>
 
     <!-- loader -->
-    <div id="loader">
+    {{-- <div id="loader">
         <img src="{{ asset('storage/img/logokomi.png') }}" alt="icon" class="loading-icon">
-    </div>
+    </div> --}}
     <!-- * loader -->
 
     {{-- <img style="width: 100px; height: 100px; object-fit:cover" src="{{ asset('storage/img/logokomi.png') }}" alt=""> --}}
