@@ -25,7 +25,7 @@
               <!-- Wallet Footer -->
               <div class="wallet-footer">
                   <div class="item">
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#withdrawActionSheet">
+                      <a href="{{ route('mobileBook') }}">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="book-outline"></ion-icon>
                           </div>

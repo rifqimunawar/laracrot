@@ -25,20 +25,20 @@
         {{-- <strong>Item 2</strong> --}}
     </div>
 </a>
-<a href="{{ route('upload') }}" class="item">
-    <div class="col">
+<a href="{{ route('mobileUpload') }}" class="item {{ request()->is('mobile/upload*') ? ' active' : '' }} ">
+ <div class="col">
         <div class="action-button large">
             <ion-icon name="arrow-up-outline"></ion-icon>
         </div>
     </div>
 </a>
-<a href="#" class="item">
+<a href="{{ route('calender') }}" class="item" {{ request()->is('mobile/calender*') ? ' active' : '' }} ">
     <div class="col">
         <ion-icon name="calendar-outline"></ion-icon>
         {{-- <strong>Item 4</strong> --}}
     </div>
 </a>
-<a href="#" class="item">
+<a href="{{ route('profile') }}" class="item" {{ request()->is('mobile/profile*') ? ' active' : '' }} ">
     <div class="col">
         <ion-icon name="settings-outline"></ion-icon>
         {{-- <strong>Item 5</strong> --}}
