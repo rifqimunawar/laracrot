@@ -10,7 +10,7 @@
           </a>
       </div>
       <div class="pageTitle">
-          Blog & News
+          Nu Online
       </div>
       <div class="right">
           <a href="#" class="headerButton" data-bs-toggle="modal" data-bs-target="#actionSheetShare">
@@ -27,23 +27,23 @@
 
      <div class="section mt-2">
          <h1>
-             {{ $post->title }}
+          {{ $title }}
          </h1>
          <figure>
-             <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged img-fluid">
+             <img src="{{ $nuonline['image']['thumbnail'] }}" alt="image" class="imaged img-fluid">
          </figure>
          <div class="blog-header-info mt-2 mb-2">
              <div>
-                 <img src="{{ asset('storage/img/' . $post->user->img) }}" alt="img" class="imaged"
-                 style="width:24px; height:24px; object-fit:cover; border-radius:50%">
-                 by <a href="#">{{ $post->user->name }}</a>
+                 {{-- <img src="{{ asset('storage/img/' . $post->user->img) }}" alt="img" class="imaged"
+                 style="width:24px; height:24px; object-fit:cover; border-radius:50%"> --}}
+                 Sumber: <a href="#">Nu Online</a>
              </div>
              <div>
-              {{ $post->created_at->format('d, F Y')  }}
+              {{ $date }} 
              </div>
          </div>
          <div class="lead"><p style="background: transparent">
-          {!! $post->content !!}
+          {!! $preview  !!}
          </p>
          </div>
      </div>

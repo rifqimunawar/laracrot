@@ -5,7 +5,7 @@
     <!-- App Header -->
     <div class="appHeader">
      <div class="left">
-         <a href="#" class="headerButton goBack">
+         <a href="{{ route('mobilePost') }}" class="headerButton goBack">
              <ion-icon name="chevron-back-outline"></ion-icon>
          </a>
      </div>
@@ -39,14 +39,14 @@
       <div class="section tab-content mt-2 mb-2">
 
           <div class="row">
-            @foreach ($posts as $posts)
+            @foreach ($posts as $post)
               <div class="col-6 mb-2">
-                  <a href="">
+               <a href="{{ route('mobilePostShow', $post->slug) }}">
                       <div class="blog-card">
-                          <img src="{{ asset('storage/img/' . $posts->image) }}" alt="image" class="imaged"
+                          <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged"
                           style="width:100%; height:200px; object-fit:cover;">
                           <div class="text">
-                              <h4 class="title">{{ Str::limit($posts->title, 30) }}</h4>
+                              <h4 class="title">{{ Str::limit($post->title, 30) }}</h4>
                           </div>
                       </div>
                   </a>
@@ -61,7 +61,7 @@
           <div class="row">
            @foreach ($data['users'] as $nuonline)
              <div class="col-6 mb-2">
-                 <a href="">
+                 <a href="{{ route('nuShow', ['slug' => $nuonline['slug']]) }}">
                      <div class="blog-card">
                          <img src="{{ $nuonline['image']['thumbnail']  }}" alt="image" class="imaged"
                          style="width:100%; height:200px; object-fit:cover;">
@@ -77,5 +77,51 @@
 
   </div>
   <!-- * App Capsule -->
-
+<!-- Share Action Sheet -->
+<div class="modal fade action-sheet inset" id="actionSheetShare" tabindex="-1" role="dialog">
+ <div class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title">Share with</h5>
+         </div>
+         <div class="modal-body">
+             <ul class="action-button-list">
+                 <li>
+                     <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                         <span>
+                             <ion-icon name="logo-facebook"></ion-icon>
+                             Facebook
+                         </span>
+                     </a>
+                 </li>
+                 <li>
+                     <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                         <span>
+                             <ion-icon name="logo-twitter"></ion-icon>
+                             Twitter
+                         </span>
+                     </a>
+                 </li>
+                 <li>
+                     <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                         <span>
+                             <ion-icon name="logo-instagram"></ion-icon>
+                             Instagram
+                         </span>
+                     </a>
+                 </li>
+                 <li>
+                     <a href="#" class="btn btn-list" data-bs-dismiss="modal">
+                         <span>
+                             <ion-icon name="logo-linkedin"></ion-icon>
+                             Linkedin
+                         </span>
+                     </a>
+                 </li>
+             </ul>
+         </div>
+     </div>
+ </div>
+</div>
+<!-- * Share Action Sheet -->
 @endsection
