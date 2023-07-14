@@ -88,11 +88,48 @@ class MobileHomeController extends Controller
   ->where('active', 1)
   ->orderBy('created_at', 'desc')
   ->firstOrFail();
+
+  $trending = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('views', 'desc')
+            ->paginate(4);
   
-  return view('mobile.post.show', compact('post'));
+  // dd($post);
+  return view('mobile.post.show', compact('post', 'trending'));
  }
 
+ function nuShow($slug, Request $request)
+    {
+        // {{ route('post', ['slug' => $nuonline['slug']]) }}
+    
+        $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
+    
+        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5' . $on_page);
+    
+        $data['users'] = $res->json()['data'];
+    
+        $post = collect($data['users'])->where('slug', $slug)->first();
+    
+        $id = $post['id'];
+        $title = $post['title'];
+        $url = $post['url'];
+        $preview = $post['preview'];
+        $category = $post['category'];
+    
+        $full = $post['image']['full'];
+        $author = $post['author'][1]['name'];
 
+        
+        $date = $post['date']['published'];
+
+        return view("mobile.post.showNu", compact(
+            'post', 'user',
+            'full', 'title',
+            'preview', 'url',
+            'category', 'date',
+            // 'author', 'author',
+        ));
+       }
 
 
 
