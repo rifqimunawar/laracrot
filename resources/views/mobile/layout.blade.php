@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon/192x192.png">
     <link rel="stylesheet" href="{{ asset('mobile_assets/assets/css/style.css') }}">
     <link rel="manifest" href="__manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modal-video/2.5.0/modal-video.min.css">
     @vite ([])
 </head>
 

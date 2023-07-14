@@ -58,6 +58,12 @@ class MobileHomeController extends Controller
   // dd($books);
   return view('mobile.book.index', compact('books'));
  }
+ 
+ public function galery() {
+  $galeries = Galeri::with('user')->where('status', 1)->latest()->get();
+  // dd($galeries);
+  return view('mobile.galery.index', compact('galeries'));
+ }
 
 
 

@@ -33,7 +33,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#sendActionSheet">
+                      <a href="{{ route('mobileGalery') }}">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="images-outline"></ion-icon>
                           </div>
