@@ -33,7 +33,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#sendActionSheet">
+                      <a href="{{ route('mobileGalery') }}">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="images-outline"></ion-icon>
                           </div>
@@ -41,7 +41,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="app-cards.html">
+                      <a href="{{ route('mobilePost') }}">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="newspaper-outline"></ion-icon>
                           </div>
@@ -49,7 +49,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="#" data-bs-toggle="modal" data-bs-target="#exchangeActionSheet">
+                      <a href="" data-bs-toggle="modal" data-bs-target="#exchangeActionSheet">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="calendar-number-outline"></ion-icon>
                           </div>

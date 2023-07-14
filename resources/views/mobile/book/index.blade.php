@@ -44,7 +44,7 @@
                   <a href="app-blog-post.html">
                       <div class="blog-card">
                           <img src="{{ asset('storage/img/' . $book->image) }}" alt="image" class="imaged"
-                          style="width:100%; height:88px; object-fit:cover;">
+                          style="width:100%; height:200px; object-fit:cover;">
                           <div class="text">
                               <h4 class="title">{{ Str::limit($book->judul, 30) }}</h4>
                           </div>
