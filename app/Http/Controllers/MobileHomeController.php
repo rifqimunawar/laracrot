@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Perpus;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Galeri;
+use App\Models\Perpus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MobileHomeController extends Controller
 {
@@ -64,8 +65,32 @@ class MobileHomeController extends Controller
   // dd($galeries);
   return view('mobile.galery.index', compact('galeries'));
  }
+ 
+ public function post(Request $request) {
+  $posts = Post::with('category', 'user')
+  ->where('active', '1')
+  ->orderBy('created_at', 'desc')->get();
 
+  $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
 
+  $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5' . $on_page);
+
+  $data['users'] = $res->json()['data'];
+
+  // dd($posts);
+  return view('mobile.post.index', compact('posts', 'data'));
+ }
+
+ public function show($slug) {
+  
+  $post = Post::where('slug', $slug)
+  ->with('category', 'comments', 'user')
+  ->where('active', 1)
+  ->orderBy('created_at', 'desc')
+  ->firstOrFail();
+  
+  return view('mobile.post.show', compact('post'));
+ }
 
 
 

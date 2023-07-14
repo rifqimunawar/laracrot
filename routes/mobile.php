@@ -28,6 +28,8 @@ Route::prefix('mobile')->group(function () {
   Route::get('/search', [MobileHomeController::class, 'search'])->name('search');
   Route::get('/book', [MobileHomeController::class, 'book'])->name('mobileBook');
   Route::get('/galery', [MobileHomeController::class, 'galery'])->name('mobileGalery');
+  Route::get('/post', [MobileHomeController::class, 'post'])->name('mobilePost');
+  Route::get('/post/details/{slug}', [MobileHomeController::class, 'detailPost'])->name('mobileDetailPost');
   Route::get('/calender', [MobileHomeController::class, 'calender'])->name('calender');
  });
 
