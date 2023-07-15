@@ -41,7 +41,7 @@
           <div class="row">
             @foreach ($books as $book)
               <div class="col-6 mb-2">
-                  <a href="app-blog-post.html">
+               <a href="{{ route('mobileBookShow', ['id' => $book->id]) }}">
                       <div class="blog-card">
                           <img src="{{ asset('storage/img/' . $book->image) }}" alt="image" class="imaged"
                           style="width:100%; height:200px; object-fit:cover;">

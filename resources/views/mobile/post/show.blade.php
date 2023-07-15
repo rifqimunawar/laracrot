@@ -61,7 +61,7 @@
           @foreach ($trending as $post)
               
           <div class="col-6 mb-2">
-                 <a href="app-blog-post.html">
+                 <a href="{{ route('mobilePostShow', $post->slug) }}">
                      <div class="blog-card">
                          <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged"
                          style="width:100%; height:200px; object-fit:cover;">

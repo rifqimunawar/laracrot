@@ -49,7 +49,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'rifqimunawar48@gmail.com',
                 'password' => '$2y$10$qJCtePxsBRjheUEjoKD2DeDHH9T/TIO0l39OFKvZQche1wdPgMyXO',
                 'email_verified_at' => '2023-07-12 10:44:39',
-                'remember_token' => 'GxRIBhgjU2VTQgYPVJezTuoPAlEB6pxou9oef1HyiJyvvgBuEvzCEFIfwXEv',
+                'remember_token' => '-',
                 'created_at' => '2023-07-12 10:44:39',
                 'updated_at' => '2023-07-12 10:44:39',
                 'centang' => '1',

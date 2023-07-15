@@ -55,7 +55,7 @@
           </div>
 
           <div>
-              <a href="#" class="btn btn-block btn-primary btn-lg">Nu Online</a>
+              <a href="#" class="btn btn-block btn-primary btn-lg mb-3">Nu Online</a>
           </div>
 
           <div class="row">

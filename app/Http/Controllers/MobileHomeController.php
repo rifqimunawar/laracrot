@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\HBN;
 use App\Models\Post;
 use App\Models\User;
 use Inertia\Inertia;
+use App\Models\Agenda;
 use App\Models\Galeri;
 use App\Models\Perpus;
 use Illuminate\Http\Request;
@@ -58,6 +60,10 @@ class MobileHomeController extends Controller
   $books = Perpus::with('categorybooks')->latest()->get();
   // dd($books);
   return view('mobile.book.index', compact('books'));
+ }
+ public function bookShow($id, Request $request) {
+  $books = Perpus::find($id);
+  return view('mobile.book.show', compact('books'));
  }
  
  public function galery() {
@@ -144,7 +150,10 @@ class MobileHomeController extends Controller
   return "upload";
  }
  public function calender() {
-  return "calender";
+  $hbns = HBN::latest()->take(5)->get();
+  $events = Agenda::all();
+// ddd($events);
+  return view('mobile.calender.index', compact('events', 'hbns'));
  }
  
  public function profile() {
