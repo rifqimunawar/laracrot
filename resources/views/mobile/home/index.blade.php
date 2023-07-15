@@ -49,7 +49,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="" data-bs-toggle="modal" data-bs-target="#exchangeActionSheet">
+                      <a href="{{ route('mobileCalender') }}">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="calendar-number-outline"></ion-icon>
                           </div>

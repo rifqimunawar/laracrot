@@ -32,7 +32,7 @@
         </div>
     </div>
 </a>
-<a href="{{ route('calender') }}" class="item" {{ request()->is('mobile/calender*') ? ' active' : '' }} ">
+<a href="{{ route('mobileCalender') }}" class="item" {{ request()->is('mobile/calender*') ? ' active' : '' }} ">
     <div class="col">
         <ion-icon name="calendar-outline"></ion-icon>
         {{-- <strong>Item 4</strong> --}}

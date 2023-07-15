@@ -28,10 +28,10 @@ Route::prefix('mobile')->group(function () {
   Route::get('/search', [MobileHomeController::class, 'search'])->name('search');
   Route::get('/book', [MobileHomeController::class, 'book'])->name('mobileBook');
   Route::get('/galery', [MobileHomeController::class, 'galery'])->name('mobileGalery');
+  Route::get('/calender', [MobileHomeController::class, 'calender'])->name('mobileCalender');
   Route::get('/post', [MobileHomeController::class, 'post'])->name('mobilePost');
   Route::get('/post/details/{slug}', [MobileHomeController::class, 'show'])->name('mobilePostShow');
   Route::get('/post/nuOnline/details/{slug}', [MobileHomeController::class, 'nuShow'])->name('nuShow');
-  Route::get('/calender', [MobileHomeController::class, 'calender'])->name('calender');
  });
 
  Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
