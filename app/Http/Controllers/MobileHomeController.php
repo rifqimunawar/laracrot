@@ -61,6 +61,10 @@ class MobileHomeController extends Controller
   // dd($books);
   return view('mobile.book.index', compact('books'));
  }
+ public function bookShow($id, Request $request) {
+  $books = Perpus::find($id);
+  return view('mobile.book.show', compact('books'));
+ }
  
  public function galery() {
   $galeries = Galeri::with('user')->where('status', 1)->latest()->get();

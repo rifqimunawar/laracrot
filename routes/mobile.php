@@ -27,6 +27,7 @@ Route::prefix('mobile')->group(function () {
   Route::get('/', [MobileHomeController::class, 'homepage'])->name('homepage');
   Route::get('/search', [MobileHomeController::class, 'search'])->name('search');
   Route::get('/book', [MobileHomeController::class, 'book'])->name('mobileBook');
+  Route::get('/bookShow/{id}', [MobileHomeController::class, 'bookShow'])->name('mobileBookShow');
   Route::get('/galery', [MobileHomeController::class, 'galery'])->name('mobileGalery');
   Route::get('/calender', [MobileHomeController::class, 'calender'])->name('mobileCalender');
   Route::get('/post', [MobileHomeController::class, 'post'])->name('mobilePost');

@@ -660,7 +660,7 @@
                    @foreach ($posts as $post)
                        
                       <li class="splide__slide">
-                          <a href="app-blog-post.html">
+                          <a href="{{ route('mobilePostShow', $post->slug) }}">
                            <div class="blog-card">
                             <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged" style="width:100%; height:200px; object-fit:cover;">
                             <div class="text">
