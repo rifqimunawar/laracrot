@@ -109,14 +109,21 @@ class MobileHomeController extends Controller
         $category = $post['category'];
     
         $full = $post['image']['full'];
-        $author = $post['author'][1]['name'];
+         
+        // Check if 'author' array and index 1 exist before accessing it
+        $author = isset($post['author'][1]['name']) ? $post['author'][1]['name'] : '';
 
         
         $date = $post['date']['published'];
+        
+        $trending = Post::with('category', 'user')
+            ->where('active', '1')
+            ->orderBy('views', 'desc')
+            ->paginate(4);
 
-        dd($post);
+        // dd($post);
         return view("mobile.post.showNu", compact(
-         'slug', 'on_page', 'id', 'title', 'url', 'preview', 'category', 'full', 'author', 'date', 'user'
+         'post', 'trending', 'id', 'title', 'url', 'preview', 'category', 'full', 'author', 'date',
      ));
  }
 
