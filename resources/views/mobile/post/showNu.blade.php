@@ -30,7 +30,7 @@
           {{ $title }}
          </h1>
          <figure>
-             <img src="{{ $nuonline['image']['thumbnail'] }}" alt="image" class="imaged img-fluid">
+             <img src="{{ $full }}" alt="image" class="imaged img-fluid">
          </figure>
          <div class="blog-header-info mt-2 mb-2">
              <div>
@@ -61,7 +61,7 @@
           @foreach ($trending as $post)
               
           <div class="col-6 mb-2">
-                 <a href="app-blog-post.html">
+                 <a href="{{ route('mobilePostShow', $post->slug) }}">
                      <div class="blog-card">
                          <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged"
                          style="width:100%; height:200px; object-fit:cover;">
