@@ -149,4 +149,8 @@ class MobileHomeController extends Controller
  public function profile() {
   return view('mobile.profile.index');
  }
+ public function KaderProfile($slug, Request $request) {
+  $users = User::find($slug);
+  return ;
+ }
 }

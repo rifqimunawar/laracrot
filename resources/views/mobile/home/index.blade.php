@@ -316,7 +316,7 @@
               <!-- item -->
               
               @foreach ($users as $user)
-              <a href="app-transaction-detail.html" class="item">
+              <a href="{{ route('KaderProfile', $user->slug) }}" class="item">
                   <div class="detail">
                       <img src="{{ asset('storage/img/' . $user->img) }}" 
                       alt="img" class="image-block imaged w48" 
