@@ -17,18 +17,6 @@ class MobileHomeController extends Controller
 {
  public function homepage()
  {
-     // $users = User::with('rayon')->latest()->paginate(5);
-     // $galeries = Galeri::with('user')->where('status', 1)->latest()->get();
- 
-     // // dd($galeries);
-     // return Inertia::render('Homepage', [
-     //     'totalMapaba' => User::whereIn('kaderisasi', ['Mapaba', 'PKD', 'PKL', 'PKN'])->count(),
-     //     'totalPKD' => User::whereIn('kaderisasi', ['PKD', 'PKL', 'PKN'])->count(),
-     //     'totalPKL' => User::whereIn('kaderisasi', ['PKL', 'PKN'])->count(),
-     //     'totalPKN' => User::whereIn('kaderisasi', ['PKN'])->count(),
-     //     'users' => $users,
-     //     'galeries' => $galeries,
-     // ]);
      $user_pkn = User::where('kaderisasi', 'PKN')->count(); //total pengguna yang sudah pkn
      $user_pkl = User::whereIn('kaderisasi', ['PKL', 'PKN'])->count(); //total pkl
      $user_pkd = User::whereIn('kaderisasi', ['PKD', 'PKL', 'PKN'])->count(); //total pkd
@@ -106,8 +94,6 @@ class MobileHomeController extends Controller
 
  function nuShow($slug, Request $request)
     {
-        // {{ route('post', ['slug' => $nuonline['slug']]) }}
-    
         $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
     
         $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5' . $on_page);
@@ -128,14 +114,11 @@ class MobileHomeController extends Controller
         
         $date = $post['date']['published'];
 
+        dd($post);
         return view("mobile.post.showNu", compact(
-            'post', 'user',
-            'full', 'title',
-            'preview', 'url',
-            'category', 'date',
-            // 'author', 'author',
-        ));
-       }
+         'slug', 'on_page', 'id', 'title', 'url', 'preview', 'category', 'full', 'author', 'date', 'user'
+     ));
+ }
 
 
 
