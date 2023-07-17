@@ -79,8 +79,8 @@
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Download Now</h4>
-            <p>Download dan install aplikasi PMII Uninus di Play Store</p>
-            <a href="https://play.google.com/store/apps">
+            <p>Download dan install aplikasi PMII Uninus di Sekarang!</p>
+            <a href="mobile_assets/PMII Uninus 1_1.2.apk" download type="button">
               <img style="width: 280px" src="{{ asset('storage/home/ps.png') }}" alt="logo playstore">
             </a>
           </div>

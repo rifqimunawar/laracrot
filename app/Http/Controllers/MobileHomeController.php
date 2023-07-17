@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\HBN;
+use App\Models\Tag;
 use App\Models\Post;
 use App\Models\User;
 use Inertia\Inertia;
 use App\Models\Agenda;
 use App\Models\Galeri;
 use App\Models\Perpus;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 
 class MobileHomeController extends Controller
@@ -146,8 +149,48 @@ class MobileHomeController extends Controller
   return view('mobile.calender.index', compact('events', 'hbns'));
  }
  
- public function profile() {
-  return view('mobile.profile.index');
+ public function profile(Request $request) {
+  
+  {
+    $profile = Auth::user();
+    $profileposts = Post::where('user_id', '=', $profile->id)
+                        ->with('category', 'comments', 'user')
+                        ->where('active', 1)
+                        ->orderBy('created_at', 'desc')
+                        ->get();
+    $profilegaleri = Galeri::where('user_id', $profile->id)
+                        ->where('status', 1)
+                        ->get();
+    $profileperpus = Perpus::where('user_id', $profile->id)
+                        ->get();
+    // menghitung jumlah postingan gambar dan buku yang di upload users 
+    $countpost = Post::where('user_id', '=', $profile->id)
+                      ->where('active', 1)
+                      ->count();
+    $countgaleri = Galeri::where('user_id', '=', $profile->id)
+                      ->where('status', 1)
+                      ->count();
+    $countperpus = Perpus::where('user_id', '=', $profile->id)
+                      ->count();
+
+  
+      $categories = Category::pluck('title', 'id')->all();
+      $tags = Tag::pluck('title', 'id')->all();
+      $user=Auth::user();
+      // dd($profilegaleri);
+      return view('mobile.profile.index', compact(
+        'tags', 
+        'user', 
+        'profile', 
+        'countpost',
+        'categories',
+        'countgaleri',
+        'countperpus',
+        'profileposts', 
+        'profilegaleri',
+        'profileperpus',
+      ));
+  }
  }
  public function KaderProfile($slug, Request $request) {
   $users = User::find($slug);

@@ -30,7 +30,9 @@
      <div class="section mt-3 text-center">
          <div class="avatar-section">
              <a href="#">
-                 <img src="assets/img/sample/avatar/avatar1.jpg" alt="avatar" class="imaged w100 rounded">
+                 <img src="{{ asset('storage/img/' . $user->img) }}" 
+                 alt="img" class="image-block imaged" 
+                 style="width:100px; height:100px; object-fit:cover; border-radius:50%">
                  <span class="button">
                      <ion-icon name="camera-outline"></ion-icon>
                  </span>
@@ -55,7 +57,7 @@
          </li>
      </ul>
 
-     <div class="listview-title mt-1">Notifications</div>
+     {{-- <div class="listview-title mt-1">Notifications</div>
      <ul class="listview image-listview text inset">
          <li>
              <div class="item">
@@ -81,7 +83,7 @@
                  </div>
              </a>
          </li>
-     </ul>
+     </ul> --}}
 
      <div class="listview-title mt-1">Profile Settings</div>
      <ul class="listview image-listview text inset">
