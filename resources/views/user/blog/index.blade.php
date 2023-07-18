@@ -210,7 +210,7 @@
         </div>
 
         <!-- Nu-Online Start -->
-        {{-- <div class="container-fluid my-3">
+         <div class="container-fluid my-3">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -245,7 +245,7 @@
                     @endforeach
                 </div>
             </div>
-        </div> --}}
+        </div> 
         <!-- Nu-Online Start -->
 
     </div>
