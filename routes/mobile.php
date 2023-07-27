@@ -33,7 +33,7 @@ Route::prefix('mobile')->group(function () {
   Route::get('/post', [MobileHomeController::class, 'post'])->name('mobilePost');
   Route::get('/post/details/{slug}', [MobileHomeController::class, 'show'])->name('mobilePostShow');
   Route::get('/post/nuOnline/details/{slug}', [MobileHomeController::class, 'nuShow'])->name('nuShow');
-  Route::get('mobile/kader/profile/{slug}', [MobileHomeController::class, 'KaderProfile'])->name('KaderProfile')->middleware(['auth']);
+  Route::get('/kader/profile/{slug}', [MobileHomeController::class, 'KaderProfile'])->name('KaderProfile')->middleware(['auth']);
  });
 
  Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
