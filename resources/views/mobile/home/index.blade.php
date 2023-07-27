@@ -316,7 +316,7 @@
               <!-- item -->
               
               @foreach ($users as $user)
-              <a href="{{ route('KaderProfile', $user->slug) }}" class="item">
+              <a href="mobile/kader/profile/{{ $user->slug }}" class="item">
                   <div class="detail">
                       <img src="{{ asset('storage/img/' . $user->img) }}" 
                       alt="img" class="image-block imaged w48" 
