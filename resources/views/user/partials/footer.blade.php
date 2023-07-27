@@ -45,7 +45,7 @@
           <div class="col-lg-3 col-md-6 footer-info">
             <h3>PMII <span> UNINUS</span></h3>
             <p>Pergerakan Mahasiswa Islam Indonesia (PMII) adalah organisasi mahasiswa Islam terbesar 
-              dan tertua di Indonesia. PMII didirikan pada tanggal 17 Februari 1961 di Yogyakarta</p>
+              dan tertua di Indonesia. PMII didirikan pada tanggal 17 April 1960 di Surabaya</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
