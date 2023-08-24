@@ -65,7 +65,7 @@
               Jl. Soekarno Hatta No.530, <br>
               Sekejati, Kec. Buahbatu,<br>
               Kota Bandung, Jawa Barat 40286 <br>
-              <strong>Phone:</strong> +62 838-2949-5619<br>
+              <strong>Phone:</strong> 083822751029<br>
               <strong>Email:</strong> pkpmiiuninus.official@gmail.com<br>
             </p>
 
