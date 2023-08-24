@@ -45,6 +45,7 @@
                         <td>{{ $item->kaderisasi}}</td>
                         <td class="text-center">
                           <form action="">
+                           <a href="/admin/user/{{ $item->id }}/details" class="btn btn-success btn-sm">Detail</a>
                             <a href="/profile/{{ $item->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                             <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                           </form>

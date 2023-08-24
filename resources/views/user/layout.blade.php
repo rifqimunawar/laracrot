@@ -94,13 +94,12 @@
 
 
 
-    <section>
+    {{-- <section>
       <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header text-center">
                     <h5 class="modal-title text-center" >SENSUS ANGGOTA</h5>
-                    {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
                 </div>
                 <div class="modal-body">
                   <p>Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII UNINUS.</p>
@@ -111,7 +110,7 @@
             </div>
         </div>
     </div>
-    </section>
+    </section> --}}
 
 
 

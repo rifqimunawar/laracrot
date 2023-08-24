@@ -19,7 +19,7 @@
           <span>Home</span>
         </a>
       </li><!-- End Profile Page Nav -->
-
+{{-- 
       @auth 
         @if (in_array(auth()->user()->role_id, [1]))
           <li class="nav-item">
@@ -29,7 +29,7 @@
             </a>
           </li><!-- End Profile Page Nav -->
         @endif
-      @endauth
+      @endauth --}}
 
       @auth 
           @if (in_array(auth()->user()->role_id, [1, 2]))
@@ -180,16 +180,16 @@
               <i class="bi bi-circle"></i><span>Kader PKN</span>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="/admin/unverification/">
               <i class="bi bi-circle"></i><span>Kader Belum diverifikasi</span>
             </a>
-          </li>
-          <li>
+          </li> --}}
+          {{-- <li>
             <a href="/admin/bukankader/">
               <i class="bi bi-circle"></i><span>Kader Tidak Lulus sensor</span>
             </a>
-          </li>
+          </li> --}}
           {{-- <li>
             <a href="components-list-group.html">
               <i class="bi bi-circle"></i><span>List group</span>

@@ -59,8 +59,8 @@ class LoginController extends Controller
     
       if ($user) {
         if ($user->email) {
-          Alert::info('Sahabat GOBLOK!!!', 
-          'Anda Sudah Memiliki Akun, Tinggal Login Saja. Anjing!!!');
+          Alert::info('Anda Sudah Punya Akun!', 
+          'Anda Sudah Memiliki Akun, Tinggal Login Saja');
           return redirect()->route('login');
         } else {
           // dd($user); sampai sini sudah benar
