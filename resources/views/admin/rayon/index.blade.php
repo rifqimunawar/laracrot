@@ -38,6 +38,7 @@
                     </td>
                     <td class="text-center">
                       <form action="">
+                       <a href="/admin/user/{{ $kdr->id }}/details" class="btn btn-success btn-sm">Detail</a>
                         <a href="{{ route('user.rayon.list', $kdr->slug) }}" class="btn btn-secondary btn-sm">Kader</a>
                         @if (in_array(auth()->user()->role_id, [1]))
                           <a href="/admin/rayon/{{ $kdr->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
