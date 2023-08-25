@@ -45,7 +45,7 @@
           <div class="col-lg-3 col-md-6 footer-info">
             <h3>PMII <span> UNINUS</span></h3>
             <p>Pergerakan Mahasiswa Islam Indonesia (PMII) adalah organisasi mahasiswa Islam terbesar 
-              dan tertua di Indonesia. PMII didirikan pada tanggal 17 April 1960 di Surabaya</p>
+              dan tertua di Indonesia. PMII didirikan pada tanggal 17 Februari 1961 di Yogyakarta</p>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
@@ -79,8 +79,8 @@
 
           <div class="col-lg-3 col-md-6 footer-newsletter">
             <h4>Download Now</h4>
-            <p>Download dan install aplikasi PMII Uninus di Sekarang!</p>
-            <a href="mobile_assets/PMII Uninus 1_1.2.apk" download type="button">
+            <p>Download dan install aplikasi PMII Uninus di Play Store</p>
+            <a href="https://play.google.com/store/apps">
               <img style="width: 280px" src="{{ asset('storage/home/ps.png') }}" alt="logo playstore">
             </a>
           </div>
@@ -91,7 +91,7 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong>PMII Komi Uninus</strong>. All Rights Reserved
+        &copy; Copyright <strong>PMII Komi UNINUS</strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!--

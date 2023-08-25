@@ -88,7 +88,7 @@ Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
 Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
-Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
+Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details');
 
 
 // =====================================================
@@ -101,7 +101,6 @@ Route::get('/register/{user}', [LoginController::class, 'register'])->name('regi
 Route::put('/register/store/{id}', [LoginController::class, 'store'])->name('store');
 Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('//mobilelogout', [LoginController::class, 'mobilelogout'])->name('mobilelogout');
 
 
 
@@ -133,12 +132,12 @@ Route::post('/reset-password', [ForgetPasswordControler::class, 'resetPassword']
 
 
 
+
 // =====================================================
 // Route Auth Pengunjung Kader Admin, Superadmin =======
 // -----------------------------------------------------
 Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
   Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
-  Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
   Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);

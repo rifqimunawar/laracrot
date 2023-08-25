@@ -924,7 +924,7 @@ section {
 /* Facts Section
 --------------------------------*/
 #facts {
-    background: url("../storage/img/harlah.jpg") center top no-repeat fixed;
+    background: url("../img/facts-bg.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 60px 0 0 0;
     position: relative;

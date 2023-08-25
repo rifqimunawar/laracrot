@@ -25,7 +25,7 @@
               <!-- Wallet Footer -->
               <div class="wallet-footer">
                   <div class="item">
-                      <a href="{{ route('mobileBook') }}">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#withdrawActionSheet">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="book-outline"></ion-icon>
                           </div>
@@ -33,7 +33,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="{{ route('mobileGalery') }}">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#sendActionSheet">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="images-outline"></ion-icon>
                           </div>
@@ -41,7 +41,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="{{ route('mobilePost') }}">
+                      <a href="app-cards.html">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="newspaper-outline"></ion-icon>
                           </div>
@@ -49,7 +49,7 @@
                       </a>
                   </div>
                   <div class="item">
-                      <a href="{{ route('mobileCalender') }}">
+                      <a href="#" data-bs-toggle="modal" data-bs-target="#exchangeActionSheet">
                           <div class="icon-wrapper bg-success">
                               <ion-icon name="calendar-number-outline"></ion-icon>
                           </div>
@@ -316,7 +316,7 @@
               <!-- item -->
               
               @foreach ($users as $user)
-              <a href="mobile/kader/profile/{{ $user->slug }}" class="item">
+              <a href="app-transaction-detail.html" class="item">
                   <div class="detail">
                       <img src="{{ asset('storage/img/' . $user->img) }}" 
                       alt="img" class="image-block imaged w48" 
@@ -660,7 +660,7 @@
                    @foreach ($posts as $post)
                        
                       <li class="splide__slide">
-                          <a href="{{ route('mobilePostShow', $post->slug) }}">
+                          <a href="app-blog-post.html">
                            <div class="blog-card">
                             <img src="{{ asset('storage/img/' . $post->image) }}" alt="image" class="imaged" style="width:100%; height:200px; object-fit:cover;">
                             <div class="text">

@@ -5,6 +5,14 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+           
+     <li class="nav-item">
+      <a class="nav-link collapsed" href="/">
+        <i class="bi bi-house-door"></i>
+        <span>Home</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+
       <li class="nav-item">
         <a class="nav-link {{ request()->is('/admin') ? ' active' : ' collapsed' }}"  href="/admin">
           <i class="bi bi-grid"></i>
@@ -12,35 +20,125 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/">
-          <i class="bi bi-house-door"></i>
-          <span>Home</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-{{-- 
-      @auth 
+      {{-- @auth 
         @if (in_array(auth()->user()->role_id, [1]))
           <li class="nav-item">
             <a class="nav-link {{ request()->is('admin/kader*') ? ' active' : ' collapsed' }}" href="/admin/kader">
               <i class="bi bi-person"></i>
               <span>Kader</span>
             </a>
-          </li><!-- End Profile Page Nav -->
+          </li>
         @endif
       @endauth --}}
 
-      @auth 
-          @if (in_array(auth()->user()->role_id, [1, 2]))
-          <li class="nav-item">
-            <a class="nav-link{{ request()->is('admin/rayon*') ? ' active' : ' collapsed' }}" href="/admin/rayon">
-              <i class="bi bi-exclude"></i>
-              <span>Rayon</span>
-            </a>
-          </li>          
-          @endif
-        @endauth
+              
+      <li class="nav-item">
+       <hr>
+     </li>
+
+      <li class="nav-item">
+       <a class="nav-link {{ request()->is('admin/user*') ? ' active' : ' collapsed' }}" href="/admin/user">
+         <i class="bi bi-people"></i>
+         <span>Kader</span>
+       </a>
+     </li><!-- End Profile Page Nav -->
+
+     <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-menu-button-wide"></i><span>Kaderisasi</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="/admin/kadermapaba/">
+            <i class="bi bi-circle"></i><span>Kader Mapaba</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/kaderpkd/">
+            <i class="bi bi-circle"></i><span>Kader PKD</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/kaderpkl/">
+            <i class="bi bi-circle"></i><span>Kader PKL</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/kaderpkn/">
+            <i class="bi bi-circle"></i><span>Kader PKN</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Components Nav -->
+
+    
+    @auth 
+    @if (in_array(auth()->user()->role_id, [1, 2]))
+    <li class="nav-item">
+      <a class="nav-link{{ request()->is('admin/rayon*') ? ' active' : ' collapsed' }}" href="/admin/rayon">
+        <i class="bi bi-exclude"></i>
+        <span>Rayon</span>
+      </a>
+    </li>          
+    @endif
+  @endauth
+
+
+  
+      <li class="nav-item">
+       <hr>
+     </li>
+
+     
+     <li class="nav-item">
+      <a class="nav-link {{ request()->is('admin/galeri*') ? ' active' : ' collapsed' }}" href="/admin/galeri">
+        <i class="bi bi-images"></i>
+        <span>Galeri</span>
+      </a>
+    </li><!-- End Profile Page Nav -->
+
+          
+    <li class="nav-item">
+     <a class="nav-link {{ request()->is('admin/perpus*') ? ' active' : ' collapsed' }}" data-bs-target="#tables-books" data-bs-toggle="collapse" href="#">
+       <i class="bi bi-book-half"></i></i><span>Perpustkaan</span><i class="bi bi-chevron-down ms-auto"></i>
+     </a>
+     <ul id="tables-books" class="nav-content collapse " data-bs-parent="#tables-books">
+       <li>
+         <a href="/admin/categorybooks/">
+           <i class="bi bi-circle"></i><span>Category</span>
+         </a>
+       </li>
+       <li>
+         <a href="/admin/perpus">
+           <i class="bi bi-circle"></i><span>Books</span>
+         </a>
+       </li>
+     </ul>
+   </li><!-- End Tables Nav -->
+
+   <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+      <i class="bi bi-layout-text-window-reverse"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+        <a href="/admin/post">
+          <i class="bi bi-circle"></i><span>List Blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="/admin/post/category">
+          <i class="bi bi-circle"></i><span>Category Blog</span>
+        </a>
+      </li>
+      <li>
+        <a href="/admin/post/tag">
+          <i class="bi bi-circle"></i><span>Tag</span>
+        </a>
+      </li>
+    </ul>
+  </li><!-- End Tables Nav -->
+
       <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/calendar*') ? ' active' : ' collapsed' }}" href="/admin/calendar">
           <i class="bi bi-calendar-date"></i>
@@ -55,46 +153,11 @@
       </a>
       </li><!-- End Profile Page Nav -->
 
-      
-      <li class="nav-item">
-        <a class="nav-link {{ request()->is('admin/user*') ? ' active' : ' collapsed' }}" href="/admin/user">
-          <i class="bi bi-people"></i>
-          <span>Kader</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
+      <li>
+       <hr>
+      </li>
 
-      <li class="nav-item">
-        <a class="nav-link {{ request()->is('admin/galeri*') ? ' active' : ' collapsed' }}" href="/admin/galeri">
-          <i class="bi bi-images"></i>
-          <span>Galeri</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
-        <a class="nav-link {{ request()->is('admin/administrator*') ? ' active' : ' collapsed' }}" href="/admin/administrator">
-          <i class="bi bi-people"></i>
-          <span>Admin</span>
-        </a>
-      </li><!-- End Profile Page Nav -->
-
-      
-      <li class="nav-item">
-        <a class="nav-link {{ request()->is('admin/perpus*') ? ' active' : ' collapsed' }}" data-bs-target="#tables-books" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-book-half"></i></i><span>Perpustkaan</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-books" class="nav-content collapse " data-bs-parent="#tables-books">
-          <li>
-            <a href="/admin/categorybooks/">
-              <i class="bi bi-circle"></i><span>Category</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/perpus">
-              <i class="bi bi-circle"></i><span>Books</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/perpus*') ? ' active' : ' collapsed' }}" href="/admin/perpus">
@@ -106,6 +169,14 @@
 
       @auth 
       @if (in_array(auth()->user()->role_id, [1]))
+
+      <li class="nav-item">
+       <a class="nav-link {{ request()->is('admin/administrator*') ? ' active' : ' collapsed' }}" href="/admin/administrator">
+         <i class="bi bi-people"></i>
+         <span>Admin</span>
+       </a>
+     </li><!-- End Profile Page Nav -->
+
       <li class="nav-item">
         <a class="nav-link {{ request()->is('admin/page*') ? ' active' : ' collapsed' }}" href="/admin/page">
           <i class="bi bi-menu-button-wide"></i><span>Pages</span></i>
@@ -129,104 +200,14 @@
           @endif
         @endauth
 
+        <li>
+         <div>
+          <a class="dropdown-item d-flex align-items-center" href="/logout">
+           <i class="bi bi-box-arrow-right btn btn-success m-4"><span>Logout</span></i>
+         </a>
+         </div>
+        </li>
 
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/admin/post">
-              <i class="bi bi-circle"></i><span>List Blog</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/post/category">
-              <i class="bi bi-circle"></i><span>Category Blog</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/post/tag">
-              <i class="bi bi-circle"></i><span>Tag</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Tables Nav -->
-
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Kader</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/admin/kadermapaba/">
-              <i class="bi bi-circle"></i><span>Kader Mapaba</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/kaderpkd/">
-              <i class="bi bi-circle"></i><span>Kader PKD</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/kaderpkl/">
-              <i class="bi bi-circle"></i><span>Kader PKL</span>
-            </a>
-          </li>
-          <li>
-            <a href="/admin/kaderpkn/">
-              <i class="bi bi-circle"></i><span>Kader PKN</span>
-            </a>
-          </li>
-          {{-- <li>
-            <a href="/admin/unverification/">
-              <i class="bi bi-circle"></i><span>Kader Belum diverifikasi</span>
-            </a>
-          </li> --}}
-          {{-- <li>
-            <a href="/admin/bukankader/">
-              <i class="bi bi-circle"></i><span>Kader Tidak Lulus sensor</span>
-            </a>
-          </li> --}}
-          {{-- <li>
-            <a href="components-list-group.html">
-              <i class="bi bi-circle"></i><span>List group</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-modal.html">
-              <i class="bi bi-circle"></i><span>Modal</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-tabs.html">
-              <i class="bi bi-circle"></i><span>Tabs</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-pagination.html">
-              <i class="bi bi-circle"></i><span>Pagination</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-progress.html">
-              <i class="bi bi-circle"></i><span>Progress</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-spinners.html">
-              <i class="bi bi-circle"></i><span>Spinners</span>
-            </a>
-          </li>
-          <li>
-            <a href="components-tooltips.html">
-              <i class="bi bi-circle"></i><span>Tooltips</span>
-            </a>
-          </li> --}}
-        </ul>
-      </li><!-- End Components Nav -->
 {{-- 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

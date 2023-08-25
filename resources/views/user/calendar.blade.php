@@ -14,6 +14,31 @@
     </div>
 
     <div class="text-center my-5 pt-3" data-aos="fade-up">
+     <h1 class="pt-5">Agenda Kegiatan</h1>
+   </div>
+   <div class="container pt-2 pb-4 mb-4" data-aos="fade-up">
+     <div class="card info-card sales-card" style="box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);">
+     <table class="table table-hover">
+       <tr>
+           <th class="text-center">No</th>
+           <th class="text-start">Nama Kegiatan</th>
+           <th class="text-start">Penyelenggara</th>
+           <th class="text-center">Waktu</th>
+       </tr>
+       @foreach ($events->take(7) as $event)
+         <tr>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $event->title }}</td>
+          <td>{{ $event->penyelenggara }}</td>
+          <td>{{ date('l, d F Y', strtotime($event->start)) }}</td>
+       </tr>
+       @endforeach
+   </table>
+   </div>
+ </div>
+
+
+    <div class="text-center my-5 pt-3" data-aos="fade-up">
       <h1 class="pt-5">Hari Besar Nasional</h1>
     </div>
     <div class="container pt-2 pb-4 mb-4" data-aos="fade-up">
@@ -29,7 +54,7 @@
           <tr>
             <td class="text-center">{{ $loop->iteration }}</td>
             <td>{{ $hbn->title }}</td>
-            <td>{{ date('Y-m-d', strtotime($hbn->date)) }}</td>
+            <td>{{ date('l, d F Y', strtotime($hbn->date)) }}</td>
             <td class="text-center">
                 <div id="countdown-{{ $loop->iteration }}"></div>
             </td>

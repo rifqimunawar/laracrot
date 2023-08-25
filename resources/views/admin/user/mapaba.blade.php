@@ -22,9 +22,9 @@
                 <td class="text-center">
                   <img class="rouded-circle" style="width: 40px; height: 40px; object-fit:cover" src="{{ asset('storage/img/' . $kader->img ) }}" alt="profile">
                 </td>
-                
                 <td class="text-center">
                  <a href="/admin/user/{{ $kader->id }}/details" class="btn btn-success btn-sm">Detail</a>
+                  <a href="/profile/{{ $kader->slug }}" class="btn btn-warning btn-sm">Profile</a>
                 </td>
             </tr>
             @endforeach
