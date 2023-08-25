@@ -24,7 +24,7 @@
                 
                 <div class="mb-3">
                     <label class="form-label">Gambar Saat Ini</label>
-                    <img src="{{ asset('storage/home/'.$pages['gambar']) }}" class="img-thumbnail" width="3000" >
+                    <img src="{{ asset('storage/img/'.$pages['gambar']) }}" class="img-thumbnail" width="3000" >
                 </div>
             
                 <div class="mb-3">
