@@ -13,9 +13,9 @@ class AgendaController extends Controller
 {
   public function index()
   {
-      $hbns = HBN::latest()->take(5)->get();
+      $hbns = HBN::latest()->take(20)->get();
       $user=Auth::user();
-      $events = Agenda::all();
+      $events = Agenda::latest()->get();
     // ddd($events);
       return view('user.calendar', compact('events', 'user', 'hbns'));
   }

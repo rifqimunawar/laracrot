@@ -25,7 +25,7 @@
            <th class="text-start">Penyelenggara</th>
            <th class="text-center">Waktu</th>
        </tr>
-       @foreach ($events->take(7) as $event)
+       @foreach ($events->take(20) as $event)
          <tr>
           <td>{{ $loop->iteration }}</td>
           <td>{{ $event->title }}</td>
