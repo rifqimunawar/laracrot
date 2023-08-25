@@ -25,7 +25,7 @@
         {{-- <strong>Item 2</strong> --}}
     </div>
 </a>
-<a href="{{ route('upload') }}" class="item">
+<a href="" class="item">
     <div class="col">
         <div class="action-button large">
             <ion-icon name="arrow-up-outline"></ion-icon>

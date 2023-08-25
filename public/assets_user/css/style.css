@@ -454,12 +454,12 @@ h6 {
 }
 
 #hero .container {
-    text-align: center;
+    text-align: start;
 }
 
 #hero h2 {
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 2px;
     font-size: 36px;
     font-weight: 700;
 }
@@ -928,7 +928,7 @@ section {
 /* Facts Section
 --------------------------------*/
 #facts {
-    background: url("../img/facts-bg.jpg") center top no-repeat fixed;
+    background: url("../img/harlah.jpg") center top no-repeat fixed;
     background-size: cover;
     padding: 60px 0 0 0;
     position: relative;
