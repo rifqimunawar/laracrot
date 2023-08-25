@@ -14,7 +14,7 @@
           <div class="carousel-item active" style="background-image: url({{ asset('storage/home/homepage.jpg') }});">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Selamat Datang <br>Mahasiswa Baru </h2>
+                <h2 class="animate__animated animate__fadeInDown">Selamat Datang <br> Di Website PMII Uninus </h2>
                 {{-- <p class="animate__animated animate__fadeInUp">Selamat Datang Di Website Resmi Pergerakan Mahasiswa Islam Indonesia 
                   Komisariat Universitas Islam Nusantara Cabang Kota Bandung, Mari Bergabung Bersama Kami! <br> Bersama PMII Membangun 
                   Indonesia Yang Maju dan Sejahtera Cmiww.....

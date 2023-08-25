@@ -414,6 +414,10 @@ h6 {
     #hero {
         height: 150vh;
     }
+    #hero .btn-get-started {
+     padding: 2px 8px;
+     margin-bottom: 1rem;
+   }
 }
 
 #hero .carousel,
@@ -466,11 +470,11 @@ h6 {
     height: 13rem;
   }
     #hero h2 {
-        font-size: 24px;
+        font-size: 16px;
     }
   #hero .btn-get-started {
-    padding: 4px 16px;
-    margin-bottom: 3rem;
+    padding: 2px 8px;
+    margin-bottom: 1rem;
   }
 }
 

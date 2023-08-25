@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('judul', 35);
             $table->string('deskripsi', 35);
-            $table->string('link', 55);
+            $table->string('link');
             $table->string('gambar', 55);
             $table->timestamps();
         });
