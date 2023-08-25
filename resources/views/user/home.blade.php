@@ -99,7 +99,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>PMII Dalam Data</h3>
+          <h3>PMII Dalam Angka</h3>
           <p>Data Kader PMII UNINUS </p>
         </header>
 
