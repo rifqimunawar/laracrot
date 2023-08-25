@@ -2,6 +2,42 @@
 @extends('.admin.layout')
 @section('content')
 
+
+
+{{-- MODAL SENSUS --}}
+  {{-- <div id="myModal" class="modal fade">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content">
+              <div class="modal-header text-center">
+                  <h5 class="modal-title text-center">SENSUS ANGGOTA</h5>
+                  {{-- <button type="button" class="close" data-dismiss="modal">&times;</button> --}}
+              {{-- </div>
+              <div >
+                  <p>Pastikan Anda Sudah Di Daftarkan Oleh Rayon Anda Sebagai Anggota Kader PMII
+                      UNINUS.</p>
+                  <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+                  <a href="{{ route('create.user') }}" class="btn btn-success mt-3 mb-2"
+                      style="width: 100%">Daftarkan Kader Sekarang !</a>
+              </div>
+          </div>
+      </div>
+  </div> --}}
+{{-- END MODAL SENSUS --}}
+
+{{-- JS MODAL SENSUS --}}
+{{-- <script>
+$(document).ready(function () {
+  $("#myModal").modal('show');
+});
+</script> --}}
+{{-- END JS MODAL SENSUS --}}
+
+{{-- <div >
+  <img style="width: 100%" src="{{ asset('storage/img/sensus.png') }}" alt="">
+  <a href="{{ route('create.user') }}" class="btn btn-danger mt-3 mb-2"
+      style="width: 100%">Daftarkan Kader Sekarang !</a>
+</div> --}}
+
         <!-- Left side columns -->
           <div class="row">
 
@@ -166,6 +202,23 @@
 
               </div>
             </div><!-- End Reports -->
+
+            <!-- Top Kader belum diverifikasi -->
+            <div class="col-12">
+              <div class="card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
 
             <!-- Top Gamber belum diverifikasi -->
             <div class="col-12">

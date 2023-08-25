@@ -14,7 +14,7 @@
           <div class="carousel-item active" style="background-image: url({{ asset('storage/home/homepage.jpg') }});">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">Selamat Datang <br> Mahasiswa Baru</h2>
+                <h2 class="animate__animated animate__fadeInDown">Selamat Datang <br>Mahasiswa Baru </h2>
                 {{-- <p class="animate__animated animate__fadeInUp">Selamat Datang Di Website Resmi Pergerakan Mahasiswa Islam Indonesia 
                   Komisariat Universitas Islam Nusantara Cabang Kota Bandung, Mari Bergabung Bersama Kami! <br> Bersama PMII Membangun 
                   Indonesia Yang Maju dan Sejahtera Cmiww.....
@@ -29,7 +29,8 @@
             <div class="container position-absolute top-50 start-50 translate-middle">
               <h2 class="animate__animated animate__fadeInDown">{{ $hom['judul'] }}</h2>
               {{-- <p class="animate__animated animate__fadeInUp">{{ $hom['deskripsi'] }}</p> --}}
-              <a href="/login" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+              
+              <a href="{{ $hom->link }}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
             </div>
           </div>
         </div>
@@ -98,7 +99,7 @@
       <div class="container" data-aos="fade-up">
 
         <header class="section-header">
-          <h3>Facts</h3>
+          <h3>PMII Dalam Data</h3>
           <p>Data Kader PMII UNINUS </p>
         </header>
 
@@ -126,9 +127,9 @@
 
         </div>
 
-        {{-- <div class="facts-img">
-         <img src="storage/img/harlah.jpg" alt="" class="img-fluid">
-        </div> --}}
+        <div class="facts-img">
+          <img src="assets/img/facts-img.png" alt="" class="img-fluid">
+        </div>
 
       </div>
     </section><!-- End Facts Section -->

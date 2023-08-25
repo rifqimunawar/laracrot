@@ -120,7 +120,7 @@ class PostController extends Controller
     
         $on_page = is_null($request->get('page')) ? 2 : $request->get('page');
     
-        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=5' . $on_page);
+        $res = Http::get('https://nuonline.cms.nu.or.id/api/v3/articles?lang=id&limit=2' . $on_page);
     
         $data['users'] = $res->json()['data'];
     

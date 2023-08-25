@@ -59,7 +59,7 @@ class LoginController extends Controller
     
       if ($user) {
         if ($user->email) {
-          Alert::info('Anda Sudah Punya Akun!', 
+          Alert::info('NIM Sudah Terdaftar', 
           'Anda Sudah Memiliki Akun, Tinggal Login Saja');
           return redirect()->route('login');
         } else {
@@ -134,13 +134,6 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect ('/');
-    }
-    public function mobilelogout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect ('/mobile');
     }
 
 }

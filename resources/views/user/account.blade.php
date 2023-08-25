@@ -109,7 +109,8 @@
                       <div class="col-md-8 col-lg-9">
                         <img src="{{ asset('storage/img/' . $user->img ) }}" alt="Profile" style="height:200px">
                         <div class="pt-2">
-                          <div class="mb-3">
+                         <p class="text-danger">Maximal 4 MB <br> Format: jpg png jpeg </p>
+                         <div class="mb-3">
                             <div class="mb-3">
                               <label for="formFileSm" class="form-label"></label>
                               <input class="form-control form-control" id="formFileSm" type="file" name="img">
@@ -176,7 +177,8 @@
                       <label for="alamat" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="alamat" type="text" class="form-control" id="alamat" value="{{ $user->alamat }}" required>
-                      </div>
+                        <p class="text-danger"></p>
+                       </div>
                     </div>
 
                     <div class="row mb-3">
@@ -259,6 +261,7 @@
                     </div>
 
                     <div class="text-center">
+                     <p class="text-danger">Pastikan semua data sudah diisi dengan benar</p>
                       <button type="submit" class="btn btn-primary">Update</button>
                     </div>
                   </form><!-- End Profile Edit Form -->

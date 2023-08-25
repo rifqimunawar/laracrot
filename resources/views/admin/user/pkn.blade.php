@@ -24,6 +24,7 @@
                 </td>
                 <td class="text-center">
                  <a href="/admin/user/{{ $kader->id }}/details" class="btn btn-success btn-sm">Detail</a>
+                  <a href="/profile/{{ $kader->slug }}" class="btn btn-warning btn-sm">Profile</a>
                 </td>
             </tr>
             @endforeach
