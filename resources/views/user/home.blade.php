@@ -11,7 +11,7 @@
 
         <div class="carousel-inner" role="listbox">
 
-          <div class="carousel-item active" style="background-image: url({{ asset('storage/home/homepage.jpg') }});">
+          <div class="carousel-item active" style="background-image: url(https://pmiiuninus.com/storage/home/homepage.jpg);">
             <div class="carousel-container">
               <div class="container">
                 <h2 class="animate__animated animate__fadeInDown">Selamat Datang <br> Di Website PMII Uninus </h2>
