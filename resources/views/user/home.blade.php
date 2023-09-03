@@ -449,7 +449,7 @@
             </figure>
 
             <div class="portfolio-info">
-              <a href="{{ route('post', ['slug' => $post->slug]) }}"><h4>{{ Str::limit($post->title, '15') }}</h4></a> 
+              <a href="{{ route('post', ['slug' => $post->slug]) }}"><h4>{{ Str::limit($post->title, '35') }}</h4></a> 
               <a href="{{ route('category', $post->category->slug) }}"><p style="text-transform: none; text-decoration:none">{{ $post->category->title }}</p></a>
             </div>
           </div>

@@ -212,7 +212,11 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
   Route::get('/admin/user', [UserController::class, 'index'])->name('user.index');
   Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
   Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
+
+  Route::get('/admin/user/view-pdf', [PDFController::class, 'viewPDF'])->name('view-pdf');
   Route::get('/admin/user/download-pdf', [PDFController::class, 'downloadPDF'])->name('download-pdf');
+  Route::get('/admin/user/rayon/pdf/{slug}', [PDFController::class, 'rayonPDF'])->name('rayonPDF');
+
   Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');
   Route::get('/admin/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
   Route::put('/admin/user/{id}', [UserController::class, 'update'])->name('user.update');

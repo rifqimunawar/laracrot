@@ -167,6 +167,7 @@
         <div class="text-center">
           <a href="{{ route('user.index') }}" class="btn btn-warning sm">Kembali</a>
           <a href="{{ $downloadPDF }}" class="btn btn-success sm">Unduh PDF</a>
+          <a href="{{ $view-pdf }}" class="btn btn-success sm">Unduh PDF</a>
         </div>
 
       </div>

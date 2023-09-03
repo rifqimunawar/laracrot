@@ -25,10 +25,13 @@
           <form action="" method="get">
             <div class="input-group mb-3">
                 <input type="text" class="form-control" name="search" placeholder="Search.....">
-                <button class="btn btn-primary">Search</button>
-            </div>
+                <button class="btn btn-primary">Search</button> 
+               </div>
         </form>
-        </div>
+       </div>
+       <div class="text-end">
+        <a href="/admin/user/rayon/pdf/{{ $r->slug }}" class="btn btn-warning m-3"> <i class="bi bi-printer"></i>  Download Data</a>
+       </div>
         <div class="row">
             <table class="table">
                 <tr>
@@ -45,7 +48,7 @@
                         <td>{{ $item->kaderisasi}}</td>
                         <td class="text-center">
                           <form action="">
-                           <a href="/admin/user/{{ $kdr->id }}/details" class="btn btn-success btn-sm">Detail</a>
+                           <a href="/admin/user/{{ $item->id }}/details" class="btn btn-success btn-sm">Detail</a>
                             <a href="/profile/{{ $item->slug }}" class="btn btn-secondary btn-sm">Profile</a>
                             <a href="/admin/user/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
                           </form>
