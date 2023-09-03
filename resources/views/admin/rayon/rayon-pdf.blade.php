@@ -27,7 +27,7 @@
     </div>
 
 
-    <table class='table table-striped'>
+    <table class='table table-bordered'>
         <thead>
             <tr>
                 <th>No</th>
@@ -36,12 +36,13 @@
                 <th>JK</th>
                 <th>Tempat Tgl Lahir</th>
                 <th>Alamat</th>
-                <th>Pesantren</th>
+                {{-- <th>Pesantren</th> --}}
                 <th>SMA/Sederajat</th>
                 <th>Thn Lulus</th>
                 <th>Thn Kuliah</th>
                 <th>Jurusan</th>
-                <th>Kaderisasi</th>
+                <th>Mapaba</th>
+                <th>Kaderisasi Skrg</th>
                 <th>Kontak</th>
             </tr>
         </thead>
@@ -52,13 +53,14 @@
                     <td>{{ $u->name }}</td>
                     <td>{{ $u->nim }}</td>
                     <td>{{ $u->kelamin }}</td>
-                    <td>{{ $u->tempat_lahir }}, {{ $u->tanggal_lahir }}</td>
+                    <td>{{ $u->t_lahir }}, {{ $u->ttl }}</td>
                     <td>{{ $u->alamat }}</td>
-                    <td>{{ $u->pesantren }}</td>
+                    {{-- <td>{{ $u->pesantren }}</td> --}}
                     <td>{{ $u->sma }}</td>
                     <td>{{ $u->thn_lulus }}</td>
                     <td>{{ $u->thn_kuliah }}</td>
                     <td>{{ $u->prodi }}</td>
+                    <td>{{ $u->thn_mapaba }}</td>
                     <td>{{ $u->kaderisasi }}</td>
                     <td>{{ $u->wa }}</td>
                 </tr>
@@ -67,9 +69,8 @@
     </table>
 
     <script type="text/javascript">
-        window.document.querySelector('body').style.width = '420mm'; // Lebar A3
-        window.document.querySelector('body').style.height = '297mm'; // Tinggi A3
-        // window.document.querySelector('body').style.transform = 'rotate(90deg)'; // Lanscape
+        window.document.querySelector('body').style.width = '594mm'; // Lebar A2
+        window.document.querySelector('body').style.height = '420mm'; // Tinggi A2
         window.print();
     </script>
 
