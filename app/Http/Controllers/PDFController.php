@@ -19,23 +19,26 @@ class PDFController extends Controller
 
  public function rayonPDF($slug, Request $request)
  {
-  $rayon = Rayon::where('slug', $slug)
-  ->with('users')
-  ->latest()
-  ->paginate(25);
-
-   if ($request->has('search')) {
-     $user = User::Where('username', 'LIKE', '%' . $request->search . '%')
-         ->orWhere('name', 'LIKE', '%' . $request->search . '%')
-         ->get();
-   } else {
-     $user = User::with('rayon')->latest()->paginate(25);
-     $count_user = User::count();
-     $now =  Carbon::parse($request->stockupdate)->format('Y-m-d'); 
-   }
-   return view ('admin.rayon.rayon-pdf', compact('rayon', 'user', 'count_user', 'now'));
-
+     // Ambil data rayon berdasarkan slug
+     $rayon = Rayon::where('slug', $slug)
+         ->with('users')
+         ->latest()
+         ->first(); // Menggunakan first() untuk mendapatkan satu data rayon
+ 
+     if (!$rayon) {
+         // Handle jika rayon tidak ditemukan
+         abort(404); // Atau tampilkan pesan error yang sesuai
+     }
+ 
+     // Hitung jumlah pengguna dalam rayon tersebut
+     $count_user = $rayon->users->count();
+ 
+     // Format tanggal sesuai dengan yang Anda inginkan
+     $now = Carbon::now()->format('Y-m-d');
+ 
+     return view('admin.rayon.rayon-pdf', compact('rayon', 'count_user', 'now'));
  }
+ 
 
  // public function downloadPDF($user)
  //    {
