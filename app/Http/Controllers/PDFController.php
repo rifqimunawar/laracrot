@@ -37,7 +37,8 @@ class PDFController extends Controller
 
  public function kaderPDF($id, Request $request) {
   $users = User::findOrFail($id);
+  $now = Carbon::now()->format('Y-m-d');
 
-  return view('admin.user.pdf', compact('users'));
+  return view('admin.user.pdf', compact('users', 'now'));
  }
 }
