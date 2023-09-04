@@ -166,7 +166,7 @@
 
         <div class="text-center">
           <a href="{{ route('user.index') }}" class="btn btn-warning sm">Kembali</a>
-          <a href="/admin/user/download-pdf/{{ $users->id }}" class="btn btn-success sm">Unduh PDF</a>
+          <a href="/admin/user/download-pdf/{{ $users->id }}" class="btn btn-success sm">Unduh KTA</a>
         </div>
 
       </div>
