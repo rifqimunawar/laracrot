@@ -62,7 +62,7 @@
          </tr>
        </tbody>
       </table>
-      {!! QrCode::size(130)->generate('https://pmiiuninus.com/qrcode/{{ $users->id }}') !!}
+      {!! QrCode::size(130)->generate('https://pmiiuninus.com/qrcode/' . $users->id) !!}
      </div>
 
 
