@@ -13,9 +13,8 @@
     <div class="container mt-4">
 
         <div class="card text-center align-middle">
-         <img src="https://pmiiuninus.com/storage/img/ . {{ $users->img }}" alt="">
+         <img src="{{ asset('storage/img/'.  $users->img ) }}" alt="" style="width: 100%; height:40rem; object-fit:cover">
          <h1>Benar Bahwasannya sahabat {{ $users->name }} dengan NIM/NIK : {{ $users->nim }} Adalah Kader PMII Komisariat Uninus</h1>
-
         </div>
 
     </div>
