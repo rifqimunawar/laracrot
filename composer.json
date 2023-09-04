@@ -21,6 +21,7 @@
         "openai-php/client": "^0.3.5",
         "orangehill/iseed": "^3.0",
         "realrashid/sweet-alert": "^6.0",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "symfony/serializer-pack": "^1.2",
         "symfony/twig-pack": "^1.0",
         "tightenco/ziggy": "^1.0"
