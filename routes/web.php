@@ -19,6 +19,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\PerpusController;
+use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\QuotesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
@@ -87,6 +88,7 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
+Route::get('/qrcode/{id}', [QrCodeController::class, 'index']);
 Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details');
 
@@ -213,8 +215,7 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
   Route::get('/admin/user/create', [UserController::class, 'create'])->name('create.user');
   Route::get('/admin/user/{id}/details', [ProfileController::class, 'details'])->name('details');
 
-  Route::get('/admin/user/view-pdf', [PDFController::class, 'viewPDF'])->name('view-pdf');
-  Route::get('/admin/user/download-pdf', [PDFController::class, 'downloadPDF'])->name('download-pdf');
+  Route::get('/admin/user/download-pdf/{id}', [PDFController::class, 'kaderPDF']);
   Route::get('/admin/user/rayon/pdf/{slug}', [PDFController::class, 'rayonPDF'])->name('rayonPDF');
 
   Route::post('/admin/user/store', [UserController::class, 'store'])->name('store.user');

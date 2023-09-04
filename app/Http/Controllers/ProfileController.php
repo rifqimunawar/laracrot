@@ -289,13 +289,11 @@ class ProfileController extends Controller
         $city = City::find($users->city_id);
         $kecamatan = District::find($users->kecamatan_id);
         $kelurahan = Village::find($users->kelurahan_id);
-        $downloadPDF = route('download-pdf', compact('users'));
-
         
         
         // dd($provinsi);
         return view('admin.user.detail', compact('users', 'provinsi', 'city',
-      'kecamatan', 'kelurahan', 'downloadPDF'));
+      'kecamatan', 'kelurahan'));
     }
     // profile user lain 
     public function profile($slug, Request $request)
