@@ -37,10 +37,10 @@ class DatabaseSeeder extends Seeder
             // CategoryBookSeeder::class,
             // HBNSeeder::class,
             // PostSeeder::class,
-            // ProvincesSeeder::class,
-            // CitiesSeeder::class,
-            // DistrictsSeeder::class,
-            // VillagesSeeder::class,
+            ProvincesSeeder::class,
+            CitiesSeeder::class,
+            DistrictsSeeder::class,
+            VillagesSeeder::class,
         ]);
 
     // $backup = database_path(__DIR__ . 'laracrot.sql');

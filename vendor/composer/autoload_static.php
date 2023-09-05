@@ -768,6 +768,7 @@ class ComposerStaticInit661235367af7dc2533c510b4a4beb0a9
         'App\\Http\\Controllers\\PengurusController' => __DIR__ . '/../..' . '/app/Http/Controllers/PengurusController.php',
         'App\\Http\\Controllers\\PerpusController' => __DIR__ . '/../..' . '/app/Http/Controllers/PerpusController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\QrCodeController' => __DIR__ . '/../..' . '/app/Http/Controllers/QrCodeController.php',
         'App\\Http\\Controllers\\QuotesController' => __DIR__ . '/../..' . '/app/Http/Controllers/QuotesController.php',
         'App\\Http\\Controllers\\RayonController' => __DIR__ . '/../..' . '/app/Http/Controllers/RayonController.php',
         'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',

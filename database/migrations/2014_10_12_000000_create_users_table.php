@@ -27,19 +27,19 @@ return new class extends Migration
             $table->string('pesantren')->nullable();
             $table->string('t_lahir',)->nullable();
             $table->string('ttl', 20)->nullable();
-            $table->string('hobi', 15)->nullable();
+            $table->string('hobi')->nullable();
             $table->string('sma', 100)->nullable();
             $table->string('thn_lulus', 10)->nullable();
             $table->string('thn_kuliah', 10)->nullable();
 
-            $table->string('wa', 20)->nullable();
+            $table->string('wa')->nullable();
             $table->string('twitter')->nullable();
             $table->string('fb')->nullable();
             $table->string('ig')->nullable();
 
             // hal yang berkaitan dengan account 
             $table->foreignId('role_id')->default(4);
-            $table->string('bio', 100)->default('tangan terkepan dan maju kemuka!!!');
+            $table->string('bio')->default('tangan terkepan dan maju kemuka!!!');
             $table->string('username')->nullable()->unique(); //public
             $table->string('slug')->nullable();
             $table->string('email')->nullable();
