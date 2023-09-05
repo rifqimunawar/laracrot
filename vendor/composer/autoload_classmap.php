@@ -45,6 +45,7 @@ return array(
     'App\\Http\\Controllers\\PengurusController' => $baseDir . '/app/Http/Controllers/PengurusController.php',
     'App\\Http\\Controllers\\PerpusController' => $baseDir . '/app/Http/Controllers/PerpusController.php',
     'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
+    'App\\Http\\Controllers\\QrCodeController' => $baseDir . '/app/Http/Controllers/QrCodeController.php',
     'App\\Http\\Controllers\\QuotesController' => $baseDir . '/app/Http/Controllers/QuotesController.php',
     'App\\Http\\Controllers\\RayonController' => $baseDir . '/app/Http/Controllers/RayonController.php',
     'App\\Http\\Controllers\\RoleController' => $baseDir . '/app/Http/Controllers/RoleController.php',

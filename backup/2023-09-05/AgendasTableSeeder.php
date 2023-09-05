@@ -67,22 +67,6 @@ class AgendasTableSeeder extends Seeder
                 'created_at' => '2023-06-20 06:42:10',
                 'updated_at' => '2023-06-20 06:42:10',
             ),
-            3 => 
-            array (
-                'id' => 4,
-                'title' => 'Ngecor Jalan',
-                'penyelenggara' => 'Rayon Ulul Albab',
-                'start' => '2023-08-23T17:13',
-                'tempat' => 'Jl. Soekarno Hatta',
-                'description' => 'Non-Formal',
-                'jmlh_peserta' => NULL,
-                'target_capaian' => NULL,
-                'evaluasi' => NULL,
-                'status' => '0',
-                'pamflet' => 'agenda_Rayon Ulul Albab-1692946032.jpg',
-                'created_at' => '2023-08-25 13:47:12',
-                'updated_at' => '2023-08-25 13:47:12',
-            ),
         ));
         
         
