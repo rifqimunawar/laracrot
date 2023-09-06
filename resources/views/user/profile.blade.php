@@ -18,9 +18,10 @@
                   <a href="/account" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Edit profile</a>
                   @auth 
                     @if (in_array(auth()->user()->role_id, [1, 2, 3]))
-                      <a href="/uploads" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Uploads</a>
+                      <a href="/uploads" class="btn btn-dark sm m-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >Uploads</a>
                     @endif
                   @endauth
+                  <a href="/kta/user/download/pdf/{{ $profile->id }}/my-kta/" class="btn btn-dark sm" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" >KTA</a>
                 </div>
                 <div class="d-flex align-items-center">
                     <span class="mr-4"><strong>{{ $countpost }}</strong> posts</span>

@@ -88,10 +88,10 @@ Route::get('/category/{slug}', [CategoryController::class, 'show'])->name('categ
 Route::get('/tag/{slug}', [TagController::class, 'show'])->name('tag');
 Route::get('/calendar', [AgendaController::class, 'index'])->name('calendar.index');
 Route::get('/profile/{slug}', [ProfileController::class, 'profile'])->name('profileuser');
-Route::get('/qrcode/{id}', [QrCodeController::class, 'index']);
+Route::get('/qrcode/varifikasi/kta/{id}/anjay/mabar/ckuahsksdfsihew/S3NAT-4NJ1NG-63lut-73ng/51-3nd1', [QrCodeController::class, 'index']);
 Route::get('/perpus', [PerpusController::class, 'index'])->name('index');
 Route::get('/perpus/details/{id}', [PerpusController::class, 'details'])->name('details');
-
+Route::get('/kta/user/download/pdf/{id}/my-kta/', [PDFController::class, 'kaderPDF']);
 
 // =====================================================
 // Route Auth  =========================================

@@ -108,7 +108,7 @@ class ProfileController extends Controller
         $categories = Category::pluck('title', 'id')->all();
         $tags = Tag::pluck('title', 'id')->all();
         $user=Auth::user();
-        // dd($profilegaleri);
+        // dd($profile);
         return view('user.profile', compact(
           'tags', 
           'user', 
