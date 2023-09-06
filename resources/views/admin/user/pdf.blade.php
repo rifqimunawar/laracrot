@@ -59,7 +59,7 @@
       </div>
 
       <div class="qr">
-       {!! QrCode::size(100)->generate('https://pmiiuninus.com/qrcode/' . $users->id) !!}
+       {!! QrCode::size(100)->generate("/qrcode/varifikasi/kta/{$users->id}/anjay/mabar/ckuahsksdfsihew/S3NAT-4NJ1NG-63lut-73ng/51-3nd1") !!}
       </div>
 
     </div>
