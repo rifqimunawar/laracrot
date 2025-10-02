@@ -29,9 +29,9 @@ class PostsTableSeeder extends Seeder
                 'category_id' => 1,
                 'user_id' => 1,
                 'views' => 116,
+                'active' => 1,
                 'created_at' => '2023-05-10 06:03:40',
                 'updated_at' => '2023-07-10 10:29:49',
-                'active' => 1,
             ),
             1 => 
             array (
@@ -43,9 +43,9 @@ class PostsTableSeeder extends Seeder
                 'category_id' => 1,
                 'user_id' => 1,
                 'views' => 74,
+                'active' => 1,
                 'created_at' => '2023-05-13 08:35:22',
                 'updated_at' => '2023-07-11 22:10:44',
-                'active' => 1,
             ),
             2 => 
             array (
@@ -57,9 +57,9 @@ class PostsTableSeeder extends Seeder
                 'category_id' => 1,
                 'user_id' => 1,
                 'views' => 61,
+                'active' => 1,
                 'created_at' => '2023-06-01 09:27:21',
                 'updated_at' => '2023-08-31 20:11:40',
-                'active' => 1,
             ),
             3 => 
             array (
@@ -70,10 +70,10 @@ class PostsTableSeeder extends Seeder
                 'image' => 'blog_-1693487978.jpg',
                 'category_id' => 1,
                 'user_id' => 1,
-                'views' => 80,
-                'created_at' => '2023-06-24 01:51:16',
-                'updated_at' => '2025-10-03 00:17:19',
+                'views' => 78,
                 'active' => 1,
+                'created_at' => '2023-06-24 01:51:16',
+                'updated_at' => '2023-08-31 20:19:38',
             ),
             4 => 
             array (
@@ -85,9 +85,9 @@ class PostsTableSeeder extends Seeder
                 'category_id' => 2,
                 'user_id' => 1,
                 'views' => 4,
+                'active' => 0,
                 'created_at' => '2023-07-11 12:54:58',
                 'updated_at' => '2023-07-11 13:04:07',
-                'active' => 0,
             ),
         ));
         

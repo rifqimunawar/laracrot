@@ -22,7 +22,7 @@ class UsersTableSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Rifqi Munawar Ridwan',
+                'name' => 'Admin',
                 'kelamin' => 'L',
                 'nim' => '1',
                 'img' => 'profile_rifqi_munawar-1685183361.jpg',
@@ -30,7 +30,7 @@ class UsersTableSeeder extends Seeder
                 'city_id' => '163',
                 'kecamatan_id' => '2100',
                 'kelurahan_id' => '26872',
-                'alamat' => 'Jatisari - Sindanbarang - Cianjur',
+                'alamat' => 'Bandung',
                 'pesantren' => '',
                 't_lahir' => '-',
                 'ttl' => '05/11/2001',
@@ -46,8 +46,8 @@ class UsersTableSeeder extends Seeder
                 'bio' => 'salam pergerakan',
                 'username' => 'rifqi_munawar',
                 'slug' => 'rifqi_munawar',
-                'email' => 'rifqimunawar48@gmail.com',
-                'password' => '$2y$10$qJCtePxsBRjheUEjoKD2DeDHH9T/TIO0l39OFKvZQche1wdPgMyXO',
+                'email' => 'admin@gmail.com',
+                'password' => '$2y$10$jZRXO8IzAvh3P4dL4ulyy.W58MwH3cCjGSTbMiz/ih0CWr6pMAOIu',
                 'email_verified_at' => '2023-07-12 10:44:39',
                 'remember_token' => 'zg1qt1yKlsGgQbDGSiBPcIvW3HSDheIEByC83svCGpRH3hQuu2Z7goMv7YGV',
                 'created_at' => '2023-07-12 10:44:39',

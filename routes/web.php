@@ -138,23 +138,23 @@ Route::post('/reset-password', [ForgetPasswordControler::class, 'resetPassword']
 // =====================================================
 // Route Auth Pengunjung Kader Admin, Superadmin =======
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
+// Route::middleware(['auth', 'role:1, 2, 3, 4'])->group(function () {
   Route::post('/comments', [CommentController::class, 'store'])->name('comments.store')->middleware('auth');
   Route::get('/profile', [ProfileController::class, 'index'])->middleware(['auth']);
   Route::get('/account', [ProfileController::class, 'account'])->middleware(['auth']);
   Route::put('/account/update', [ProfileController::class, 'update'])->name('profile.update')->middleware(['auth']);
   Route::post('/account/newpassword', [ProfileController::class, 'newpassword'])->name('change-password')->middleware(['auth']);
-});
+// });
 
 // =====================================================
 // Route Kader, Admin, Superadmin =======================
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
+// Route::middleware(['auth', 'role:1, 2, 3'])->group(function () {
   Route::get('/uploads', [ProfileController::class, 'uploads'])->middleware(['auth']);
   Route::post('/profile/galeri/store', [ProfileController::class, 'store'])->name('store');
   Route::post('/profile/post/storepost', [ProfileController::class, 'storepost'])->name('storepost');
   Route::post('/profile/perpus/storeperpus', [ProfileController::class, 'storeperpus'])->name('storeperpus');
-});
+// });
 
 require __DIR__ . '/auth.php';
 
@@ -168,7 +168,7 @@ Route::get('get-kelurahan', [LaravoltController::class, 'get_kelurahan'])->name(
 // =====================================================
 // Route Admin dan Superadmin ==========================
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:1,2'])->group(function () {
+// Route::middleware(['auth', 'role:1,2'])->group(function () {
   Route::get('/admin', [StatistikController::class, 'index'])->name('dashboard');
   Route::get('/admin/perpus', [PerpusController::class, 'admin_index'])->name('admin_index');
   Route::get('admin/perpus/create', [PerpusController::class, 'create'])->name('create');
@@ -249,11 +249,11 @@ Route::middleware(['auth', 'role:1,2'])->group(function () {
   Route::get('/admin/hbn/{id}/edit', [HBNController::class, 'edit'])->name('hbn.edit');
   Route::put('/admin/hbn/{id}', [HBNController::class, 'update'])->name('hbn.update');
   Route::delete('/admin/hbn/{id}', [HBNController::class, 'destroy'])->name('hbn.destroy');
-});
+// });
 // =====================================================
 // Route Super Admin only ==============================
 // -----------------------------------------------------
-Route::middleware(['auth', 'role:1'])->group(function () {
+// Route::middleware(['auth', 'role:1'])->group(function () {
 
   Route::get('/admin/kader', [KaderController::class, 'kader'])->name('kader');
   Route::get('/admin/kader/create', [KaderController::class, 'create'])->name('create');
@@ -286,4 +286,4 @@ Route::middleware(['auth', 'role:1'])->group(function () {
   Route::get('/admin/pengurus/{id}/edit', [PengurusController::class, 'edit'])->name('pengurus.edit');
   Route::put('/admin/pengurus/{id}', [PengurusController::class, 'update'])->name('pengurus.update');
   Route::delete('/admin/pengurus/{id}', [PengurusController::class, 'destroy'])->name('pengurus.destroy');
-});
+// });
